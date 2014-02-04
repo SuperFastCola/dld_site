@@ -1,0 +1,79 @@
+{
+"projects":[
+	{
+		"name":"Superfast Cola",
+		"description":"iOS Application - Under Development",
+		"role":"Concept, Design, Illustration and Programming",
+		"tech":"Objective C",
+		"image":"super_fast_cola.jpg",
+		"type":["interactive","mobile","illustration","design"]
+	},
+	{
+		"name":"ABC Family",
+		"description":"Mobile Compatible, Desktop Targeted, Greeting Card Creation Site",
+		"role":"Development and Integration",
+		"tech":"HTML5 Canvas, AS3, Javascript, Jquery, CSS3, JSON, MySQL and PHP",
+		"image":"abc_family_25k.jpg",
+		"url":"http://www.abcfamily25kgiveaway.com/index_demo.php",
+		"type":["interactive","mobile","design"],
+		"mobile":true
+	},
+	{
+		"name":"HBO - Play the Boardwalk Game",
+		"description":"Mobile Compatible, Desktop Targeted",
+		"role":"Game Development and Integration",
+		"tech":"HTML5 Canvas, Request Animation Frame, CSS3, JSON, PHP",
+		"image":"playtheboardwalk.jpg",
+		"url":"http://www.playtheboardwalk.com/game.php",
+		"type":["interactive","mobile"],
+		"mobile":true
+	},
+	{
+		"name":"Big Ten Network",
+		"description":"Digital Billboard Campaign",
+		"role":"Design",
+		"image":"billboardmock_detroit.jpg",
+		"type":["design"],
+		"mobile":true
+	},
+	{
+		"name":"Style Network",
+		"description":"Minisite Design",
+		"role":"Design",
+		"image":"style_ruby_landing_v3-01.jpg",
+		"type":["design"],
+		"mobile":true
+	},
+	{
+		"name":"Cox - Join Nucky's Crew",
+		"description":"Mobile Compatible, Desktop Targeted Facebook Page Tab App",
+		"role":"Development",
+		"tech":"HTML, CSS3, JSON, PHP, Facebook API",
+		"image":"nuckys_crew.jpg",
+		"url":"https://www.hothousesecure.com/2013BWE/jtn_cox/",
+		"type":["interactive","mobile"],
+		"mobile":true
+	},
+	{
+		"name":"G4 Tv",
+		"description":"Flash video site with HTML 5 video fallback.",
+		"role":"Design, Development and Integration",
+		"tech":"Javascript, JQuery, swfObject, Flowplayer, CSS2, PHP4 and HTML4 &amp; 5. SmartPhone and iPad Friendly",
+		"image":"g4e3allaccess2011.jpg",
+		"url":"http://www.deluxeluxury.com/work/g4e32011/",
+		"type":["interactive","mobile","design"],
+		"mobile":true
+	},
+	{
+		"name":"TLC - Randy to the Rescue",
+		"description":"Mobile Compatible, Desktop Targeted Facebook Page Tab App",
+		"role":"Development",
+		"tech":"HTML, CSS3, JSON, PHP, Facebook API",
+		"image":"rttr.jpg",
+		"url":"http://www.deluxeluxury.com/work/rttr/",
+		"type":["interactive"],
+		"mobile":true
+	}
+	
+]
+}
