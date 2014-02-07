@@ -33,6 +33,11 @@ if(!window.console) console = {log:function(){}};
 	  		$(this.el).find(".project-item-front").css("background-image","url(" +  this.model.get("image_source").src + ")");
 	  	}
 
+	  	function showDetailImage(e){
+	  		$(this.el).find(".project-detail-image").css("background-image","url(" +  this.model.get("image_source").src + ")");
+	  		$(this.el).find(".project-detail-area").removeClass("hidden");
+	  	}
+
 	  	var ProjectView = Backbone.View.extend({
 		    //tagName: 'li', // name of (orphan) root tag in this.el
 		    initialize: function(){
@@ -119,15 +124,15 @@ if(!window.console) console = {log:function(){}};
 
 	    	flip: function(){
 
-	    		$(".project-holder").removeClass('flipped');
-	    		$(this.el).addClass('flipped');
+	    	/*	$(".project-holder").removeClass('flipped');
+	    		$(this.el).addClass('flipped');*/
 
-/*
+
 	    		project_detail = new DetailsView({
 			        model: this.model
 			    });		 
-			    $(".portfolio_area").append(project_detail.render().el);
-*/
+			    project_detail.render();
+
 		      /*var swapped = {
 		        id: this.model.get('name'),
 		        name: this.model.get('id')
@@ -157,14 +162,50 @@ if(!window.console) console = {log:function(){}};
 	      		//this.model.bind('remove', this.unrender);
 		    },
 		    events: {
-	      		
+	      		'click a.project-details-close':  'hideDetails'
 	    	},
 		    render: function(){
 
-		   		$(this.el).html("DETAILS");
+		    	$(window).scroll(function(){
+		    		project_detail.hideDetails();
+		    	});
 
+		    	$(this.el).addClass("project-detail-holder");
+		    	$(this.el).css("top", ($(window).scrollTop() + 20) + "px");
 
+		    	var detail_html = '<div class="project-detail-area hidden">';
+		    	detail_html += '<div class="project-detail-image"></div>';
+		    	detail_html += '<div class="project-detail-description"></div>';
+		    	detail_html += '<a class="butn project-details-close">X</a>';
+		    	detail_html += '</div>';
+
+		    	$(this.el).html(detail_html);
+
+		    	if(this.model.get('image')){
+					var tempimage = new Image();
+					tempimage.src = images_sub_directory +  this.model.get('image');
+
+					this.model.set("image_source",tempimage);
+					$(tempimage).load($.proxy(showDetailImage,this));
+
+					//$(this.el).find(".project-item-front").css("background-image","url(" + images_sub_directory +  this.model.get('image') + ")");
+
+		    	}
+
+		    	$("body").append(this.el);
+		    	$(".portfolio_area").addClass('blurred');
+		   		
 	      		return this; // for chainable calls, like .render().el
+		    },
+
+		    hideDetails: function(){
+		    	$(this.el).find(".project-detail-area").addClass('hidden');
+
+		    	setTimeout(function(){
+					 $(".project-detail-holder").empty();
+					 $(".project-detail-holder").remove();
+					 $(".portfolio_area").removeClass('blurred');
+					},500);
 		    }
 	
 	  	});
@@ -193,7 +234,7 @@ if(!window.console) console = {log:function(){}};
 					self.appendItem(item);
 				}, this);
 
-			/*	setTimeout(function(){
+	/*			setTimeout(function(){
 					 $('.portfolio_area').append('<div class="breaker"></div>');
 					},1000);*/
 			},
