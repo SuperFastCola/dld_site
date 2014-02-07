@@ -166,12 +166,12 @@ if(!window.console) console = {log:function(){}};
 	    	},
 		    render: function(){
 
-		    	$(window).scroll(function(){
+		    	/*$(window).scroll(function(){
 		    		project_detail.hideDetails();
-		    	});
+		    	});*/
 
 		    	$(this.el).addClass("project-detail-holder");
-		    	$(this.el).css("top", ($(window).scrollTop() + 20) + "px");
+		    	$(this.el).css("top", ($(window).scrollTop() + 10) + "px");
 
 		    	var detail_html = '<div class="project-detail-area hidden">';
 		    	detail_html += '<div class="project-detail-image"></div>';
@@ -180,6 +180,9 @@ if(!window.console) console = {log:function(){}};
 		    	detail_html += '</div>';
 
 		    	$(this.el).html(detail_html);
+
+
+		    	$(this.el).find(".project-detail-description").html(this.model.get("role"));
 
 		    	if(this.model.get('image')){
 					var tempimage = new Image();

@@ -642,9 +642,9 @@ a{
 
 	@media only screen and (max-width: @bp1){
 		.bdr(2px,pink);
-		width: @columns-min-width;
-		height: @columns-min-width*1.5;
-		.setmargins(left,-(@columns-min-width/2));
+		width: @columns-min-width - 1em;
+		height: @columns-min-width*1.25;
+		.setmargins(left,-((@columns-min-width - 1em)/2));
 	}
 
 	@media only screen and (max-width: @bp2) and (min-width: @bp1){
@@ -652,7 +652,6 @@ a{
 		width: @columns-width*2;
 		height: @columns-width*3;
 		.setmargins(left,-((@columns-width*2)/2));
-
 	}
 
 	/*@media only screen and (min-width: @bp3){
@@ -680,10 +679,49 @@ a{
 		.trans_prop(all,.5s);
 		.moveBackWithRotation(2px,0deg);
 
+		overflow: hidden;
+
 		.project-detail-image{
-			.block_abs_size(100%,50%);
+			.block_abs_size(100%,60%);
 			background-size: 100%;
+			.backpos(center,top);
 			.setpos(both,0em,0em);
+
+			@media only screen and (max-width: @bp1){
+				background-size: 100%;
+				height: 40%;
+			}
+
+			@media only screen and (max-width: @bp2) and (min-width: @bp1){
+				height: 45%;
+			}
+	
+		}
+
+		.project-detail-description{
+			.block_abs_size(94%,35%,10);
+			.setmargins(left,-47%);
+			.bdr;
+			left: 50%;
+			top: 63%;
+			.boldfont(.25em,white,left,none);
+
+			@media only screen and (max-width: @bp1){
+				.border-radius(0em);
+				.block_abs_size(91%,43%,10);
+				.setmargins(left,0em);
+				.boldfont(.15em,white,left,none);
+				color: white;
+				top: 42.5%;
+				left: 1em;
+				height: 55%;
+				.backcolor(black);
+			}
+
+			@media only screen and (max-width: @bp2) and (min-width: @bp1){
+				height: 50%;
+				top: 47%;
+			}
 		}
 
 		&.hidden{

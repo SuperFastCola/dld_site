@@ -408,9 +408,9 @@ a:hover {
 @media only screen and (max-width: 30em) {
   .project-detail-holder {
     border: 2px solid #ffc0cb;
-    width: 24em;
-    height: 36em;
-    margin-left: -12em !important;
+    width: 23em;
+    height: 30em;
+    margin-left: -11.5em !important;
   }
 }
 @media only screen and (max-width: 46em) and (min-width: 30em) {
@@ -465,21 +465,95 @@ a:hover {
   -ms-transform: translatez(2px) rotatex(0deg);
   -o-transform: translatez(2px) rotatex(0deg);
   transform: translatez(2px) rotatex(0deg);
+  overflow: hidden;
 }
 .project-detail-holder .project-detail-area .project-detail-image {
   position: absolute;
   margin: 0px auto 0px auto;
   padding: 0px;
   width: 100%;
-  height: 50%;
+  height: 60%;
   top: 0%;
   left: 0%;
   z-index: auto;
   /*margin-top: -(@h/2);*/
 
   background-size: 100%;
+  background-position: center top;
+  background-repeat: no-repeat;
   left: 0em !important;
   top: 0em !important;
+}
+@media only screen and (max-width: 30em) {
+  .project-detail-holder .project-detail-area .project-detail-image {
+    background-size: 100%;
+    height: 40%;
+  }
+}
+@media only screen and (max-width: 46em) and (min-width: 30em) {
+  .project-detail-holder .project-detail-area .project-detail-image {
+    height: 45%;
+  }
+}
+.project-detail-holder .project-detail-area .project-detail-description {
+  position: absolute;
+  margin: 0px auto 0px auto;
+  padding: 0px;
+  width: 94%;
+  height: 35%;
+  top: 0%;
+  left: 0%;
+  z-index: 10;
+  /*margin-top: -(@h/2);*/
+
+  margin-left: -47% !important;
+  border: 1px solid #ff0000;
+  left: 50%;
+  top: 63%;
+  font-size: 1.063em;
+  line-height: auto;
+  font-family: 'Oswald', Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  text-transform: none;
+  text-align: left;
+  color: #ffffff;
+}
+@media only screen and (max-width: 30em) {
+  .project-detail-holder .project-detail-area .project-detail-description {
+    -moz-border-radius: 0em;
+    border-radius: 0em;
+    position: absolute;
+    margin: 0px auto 0px auto;
+    padding: 0px;
+    width: 91%;
+    height: 43%;
+    top: 0%;
+    left: 0%;
+    z-index: 10;
+    /*margin-top: -(@h/2);*/
+  
+    margin-left: 0em !important;
+    font-size: 0.963em;
+    line-height: auto;
+    font-family: 'Oswald', Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    text-transform: none;
+    text-align: left;
+    color: #ffffff;
+    color: white;
+    top: 42.5%;
+    left: 1em;
+    height: 55%;
+    background-color: #000000;
+  }
+}
+@media only screen and (max-width: 46em) and (min-width: 30em) {
+  .project-detail-holder .project-detail-area .project-detail-description {
+    height: 50%;
+    top: 47%;
+  }
 }
 .project-detail-holder .project-detail-area.hidden {
   opacity: 0;
