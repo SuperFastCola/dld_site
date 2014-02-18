@@ -58,26 +58,26 @@ if(!window.console) console = {log:function(){}};
 		    	$(this.el).addClass("project-holder");
 
 		    	$(this.el).html('<div class="project-item-front"></div>');
-		    	$(this.el).append('<div class="project-item-back"></div>');
+		    	//$(this.el).append('<div class="project-item-back"></div>');
 
 
 		    	var front = $(this.el).find(".project-item-front");
 		    	front.empty();
 
-		    	var back = $(this.el).find(".project-item-back");
-		    	back.empty();
+		    	// var back = $(this.el).find(".project-item-back");
+		    	// back.empty();
 
 		    	front.append('<a class="butn project-details-butn hidden">Project Details</a>');
-		    	back.append('<a class="butn project-details-close">X</a>');
+		    	//back.append('<a class="butn project-details-close">X</a>');
 
 		    	if(this.model.has('name')){
 
 		    		var name = '<div class="project-name">' + this.model.get('name') + '</div>';
 		    		front.append(name)
-		    		back.append(name);
+		    		//back.append(name);
 		    	}
 
-		    	if(this.model.has('description')){
+		    	/*if(this.model.has('description')){
 		    		back.append('<div class="project-description">' + this.model.get('description') + '</div>');
 		    	}
 
@@ -87,7 +87,7 @@ if(!window.console) console = {log:function(){}};
 
 		    	if(this.model.has('tech')){
 		    		back.append('<div class="project-tech">' + this.model.get('tech') + '</div>');
-		    	}
+		    	}*/
 
 				if(this.model.get('image')){
 					var tempimage = new Image();
@@ -169,10 +169,14 @@ if(!window.console) console = {log:function(){}};
 		    	/*$(window).scroll(function(){
 		    		project_detail.hideDetails();
 		    	});*/
-
+				
+				$("body").addClass('lighter');
 		    	$(this.el).addClass("project-detail-holder");
-		    	$(this.el).css("top", ($(window).scrollTop() + 10) + "px");
 
+		    	//if(window.matchMedia("(max-width: 22.308em)").matches || window.matchMedia("(max-width: 39.692em) and (min-width: 22.308em)").matches){
+					$(this.el).css("top", ($(window).scrollTop() + 10) + "px");
+		    	//}
+		    	
 		    	var detail_html = '<div class="project-detail-area hidden">';
 		    	detail_html += '<div class="project-detail-image"></div>';
 		    	detail_html += '<div class="project-detail-description"></div>';
@@ -181,8 +185,24 @@ if(!window.console) console = {log:function(){}};
 
 		    	$(this.el).html(detail_html);
 
+		    	$(this.el).find(".project-detail-area").append('<p class="project-name">' + this.model.get("name") + '</p>');
 
-		    	$(this.el).find(".project-detail-description").html(this.model.get("role"));
+		    	if(this.model.has("role")){
+		    		$(this.el).find(".project-detail-description").append('<p class="project-role"><b>Role:</b>' + this.model.get("role") + '</p>');
+		    	}
+
+		    	if(this.model.has("tech")){
+		    		$(this.el).find(".project-detail-description").append('<p class="project-role"><b>Tech:</b>' + this.model.get("tech") + '</p>');
+		    	}
+
+		    	if(this.model.has("url")){
+		    		$(this.el).find(".project-detail-description").append('<a href="' + this.model.get("url") + '" class="project-link" target="new">View Project</a>');	
+		    	}
+
+
+		    	if(this.model.has("description")){
+		    		$(this.el).find(".project-name").append('<span>' +  this.model.get("description") + '</span>');
+		    	}
 
 		    	if(this.model.get('image')){
 					var tempimage = new Image();
@@ -196,6 +216,7 @@ if(!window.console) console = {log:function(){}};
 		    	}
 
 		    	$("body").append(this.el);
+		    	$(".portfolio_header").addClass('blurred');
 		    	$(".portfolio_area").addClass('blurred');
 		   		
 	      		return this; // for chainable calls, like .render().el
@@ -203,10 +224,12 @@ if(!window.console) console = {log:function(){}};
 
 		    hideDetails: function(){
 		    	$(this.el).find(".project-detail-area").addClass('hidden');
+		    	$("body").removeClass('lighter');
 
 		    	setTimeout(function(){
 					 $(".project-detail-holder").empty();
 					 $(".project-detail-holder").remove();
+					 $(".portfolio_header").removeClass('blurred');
 					 $(".portfolio_area").removeClass('blurred');
 					},500);
 		    }
