@@ -5,7 +5,7 @@ if(!window.console) console = {log:function(){}};
 
 	function initialize_dld_app(filter){
 
-		var images_sub_directory = "images/full/";
+		var images_sub_directory = "images/" + ((window.matchMedia("(max-width: 30em)").matches)?"mobile":"full")  + "/";
 		var project_detail = undefined;
 
 		function t(message){
@@ -91,7 +91,7 @@ if(!window.console) console = {log:function(){}};
 
 				if(this.model.get('image')){
 					var tempimage = new Image();
-					tempimage.src = images_sub_directory +  this.model.get('image');
+					tempimage.src = images_sub_directory  + "thumbs/" +  this.model.get('image');
 
 					this.model.set("image_source",tempimage);
 					$(tempimage).load($.proxy(showImage,this));
@@ -260,9 +260,9 @@ if(!window.console) console = {log:function(){}};
 					self.appendItem(item);
 				}, this);
 
-	/*			setTimeout(function(){
+			setTimeout(function(){
 					 $('.portfolio_area').append('<div class="breaker"></div>');
-					},1000);*/
+					},1000);
 			},
 
 			addItem: function(){
@@ -288,6 +288,67 @@ if(!window.console) console = {log:function(){}};
 
 		});
 
+		$(".butn_cv_open").bind(Browser.evt(),loadCV);
+
+		function oneWindowOpen(hide){
+
+			if(typeof hide != "undefined"){
+				$("body").addClass('lighter');
+				$(".portfolio_header").addClass('blurred');
+				$(".portfolio_area").addClass('blurred');
+			}
+			else{
+				$("body").removeClass('lighter');
+				$(".portfolio_header").removeClass('blurred');	
+				$(".portfolio_area").removeClass('blurred');
+			}
+		}
+
+		function createCVArea(html){
+			$("body").append('<div class="cv_area hidden"><a class="butn_cv_close">X</a><div class="cv_text">' + html + '</div></div>');
+
+			oneWindowOpen(true);
+
+			//manipulate first column
+			$cv_first_column = $(".cv_text").find(".cv_column:first-child");
+			$firstcolumn = $cv_first_column.clone();
+			$cv_first_column.remove();
+
+			//create nav items
+			$(".cv_area").append('<a href="' + $firstcolumn.find("a").attr("href") + '" target="new" class="butn_cv_pdf">PDF</a>');
+			$(".cv_area").append('<h1>' + $firstcolumn.find(".cv_maintitle").text() + '</h1>');
+
+
+			setTimeout(function(){
+				$(".cv_area").removeClass('hidden');
+			},200);
+
+			$(".butn_cv_close").bind(Browser.evt(),hideCV);
+		}
+
+		function hideCV(){
+			$(".cv_area").addClass('hidden');
+
+			oneWindowOpen();
+
+			setTimeout(function(){
+				$(".cv_area").remove();
+			},600);
+		}
+
+		function loadCV(){
+			Backbone.ajax({
+		    dataType: "html",
+		    url: "resume.html",
+		    data: "",
+		    success: function(val){
+			    	//pull in ajax data and bind main view collection
+			    	createCVArea(val);
+		    	}
+			});
+		}
+
+
 		var dld_portfolio = new AllProjectsView();
 
 		Backbone.ajax({
@@ -301,6 +362,19 @@ if(!window.console) console = {log:function(){}};
 		    		dld_portfolio.collection.add(val.projects[i]);  //or reset
 		    	}
 		    }
+		});
+
+		function changeImageSize(){
+			if(window.matchMedia("(max-width: 30em)").matches && Boolean(images_sub_directory.match("full"))){
+				images_sub_directory = "images/mobile/";
+			}
+			else if(!window.matchMedia("(max-width: 30em)").matches && Boolean(images_sub_directory.match("mobile"))){
+				images_sub_directory = "images/full/";
+			}
+		}
+
+		$(window).resize(function(){
+			changeImageSize();
 		});
 
 	}//end initialize_dld_app
