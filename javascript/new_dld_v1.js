@@ -5,7 +5,12 @@ if(!window.console) console = {log:function(){}};
 
 	function initialize_dld_app(filter){
 
-		var images_sub_directory = "images/" + ((window.matchMedia("(max-width: 30em)").matches)?"mobile":"full")  + "/";
+		var images_sub_directory = "images/full/";
+
+		if(typeof window.matchMedia != "undefined"){
+			images_sub_directory = "images/" + ((window.matchMedia("(max-width: 30em)").matches)?"mobile":"full")  + "/";
+		}
+
 		var project_detail = undefined;
 
 		function t(message){
@@ -24,12 +29,28 @@ if(!window.console) console = {log:function(){}};
 
 		});
 
-		
 	  	var PortfolioList = Backbone.Collection.extend({
 	    	model: PortfolioItem
 	  	});
 	  	
 	  	function showImage(e){
+	  		this.model.set('image_loaded',true);
+
+	  		var total = _.filter(this.model.collection.pluck("image_loaded"),function(loaded){
+	  			if(loaded){
+	  				return true;
+	  			}
+	  			else{
+	  				return false;
+	  			}
+	  		});
+
+
+	  		if(total.length = this.model.collection.length){
+	  			stopSpinner();
+	  		}
+	  		
+
 	  		$(this.el).find(".project-item-front").css("background-image","url(" +  this.model.get("image_source").src + ")");
 	  	}
 
@@ -37,6 +58,10 @@ if(!window.console) console = {log:function(){}};
 	  		$(this.el).find(".project-detail-image").css("background-image","url(" +  this.model.get("image_source").src + ")");
 	  		$(this.el).find(".project-detail-area").removeClass("hidden");
 	  	}
+
+	  	var proj_id = 1;
+	  	var proj_prefix = "proj_";
+
 
 	  	var ProjectView = Backbone.View.extend({
 		    //tagName: 'li', // name of (orphan) root tag in this.el
@@ -90,11 +115,28 @@ if(!window.console) console = {log:function(){}};
 		    	}*/
 
 				if(this.model.get('image')){
+
+					this.model.set('image_loaded',false);
+
+					$(this.el).attr("id",this.model.get('id'));
+
 					var tempimage = new Image();
-					tempimage.src = images_sub_directory  + "thumbs/" +  this.model.get('image');
+					tempimage.src = images_sub_directory  + "thumbs/" +  this.model.get('image') + "?t=" + (new Date().getTime());
 
 					this.model.set("image_source",tempimage);
-					$(tempimage).load($.proxy(showImage,this));
+
+					// if(Browser.is("ie78") || Browser.is("ie9")){
+					// 	console.log(tempimage.src);
+
+					// 	$(tempimage).load(function(){
+					// 		console.log(this);
+					// 	});
+					// }
+					// else{
+						$(tempimage).load($.proxy(showImage,this));	
+					//}
+
+					
 
 					//$(this.el).find(".project-item-front").css("background-image","url(" + images_sub_directory +  this.model.get('image') + ")");
 
@@ -250,6 +292,7 @@ if(!window.console) console = {log:function(){}};
 
 				this.collection = new PortfolioList();
 		  		this.collection.bind('add', this.appendItem); // collection event binder
+
 				this.render(); // not all views are self-rendering. This one is.
 			},
 
@@ -283,6 +326,7 @@ if(!window.console) console = {log:function(){}};
 		  		var portSide = new ProjectView({
 			        model: item
 			    });		 
+
 			    $(this.el).append(portSide.render().el);
 			}
 
@@ -351,6 +395,8 @@ if(!window.console) console = {log:function(){}};
 
 		var dld_portfolio = new AllProjectsView();
 
+		startSpinner();
+
 		Backbone.ajax({
 		    dataType: "json",
 		    url: "projects.json",
@@ -361,15 +407,18 @@ if(!window.console) console = {log:function(){}};
 		    	for(var i in val.projects){
 		    		dld_portfolio.collection.add(val.projects[i]);  //or reset
 		    	}
+
 		    }
 		});
 
 		function changeImageSize(){
-			if(window.matchMedia("(max-width: 30em)").matches && Boolean(images_sub_directory.match("full"))){
-				images_sub_directory = "images/mobile/";
-			}
-			else if(!window.matchMedia("(max-width: 30em)").matches && Boolean(images_sub_directory.match("mobile"))){
-				images_sub_directory = "images/full/";
+			if(typeof window.matchMedia != "undefined"){
+				if(window.matchMedia("(max-width: 30em)").matches && Boolean(images_sub_directory.match("full"))){
+					images_sub_directory = "images/mobile/";
+				}
+				else if(!window.matchMedia("(max-width: 30em)").matches && Boolean(images_sub_directory.match("mobile"))){
+					images_sub_directory = "images/full/";
+				}
 			}
 		}
 

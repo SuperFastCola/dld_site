@@ -140,7 +140,7 @@ a:hover {
     border-left: 1px solid rgba(0, 0, 0, 0.2);
   }
 }
-@media only screen and (min-width: 61em em) {
+@media only screen and (min-width: 61em) {
   .portfolio_header {
     /*.bdr(1px,gray);*/
   
@@ -328,14 +328,15 @@ a:hover {
 }
 @media only screen and (max-width: 30em) {
   .cv_area {
-    width: 23em;
-    height: 28.799999999999997em;
-    margin-left: -12.75em !important;
+    top: 1em;
+    width: 20em;
+    height: 24em;
+    margin-left: -11.5em !important;
   }
   .cv_area .cv_text {
     top: 4.625em;
-    width: 23em;
-    height: 21.174999999999997em;
+    width: 20.75em;
+    height: 18.174999999999997em;
   }
 }
 @media only screen and (max-width: 46em) and (min-width: 30em) {
@@ -473,7 +474,7 @@ a:hover {
     width: 54em;
   }
 }
-@media only screen and (min-width: 61em em) {
+@media only screen and (min-width: 61em) {
   .portfolio_area {
     /*.bdr(1px,gray);*/
   
@@ -500,6 +501,10 @@ a:hover {
   height: 17em;
   margin: 0.5em;
   float: left;
+  -webkit-transition: all 0.35s;
+  -moz-transition: all 0.35s;
+  -o-transition: all 0.35s;
+  transition: all 0.35s;
   -webkit-perspective: 1000px;
   -moz-perspective: 1000px;
   -ms-perspective: 1000px;
@@ -1133,4 +1138,51 @@ a:hover {
   to {
     background-position: center bottom;
   }
+}
+#spinnerback {
+  position: absolute;
+  margin: 0px auto 0px auto;
+  padding: 0px;
+  width: 10em;
+  height: 10em;
+  top: 0%;
+  left: 0%;
+  z-index: 20000;
+  /*margin-top: -(@h/2);*/
+
+  top: 50%;
+  left: 50%;
+  margin-left: -5em !important;
+  margin-top: -5em !important;
+  background-color: rgba(0, 0, 0, 0.9);
+  -moz-border-radius: 5em;
+  border-radius: 5em;
+  -webkit-transform: translatez(10px) rotatex(0deg);
+  -moz-transform: translatez(10px) rotatex(0deg);
+  -ms-transform: translatez(10px) rotatex(0deg);
+  -o-transform: translatez(10px) rotatex(0deg);
+  transform: translatez(10px) rotatex(0deg);
+  -webkit-transition: top 0.25s;
+  -moz-transition: top 0.25s;
+  -o-transition: top 0.25s;
+  transition: top 0.25s;
+}
+#spinnerback.hidden {
+  top: -20%;
+}
+#spinner {
+  position: absolute;
+  margin: 0px auto 0px auto;
+  padding: 0px;
+  width: 5.65em;
+  height: 5.65em;
+  top: 0%;
+  left: 0%;
+  z-index: auto;
+  /*margin-top: -(@h/2);*/
+
+  left: 50% !important;
+  top: 50% !important;
+  margin-left: -2.825em !important;
+  margin-top: -2.85em !important;
 }

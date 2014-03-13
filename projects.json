@@ -6,6 +6,7 @@
 		"role":"Concept, Design, Illustration and Programming",
 		"tech":"Objective C",
 		"image":"super_fast_cola.jpg",
+		"id":"cola",
 		"type":["interactive","mobile","illustration","design"]
 	},
 	{
@@ -16,6 +17,7 @@
 		"image":"abc_family_25k.jpg",
 		"url":"http://www.abcfamily25kgiveaway.com/index_demo.php",
 		"type":["interactive","mobile","design"],
+		"id":"abc25give",
 		"mobile":true
 	},
 	{
@@ -26,6 +28,7 @@
 		"image":"playtheboardwalk.jpg",
 		"url":"http://www.playtheboardwalk.com/game.php",
 		"type":["interactive","mobile"],
+		"id":"playboardwalk",
 		"mobile":true
 	},
 	{
@@ -34,6 +37,7 @@
 		"role":"Design",
 		"image":"billboardmock_detroit.jpg",
 		"type":["design"],
+		"id":"bigtenbillboard",
 		"mobile":true
 	},
 	{
@@ -42,6 +46,7 @@
 		"role":"Design",
 		"image":"style_ruby_landing_v3-01.jpg",
 		"type":["design"],
+		"id":"rubycity",
 		"mobile":true
 	},
 	{
@@ -52,6 +57,7 @@
 		"image":"nuckys_crew.jpg",
 		"url":"https://www.hothousesecure.com/2013BWE/jtn_cox/",
 		"type":["interactive","mobile"],
+		"id":"joincrew",
 		"mobile":true
 	},
 	{
@@ -62,6 +68,7 @@
 		"image":"g4e3allaccess2011.jpg",
 		"url":"http://www.deluxeluxury.com/work/g4e32011/",
 		"type":["interactive","mobile","design"],
+		"id":"e3allaccess",
 		"mobile":true
 	},
 	{
@@ -72,6 +79,7 @@
 		"image":"rttr.jpg",
 		"url":"http://www.deluxeluxury.com/work/rttr/",
 		"type":["interactive"],
+		"id":"randyrescue",
 		"mobile":true
 	}
 	
