@@ -1150,7 +1150,6 @@ a:hover {
   z-index: 20000;
   /*margin-top: -(@h/2);*/
 
-  top: 50%;
   left: 50%;
   margin-left: -5em !important;
   margin-top: -5em !important;
@@ -1162,13 +1161,18 @@ a:hover {
   -ms-transform: translatez(10px) rotatex(0deg);
   -o-transform: translatez(10px) rotatex(0deg);
   transform: translatez(10px) rotatex(0deg);
-  -webkit-transition: top 0.25s;
-  -moz-transition: top 0.25s;
-  -o-transition: top 0.25s;
-  transition: top 0.25s;
+  -webkit-transition: all 0.25s;
+  -moz-transition: all 0.25s;
+  -o-transition: all 0.25s;
+  transition: all 0.25s;
+  opacity: 1;
+  -moz-opacity: 1;
+  filter: alpha(opacity = 100);
 }
 #spinnerback.hidden {
-  top: -20%;
+  opacity: 0;
+  -moz-opacity: 0;
+  filter: alpha(opacity = 0);
 }
 #spinner {
   position: absolute;

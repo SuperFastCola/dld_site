@@ -1142,16 +1142,16 @@ a{
 
 #spinnerback{
 	.block_abs_size(10em,10em,@spinnerback_depth);
-	top: 50%;
 	left: 50%;
 	.setmargins(both,-5em,-5em);
 	.backcolor(@percent_90_black);
 	.border-radius(5em);
 	.moveBackWithRotation(10px,0deg);
-	.trans_prop(top,.25s);
+	.trans_prop(all,.25s);
+	.opacity(1);
 
 	&.hidden{
-		top: -20%;
+		.opacity(0);
 	}
 }
 
