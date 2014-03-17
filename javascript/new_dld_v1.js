@@ -206,7 +206,8 @@ if(!window.console) console = {log:function(){}};
 	      		//this.model.bind('remove', this.unrender);
 		    },
 		    events: {
-	      		'click a.project-details-close':  'hideDetails'
+	      		'click a.project-details-close':  'hideDetails',
+	      		'click a.project-details-show':  'showFullImage'
 	    	},
 		    render: function(){
 
@@ -232,6 +233,7 @@ if(!window.console) console = {log:function(){}};
 		    	detail_html += '<div class="project-detail-image"></div>';
 		    	detail_html += '<div class="project-detail-description"></div>';
 		    	detail_html += '<a class="butn project-details-close">X</a>';
+		    	detail_html += '<a class="butn project-details-show">View Image</a>';
 		    	detail_html += '</div>';
 
 		    	$(this.el).html(detail_html);
@@ -288,6 +290,18 @@ if(!window.console) console = {log:function(){}};
 					 $(".butn_cv_open").removeClass('blurred');
 					 $(".portfolio_area").removeClass('blurred');
 					},500);
+		    },
+		    showFullImage: function(){
+
+		    	$element = $(this.el).find(".project-detail-area");
+		    	
+		    	if(!$element.hasClass("view_image")){
+					$element.addClass("view_image");
+					$(".project-details-show").html("Minimize");
+		    	}else{
+		    		$element.removeClass("view_image");
+		    		$(".project-details-show").html("View Image");
+		    	}
 		    }
 	
 	  	});
@@ -368,29 +382,38 @@ if(!window.console) console = {log:function(){}};
 
 			var sprite_ani_name = "sprite_ani_" + obj.get("sprite_id");
 
+			var direction = Math.round(Math.random() % 2);
+
 			var styles = "@" + prefix + "keyframes " + sprite_ani_name + " {\n";
-			styles += "\t0% {background-position: " + obj.get("xCoor")[0] + "px " +  obj.get("yCoor")[0] + "px;}\n";
-			styles += "\t100% {background-position: " + obj.get("xCoor")[1] + "px " +  obj.get("yCoor")[1] + "px;}\n";
+			styles += "\t0% {background-position: " + obj.get("xCoor")[direction][0] + "px " +  obj.get("yCoor")[0] + "px;}\n";
+			styles += "\t100% {background-position: " + obj.get("xCoor")[direction][1] + "px " +  obj.get("yCoor")[1] + "px;}\n";
 			styles += "}\n";			
 
 			//builddynamic style
 			styles += "\n#" +  obj.get("sprite_id") + "{\n";
 			styles += "\t" + prefix + "animation-name: " + sprite_ani_name + ";\n";
-  			styles += "\t" + prefix + "animation-duration: .1s;\n";
+  			styles += "\t" + prefix + "animation-duration: " + obj.get("walk_speed") +  ";\n";
   			styles += "\t" + prefix + "animation-timing-function: steps(2);\n";
   			styles += "\t" + prefix + "animation-delay: 0s;\n";
   			styles += "\t" + prefix + "animation-iteration-count: infinite;\n";
   			styles += "\t" + prefix + "animation-direction: alternate;\n";
   			styles += "\t" + prefix + "animation-play-state: running;\n";
 
+  			var parent_width = $(obj.get("parent_element")).width();
+
   			//add transitions	
-  			var multiplier = ($(obj.get("parent_element")).width()<600)?5:10;
+  			var multiplier = (parent_width<600)?5:10;
+
+  			if(String(obj.get("sprite_id")).match(/bird/)){
+  				multiplier = (parent_width<600)?2:5;
+  			}
+
   			var randomTime = Math.ceil(Math.random()*multiplier);
   			if(randomTime<multiplier/2){
   				randomTime = multiplier/2 + Math.ceil(Math.random()*3);
   			}
 
-  			var delayTime = Math.ceil(Math.random()*5);
+  			var delayTime = Math.ceil(Math.random()*((parent_width<600)?6:3));
 
   			styles += "\t" + prefix + "transition: " +  prefix + "transform " +  randomTime + "s;\n";
   			styles += "\t" + prefix + "transition-timing-function: linear;\n";
@@ -401,12 +424,12 @@ if(!window.console) console = {log:function(){}};
   			styles += "\theight:" + obj.get("dimensions")[1] +  "px;\n";
   			styles += "\ttop:" + obj.get("position")[1] +  "px;\n";
 
-  			styles += "\t" + prefix + "transform: translateX(" + $(obj.get("parent_element")).width() + "px);\n";
+  			styles += "\t" + prefix + "transform: translateX(" + ((!Boolean(direction))?parent_width: -(obj.get("dimensions")[0])) + "px);\n";
 
   			styles += "}\n";
 
   			styles += "\n#" +  obj.get("sprite_id") + ".move{\n";
-  			styles += "\t" + prefix + "transform: translateX(" + -(obj.get("dimensions")[0]) + "px);\n";
+  			styles += "\t" + prefix + "transform: translateX(" + ((!Boolean(direction))?-(obj.get("dimensions")[0]):parent_width) + "px);\n";
   			styles += "}\n";
 
 			var head = document.head || document.getElementsByTagName("head")[0];
@@ -438,6 +461,8 @@ if(!window.console) console = {log:function(){}};
 				"position": Array(10,10),
 				"sprite_type": "characters",
 				"sprite_image": undefined,
+				"restart":false,
+				"walk_speed": ".08s",
 				"parent_element" :".portfolio_header"
 			}
 		});
@@ -483,6 +508,7 @@ if(!window.console) console = {log:function(){}};
 		var SpriteView = Backbone.View.extend({
 			initialize: function(){
 				//console.log(this);
+				this.listenTo(this.model, 'change', this.remove);
 				_.bindAll(this, 'render');
 			},
 			aniCallBack: function(item){
@@ -726,6 +752,12 @@ if(!window.console) console = {log:function(){}};
 
 		createSpinnerCSS();
 
+		function restartCharacters(){
+			_.each(animations.collection.models,function(object,key,list){
+				object.set("restart",!object.get("restart"));
+			});
+		}
+
 		$(window).scroll(function(event) {
 			createSpinnerCSS();
 			adjustDetailHeight();
@@ -736,12 +768,15 @@ if(!window.console) console = {log:function(){}};
 			window.addEventListener("orientationchange", changeImageSizeLocation, false);	
 			window.addEventListener("orientationchange", adjustDetailHeight, false);
 			window.addEventListener("orientationchange", adjustCVHeight, false);
+			window.addEventListener("orientationchange", restartCharacters, false);
 		}
 		else{
 			$(window).resize(changeImageSizeLocation);
 			$(window).resize(createSpinnerCSS);
 			$(window).resize(adjustDetailHeight);
 			$(window).resize(adjustCVHeight);
+			$(window).resize(restartCharacters);
+			
 			
 		}
 	

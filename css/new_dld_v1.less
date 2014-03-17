@@ -474,14 +474,16 @@ a{
 @bp6: @columns_with_margin*6;
 
 .portfolio_header{
-	.back("full/cityscape_back.jpg",left,bottom);
+	.back("full/cityscape_back.jpg",left,top);
 	background-repeat: repeat-x;
-	background-size: auto 100%;
+	background-size: auto 88%;
 	margin: 0em auto 1em auto;
 	width: @columns-min-width;
 	position: relative;
 	overflow: hidden;
-	.block_size(100%, 11em);
+	.block_size(100%, 12.5em);
+
+	border-bottom: 1px dotted @percent_10_black;
 
 	.addBorder(){
 		border-right: 1px solid @percent_20_black;
@@ -524,16 +526,15 @@ a{
 
 	.dude{
 		position: relative;
-		.block_size(21em, 11em);
-		background-size: auto 95%;
+		.block_size(18em, 12.5em);
+		background-size: auto 100%;
 		margin-left: 2em;
-		.back("full/dude_back.png",left,bottom);
-
+		.back("full/dude_back.png",left,1em);
 		z-index: 200;
 
 		span{
 			.block_abs_size(2.25em,1.5em);
-			left: 64%;
+			left: 77%;
 			top: 50%;
 			margin-left: -1.5em;
 			margin-top: -.80em;
@@ -971,6 +972,8 @@ a{
 			left: 0em;
 			top: 0em;
 
+			.trans_prop(all,.25s);
+
 			.animations(slide_background,5s,linear,1s,infinite,alternate,running);
 
 			@media only screen and (max-width: @bp1){
@@ -990,6 +993,8 @@ a{
 			top: 43%;
 			padding: 1% 5% 2% 5%;
 			.backcolor(@percent_60_black);
+
+			.trans_prop(all,.25s);
 
 			.txtshadow(0em 0em .25em black);
 
@@ -1047,6 +1052,8 @@ a{
 			letter-spacing: .1em;
 			.notSelectable;
 
+			.trans_prop(all,.25s);
+
 			@media only screen and (max-width: @bp1){
 				top: 70% !important;
 				padding-bottom: .25em;
@@ -1062,6 +1069,8 @@ a{
 /*			.backgradient(white,@percent_20_black);
 			border-top:1px solid @percent_60_black;*/
 			background-size: 100%;
+
+			.trans_prop(all,.25s);
 
 
 			b{
@@ -1110,6 +1119,15 @@ a{
 			}
 		}
 
+		&.view_image{
+			.project-detail-image{
+				height:100%;
+			}
+			.project-name,.project-link,.project-detail-description{
+				.opacity(0);
+			}
+		}
+
 		&.hidden{
 			.opacity(0);
 			.moveBackWithRotation(1000px,-180deg);	
@@ -1131,6 +1149,18 @@ a{
 			padding: .25em 0em !important;
 			margin-left: -(@w);
 			z-index: 200;
+
+			.notSelectable;
+		}
+
+		.project-details-show{
+			@w: 6em;
+			@m: -8.5em;
+			width: @w !important;
+			.setpos(both,100%,0em);
+			padding: .25em 0em !important;
+			margin-left: @m;
+			z-index: 201;
 
 			.notSelectable;
 		}
