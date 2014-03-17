@@ -197,7 +197,7 @@ if(!window.console) console = {log:function(){}};
 		    }
 	  	});
 
-	
+
 		var DetailsView = Backbone.View.extend({
 		    //tagName: 'li', // name of (orphan) root tag in this.el
 		    initialize: function(){
@@ -217,10 +217,15 @@ if(!window.console) console = {log:function(){}};
 				startSpinner();
 				
 				$("body").addClass('lighter');
+
+				if($(".project-detail-holder")){
+					$(".project-detail-holder").remove();
+				}
+
 		    	$(this.el).addClass("project-detail-holder");
 
 		    	//if(window.matchMedia("(max-width: 22.308em)").matches || window.matchMedia("(max-width: 39.692em) and (min-width: 22.308em)").matches){
-					$(this.el).css("top", ($(window).scrollTop() + 10) + "px");
+					//$(this.el).css("top", ($(window).scrollTop() + 10) + "px");
 		    	//}
 		    	
 		    	var detail_html = '<div class="project-detail-area hidden">';
@@ -263,7 +268,11 @@ if(!window.console) console = {log:function(){}};
 
 		    	$("body").append(this.el);
 		    	$(".portfolio_header").addClass('blurred');
+		    	$(".butn_cv_open").addClass('blurred');
 		    	$(".portfolio_area").addClass('blurred');
+
+
+		    	adjustDetailHeight();
 		   		
 	      		return this; // for chainable calls, like .render().el
 		    },
@@ -276,12 +285,38 @@ if(!window.console) console = {log:function(){}};
 					 $(".project-detail-holder").empty();
 					 $(".project-detail-holder").remove();
 					 $(".portfolio_header").removeClass('blurred');
+					 $(".butn_cv_open").removeClass('blurred');
 					 $(".portfolio_area").removeClass('blurred');
 					},500);
 		    }
 	
 	  	});
+	
+		function adjustCVHeight(){
+			if(typeof $(".cv_area").height() != "undefined"){
+				if($(".cv_area").height() < (window.innerHeight || document.documentElement.clientHeight)){
+					var newtop = ((window.innerHeight || document.documentElement.clientHeight)/2 - $(".cv_area").height()/2) + $(window).scrollTop();
+					//newtop -= Math.round(newtop * .25);
+					$(".cv_area").css("top",newtop + "px");
+				}
+				else{
+					$(".cv_area").css("top",($(window).scrollTop() + 10) + "px");
+				}
+			}
+		}
 
+		function adjustDetailHeight(){
+			if(typeof $(".project-detail-holder").height() != "undefined"){
+				if($(".project-detail-holder").height() < (window.innerHeight || document.documentElement.clientHeight)){
+					var newtop = ((window.innerHeight || document.documentElement.clientHeight)/2 - $(".project-detail-holder").height()/2) + $(window).scrollTop();
+					//newtop -= Math.round(newtop * .25);
+					$(".project-detail-holder").css("top",newtop + "px");
+				}
+				else{
+					$(".project-detail-holder").css("top",($(window).scrollTop() + 10) + "px");
+				}
+			}
+		}
  
 		
 		 var AllProjectsView = Backbone.View.extend({
@@ -296,7 +331,6 @@ if(!window.console) console = {log:function(){}};
 
 				this.collection = new PortfolioList();
 		  		this.collection.bind('add', this.appendItem); // collection event binder
-
 				this.render(); // not all views are self-rendering. This one is.
 			},
 
@@ -311,21 +345,6 @@ if(!window.console) console = {log:function(){}};
 					 $('.portfolio_area').append('<div class="breaker"></div>');
 					},1000);
 			},
-
-			addItem: function(){
-
-				/*t(this.counter);
-				
-				this.counter++;
-				var project = new Project();
-				project.set({
-					id: project.get('id') + this.counter // modify project defaults
-				});
-
-				this.collection.add(project); // add item to collection; view is updated via event 'add'*/
-
-			},
-
 			appendItem: function(item){
 		  		var portSide = new ProjectView({
 			        model: item
@@ -336,18 +355,183 @@ if(!window.console) console = {log:function(){}};
 
 		});
 
+
+		function createAnimationStyle(obj){
+
+			var styleid = "ani_style_" + obj.get("sprite_id");
+
+			if(typeof document.getElementById(styleid) != "undefined"){
+				$("#" + styleid).remove();
+			}
+
+			var prefix = (Browser.is("webkit"))?"-webkit-":"";
+
+			var sprite_ani_name = "sprite_ani_" + obj.get("sprite_id");
+
+			var styles = "@" + prefix + "keyframes " + sprite_ani_name + " {\n";
+			styles += "\t0% {background-position: " + obj.get("xCoor")[0] + "px " +  obj.get("yCoor")[0] + "px;}\n";
+			styles += "\t100% {background-position: " + obj.get("xCoor")[1] + "px " +  obj.get("yCoor")[1] + "px;}\n";
+			styles += "}\n";			
+
+			//builddynamic style
+			styles += "\n#" +  obj.get("sprite_id") + "{\n";
+			styles += "\t" + prefix + "animation-name: " + sprite_ani_name + ";\n";
+  			styles += "\t" + prefix + "animation-duration: .1s;\n";
+  			styles += "\t" + prefix + "animation-timing-function: steps(2);\n";
+  			styles += "\t" + prefix + "animation-delay: 0s;\n";
+  			styles += "\t" + prefix + "animation-iteration-count: infinite;\n";
+  			styles += "\t" + prefix + "animation-direction: alternate;\n";
+  			styles += "\t" + prefix + "animation-play-state: running;\n";
+
+  			//add transitions	
+  			var multiplier = ($(obj.get("parent_element")).width()<600)?5:10;
+  			var randomTime = Math.ceil(Math.random()*multiplier);
+  			if(randomTime<multiplier/2){
+  				randomTime = multiplier/2 + Math.ceil(Math.random()*3);
+  			}
+
+  			var delayTime = Math.ceil(Math.random()*5);
+
+  			styles += "\t" + prefix + "transition: " +  prefix + "transform " +  randomTime + "s;\n";
+  			styles += "\t" + prefix + "transition-timing-function: linear;\n";
+  			styles += "\t" + prefix + "transition-delay: " + delayTime + "s;\n";
+  			
+  			//add general styles
+  			styles += "\twidth:" + obj.get("dimensions")[0] +  "px;\n";
+  			styles += "\theight:" + obj.get("dimensions")[1] +  "px;\n";
+  			styles += "\ttop:" + obj.get("position")[1] +  "px;\n";
+
+  			styles += "\t" + prefix + "transform: translateX(" + $(obj.get("parent_element")).width() + "px);\n";
+
+  			styles += "}\n";
+
+  			styles += "\n#" +  obj.get("sprite_id") + ".move{\n";
+  			styles += "\t" + prefix + "transform: translateX(" + -(obj.get("dimensions")[0]) + "px);\n";
+  			styles += "}\n";
+
+			var head = document.head || document.getElementsByTagName("head")[0];
+			var anistyle = document.createElement("style");
+
+			anistyle.id = styleid;
+			anistyle.text = "text/css";
+			anistyle.media = "screen";
+			head.appendChild(anistyle);
+
+			if(anistyle.styleSheet){
+				anistyle.styleSheet.cssText = styles;
+			}
+			else{
+				anistyle.appendChild(document.createTextNode(styles));
+			}
+
+			setTimeout(function(){
+				$("#" + obj.get("sprite_id")).addClass("move");
+			},1000);
+		
+		}
+
+		var AnimateThisObject = Backbone.Model.extend({
+			defaults: {
+				"yCoor": Array(0,100),
+				"xCoor": Array(0,100),
+				"dimensions": Array(100,200),
+				"position": Array(10,10),
+				"sprite_type": "characters",
+				"sprite_image": undefined,
+				"parent_element" :".portfolio_header"
+			}
+		});
+		
+		var ObjectsToAnimate = Backbone.Collection.extend({
+			model: AnimateThisObject
+		});
+
+	 	var AnimatedObject = Backbone.View.extend({
+			el: $('.portfolio_header'), // attaches `this.el` to an existing element.
+
+			events: {
+		  		//'click button#add': 'addItem'
+			},
+			initialize: function(){
+				_.bindAll(this, 'render', 'appendItem');
+				//_.bindAll(this, 'render', 'addItem', 'appendItem');
+
+				this.collection = new ObjectsToAnimate();
+		  		this.collection.bind('add', this.appendItem); // collection event binder
+				this.render(); // not all views are self-rendering. This one is.
+			},
+
+			render: function(){
+				var self = this;
+
+				_(this.collection.models).each(function(item){ // in case collection is not empty
+					self.appendItem(item);
+				}, this);
+			},
+			appendItem: function(item){
+		  		var sprite = new SpriteView({
+			        model: item
+			    });		 	
+
+		  		sprite.render();
+			    //$(this.el).append(sprite.render().el);
+			}
+
+			
+		});
+
+		var SpriteView = Backbone.View.extend({
+			initialize: function(){
+				//console.log(this);
+				_.bindAll(this, 'render');
+			},
+			aniCallBack: function(item){
+				this.remove();
+			},
+			remove: function(){
+				var cid = $(this.el).attr("title");
+				$(this.el).remove();
+
+				setTimeout($.proxy(function(){
+					this.createObject();
+				},this),2000);
+			},
+			addListeners: function(obj){
+	 			obj.addEventListener('webkitTransitionEnd', $.proxy(this.aniCallBack,this), false);
+	        	obj.addEventListener('transitionend', $.proxy(this.aniCallBack,this), false); //Firefox
+	        	obj.addEventListener('oTransitionEnd', $.proxy(this.aniCallBack,this), false); //Opera
+			},
+			createObject:function(){
+				$(this.el).removeClass('move');
+				$(this.el).addClass('sprite');
+				$(this.el).attr('id',this.model.get("sprite_id"));
+				$(this.el).attr('title',this.model.cid);
+				$(this.el).css("background-image","url(" + this.model.get("sprite_image") +  ")");
+				
+				createAnimationStyle(this.model);
+				$(this.model.get("parent_element")).append($(this.el));
+			},
+			render: function(){
+				this.createObject();
+				this.addListeners(this.el);
+			}
+		});
+
 		$(".butn_cv_open").bind(Browser.evt(),loadCV);
 
-		function oneWindowOpen(hide){
+		function onWindowOpen(hide){
 
 			if(typeof hide != "undefined"){
 				$("body").addClass('lighter');
 				$(".portfolio_header").addClass('blurred');
+				$(".butn_cv_open").addClass('blurred');
 				$(".portfolio_area").addClass('blurred');
 			}
 			else{
 				$("body").removeClass('lighter');
-				$(".portfolio_header").removeClass('blurred');	
+				
+				$(".portfolio_header").removeClass('blurred');
+				$(".butn_cv_open").removeClass('blurred');	
 				$(".portfolio_area").removeClass('blurred');
 			}
 		}
@@ -355,7 +539,7 @@ if(!window.console) console = {log:function(){}};
 		function createCVArea(html){
 			$("body").append('<div class="cv_area hidden"><a class="butn_cv_close">X</a><div class="cv_text">' + html + '</div></div>');
 
-			oneWindowOpen(true);
+			onWindowOpen(true);
 
 			//manipulate first column
 			$cv_first_column = $(".cv_text").find(".cv_column:first-child");
@@ -366,6 +550,7 @@ if(!window.console) console = {log:function(){}};
 			$(".cv_area").append('<a href="' + $firstcolumn.find("a").attr("href") + '" target="new" class="butn_cv_pdf">PDF</a>');
 			$(".cv_area").append('<h1>' + $firstcolumn.find(".cv_maintitle").text() + '</h1>');
 
+			adjustCVHeight();
 
 			setTimeout(function(){
 				$(".cv_area").removeClass('hidden');
@@ -376,8 +561,9 @@ if(!window.console) console = {log:function(){}};
 
 		function hideCV(){
 			$(".cv_area").addClass('hidden');
+			$(".cv_area").css("top", -($(".cv_area").height()))
 
-			oneWindowOpen();
+			onWindowOpen();
 
 			setTimeout(function(){
 				$(".cv_area").remove();
@@ -396,7 +582,6 @@ if(!window.console) console = {log:function(){}};
 			});
 		}
 
-
 		var dld_portfolio = new AllProjectsView();
 
 		startSpinner();
@@ -412,8 +597,77 @@ if(!window.console) console = {log:function(){}};
 		    		dld_portfolio.collection.add(val.projects[i]);  //or reset
 		    	}
 
+		    	loadSpriteImage();
+
 		    }
 		});
+		
+		var animations = new AnimatedObject();
+		var sprites_characters = undefined;
+
+		function loadSprites(){
+			Backbone.ajax({
+			    dataType: "json",
+			    url: "sprites.json",
+			    data: "",
+			    success: function(val){
+
+			    	//pull in ajax data and bind main view collection
+			    	for(var i in val.sprites){
+			    		if(String(val.sprites[i].sprite_type).match(/character/) || typeof val.sprites[i].sprite_type == "undefined"){
+							val.sprites[i].sprite_type = "character";
+							val.sprites[i].sprite_image = sprites_characters.src;
+			    		}			    		
+			    		animations.collection.add(val.sprites[i]);  //or reset
+			    	}
+			    }
+			});
+		}
+
+		function loadSpriteImage(){
+			sprites_characters = new Image()
+			sprites_characters.src = images_sub_directory + "sprites.png" + "?t=" + (new Date().getTime());			
+			$(sprites_characters).load(loadSprites);
+		}
+
+	
+
+		function reloadProjectThumbnail(e){
+			dld_portfolio.collection.get(e.currentTarget.bb_cid).set("image_loaded",true);
+			$("#" + e.currentTarget.id_to_reload).find(".project-item-front").css("background-image","url(" + e.currentTarget.src + ")");
+		}
+
+		function reloadThumbnails(){
+
+			var modelImages = new Array();
+
+			_.each(dld_portfolio.collection.models,function(object, key, list){
+
+					var obj_id = dld_portfolio.collection.get(object.cid).get("id");
+					var image_src = dld_portfolio.collection.get(object.cid).get("image");
+
+					dld_portfolio.collection.get(object.cid).set("image_loaded",false);
+
+					this.push({
+						"id": dld_portfolio.collection.get(object.cid).get("id"),
+						"cid": object.cid,
+						"image": dld_portfolio.collection.get(object.cid).get("image")
+					})
+
+			},modelImages);
+
+			_.each(modelImages,function(object){
+				//console.log(dld_portfolio.collection.get(object).get("image"));
+				var tempimage = new Image();
+				tempimage.src = images_sub_directory  + "thumbs/" +  object.image + "?t=" + (new Date().getTime());
+				tempimage.id_to_reload = object.id;
+				tempimage.bb_cid = object.cid;
+
+				$(tempimage).load(reloadProjectThumbnail);				
+
+			});
+			
+		}
 
 		function changeImageSizeLocation(e){
 
@@ -437,7 +691,7 @@ if(!window.console) console = {log:function(){}};
 			//console.log(images_sub_directory);
 
 			if(prev_sub_directory!=images_sub_directory){
-				console.log("Reload Images");
+				reloadThumbnails();
 			}
 		}
 
@@ -447,7 +701,7 @@ if(!window.console) console = {log:function(){}};
 				$("#spinner_middle").remove();
 			}
 
-			var newtop = (window.innerHeight/2) + $(window).scrollTop();
+			var newtop = ((window.innerHeight || document.documentElement.clientHeight)/2) + $(window).scrollTop();
 			var styles = '#spinnerback {top: ' + newtop+ 'px;}';
 			styles += '#spinnerback.hidden { top: ' +  ($(window).scrollTop()-200)  + 'px; }';
 
@@ -458,28 +712,37 @@ if(!window.console) console = {log:function(){}};
 			spinnerMiddle.text = "text/css";
 			spinnerMiddle.media = "screen";
 
+			head.appendChild(spinnerMiddle);
+
 			if(spinnerMiddle.styleSheet){
 				spinnerMiddle.styleSheet.cssText = styles;
 			}
 			else{
-				spinnerMiddle.appendChild(document.createTextNode(styles));
+				var tn = document.createTextNode(styles);
+				spinnerMiddle.appendChild(tn);
 			}
 
-			head.appendChild(spinnerMiddle);
 		}
 
 		createSpinnerCSS();
 
 		$(window).scroll(function(event) {
 			createSpinnerCSS();
+			adjustDetailHeight();
+			adjustCVHeight();
 		});
 		
 		if(typeof window.orientation != "undefined"){
 			window.addEventListener("orientationchange", changeImageSizeLocation, false);	
-			
+			window.addEventListener("orientationchange", adjustDetailHeight, false);
+			window.addEventListener("orientationchange", adjustCVHeight, false);
 		}
 		else{
 			$(window).resize(changeImageSizeLocation);
+			$(window).resize(createSpinnerCSS);
+			$(window).resize(adjustDetailHeight);
+			$(window).resize(adjustCVHeight);
+			
 		}
 	
 
@@ -495,9 +758,7 @@ if(!window.console) console = {log:function(){}};
 $(function(){
 	anthonybaker();
 
-	console.log("30em " + window.matchMedia("(max-width: 30em)").matches);
-			console.log("30em " + window.matchMedia("(min-width: 30em)").matches);
-			console.log("46em " + window.matchMedia("(min-width: 46em)").matches);
+	
 });
 
 

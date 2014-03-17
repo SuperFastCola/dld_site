@@ -46,7 +46,7 @@ body {
   }
 }
 body.lighter {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 ::-webkit-scrollbar {
   -webkit-appearance: none;
@@ -114,13 +114,14 @@ a:hover {
   margin: 0em auto 1em auto;
   width: 24em;
   position: relative;
+  overflow: hidden;
   width: 100%;
   height: 11em;
 }
 .portfolio_header.blurred {
-  opacity: 0;
-  -moz-opacity: 0;
-  filter: alpha(opacity = 0);
+  opacity: 0.1;
+  -moz-opacity: 0.1;
+  filter: alpha(opacity = 10);
 }
 @media only screen and (min-width: 30em) {
   .portfolio_header {
@@ -177,6 +178,7 @@ a:hover {
   background-repeat: no-repeat;
   background-position: left bottom;
   background-repeat: no-repeat;
+  z-index: 200;
 }
 .portfolio_header .dude span {
   position: absolute;
@@ -247,6 +249,16 @@ a:hover {
   border: 2px solid rgba(0, 0, 0, 0.1);
   color: rgba(0, 0, 0, 0.6);
 }
+.butn_cv_open.blurred,
+.butn_cv_close.blurred,
+.butn_cv_pdf.blurred {
+  opacity: 0;
+  -moz-opacity: 0;
+  filter: alpha(opacity = 0);
+}
+.butn_cv_open {
+  z-index: 199;
+}
 .butn_cv_pdf {
   margin-left: -5.25em;
 }
@@ -255,14 +267,14 @@ a:hover {
   margin: 0px auto 0px auto;
   padding: 0px;
   width: 54em;
-  height: 49.5em;
+  height: 45em;
   top: 0%;
   left: 0%;
   z-index: 4000;
   /*margin-top: -(@h/2);*/
 
   left: 50%;
-  top: 2em;
+  top: 10px;
   margin-left: -28.5em !important;
   padding: 0em 1.5em 1.5em 1.5em;
   margin-bottom: 1em;
@@ -306,7 +318,7 @@ a:hover {
   margin: 0px auto 0px auto;
   padding: 0px;
   width: 54em;
-  height: 41em;
+  height: 36.5em;
   top: 0%;
   left: 0%;
   z-index: auto;
@@ -318,6 +330,8 @@ a:hover {
   overflow-x: hidden;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
+  border-top: 1px dotted rgba(0, 0, 0, 0.1);
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.1);
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   -o-transition: all 0.5s;
@@ -328,30 +342,29 @@ a:hover {
 }
 @media only screen and (max-width: 30em) {
   .cv_area {
-    top: 1em;
     width: 20em;
-    height: 24em;
+    height: 23em;
     margin-left: -11.5em !important;
   }
   .cv_area .cv_text {
     top: 4.625em;
     width: 20.75em;
-    height: 18.174999999999997em;
+    height: 17.174999999999997em;
   }
 }
 @media only screen and (max-width: 46em) and (min-width: 30em) {
   .cv_area {
-    width: 36em;
+    width: 32.4em;
     height: 45em;
-    margin-left: -19.5em !important;
+    margin-left: -17.7em !important;
   }
   .cv_area .cv_text {
-    width: 36em;
+    width: 32.4em;
     height: 36.875em;
   }
 }
 .cv_area.hidden {
-  top: -59.5em;
+  top: -800px;
 }
 .cv_area .cv_column {
   float: left;
@@ -703,14 +716,17 @@ a:hover {
   margin: 0px auto 0px auto;
   padding: 0px;
   width: 54em;
-  height: 49.5em;
+  height: 45em;
   top: 0%;
   left: 0%;
   z-index: 2000;
   /*margin-top: -(@h/2);*/
 
   left: 50%;
-  top: 50%;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
   margin-left: -27em !important;
   /*margin-top: -(@pdhwidth/2) !important;*/
 
@@ -821,7 +837,7 @@ a:hover {
   margin: 0px auto 0px auto;
   padding: 0px;
   width: 100%;
-  height: 67%;
+  height: 60%;
   top: 0%;
   left: 0%;
   z-index: auto;
@@ -898,7 +914,7 @@ a:hover {
   text-transform: uppercase;
   text-align: left;
   color: #ffffff;
-  top: 52%;
+  top: 43%;
   padding: 1% 5% 2% 5%;
   background-color: rgba(0, 0, 0, 0.6);
   text-shadow: 0em 0em 0.25em #000000;
@@ -970,7 +986,7 @@ a:hover {
   /*margin-top: -(@h/2);*/
 
   left: 100%;
-  top: 75%;
+  top: 82%;
   margin-left: -9.5em;
   border: 1px solid rgba(0, 0, 0, 0.2);
   background-color: #ffffff;
@@ -994,15 +1010,14 @@ a:hover {
   margin: 0px auto 0px auto;
   padding: 0px;
   width: 90.2%;
-  height: 30%;
+  height: 40%;
   top: 0%;
   left: 0%;
   z-index: 10;
   /*margin-top: -(@h/2);*/
 
-  margin-top: -33.25%;
-  top: 100%;
-  padding: 2% 5% 3% 5%;
+  top: 60%;
+  padding: 1% 5% 0% 5%;
   font-size: 1.263em;
   line-height: auto;
   font-family: 'Karla', Arial, Helvetica, sans-serif;
@@ -1014,8 +1029,8 @@ a:hover {
   /*.backcolor(white);*/
 
   /*			.backgradient(white,@percent_20_black);
-*/
-  border-top: 1px solid rgba(0, 0, 0, 0.6);
+			border-top:1px solid @percent_60_black;*/
+
   background-size: 100%;
 }
 .project-detail-holder .project-detail-area .project-detail-description b {
@@ -1161,10 +1176,10 @@ a:hover {
   -ms-transform: translatez(10px) rotatex(0deg);
   -o-transform: translatez(10px) rotatex(0deg);
   transform: translatez(10px) rotatex(0deg);
-  -webkit-transition: all 0.25s;
-  -moz-transition: all 0.25s;
-  -o-transition: all 0.25s;
-  transition: all 0.25s;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
   opacity: 1;
   -moz-opacity: 1;
   filter: alpha(opacity = 100);
@@ -1189,4 +1204,8 @@ a:hover {
   top: 50% !important;
   margin-left: -2.825em !important;
   margin-top: -2.85em !important;
+}
+.sprite {
+  position: absolute;
+  background-repeat: no-repeat;
 }

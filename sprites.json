@@ -1,0 +1,20 @@
+{
+"sprites":[
+	{
+		"yCoor": [0,0],
+		"xCoor": [0,-166.5],
+		"dimensions": [84,140],
+		"position":[0,0],
+		"sprite_type":"character",
+		"sprite_id": "bouncer"
+	},
+	{
+		"yCoor": [-141,-141],
+		"xCoor": [0,-166.5],
+		"dimensions": [84,140],
+		"position":[0,0],
+		"sprite_type":"character",
+		"sprite_id": "girl"
+	}
+]
+}
