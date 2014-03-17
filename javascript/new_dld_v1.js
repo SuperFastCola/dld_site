@@ -292,7 +292,6 @@ if(!window.console) console = {log:function(){}};
 					},500);
 		    },
 		    showFullImage: function(){
-
 		    	$element = $(this.el).find(".project-detail-area");
 		    	
 		    	if(!$element.hasClass("view_image")){

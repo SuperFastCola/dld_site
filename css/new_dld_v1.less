@@ -972,7 +972,7 @@ a{
 			left: 0em;
 			top: 0em;
 
-			.trans_prop(all,.25s);
+			.trans_prop(height,.25s);
 
 			.animations(slide_background,5s,linear,1s,infinite,alternate,running);
 
@@ -1155,7 +1155,7 @@ a{
 
 		.project-details-show{
 			@w: 6em;
-			@m: -8.5em;
+			@m: -8.75em;
 			width: @w !important;
 			.setpos(both,100%,0em);
 			padding: .25em 0em !important;
@@ -1163,6 +1163,15 @@ a{
 			z-index: 201;
 
 			.notSelectable;
+
+			@media only screen and (max-width: @bp1){
+				display:none;
+			}
+
+			@media only screen and (max-width: @bp2) and (min-width: @bp1){
+				display:none;
+			}
+
 		}
 	}
 }

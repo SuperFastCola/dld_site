@@ -850,10 +850,10 @@ a:hover {
   background-repeat: no-repeat;
   left: 0em;
   top: 0em;
-  -webkit-transition: all 0.25s;
-  -moz-transition: all 0.25s;
-  -o-transition: all 0.25s;
-  transition: all 0.25s;
+  -webkit-transition: height 0.25s;
+  -moz-transition: height 0.25s;
+  -o-transition: height 0.25s;
+  transition: height 0.25s;
   animation-name: slide_background;
   animation-duration: 5s;
   animation-timing-function: linear;
@@ -1170,7 +1170,7 @@ a:hover {
   left: 100% !important;
   top: 0em !important;
   padding: .25em 0em !important;
-  margin-left: -8.5em;
+  margin-left: -8.75em;
   z-index: 201;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -1179,6 +1179,16 @@ a:hover {
   -ms-user-select: none;
   user-select: none;
   -ms-touch-action: none;
+}
+@media only screen and (max-width: 30em) {
+  .project-detail-holder .project-detail-area .project-details-show {
+    display: none;
+  }
+}
+@media only screen and (max-width: 46em) and (min-width: 30em) {
+  .project-detail-holder .project-detail-area .project-details-show {
+    display: none;
+  }
 }
 @keyframes slide_background {
   from {
