@@ -152,7 +152,8 @@ if(!window.console) console = {log:function(){}};
 	      		return this; // for chainable calls, like .render().el
 		    },
 		    unrender: function(){
-	      		//$(this.el).remove();
+	      		$(this.el).remove();
+	      		this.undelegateEvents();
 	    	},
 
 	    	showDetailButn: function(){
@@ -334,11 +335,11 @@ if(!window.console) console = {log:function(){}};
 		
 		 var AllProjectsView = Backbone.View.extend({
 			el: $('.portfolio_area'), // attaches `this.el` to an existing element.
-
 			events: {
 		  		//'click button#add': 'addItem'
 			},
 			initialize: function(){
+				this.subviews = new Array();
 				_.bindAll(this, 'render', 'appendItem');
 				//_.bindAll(this, 'render', 'addItem', 'appendItem');
 
@@ -362,6 +363,8 @@ if(!window.console) console = {log:function(){}};
 		  		var portSide = new ProjectView({
 			        model: item
 			    });		 
+
+		  		this.subviews.push(portSide);
 
 			    $(this.el).append(portSide.render().el);
 			}
@@ -607,25 +610,46 @@ if(!window.console) console = {log:function(){}};
 			});
 		}
 
-		var dld_portfolio = new AllProjectsView();
+		var dld_portfolio = undefined;
+		var work_projects = undefined;
 
-		startSpinner();
+		function filterProjects(val,type){
+			for(var i in val.projects){
 
-		Backbone.ajax({
-		    dataType: "json",
-		    url: "projects.json",
-		    data: "",
-		    success: function(val){
+	    		if(typeof type != "undefined"){
 
-		    	//pull in ajax data and bind main view collection
-		    	for(var i in val.projects){
-		    		dld_portfolio.collection.add(val.projects[i]);  //or reset
-		    	}
+	    			if(_.indexOf(val.projects[i].type,type)!=-1){
+	    				dld_portfolio.collection.add(val.projects[i]);  //or reset
+	    			}
+	    		}	
+	    		else{
+	    			dld_portfolio.collection.add(val.projects[i]);  //or reset
+	    		}
+	    	}
 
-		    	loadSpriteImage();
+	    	if(typeof sprites_characters == "undefined"){
+	    		loadSpriteImage();
+	    	}
+		}
 
-		    }
-		});
+		function loadProjects(){
+			startSpinner();
+			dld_portfolio = new AllProjectsView();
+
+			Backbone.ajax({
+			    dataType: "json",
+			    url: "projects.json",
+			    data: "",
+			    success: function(val){
+
+			    	//pull in ajax data and bind main view collection
+			    	work_projects = val;
+			    	filterProjects(val);
+			    }
+			});
+
+			console.log(dld_portfolio.collection);
+		}
 		
 		var animations = new AnimatedObject();
 		var sprites_characters = undefined;
@@ -762,7 +786,8 @@ if(!window.console) console = {log:function(){}};
 			adjustDetailHeight();
 			adjustCVHeight();
 		});
-		
+
+
 		if(typeof window.orientation != "undefined"){
 			window.addEventListener("orientationchange", changeImageSizeLocation, false);	
 			window.addEventListener("orientationchange", adjustDetailHeight, false);
@@ -776,9 +801,35 @@ if(!window.console) console = {log:function(){}};
 			$(window).resize(adjustCVHeight);
 			$(window).resize(restartCharacters);
 			
-			
 		}
-	
+		
+		function destroyProjects(){
+			_.each(dld_portfolio.subviews,function(object,key,list){
+				object.unrender();
+				dld_portfolio.collection.remove(object.model);
+			},dld_portfolio.subviews);
+
+			dld_portfolio.subviews = null;
+			dld_portfolio.subviews = new Array();
+		}
+
+		function displayProjects(e){
+				destroyProjects();
+
+				if(typeof $(this).attr("id") != "undefined"){
+					var id = String($(this).attr("id")).replace(/work_/,"");
+					filterProjects(work_projects,id);
+				}
+				else{
+					filterProjects(work_projects,undefined);	
+				}
+		}
+
+		$(".projects_navigation").find(".butn").each(function(){
+			$(this).bind(Browser.evt(),$.proxy(displayProjects,$(this)));
+		});
+
+		loadProjects();
 
 	}//end initialize_dld_app
 

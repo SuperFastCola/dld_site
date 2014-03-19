@@ -204,6 +204,13 @@ a:hover {
   text-transform: uppercase;
   text-align: center;
   color: #000000;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -ms-touch-action: none;
 }
 .butn_cv_open,
 .butn_cv_close,
@@ -256,6 +263,72 @@ a:hover {
   opacity: 0;
   -moz-opacity: 0;
   filter: alpha(opacity = 0);
+}
+.projects_navigation {
+  width: 24em;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 2.3em;
+  margin: 1em auto 0em auto;
+}
+@media only screen and (min-width: 30em) {
+  .projects_navigation {
+    width: 36em;
+  }
+}
+@media only screen and (min-width: 46em) {
+  .projects_navigation {
+    width: 54em;
+  }
+}
+@media only screen and (min-width: 61em) {
+  .projects_navigation {
+    width: 72em;
+  }
+}
+@media only screen and (min-width: 74em) {
+  .projects_navigation {
+    width: 90em;
+  }
+}
+@media only screen and (min-width: 91em) {
+  .projects_navigation {
+    width: 108em;
+  }
+}
+.projects_navigation .butn {
+  position: relative !important;
+  background-color: rgba(0, 0, 0, 0.2);
+  width: auto;
+  height: 1.38em;
+  margin-right: .5em;
+  float: left;
+  font-size: 0.9129999999999999em;
+  line-height: auto;
+  font-family: 'Oswald', Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  text-transform: uppercase;
+  text-align: center;
+  color: #ffffff;
+  padding-top: 0.12em;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -ms-touch-action: none;
+  -webkit-transition: all 0.25s;
+  -moz-transition: all 0.25s;
+  -o-transition: all 0.25s;
+  transition: all 0.25s;
+}
+.projects_navigation .butn:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+  color: rgba(0, 0, 0, 0.5);
+  height: 2em;
 }
 .butn_cv_open {
   z-index: 199;

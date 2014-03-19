@@ -539,6 +539,8 @@ a{
 			margin-left: -1.5em;
 			margin-top: -.80em;
 			.boldfont(4em,black,center,uppercase);
+
+			.notSelectable;
 		}
 	}
 }
@@ -571,6 +573,61 @@ a{
 			.opacity(0)
 		}
 }
+
+.projects_navigation{
+	width: @columns-min-width;
+	position: relative;
+	overflow: hidden;
+	.block_size(100%, 2.3em);
+	margin: 1em auto 0em auto;
+
+	@media only screen and (min-width: @bp1){
+		width: @columns-width*2;
+	}
+
+	@media only screen and (min-width: @bp2){
+		width: @columns-width*3;
+	}
+
+	@media only screen and (min-width: @bp3){
+		width: @columns-width*4;
+	}
+
+	@media only screen and (min-width: @bp4){
+		width: @columns-width*5;
+	}
+
+	@media only screen and (min-width: @bp5){
+		width: @columns-width*6;
+	}
+
+	.butn{
+		@cv_ptop: .12em;
+		@cv_w: 2em;
+		@cv_h: 1.5em;
+
+		position: relative !important;
+		.backcolor(@percent_20_black);
+		.block_size(auto,@cv_h - @cv_ptop);
+		margin-right: .5em;
+		float:left;
+		.boldfont(.1em,white,center,uppercase);
+		padding-top: @cv_ptop;
+
+
+		.notSelectable;
+
+		.trans_prop(all,.25s);
+
+		&:hover{
+			.backcolor(@percent_30_black);
+			color: @percent_50_black;
+			height: 2em;
+		}
+	}
+}
+
+
 
 .butn_cv_open{
 	z-index: 199;
