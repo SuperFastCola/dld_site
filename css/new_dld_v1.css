@@ -48,6 +48,9 @@ body {
 body.lighter {
   background-color: rgba(0, 0, 0, 0.2);
 }
+body.hide_overage {
+  overflow: hidden;
+}
 ::-webkit-scrollbar {
   -webkit-appearance: none;
   width: 10px;

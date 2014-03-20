@@ -64,6 +64,15 @@ if(!window.console) console = {log:function(){}};
 	  	var proj_prefix = "proj_";
 
 
+	  	function addProject(){
+	  		$(this.el).removeClass('flipped');
+	  	}
+
+	  	function removeProject(){
+	  		$(this.el).remove();
+	      	this.undelegateEvents();
+	  	}
+
 	  	var ProjectView = Backbone.View.extend({
 		    //tagName: 'li', // name of (orphan) root tag in this.el
 		    initialize: function(){
@@ -81,7 +90,7 @@ if(!window.console) console = {log:function(){}};
 	    	},
 		    render: function(){
 
-		    	$(this.el).addClass("project-holder");
+		    	$(this.el).addClass("project-holder flipped");
 
 		    	$(this.el).html('<div class="project-item-front"></div>');
 		    	//$(this.el).append('<div class="project-item-back"></div>');
@@ -148,12 +157,13 @@ if(!window.console) console = {log:function(){}};
 		    	$(this.el).html(this.model.get('name'));
 		    	$(this.el).html(this.model.get('name'));
 		    	$(this.el).html(this.model.get('name'));
-*/
+
+*/				setTimeout($.proxy(addProject,this),this.model.get("timer"));	
 	      		return this; // for chainable calls, like .render().el
 		    },
 		    unrender: function(){
-	      		$(this.el).remove();
-	      		this.undelegateEvents();
+		    	$(this.el).addClass('flipped')
+		    	setTimeout($.proxy(removeProject,this),250);	
 	    	},
 
 	    	showDetailButn: function(){
@@ -614,17 +624,25 @@ if(!window.console) console = {log:function(){}};
 		var work_projects = undefined;
 
 		function filterProjects(val,type){
+
+			var timeout = 600;
+			var timeout_inc = 30;
+
 			for(var i in val.projects){
 
 	    		if(typeof type != "undefined"){
 
 	    			if(_.indexOf(val.projects[i].type,type)!=-1){
+	    				val.projects[i].timer = timeout;
 	    				dld_portfolio.collection.add(val.projects[i]);  //or reset
 	    			}
 	    		}	
 	    		else{
+	    			val.projects[i].timer = timeout;
 	    			dld_portfolio.collection.add(val.projects[i]);  //or reset
 	    		}
+
+	    		timeout+=timeout_inc;
 	    	}
 
 	    	if(typeof sprites_characters == "undefined"){
@@ -804,6 +822,7 @@ if(!window.console) console = {log:function(){}};
 		}
 		
 		function destroyProjects(){
+
 			_.each(dld_portfolio.subviews,function(object,key,list){
 				object.unrender();
 				dld_portfolio.collection.remove(object.model);
@@ -814,6 +833,7 @@ if(!window.console) console = {log:function(){}};
 		}
 
 		function displayProjects(e){
+				
 				destroyProjects();
 
 				if(typeof $(this).attr("id") != "undefined"){
