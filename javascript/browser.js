@@ -222,6 +222,10 @@
 					return this.events.move;
 				break;
 
+				case 'override':
+					return "click";
+				break;
+
 				default:
 					return this.events.click;
 				break;

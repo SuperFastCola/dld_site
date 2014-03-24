@@ -280,9 +280,12 @@ if(!window.console) console = {log:function(){}};
 		    	}
 
 		    	$("body").append(this.el);
-		    	$(".portfolio_header").addClass('blurred');
+
+		    	//here
+		    	onWindowOpen(true);
+		    	/*$(".portfolio_header").addClass('blurred');
 		    	$(".butn_cv_open").addClass('blurred');
-		    	$(".portfolio_area").addClass('blurred');
+		    	$(".portfolio_area").addClass('blurred');*/
 
 
 		    	adjustDetailHeight();
@@ -297,9 +300,7 @@ if(!window.console) console = {log:function(){}};
 		    	setTimeout(function(){
 					 $(".project-detail-holder").empty();
 					 $(".project-detail-holder").remove();
-					 $(".portfolio_header").removeClass('blurred');
-					 $(".butn_cv_open").removeClass('blurred');
-					 $(".portfolio_area").removeClass('blurred');
+					 onWindowOpen();
 					},500);
 		    },
 		    showFullImage: function(){
@@ -315,6 +316,10 @@ if(!window.console) console = {log:function(){}};
 		    }
 	
 	  	});
+
+		function adjustNavTop(){
+			$(".projects_navigation").css("top",($(window).scrollTop() + 10) + "px");
+		}
 	
 		function adjustCVHeight(){
 			if(typeof $(".cv_area").height() != "undefined"){
@@ -403,6 +408,8 @@ if(!window.console) console = {log:function(){}};
 
 			//builddynamic style
 			styles += "\n#" +  obj.get("sprite_id") + "{\n";
+
+			styles += "\tz-index:" + obj.get("position")[1] + ";\n";
 			styles += "\t" + prefix + "animation-name: " + sprite_ani_name + ";\n";
   			styles += "\t" + prefix + "animation-duration: " + obj.get("walk_speed") +  ";\n";
   			styles += "\t" + prefix + "animation-timing-function: steps(2);\n";
@@ -555,7 +562,13 @@ if(!window.console) console = {log:function(){}};
 			}
 		});
 
-		$(".butn_cv_open").bind(Browser.evt(),loadCV);
+		$(".butn_cv_open").bind(Browser.evt("override"),loadCV);
+
+		function closeDetailWindow(){
+			if(typeof project_detail != "undefined"){					
+				project_detail.hideDetails();
+			}
+		}
 
 		function onWindowOpen(hide){
 
@@ -564,6 +577,7 @@ if(!window.console) console = {log:function(){}};
 				$(".portfolio_header").addClass('blurred');
 				$(".butn_cv_open").addClass('blurred');
 				$(".portfolio_area").addClass('blurred');
+				$(".projects_navigation").addClass('blurred');
 			}
 			else{
 				$("body").removeClass('lighter');
@@ -571,6 +585,7 @@ if(!window.console) console = {log:function(){}};
 				$(".portfolio_header").removeClass('blurred');
 				$(".butn_cv_open").removeClass('blurred');	
 				$(".portfolio_area").removeClass('blurred');
+				$(".projects_navigation").removeClass('blurred');
 			}
 		}
 
@@ -594,7 +609,7 @@ if(!window.console) console = {log:function(){}};
 				$(".cv_area").removeClass('hidden');
 			},200);
 
-			$(".butn_cv_close").bind(Browser.evt(),hideCV);
+			$(".butn_cv_close").bind(Browser.evt("override"),hideCV);
 		}
 
 		function hideCV(){
@@ -608,6 +623,41 @@ if(!window.console) console = {log:function(){}};
 			},600);
 		}
 
+		function reduceProjectsNavForMobile(e){
+
+				if(!window.matchMedia("(min-width: 30em)").matches && window.matchMedia("(max-width: 30em)").matches){
+			    	$(".projects_navigation").addClass('hidden');
+			    }
+			    else if(window.matchMedia("(min-width: 30em)").matches && window.matchMedia("(max-width: 30em)").matches){
+			    	$(".projects_navigation").addClass('hidden');
+			    }
+			    else{
+			    	expandProjectsNavForMobile();
+			    }
+		}	
+
+		function addRotatedClass(){
+			if(typeof window.orientation != "undefined" && window.orientation==90 || window.orientation==-90){
+				$(".projects_navigation").addClass('rotated');			    		
+			}
+			else{
+			   $(".projects_navigation").removeClass('rotated');	
+			}
+		}
+
+		function expandProjectsNavForMobile(e){
+
+				$(".projects_navigation").removeClass('rotated');
+
+				if(!window.matchMedia("(min-width: 30em)").matches && window.matchMedia("(max-width: 30em)").matches){
+			    	$(".projects_navigation").removeClass('hidden');
+			    }
+			    else if(window.matchMedia("(min-width: 30em)").matches && window.matchMedia("(max-width: 30em)").matches){
+			    	addRotatedClass();
+			    	$(".projects_navigation").removeClass('hidden');
+			    }
+		}
+
 		function loadCV(){
 			Backbone.ajax({
 		    dataType: "html",
@@ -616,6 +666,8 @@ if(!window.console) console = {log:function(){}};
 		    success: function(val){
 			    	//pull in ajax data and bind main view collection
 			    	createCVArea(val);
+			    	reduceProjectsNavForMobile();
+
 		    	}
 			});
 		}
@@ -624,26 +676,25 @@ if(!window.console) console = {log:function(){}};
 		var work_projects = undefined;
 
 		function filterProjects(val,type){
+				var timeout = 600;
+				var timeout_inc = 30;
 
-			var timeout = 600;
-			var timeout_inc = 30;
+				for(var i in val.projects){
 
-			for(var i in val.projects){
+		    		if(typeof type != "undefined"){
 
-	    		if(typeof type != "undefined"){
+		    			if(_.indexOf(val.projects[i].type,type)!=-1){
+		    				val.projects[i].timer = timeout;
+		    				dld_portfolio.collection.add(val.projects[i]);  //or reset
+		    			}
+		    		}	
+		    		else{
+		    			val.projects[i].timer = timeout;
+		    			dld_portfolio.collection.add(val.projects[i]);  //or reset
+		    		}
 
-	    			if(_.indexOf(val.projects[i].type,type)!=-1){
-	    				val.projects[i].timer = timeout;
-	    				dld_portfolio.collection.add(val.projects[i]);  //or reset
-	    			}
-	    		}	
-	    		else{
-	    			val.projects[i].timer = timeout;
-	    			dld_portfolio.collection.add(val.projects[i]);  //or reset
-	    		}
-
-	    		timeout+=timeout_inc;
-	    	}
+		    		timeout+=timeout_inc;
+		    	}
 
 	    	if(typeof sprites_characters == "undefined"){
 	    		loadSpriteImage();
@@ -666,7 +717,6 @@ if(!window.console) console = {log:function(){}};
 			    }
 			});
 
-			console.log(dld_portfolio.collection);
 		}
 		
 		var animations = new AnimatedObject();
@@ -725,12 +775,15 @@ if(!window.console) console = {log:function(){}};
 
 			_.each(modelImages,function(object){
 				//console.log(dld_portfolio.collection.get(object).get("image"));
-				var tempimage = new Image();
-				tempimage.src = images_sub_directory  + "thumbs/" +  object.image + "?t=" + (new Date().getTime());
-				tempimage.id_to_reload = object.id;
-				tempimage.bb_cid = object.cid;
 
-				$(tempimage).load(reloadProjectThumbnail);				
+				if(typeof object.image != "undefined" && String(object.image).match(/\w/)){
+					var tempimage = new Image();
+					tempimage.src = images_sub_directory  + "thumbs/" +  object.image + "?t=" + (new Date().getTime());
+					tempimage.id_to_reload = object.id;
+					tempimage.bb_cid = object.cid;
+
+					$(tempimage).load(reloadProjectThumbnail);				
+				}
 
 			});
 			
@@ -744,10 +797,12 @@ if(!window.console) console = {log:function(){}};
 				//if(window.matchMedia("(min-width: 30em)").matches && Boolean(images_sub_directory.match("full"))){
 				if(!window.matchMedia("(min-width: 30em)").matches && window.matchMedia("(max-width: 30em)").matches){
 					images_sub_directory = "images/mobile/";
+					reduceProjectsNavForMobile();
 				}
 				else{
 				//else if(!window.matchMedia("(min-width: 46em)").matches && Boolean(images_sub_directory.match("mobile"))){	
 					images_sub_directory = "images/full/";
+					expandProjectsNavForMobile();
 				}
 			}
 
@@ -803,6 +858,7 @@ if(!window.console) console = {log:function(){}};
 			createSpinnerCSS();
 			adjustDetailHeight();
 			adjustCVHeight();
+			adjustNavTop();
 		});
 
 
@@ -811,6 +867,9 @@ if(!window.console) console = {log:function(){}};
 			window.addEventListener("orientationchange", adjustDetailHeight, false);
 			window.addEventListener("orientationchange", adjustCVHeight, false);
 			window.addEventListener("orientationchange", restartCharacters, false);
+			window.addEventListener("orientationchange", reduceProjectsNavForMobile, false);
+			//window.addEventListener("orientationchange", expandProjectsNavForMobile, false);
+			
 		}
 		else{
 			$(window).resize(changeImageSizeLocation);
@@ -818,7 +877,7 @@ if(!window.console) console = {log:function(){}};
 			$(window).resize(adjustDetailHeight);
 			$(window).resize(adjustCVHeight);
 			$(window).resize(restartCharacters);
-			
+			$(window).resize(reduceProjectsNavForMobile);
 		}
 		
 		function destroyProjects(){
@@ -834,6 +893,8 @@ if(!window.console) console = {log:function(){}};
 
 		function displayProjects(e){
 				
+				reduceProjectsNavForMobile();
+
 				destroyProjects();
 
 				if(typeof $(this).attr("id") != "undefined"){
@@ -845,9 +906,21 @@ if(!window.console) console = {log:function(){}};
 				}
 		}
 
-		$(".projects_navigation").find(".butn").each(function(){
-			$(this).bind(Browser.evt(),$.proxy(displayProjects,$(this)));
+		$(".projects_navigation").find(".butn").not(".menu").each(function(){
+			$(this).bind(Browser.evt("override"),$.proxy(displayProjects,$(this)));
 		});
+
+		$(".projects_navigation").find(".butn:first").bind(Browser.evt("override"), function(){
+
+			if(!$(".cv_area").hasClass('hidden')){
+				hideCV();
+			}
+			
+		
+			expandProjectsNavForMobile();	
+		});
+
+
 
 		loadProjects();
 

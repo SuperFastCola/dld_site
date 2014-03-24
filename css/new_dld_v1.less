@@ -566,7 +566,7 @@ a{
 
 		.notSelectable;
 
-		.trans_prop(all,.25s);
+		.trans_prop(all,.15s);
 
 		&:hover{
 			.bdr(2px,@percent_10_black);
@@ -581,12 +581,182 @@ a{
 .projects_navigation{
 	width: @columns-min-width;
 	position: relative;
-	overflow: hidden;
 	.block_size(100%, 2.3em);
 	margin: 1em auto 0em auto;
 
-	@media only screen and (min-width: @bp1){
+	z-index: 9000;
+
+	.trans_prop(all,.1s);
+
+	&.blurred{
+		display: none;
+
+	}
+
+	.butn_cv_open{
+		z-index: 199;
+		margin-top: -12.5em;
+
+		@media only screen and (max-width: @bp1){
+			margin-top: 0em;
+			margin-left: 0em;
+			display: block !important;
+			position: relative !important;
+			float:none !important;
+			left: auto !important;
+			top: auto !important;
+			border:none;
+
+			@cv_ptop: 0em;
+			@cv_h: 1.5em;
+
+			margin-top: 0em;
+			.block_size(100%,@cv_h - @cv_ptop);
+
+			.boldfont(.4em,@percent_40_black,center,uppercase);
+
+			color: @percent_40_black;
+
+			&:hover{
+				.backcolor(@percent_30_black);
+				color: @percent_50_black;
+				height: @cv_h;
+			}
+		}
+	}
+
+	.butn{
+		@cv_ptop: .12em;
+		@cv_w: 2em;
+		@cv_h: 1.5em;
+
+		position: relative !important;
+		.backcolor(@percent_20_black);
+		.block_size(auto,@cv_h - @cv_ptop);
+		margin-right: .5em;
+		float:left;
+		.boldfont(.1em,white,center,uppercase);
+		padding-top: @cv_ptop;
+		.notSelectable;
+
+		.trans_prop(all,.25s);
+
+		&:hover{
+			.backcolor(@percent_30_black);
+			color: @percent_50_black;
+			height: 2em;
+		}
+
+		&.menu{
+
+			display: none !important;
+
+			@media only screen and (max-width: @bp1){
+				display: block !important;
+			}
+
+		}
+
+		@media only screen and (max-width: @bp1){
+			@cv_ptop: 0em;
+			@cv_h: 1.5em;
+
+			.block_size(100%,@cv_h - @cv_ptop);
+			.backcolor(white);
+
+			display: block;
+			float:none !important;
+			left: auto !important;
+			top: auto !important;
+			.boldfont(.4em,@percent_40_black,center,uppercase);
+			padding:.25em 0em .25em 0em;
+			margin-left: 0em;
+			margin-top: 0em;
+
+			.notSelectable;
+
+			.trans_prop(all,.25s);
+
+			&:hover{
+				color: @percent_60_black;
+				height: @cv_h - @cv_ptop;
+			}
+
+			&.blurred{
+				.opacity(0)
+			}
+		}
+
+	}
+
+
+	@media only screen and (max-width: @bp1){
+
+		@n_width: @columns-min-width - 7em;
+		width: @n_width;
+		position: absolute;
+		left: 50%;
+		top: 1em;
+		.bdr(2px,@percent_30_black);
+		.backcolor(white);
+		margin: 0em auto 0em -(@n_width/2);
+		height: auto;
+		overflow: visible;
+		.moveBackWithRotation(3px,0deg);
+
+		.butn.menu{
+			display: none !important;
+
+			span{
+				display: none !important;
+			}
+		}
+
+		&.hidden{
+			width: 2.1em;
+			height: 2.5em;
+			background-color: white !important;
+			left: 99% !important;
+			margin-left: -3em;
+
+
+/*			.bdr;
+*/
+			.butn,.butn_cv_open{
+				display: none !important;
+
+				&.menu {
+					display: block !important;
+					.opacity(1);
+					width: 1.75em;
+					height: 1.5em;
+					background-color: transparent !important;
+					margin-top: .25em;
+
+					span{
+						display: block !important;
+						.block_abs_size(1.6em,1.6em);
+						.rotate2D(-90deg);
+						font-size: 1em !important;
+						line-height: 1.7em;
+						letter-spacing: .1em;
+					}
+				}
+			}
+		}
+	}
+
+
+	@media only screen and (max-width: @bp2) and (min-width: @bp1){
 		width: @columns-width*2;
+
+		&.rotated{
+			margin-left: -(@columns-width) !important;
+		}
+
+		&.hidden.rotated{
+			margin-left: -3em !important;
+		}
 	}
 
 	@media only screen and (min-width: @bp2){
@@ -605,37 +775,9 @@ a{
 		width: @columns-width*6;
 	}
 
-	.butn{
-		@cv_ptop: .12em;
-		@cv_w: 2em;
-		@cv_h: 1.5em;
-
-		position: relative !important;
-		.backcolor(@percent_20_black);
-		.block_size(auto,@cv_h - @cv_ptop);
-		margin-right: .5em;
-		float:left;
-		.boldfont(.1em,white,center,uppercase);
-		padding-top: @cv_ptop;
-
-
-		.notSelectable;
-
-		.trans_prop(all,.25s);
-
-		&:hover{
-			.backcolor(@percent_30_black);
-			color: @percent_50_black;
-			height: 2em;
-		}
-	}
+	
 }
 
-
-
-.butn_cv_open{
-	z-index: 199;
-}
 
 .butn_cv_pdf{
 	margin-left: -5.25em;
@@ -646,7 +788,7 @@ a{
 	@pdhwidth: @columns-width*3;
 	@pdhheight: @columns-width*2.5;
 
-	.block_abs_size(@pdhwidth,@pdhheight,4000);
+	.block_abs_size(@pdhwidth,@pdhheight,9500);
 	left: 50%;
 	top: 10px;
 	.setmargins(left,-((@pdhwidth + 3em)/2));
@@ -658,7 +800,7 @@ a{
 
 	.backcolor(white);
 
-	.moveBackWithRotation(3px,0deg);
+	.moveBackWithRotation(4px,0deg);
 
 	h1{
 		.boldfont(1em,@percent_80_black,left,uppercase);
@@ -1269,11 +1411,10 @@ a{
 	.setpos(both,50%,50%);
 	.setmargins(both,-(5.65em/2),-(5.7em/2));
 }
-
-
 .sprite{
 	position: absolute;
 	background-repeat: no-repeat;
+	.webkitAccelerator;
 }
 
 
