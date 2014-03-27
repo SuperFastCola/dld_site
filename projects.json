@@ -1,12 +1,25 @@
 {
 "projects":[
 	{
+		"name":"NBCU Super Solution 2.0",
+		"description":"B2B Enrollment and Incentive Site",
+		"role":"Development",
+		"tech":"Javascript, Jquery, CSS3, JSON, MySQL, PHP and Linux Administration",
+		"image":"nbcu_2014.jpg",
+		"url":"http://nbcusupersolution.com/2014/demo.php",
+		"id":"nbcu_2014",
+		"type":["interactive","mobile"],
+		"slow":true,
+		"mobile":true
+	},
+	{
 		"name":"Superfast Cola",
 		"description":"iOS Application - Under Development",
 		"role":"Concept, Design, Illustration and Programming",
 		"tech":"Objective C",
 		"image":"super_fast_cola.jpg",
 		"id":"cola",
+		"slow":true,
 		"type":["interactive","mobile","illustration","design"]
 	},
 	{
@@ -29,6 +42,7 @@
 		"url":"http://www.playtheboardwalk.com/game.php",
 		"type":["interactive","mobile"],
 		"id":"playboardwalk",
+		"slow":true,
 		"mobile":true
 	},
 	{
@@ -58,6 +72,7 @@
 		"url":"https://www.hothousesecure.com/2013BWE/jtn_cox/",
 		"type":["interactive","mobile"],
 		"id":"joincrew",
+		"slow":true,
 		"mobile":true
 	},
 	{
@@ -78,33 +93,67 @@
 		"tech":"HTML, CSS3, JSON, PHP, Facebook API",
 		"image":"rttr.jpg",
 		"url":"http://www.deluxeluxury.com/work/rttr/",
-		"type":["interactive"],
+		"type":["interactive","mobile"],
 		"id":"randyrescue",
+		"slow":true,
 		"mobile":true
 	},
 	{
-		"name":"",
-		"description":"",
-		"role":"",
-		"tech":"",
-		"image":"",
-		"url":"",
-		"type":["interactive"],
-		"id":"",
+		"name":"ABC Family 25 Days of Christmas",
+		"description":"ActionScript Incentive Shopping Experience",
+		"role":"Design",
+		"image":"25doc_shop_landing_2010_v10.jpg",
+		"type":["interactive", "design"],
+		"id":"abc252010"
+	},
+	{
+		"name":"Hallmark Channel",
+		"description":"Point of Purchase Sweepstakes Display",
+		"role":"Design",
+		"type":["design"],
+		"image":"living-it-up-with-martha-2011.jpg",
+		"id":"martha",
 		"mobile":true
 	},
 	{
-		"name":"",
-		"description":"",
-		"role":"",
-		"tech":"",
-		"image":"",
-		"url":"",
-		"type":["interactive"],
-		"id":"",
-		"mobile":true
+		"name":"Hallmark Movie Channel",
+		"description":"Pop n' A Movie Logo Treatment",
+		"role":"Design",
+		"image":"hmc_sweetgift2012_bookpage_v06_mech-01.jpg",
+		"type":["illustration","design"],
+		"id":"sweetgift",
+		"slow":true
+	},
+	{
+		"name":"Turner Sports",
+		"description":"Flash Rich Media Style Guide - unpublished",
+		"role":"Design, Animation and Programming",
+		"tech":"Actionscript 2, PHP 4, CSS 2, HTML 4, Video and XML Feed Setup/Processing",
+		"image":"nba_digital2.jpg",
+		"url":"http://www.deluxeluxury.com/work/nbadigital/",
+		"type":["interactive","design"],
+		"id":"nbcdigital"
+	},
+	{
+		"name":"TBS",
+		"description":"Flash Rich Media Banner Campaign",
+		"role":"Design, Animation and Programming",
+		"tech":"Actionscript 2 and XML Feed Setup/Processing",
+		"image":"mlb_postseason_2010.jpg",
+		"url":"http://www.deluxeluxury.com/work/mlb2010/",
+		"type":["interactive","design"],
+		"id":"mlbplayoffs"
+	},
+	{
+		"name":"USA - Who Am I Today?",
+		"description":"Mobile Compatible, Desktop Targeted Facebook Page Tab App",
+		"role":"Development",
+		"tech":"HTML, CSS3, JSON, PHP, Facebook API",
+		"image":"usa_who_am_i.jpg",
+		"url":"http://www.usawhoamitoday.com",
+		"type":["interactive", "design"],
+		"id":"usawho",
+		"slow":true
 	}
-
-	
 ]
 }

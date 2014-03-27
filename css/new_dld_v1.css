@@ -280,7 +280,14 @@ a:hover {
   transition: all 0.1s;
 }
 .projects_navigation.blurred {
-  display: none;
+  opacity: 0.1;
+  -moz-opacity: 0.1;
+  filter: alpha(opacity = 10);
+}
+@media only screen and (max-width: 30em) {
+  .projects_navigation.blurred {
+    display: none;
+  }
 }
 .projects_navigation .butn_cv_open {
   z-index: 199;
@@ -480,7 +487,7 @@ a:hover {
     margin-left: -3em !important;
   }
 }
-@media only screen and (min-width: 46em) {
+@media only screen and (min-width: 46em) and (max-width: 61em) {
   .projects_navigation {
     width: 54em;
   }
@@ -542,6 +549,34 @@ a:hover {
   text-align: left;
   color: rgba(0, 0, 0, 0.8);
 }
+.cv_area h1 b {
+  display: block;
+  font-size: 0.813em;
+  line-height: auto;
+  font-family: 'Oswald', Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  text-transform: uppercase;
+  text-align: left;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: .5em !important;
+  letter-spacing: .1em;
+}
+.cv_area h1 b a {
+  display: inline;
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  padding: 0em !important;
+  font-size: 1.063em;
+  line-height: auto;
+  font-family: 'Oswald', Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  text-transform: uppercase;
+  text-align: left;
+  color: rgba(0, 0, 0, 0.5);
+}
 @media only screen and (max-width: 30em) {
   .cv_area h1 {
     font-size: 1.563em;
@@ -552,6 +587,9 @@ a:hover {
     text-transform: uppercase;
     text-align: left;
     color: rgba(0, 0, 0, 0.8);
+  }
+  .cv_area h1 a {
+    font-size: 1.013em !important;
   }
 }
 .cv_area .cv_text {
@@ -1095,7 +1133,7 @@ a:hover {
   -o-transition: height 0.25s;
   transition: height 0.25s;
   animation-name: slide_background;
-  animation-duration: 5s;
+  animation-duration: 7s;
   animation-timing-function: linear;
   animation-delay: 1s;
   animation-iteration-count: infinite;
@@ -1104,7 +1142,27 @@ a:hover {
   /* Safari and Chrome: */
 
   -webkit-animation-name: slide_background;
-  -webkit-animation-duration: 5s;
+  -webkit-animation-duration: 7s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-delay: 1s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+  -webkit-animation-play-state: running;
+  /*.webkitAccelerator;*/
+
+}
+.project-detail-holder .project-detail-area .project-detail-image.slow_play {
+  animation-name: slide_background;
+  animation-duration: 15s;
+  animation-timing-function: linear;
+  animation-delay: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-play-state: running;
+  /* Safari and Chrome: */
+
+  -webkit-animation-name: slide_background;
+  -webkit-animation-duration: 15s;
   -webkit-animation-timing-function: linear;
   -webkit-animation-delay: 1s;
   -webkit-animation-iteration-count: infinite;

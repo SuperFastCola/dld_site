@@ -586,10 +586,16 @@ a{
 
 	z-index: 9000;
 
+
 	.trans_prop(all,.1s);
 
 	&.blurred{
-		display: none;
+
+		.opacity(.1);
+		
+		@media only screen and (max-width: @bp1){
+			display: none;
+		}
 
 	}
 
@@ -704,6 +710,7 @@ a{
 		overflow: visible;
 		.moveBackWithRotation(3px,0deg);
 
+
 		.butn.menu{
 			display: none !important;
 
@@ -757,9 +764,10 @@ a{
 		&.hidden.rotated{
 			margin-left: -3em !important;
 		}
+
 	}
 
-	@media only screen and (min-width: @bp2){
+	@media only screen and (min-width: @bp2) and (max-width: @bp3){
 		width: @columns-width*3;
 	}
 
@@ -805,8 +813,29 @@ a{
 	h1{
 		.boldfont(1em,@percent_80_black,left,uppercase);
 
+
+		b{
+			display: block;
+			.boldfont(0em,@percent_50_black,left,uppercase);
+			font-size: .5em !important;
+			letter-spacing: .1em;
+
+			a{
+				display: inline;
+				position: relative !important;
+				top: auto !important;
+				left: auto !important;
+				padding: 0em !important;
+				.boldfont(.25em,@percent_50_black,left,uppercase);
+			}
+		}
+
 		@media only screen and (max-width: @bp1){
 			.boldfont(.75em,@percent_80_black,left,uppercase);	
+
+			a{
+				font-size: (@fontsize1 + .2) !important;
+			}
 		}
 	}
 
@@ -1177,7 +1206,13 @@ a{
 
 			.trans_prop(height,.25s);
 
-			.animations(slide_background,5s,linear,1s,infinite,alternate,running);
+			.animations(slide_background,7s,linear,1s,infinite,alternate,running);
+
+			&.slow_play{
+				.animations(slide_background,15s,linear,1s,infinite,alternate,running);
+			}
+
+			/*.webkitAccelerator;*/
 
 			@media only screen and (max-width: @bp1){
 				background-size: 100%;
@@ -1411,6 +1446,8 @@ a{
 	.setpos(both,50%,50%);
 	.setmargins(both,-(5.65em/2),-(5.7em/2));
 }
+
+
 .sprite{
 	position: absolute;
 	background-repeat: no-repeat;
