@@ -1,6 +1,17 @@
 {
 "projects":[
 	{
+		"name":"Cox Communications",
+		"description":"Flash Facebook Application",
+		"role":"UX Design, Development Direction, Facebook Integration and Programming",
+		"tech":"Actionscript 3, Facebook API, JSON integration, Mapquest API and PHP",
+		"image":"showtime_homeland_facebook_app.jpg",
+		"url":"https://www.facebook.com/hothouseinc/app_401588523228531",
+		"type":["flash", "design","php_mysql","facebook"],
+		"id":"homeland",
+		"vimeo":"90499801"
+	},
+	{
 		"name":"NBCU Super Solution 2.0",
 		"description":"B2B Enrollment and Incentive Site",
 		"role":"Development",
@@ -8,9 +19,10 @@
 		"image":"nbcu_2014.jpg",
 		"url":"http://nbcusupersolution.com/2014/demo.php",
 		"id":"nbcu_2014",
-		"type":["interactive","mobile"],
+		"type":["html5","css3","php_mysql"],
 		"slow":true,
-		"mobile":true
+		"mobile":true,
+		"vimeo":"91997026"
 	},
 	{
 		"name":"Superfast Cola",
@@ -20,7 +32,7 @@
 		"image":"super_fast_cola.jpg",
 		"id":"cola",
 		"slow":true,
-		"type":["interactive","mobile","illustration","design"]
+		"type":["design","objective_c"]
 	},
 	{
 		"name":"ABC Family",
@@ -29,7 +41,7 @@
 		"tech":"HTML5 Canvas, AS3, Javascript, Jquery, CSS3, JSON, MySQL and PHP",
 		"image":"abc_family_25k.jpg",
 		"url":"http://www.abcfamily25kgiveaway.com/index_demo.php",
-		"type":["interactive","mobile","design"],
+		"type":["html5","design","css3","php_mysql","facebook","twitter"],
 		"id":"abc25give",
 		"mobile":true
 	},
@@ -40,10 +52,11 @@
 		"tech":"HTML5 Canvas, Request Animation Frame, CSS3, JSON, PHP",
 		"image":"playtheboardwalk.jpg",
 		"url":"http://www.playtheboardwalk.com/game.php",
-		"type":["interactive","mobile"],
+		"type":["html5","design","css3","php_mysql","facebook","twitter"],
 		"id":"playboardwalk",
 		"slow":true,
-		"mobile":true
+		"mobile":true,
+		"vimeo":"91887070"
 	},
 	{
 		"name":"Big Ten Network",
@@ -51,8 +64,7 @@
 		"role":"Design",
 		"image":"billboardmock_detroit.jpg",
 		"type":["design"],
-		"id":"bigtenbillboard",
-		"mobile":true
+		"id":"bigtenbillboard"
 	},
 	{
 		"name":"Style Network",
@@ -60,8 +72,7 @@
 		"role":"Design",
 		"image":"style_ruby_landing_v3-01.jpg",
 		"type":["design"],
-		"id":"rubycity",
-		"mobile":true
+		"id":"rubycity"
 	},
 	{
 		"name":"Cox - Join Nucky's Crew",
@@ -70,7 +81,7 @@
 		"tech":"HTML, CSS3, JSON, PHP, Facebook API",
 		"image":"nuckys_crew.jpg",
 		"url":"https://www.hothousesecure.com/2013BWE/jtn_cox/",
-		"type":["interactive","mobile"],
+		"type":["html5","design","css3","php_mysql","facebook","twitter"],
 		"id":"joincrew",
 		"slow":true,
 		"mobile":true
@@ -82,9 +93,10 @@
 		"tech":"Javascript, JQuery, swfObject, Flowplayer, CSS2, PHP4 and HTML4 &amp; 5. SmartPhone and iPad Friendly",
 		"image":"g4e3allaccess2011.jpg",
 		"url":"http://www.deluxeluxury.com/work/g4e32011/",
-		"type":["interactive","mobile","design"],
+		"type":["html5","design","php_mysql"],
 		"id":"e3allaccess",
-		"mobile":true
+		"mobile":true,
+		"vimeo":"91885248"
 	},
 	{
 		"name":"TLC - Randy to the Rescue",
@@ -93,17 +105,18 @@
 		"tech":"HTML, CSS3, JSON, PHP, Facebook API",
 		"image":"rttr.jpg",
 		"url":"http://www.deluxeluxury.com/work/rttr/",
-		"type":["interactive","mobile"],
+		"type":["html5","css3","php_mysql"],
 		"id":"randyrescue",
 		"slow":true,
-		"mobile":true
+		"mobile":true,
+		"vimeo":"91997025"
 	},
 	{
 		"name":"ABC Family 25 Days of Christmas",
 		"description":"ActionScript Incentive Shopping Experience",
 		"role":"Design",
 		"image":"25doc_shop_landing_2010_v10.jpg",
-		"type":["interactive", "design"],
+		"type":["design"],
 		"id":"abc252010"
 	},
 	{
@@ -113,14 +126,14 @@
 		"type":["design"],
 		"image":"living-it-up-with-martha-2011.jpg",
 		"id":"martha",
-		"mobile":true
+		"vimeo":"91886564"
 	},
 	{
 		"name":"Hallmark Movie Channel",
 		"description":"Pop n' A Movie Logo Treatment",
 		"role":"Design",
 		"image":"hmc_sweetgift2012_bookpage_v06_mech-01.jpg",
-		"type":["illustration","design"],
+		"type":["design"],
 		"id":"sweetgift",
 		"slow":true
 	},
@@ -131,8 +144,9 @@
 		"tech":"Actionscript 2, PHP 4, CSS 2, HTML 4, Video and XML Feed Setup/Processing",
 		"image":"nba_digital2.jpg",
 		"url":"http://www.deluxeluxury.com/work/nbadigital/",
-		"type":["interactive","design"],
-		"id":"nbcdigital"
+		"type":["design","flash"],
+		"id":"nbcdigital",
+		"vimeo":"91886068"
 	},
 	{
 		"name":"TBS",
@@ -141,8 +155,9 @@
 		"tech":"Actionscript 2 and XML Feed Setup/Processing",
 		"image":"mlb_postseason_2010.jpg",
 		"url":"http://www.deluxeluxury.com/work/mlb2010/",
-		"type":["interactive","design"],
-		"id":"mlbplayoffs"
+		"type":["flash","design"],
+		"id":"mlbplayoffs",
+		"vimeo":"91886066"
 	},
 	{
 		"name":"USA - Who Am I Today?",
@@ -151,9 +166,49 @@
 		"tech":"HTML, CSS3, JSON, PHP, Facebook API",
 		"image":"usa_who_am_i.jpg",
 		"url":"http://www.usawhoamitoday.com",
-		"type":["interactive", "design"],
+		"type":["html5","css3","php_mysql","facebook"],
 		"id":"usawho",
-		"slow":true
+		"slow":true,
+		"mobile":true,
+		"vimeo":"91997024"
+	},
+	{
+		"name":"Turner Sports",
+		"description":"Flash Rich Media Banner Campaign.",
+		"role":"Design, Animation and Programming",
+		"tech":"Actionscript 2, Video and XML Feed Setup/Processing",
+		"image":"youtube_960x250_pg2-01.jpg",
+		"url":"http://www.deluxeluxury.com/work/youtube_nba/",
+		"type":["flash", "design"],
+		"id":"tsyoutube",
+		"slow":true,
+		"vimeo":"91885853"	
+	},
+	{
+		"name":"HBO",
+		"description":"Mobile and Desktop HTML5 Photo Manipulation Application",
+		"role":"UX Design, Development Direction, Facebook Integration and Programming",
+		"tech":"Kinetic.js, HTML 5, CSS3, Facebook API, JSON integration and PHP",
+		"image":"cox_claim_the_throne.jpg",
+		"url":"http://www.hothousesecure.com/claimthethrone/",
+		"type":["html5","design","css3","php_mysql","facebook","twitter"],
+		"id":"hbothrone",
+		"slow":true,
+		"mobile":true,
+		"vimeo":"91887069"
+	},
+	{
+		"name":"Turner Sports",
+		"description":"Quaterly Update Companion Web Site",
+		"role":"Design, Animation and Programming",
+		"tech":"Actionscript 2, CSS 2, HTML 4",
+		"image":"tnt_sportsletter.jpg",
+		"url":"http://www.deluxeluxury.com/work/sportsletter/",
+		"type":["flash", "design"],
+		"id":"tbsletter",
+		"mobile":true
 	}
+
+
 ]
 }
