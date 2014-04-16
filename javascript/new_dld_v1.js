@@ -285,14 +285,14 @@ if(typeof window.matchMedia == "undefined"){
 		    	if(this.model.has("url")){
 
 		    		if((Browser.is("mobile") && this.model.has("mobile")) || !Browser.is("mobile")){
-		    			$(this.el).find(".project-detail-description").append('<a href="' + this.model.get("url") + '" class="project-link" target="new">View Project</a>');	
+		    			$(this.el).find(".project-detail-description").append('<a href="' + this.model.get("url") + '" class="project-link view-project" target="new">View Project</a>');	
 		    		}
 		    	}
 
 		    	if(this.model.has("vimeo")){
 		    		$(this.el).find(".project-detail-description").append('<a class="project-link video">Video</a>');
 		    		
-		    		if(!this.model.has("mobile") && Browser.is("mobile")){
+		    		if($(this.el).find(".view-project").length==0){
 		    			$(this.el).find(".video").addClass("right_aligned");
 		    		}
 		    	}
