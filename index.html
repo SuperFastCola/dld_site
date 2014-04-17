@@ -266,12 +266,10 @@
 
 	function unclipBodyRemoveCar(){
 		setTimeout(function(){
-			//var preloader = document.getElementById("loader");
 			//jquery is loaded at this point
-			$("document").remove("#loader");
-			//document.body.removeChild(preloader);
-			//document.getElementsByTagName("body").className="";
-		},2000);
+			$("#loader").remove();
+			$("body").removeClass('clip_car');
+		},500);
 	}
 
 	function appendScript(output){
