@@ -323,6 +323,14 @@ if(typeof window.matchMedia == "undefined"){
 		    	}
 
 		    	$("body").append(this.el);
+		    	
+		    	if(!window.matchMedia("(min-width: 30em)").matches && window.matchMedia("(max-width: 30em)").matches){
+		    		$(".projects_navigation").css("display","none");
+		    	}
+
+		    	if(Browser.is("firefox")){
+		    		$(".portfolio_header").addClass("stopani");
+		    	}
 
 		    	//here
 		    	onWindowOpen(true);
@@ -338,6 +346,10 @@ if(typeof window.matchMedia == "undefined"){
 
 		    hideDetails: function(){
 		    	$(this.el).find(".project-detail-area").addClass('hidden');
+
+		    	if(!window.matchMedia("(min-width: 30em)").matches && window.matchMedia("(max-width: 30em)").matches){
+		    		$(".projects_navigation").css("display","block");
+		    	}
 
 		    	$("body").removeClass('lighter');
 
