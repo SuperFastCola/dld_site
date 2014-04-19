@@ -47,6 +47,7 @@ if(typeof window.matchMedia == "undefined"){
 	  		if(!Boolean(this.model.get('image_loaded') )){
 		  		$(this.el).find(".project-item-front").css("background-image","url(" +  this.model.get("image_source").src + ")");
 		  		this.model.set('image_loaded',true);
+		  		$(this.el).removeClass('flipped');
 	  		}
 
 	  		var total = _.filter(this.model.collection.pluck("image_loaded"),function(loaded){
@@ -146,8 +147,18 @@ if(typeof window.matchMedia == "undefined"){
 		    	if(this.model.has('tech')){
 		    		back.append('<div class="project-tech">' + this.model.get('tech') + '</div>');
 		    	}*/
+		    	
+		    	//if(this.model.get('name'))
+		    	/*$(this.el).html('<p class="project-name">' + this.model.get('name') + '</p>');
+		    	$(this.el).html(this.model.get('name'));
+		    	$(this.el).html(this.model.get('name'));
+		    	$(this.el).html(this.model.get('name'));
 
-				if(this.model.has('image')){
+*/				//setTimeout($.proxy(addProject,this),this.model.get("timer"));	
+	      		return this; // for chainable calls, like .render().el
+		    },
+		    loadProjectImage: function(){
+		    	if(this.model.has('image')){
 
 					this.model.set('image_loaded',false);
 
@@ -159,20 +170,7 @@ if(typeof window.matchMedia == "undefined"){
 					this.model.set("image_source",tempimage);
 
 					$(tempimage).load($.proxy(showImage,this));	
-
-
-					//$(this.el).find(".project-item-front").css("background-image","url(" + images_sub_directory +  this.model.get('image') + ")");
-
 		    	}
-		    	
-		    	//if(this.model.get('name'))
-		    	/*$(this.el).html('<p class="project-name">' + this.model.get('name') + '</p>');
-		    	$(this.el).html(this.model.get('name'));
-		    	$(this.el).html(this.model.get('name'));
-		    	$(this.el).html(this.model.get('name'));
-
-*/				setTimeout($.proxy(addProject,this),this.model.get("timer"));	
-	      		return this; // for chainable calls, like .render().el
 		    },
 		    unrender: function(){
 		    	$(this.el).addClass('flipped')
@@ -410,6 +408,7 @@ if(typeof window.matchMedia == "undefined"){
 		    	projectvideo.attachVideo();
 
 		    	$(this.el).find(".project-detail-image").removeClass("playing");
+		    	$(".project-detail-holder").css("visibility","hidden");
 
 		    	setTimeout(function(){
 		    		$("#video_holder").removeClass('hidden');
@@ -422,6 +421,7 @@ if(typeof window.matchMedia == "undefined"){
 		    	$("body").removeClass('hide_overage');
 		    	projectvideo.killVideo();
 		    	$("#video_holder").addClass('hidden');
+		    	$(".project-detail-holder").css("visibility","visible");
 
 		    	setTimeout(function(){
 		    		$("#video_holder").remove();
@@ -524,10 +524,10 @@ if(typeof window.matchMedia == "undefined"){
 		  		this.subviews.push(portSide);
 
 			    $(this.el).append(portSide.render().el);
+			    checkProjectTops();
 			}
 
 		});
-
 
 		function createAnimationStyle(obj){
 
@@ -1017,6 +1017,36 @@ if(typeof window.matchMedia == "undefined"){
 			});
 		}
 
+		function checkProjectTops(){
+			/*
+			console.log("---");
+			console.log("Scroll Top: " + $(window).scrollTop());
+			console.log("Outer Height: " + $(".entries_area").outerHeight(true));
+
+			var hidden_area = Number($(".entries_area").outerHeight(true))  - Number($(window).scrollTop());
+
+			console.log("Height minus scrolltop: " + hidden_area);
+			console.log("Hidden Area plus Scrolltop: " + (hidden_area + $(window).scrollTop()));
+			*/
+
+			var currentBottom = $(window).scrollTop() + (window.innerHeight || document.documentElement.clientHeight);
+
+			_.each(dld_portfolio.subviews,function(object,key,list){
+				if(object.el.getBoundingClientRect().top<currentBottom && !object.model.has("image_loaded")){
+					object.loadProjectImage();
+				}
+			},dld_portfolio.subviews);
+
+			/*$(".portfolio_area").find(".project-holder").each(function(){
+
+			});*/
+
+			
+			if(currentBottom >= $(".entries_area").outerHeight(true)-5){
+				//loadProjects();
+			}
+		}
+
 		$(window).scroll(function(event) {
 			createSpinnerCSS();
 
@@ -1030,6 +1060,7 @@ if(typeof window.matchMedia == "undefined"){
 			
 			adjustNavTop();
 			adjustVideoPosition();
+			checkProjectTops();
 		});
 
 
@@ -1072,6 +1103,7 @@ if(typeof window.matchMedia == "undefined"){
 
 				setTimeout(function(){
 					adjustNavTop();
+					checkProjectTops();
 				},1000);
 				
 
@@ -1084,6 +1116,7 @@ if(typeof window.matchMedia == "undefined"){
 				else{
 					filterProjects(work_projects,undefined);	
 				}
+
 		}
 
 		$(".projects_navigation").find(".butn").not(".menu").each(function(){
