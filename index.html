@@ -436,14 +436,12 @@
 			l.href = cssFontLinks[i];
 			l.rel = "stylesheet";
 			l.type = "text/css";
-			l.async = aync;
-			l.async = defer;
 			head.appendChild(l);
 		}
 
 	}
 	//if( typeof window.addEventListener !="undefined" && !Boolean(navigator.userAgent.match(/msie\s(7|8|9)/i))){
-	if(checkForAnimations()){
+	if(checkForAnimations() || Boolean(navigator.userAgent.match(/msie\s(9)/i)) ){
 		document.addEventListener("DOMContentLoaded",loadJquery);
 	}
 	else{

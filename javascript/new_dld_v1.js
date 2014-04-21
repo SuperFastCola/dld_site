@@ -858,7 +858,8 @@ if(typeof window.matchMedia == "undefined"){
 		    		timeout+=timeout_inc;
 		    	}
 
-	    	if(typeof sprites_characters == "undefined"){
+		    //checkForAnimations() exist on index page
+	    	if(typeof sprites_characters == "undefined" && checkForAnimations()){
 	    		loadSpriteImage();
 	    	}
 		}
@@ -1106,6 +1107,8 @@ if(typeof window.matchMedia == "undefined"){
 					adjustNavTop();
 					checkProjectTops();
 				},1000);
+
+				scrollPageTo();
 				
 
 				destroyProjects();

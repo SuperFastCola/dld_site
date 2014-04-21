@@ -637,7 +637,7 @@ a{
 			color: @percent_40_black;
 
 			&:hover{
-				.backcolor(@percent_30_black);
+				.backcolor(white);
 				color: @percent_50_black;
 				height: @cv_h;
 			}
@@ -663,7 +663,7 @@ a{
 		&:hover{
 			.backcolor(@percent_30_black);
 			color: @percent_50_black;
-			height: 2em;
+/*			height: 2em;*/
 		}
 
 		&.menu{
@@ -698,7 +698,7 @@ a{
 
 			&:hover{
 				color: @percent_60_black;
-				height: @cv_h - @cv_ptop;
+			/*	height: @cv_h - @cv_ptop;*/
 			}
 
 			&.blurred{
@@ -740,10 +740,9 @@ a{
 			margin-left: -3em;
 
 
-/*			.bdr;
-*/
 			.butn,.butn_cv_open{
 				display: none !important;
+
 
 				&.menu {
 					display: block !important;
@@ -773,14 +772,14 @@ a{
 
 		.butn{
 			margin-top: 0em !important;
-			margin-bottom: .5em !important;
+			margin-bottom: .3em !important;
 			float:left !important;
 
 			&:hover{
 				color: @percent_60_black;
-				height: 1.4em !important;
+				/*height: 1.4em !important;*/
 				margin-top: 0em !important;
-				margin-bottom: 0em !important;
+				/*margin-bottom: 0em !important;*/
 			}
 		}
 
@@ -800,15 +799,15 @@ a{
 
 		.butn{
 			margin-top: 0em !important;
-			margin-bottom: .5em !important;
+			margin-bottom: .3em !important;
 			float:left !important;
 
 			&:hover{
 				color: @percent_60_black;
-				height: 1.4em !important;
+				/*height: 1.4em !important;*/
 				margin-top: 0em !important;
-				margin-bottom: 0em !important;
-			}
+/*				margin-bottom: 0em !important;
+*/			}
 		}
 	}
 
@@ -1058,6 +1057,7 @@ a{
 	height: @columns-width - (@columns-margin*2);
 	margin: @columns-margin;
 	float:left;
+	overflow: hidden;
 
 	.trans_prop(all,.35s);
 
@@ -1071,6 +1071,13 @@ a{
 	.webkitAccelerator();
 
 	&.flipped{
+
+		&:before{
+			content:"LOADING";
+		}
+
+		.backcolor(@percent_10_black);
+
 		.project-item-front{
 			.moveBackWithRotation(1px,-180deg);
 			.opacity(0);
