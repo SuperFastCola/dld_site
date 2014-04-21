@@ -1032,7 +1032,8 @@ if(typeof window.matchMedia == "undefined"){
 			var currentBottom = $(window).scrollTop() + (window.innerHeight || document.documentElement.clientHeight);
 
 			_.each(dld_portfolio.subviews,function(object,key,list){
-				if(object.el.getBoundingClientRect().top<currentBottom && !object.model.has("image_loaded")){
+				if((object.el.getBoundingClientRect().top+$(window).scrollTop())<currentBottom && !object.model.has("image_loaded")){
+					console.log(currentBottom + " " + object.el.getBoundingClientRect().top + " " + $(window).scrollTop() + " " + (window.innerHeight || document.documentElement.clientHeight) + " " + object.model.get("image"));
 					object.loadProjectImage();
 				}
 			},dld_portfolio.subviews);
