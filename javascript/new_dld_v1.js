@@ -42,13 +42,16 @@ if(typeof window.matchMedia == "undefined"){
 	  	
 	  	function showImage(e){
 
-	  		//console.log(this.model.get("image_source"));
-
 	  		if(!Boolean(this.model.get('image_loaded') )){
 		  		$(this.el).find(".project-item-front").css("background-image","url(" +  this.model.get("image_source").src + ")");
 		  		this.model.set('image_loaded',true);
 		  		$(this.el).removeClass('flipped');
 	  		}
+
+	  		if($(this.el).hasClass('flipped')){
+	  			$(this.el).removeClass('flipped');	
+	  		}
+
 
 	  		var total = _.filter(this.model.collection.pluck("image_loaded"),function(loaded){
 	  			if(loaded){
@@ -136,6 +139,11 @@ if(typeof window.matchMedia == "undefined"){
 		    		//back.append(name);
 		    	}
 
+		    	if(this.model.has('image')){
+		    		this.model.set('image_loaded',false);
+		    		this.model.set('image_loading',false);
+		    	}
+
 		    	/*if(this.model.has('description')){
 		    		back.append('<div class="project-description">' + this.model.get('description') + '</div>');
 		    	}
@@ -158,9 +166,9 @@ if(typeof window.matchMedia == "undefined"){
 	      		return this; // for chainable calls, like .render().el
 		    },
 		    loadProjectImage: function(){
-		    	if(this.model.has('image')){
+		    	if(this.model.has('image') && !this.model.get('image_loading')){
 
-					this.model.set('image_loaded',false);
+		    		this.model.set('image_loading',true);
 
 					$(this.el).attr("id",this.model.get('id'));
 
@@ -940,6 +948,7 @@ if(typeof window.matchMedia == "undefined"){
 				//console.log(dld_portfolio.collection.get(object).get("image"));
 
 				if(typeof object.image != "undefined" && String(object.image).match(/\w/)){
+
 					var tempimage = new Image();
 					tempimage.src = images_sub_directory  + "thumbs/" +  object.image + "?t=" + (new Date().getTime());
 					tempimage.id_to_reload = object.id;
@@ -1033,10 +1042,18 @@ if(typeof window.matchMedia == "undefined"){
 			var currentBottom = $(window).scrollTop() + (window.innerHeight || document.documentElement.clientHeight);
 
 			_.each(dld_portfolio.subviews,function(object,key,list){
-				if((object.el.getBoundingClientRect().top+$(window).scrollTop())<currentBottom && !object.model.has("image_loaded")){
-					console.log(currentBottom + " " + object.el.getBoundingClientRect().top + " " + $(window).scrollTop() + " " + (window.innerHeight || document.documentElement.clientHeight) + " " + object.model.get("image"));
+
+				var boxtop = object.el.getBoundingClientRect().top+$(window).scrollTop();
+				if(boxtop<currentBottom && !object.model.get("image_loaded")){
+					//console.log(currentBottom + " " + object.el.getBoundingClientRect().top + " " + $(window).scrollTop() + " " + (window.innerHeight || document.documentElement.clientHeight) + " " + object.model.get("image"));
 					object.loadProjectImage();
 				}
+
+				if(boxtop<currentBottom && typeof $(object.el).attr("id") == "undefined" && object.model.get("image_loaded")){
+					object.model.set("image_loaded",false);
+					object.loadProjectImage();	
+				}
+
 			},dld_portfolio.subviews);
 
 			/*$(".portfolio_area").find(".project-holder").each(function(){
@@ -1047,6 +1064,14 @@ if(typeof window.matchMedia == "undefined"){
 			if(currentBottom >= $(".entries_area").outerHeight(true)-5){
 				//loadProjects();
 			}
+		}
+
+		function showProjectsNavIfHidden(){
+			if(window.matchMedia("(min-width: 30em)").matches && !window.matchMedia("(max-width: 30em)").matches){
+		    	if($(".projects_navigation").css("display")=="none"){
+		    		$(".projects_navigation").css("display","block");
+		    	}
+		    }
 		}
 
 		$(window).scroll(function(event) {
@@ -1067,24 +1092,29 @@ if(typeof window.matchMedia == "undefined"){
 
 
 		if(typeof window.orientation != "undefined"){
-			window.addEventListener("orientationchange", changeImageSizeLocation, false);	
-			window.addEventListener("orientationchange", adjustDetailHeight, false);
-			window.addEventListener("orientationchange", adjustCVHeight, false);
-			window.addEventListener("orientationchange", restartCharacters, false);
-			window.addEventListener("orientationchange", reduceProjectsNavForMobile, false);
-			//window.addEventListener("orientationchange", expandProjectsNavForMobile, false);
-			window.addEventListener("orientationchange", adjustVideoPosition, false);
-			
+			window.addEventListener("orientationchange", function(){
+				changeImageSizeLocation();
+				adjustDetailHeight();
+				adjustCVHeight();
+				restartCharacters();
+				reduceProjectsNavForMobile();
+				//expandProjectsNavForMobile();
+				adjustVideoPosition();
+				checkProjectTops();
+			}, false);	
 		}
 		else{
-			$(window).resize(changeImageSizeLocation);
-			$(window).resize(createSpinnerCSS);
-			$(window).resize(adjustDetailHeight);
-			$(window).resize(adjustCVHeight);
-			$(window).resize(restartCharacters);
-			$(window).resize(reduceProjectsNavForMobile);
-			$(window).resize(adjustVideoPosition);
-
+			$(window).resize(function(){
+				changeImageSizeLocation();
+				createSpinnerCSS();
+				adjustDetailHeight();
+				adjustCVHeight();
+				restartCharacters();
+				reduceProjectsNavForMobile();
+				adjustVideoPosition();
+				checkProjectTops();
+				showProjectsNavIfHidden();
+			});
 		}
 		
 		function destroyProjects(){
