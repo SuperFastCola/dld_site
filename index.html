@@ -372,6 +372,8 @@
 			document.getElementById("portfolio_area").innerHTML = "";
 			document.getElementById("loader").className="right";
 			unclipBodyRemoveCar();
+			loadCSSFontLinks();
+
 			
 			var timeout = setTimeout(function(){
 				console.log("timeout" + " " + cssloaded + " " + links.length);
@@ -379,7 +381,6 @@
 				document.getElementById("projects_navigation").style.display="block";
 				document.getElementById("portfolio_area").style.display="block";
 				anthonybaker();
-				loadCSSFontLinks();
 			},500);
 		}
 	}
