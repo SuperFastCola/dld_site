@@ -1,15 +1,16 @@
 {
 "projects":[
 	{
-		"name":"Cox Communications",
-		"description":"Flash Facebook Application",
-		"role":"UX Design, Development Direction, Facebook Integration and Programming",
-		"tech":"Actionscript 3, Facebook API, JSON integration, Mapquest API and PHP",
-		"image":"showtime_homeland_facebook_app.jpg",
-		"url":"https://www.facebook.com/hothouseinc/app_401588523228531",
-		"type":["flash", "design","php_mysql","facebook"],
-		"id":"homeland",
-		"vimeo":"90499801"
+		"name":"ESPN World Cup Central",
+		"description":"B2C Sweepstakes and Programming Promotion Minisite",
+		"role":"Development and Deployment",
+		"tech":"Amazon Web Services, Javascript, Jquery, CSS3, JSON, MySQL, PHP, Facebook/Twitter Integration and Linux Administration",
+		"image":"ered_worldcup_central.jpg",
+		"url":"http://espnworldcupcentral.com/twc/?no_redirect&dy=165",
+		"id":"espnwcc_2014",
+		"type":["html5","css3","php_mysql","facebook","twitter"],
+		"slow":true,
+		"mobile":true
 	},
 	{
 		"name":"NBCU Super Solution 2.0",
@@ -57,6 +58,17 @@
 		"slow":true,
 		"mobile":true,
 		"vimeo":"91887070"
+	},
+	{
+		"name":"Cox Communications",
+		"description":"Flash Facebook Application",
+		"role":"UX Design, Development Direction, Facebook Integration and Programming",
+		"tech":"Actionscript 3, Facebook API, JSON integration, Mapquest API and PHP",
+		"image":"showtime_homeland_facebook_app.jpg",
+		"url":"https://www.facebook.com/hothouseinc/app_401588523228531",
+		"type":["flash", "design","php_mysql","facebook"],
+		"id":"homeland",
+		"vimeo":"90499801"
 	},
 	{
 		"name":"Big Ten Network",
