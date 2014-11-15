@@ -13,12 +13,20 @@
 		"mobile":true
 	},
 	{
+		"name":"MMA Independent",
+		"description":"Logo Development",
+		"role":"Design",
+		"type":["design"],
+		"image":"mma_logo.jpg",
+		"id":"design_mma"
+	},
+	{
 		"name":"NBCU Super Solution 2.0",
 		"description":"B2B Enrollment and Incentive Site",
 		"role":"Development",
 		"tech":"Javascript, Jquery, CSS3, JSON, MySQL, PHP and Linux Administration",
 		"image":"nbcu_2014.jpg",
-		"url":"http://nbcusupersolution.com/2014/demo.php",
+		"url_old":"http://nbcusupersolution.com/2014/demo.php",
 		"id":"nbcu_2014",
 		"type":["html5","css3","php_mysql"],
 		"slow":true,
@@ -36,28 +44,25 @@
 		"type":["design","objective_c"]
 	},
 	{
-		"name":"ABC Family",
-		"description":"Mobile Compatible, Desktop Targeted, Greeting Card Creation Site",
-		"role":"Development and Integration",
-		"tech":"HTML5 Canvas, AS3, Javascript, Jquery, CSS3, JSON, MySQL and PHP",
-		"image":"abc_family_25k.jpg",
-		"url":"http://www.abcfamily25kgiveaway.com/index_demo.php",
-		"type":["html5","design","css3","php_mysql","facebook","twitter"],
-		"id":"abc25give",
-		"mobile":true
-	},
-	{
 		"name":"HBO - Play the Boardwalk Game",
 		"description":"Mobile Compatible, Desktop Targeted",
 		"role":"Game Development and Integration",
 		"tech":"HTML5 Canvas, Request Animation Frame, CSS3, JSON, PHP",
 		"image":"playtheboardwalk.jpg",
-		"url":"http://www.playtheboardwalk.com/game.php",
-		"type":["html5","design","css3","php_mysql","facebook","twitter"],
+		"url_old":"http://hothousesecure.com/playtheboardwalk/game.php",
+		"type":["html5","css3","php_mysql","facebook","twitter"],
 		"id":"playboardwalk",
 		"slow":true,
 		"mobile":true,
 		"vimeo":"91887070"
+	},
+	{
+		"name":"Main Street Theatre Tucker",
+		"description":"Logo Development",
+		"role":"Design",
+		"type":["design"],
+		"image":"mstt_logo.jpg",
+		"id":"design_mstt"
 	},
 	{
 		"name":"Cox Communications",
@@ -69,6 +74,54 @@
 		"type":["flash", "design","php_mysql","facebook"],
 		"id":"homeland",
 		"vimeo":"90499801"
+	},
+	{
+		"name":"A Part of Something Big",
+		"description":"E-Commerce Site Design",
+		"role":"Design and Illustration",
+		"type":["design"],
+		"image":"iapw_store_home_v5.jpg",
+		"id":"design1"
+	},
+	{
+		"name":"MyButler.com",
+		"description":"E-Commerce Portal Design",
+		"role":"Design and Illustration",
+		"type":["design"],
+		"image":"intermarche_final_comp2.jpg",
+		"id":"design2"
+	},
+	{
+		"name":"G4TV",
+		"description":"Promotion Site",
+		"role":"Design",
+		"type":["design"],
+		"image":"g4_e3_2010_mock1.jpg",
+		"id":"design3"
+	},
+	{
+		"name":"Spivey Hall",
+		"description":"Site Design",
+		"role":"Design",
+		"type":["design"],
+		"image":"spivey_hall_mock2.jpg",
+		"id":"design4"
+	},
+	{
+		"name":"Bell Canada",
+		"description":"Customer Portal Design",
+		"role":"Design",
+		"type":["design"],
+		"image":"bell_canada.jpg",
+		"id":"design5"
+	},
+	{
+		"name":"A Part of Something Big",
+		"description":"Catalog Mailer",
+		"role":"Design",
+		"type":["design"],
+		"image":"aposb_mailer_fall09_v11_pt4.jpg",
+		"id":"design7"
 	},
 	{
 		"name":"Big Ten Network",
@@ -93,7 +146,7 @@
 		"tech":"HTML, CSS3, JSON, PHP, Facebook API",
 		"image":"nuckys_crew.jpg",
 		"url":"https://www.hothousesecure.com/2013BWE/jtn_cox/",
-		"type":["html5","design","css3","php_mysql","facebook","twitter"],
+		"type":["html5","css3","php_mysql","facebook","twitter"],
 		"id":"joincrew",
 		"slow":true,
 		"mobile":true
@@ -177,7 +230,7 @@
 		"role":"Development",
 		"tech":"HTML, CSS3, JSON, PHP, Facebook API",
 		"image":"usa_who_am_i.jpg",
-		"url":"http://www.usawhoamitoday.com",
+		"url":"http://hothousesecure.com/usa/",
 		"type":["html5","css3","php_mysql","facebook"],
 		"id":"usawho",
 		"slow":true,
@@ -219,8 +272,159 @@
 		"type":["flash", "design"],
 		"id":"tbsletter",
 		"mobile":true
+	},
+	{
+		"name":"Pearson Longman",
+		"image":"bad_school.jpg",
+		"type":["illo"],
+		"id":"illo1"
+	},
+	{
+		"name":"Personal",
+		"image":"business_is_good.jpg",
+		"type":["illo"],
+		"id":"illo2"
+	},
+	{
+		"name":"MyButler.com",
+		"image":"bw_clips.jpg",
+		"type":["illo"],
+		"id":"illo3"
+	},
+	{
+		"name":"Personal",
+		"image":"casino.jpg",
+		"type":["illo"],
+		"id":"illo4"
+	},
+	{
+		"name":"Solo Communications",
+		"description":"Website Design and illustration",
+		"image":"cqit.jpg",
+		"type":["illo"],
+		"id":"illo5"
+	},
+	{
+		"name":"MyButler.com",
+		"image":"disco_burt.jpg",
+		"type":["illo"],
+		"id":"illo6"
+	},
+	{
+		"name":"Pearson Longman",
+		"image":"final_doctor_spotfinal.jpg",
+		"type":["illo"],
+		"id":"illo7"
+	},
+	{
+		"name":"La Presse",
+		"image":"final_jour_famille.jpg",
+		"type":["illo"],
+		"id":"illo8"
+	},
+	{
+		"name":"La Presse",
+		"image":"final_retraite_femme2.jpg",
+		"type":["illo"],
+		"id":"illo9"
+	},
+	{
+		"name":"Personal",
+		"image":"girl_cafe4.jpg",
+		"type":["illo"],
+		"id":"illo10"
+	},
+	{
+		"name":"Personal - In Process",
+		"image":"haunted_house.jpg",
+		"type":["illo"],
+		"id":"illo11"
+	},
+	{
+		"name":"Personal",
+		"image":"highway.jpg",
+		"type":["illo"],
+		"id":"illo12"
+	},
+	{
+		"name":"Pearson Longman",
+		"image":"kids_fighting.jpg",
+		"type":["illo"],
+		"id":"illo13"
+	},
+	{
+		"name":"La Presse",
+		"image":"last_anywhere.jpg",
+		"type":["illo"],
+		"id":"illo14"
+	},
+	{
+		"name":"La Presse",
+		"image":"last_dealer.jpg",
+		"type":["illo"],
+		"id":"illo15"
+	},
+	{
+		"name":"La Presse",
+		"image":"last_identite_vol.jpg",
+		"type":["illo"],
+		"id":"illo16"
+	},
+	{
+		"name":"La Presse",
+		"image":"last_maison_cher.jpg",
+		"type":["illo"],
+		"id":"illo17"
+	},
+	{
+		"name":"La Presse",
+		"image":"last_moving.jpg",
+		"type":["illo"],
+		"id":"illo18"
+	},
+	{
+		"name":"La Presse",
+		"image":"last_surrendette_4.jpg",
+		"type":["illo"],
+		"id":"illo19"
+	},
+	{
+		"name":"La Presse",
+		"image":"last_trop_assure.jpg",
+		"type":["illo"],
+		"id":"illo20"
+	},
+	{
+		"name":"La Presse",
+		"image":"last_valeur.jpg",
+		"type":["illo"],
+		"id":"illo21"
+	},
+	{
+		"name":"Solo Communications",
+		"image":"lecavalier_transport.jpg",
+		"type":["illo"],
+		"id":"illo22"
+	},
+	{
+		"name":"Personal",
+		"image":"lonely_missle.jpg",
+		"type":["illo"],
+		"id":"illo23"
+	},
+	{
+		"name":"Montreal Choppers",
+		"image":"montreal_choppers.jpg",
+		"type":["illo"],
+		"id":"illo24"
+	},
+	{
+		"name":"Personal",
+		"image":"taxes3.jpg",
+		"type":["illo"],
+		"id":"illo25"
 	}
-
+	
 
 ]
 }

@@ -203,6 +203,7 @@
 	<a class="butn show_work_type" id="work_flash">Flash</a>
 	<a class="butn show_work_type" id="work_html5">HTML5</a>
 	<a class="butn show_work_type" id="work_design">Design</a>
+	<a class="butn show_work_type" id="work_illo">Illustration</a>
 	<div class="breaker"></div>
 </div>
 <div class="portfolio_area" id="portfolio_area"></div>
@@ -278,29 +279,32 @@
 
 	function loadCSS(linklocation){
 		
-		var xhr = createXMLHttpRequest();
+		if(typeof linklocation != "undefined"){
 
-		xhr.onreadystatechange = function() 
-		{
-			if (xhr.readyState==4) 
-			{// Request is finished
+			var xhr = createXMLHttpRequest();
+
+			xhr.onreadystatechange = function() 
+			{
+				if (xhr.readyState==4) 
+				{// Request is finished
+				
+					if (xhr.status!=200)
+					{
+					}// end if 
+					else{
+						appendCSS(xhr.responseText);
+					}// end if 
+				}// end main if
+				else
+				{	
+					//showErrorPanel("An error occurred with your submission. Please contact customer support!");
+				}
+			}// end onreadystatechange function
 			
-				if (xhr.status!=200)
-				{
-				}// end if 
-				else{
-					appendCSS(xhr.responseText);
-				}// end if 
-			}// end main if
-			else
-			{	
-				//showErrorPanel("An error occurred with your submission. Please contact customer support!");
-			}
-		}// end onreadystatechange function
-		
-		xhr.open("GET", linklocation, true);
-		xhr.setRequestHeader("Content-type","application/javascript");
-		xhr.send();
+			xhr.open("GET", linklocation, true);
+			xhr.setRequestHeader("Content-type","text/css");
+			xhr.send();
+		}
 	}
 
 	function unclipBodyRemoveCar(){
@@ -450,6 +454,15 @@
 		document.getElementById("granny_says").innerHTML = "Your engine lacks sass!<a href=\"/\">Older engines have to sit in lounge.</a>";	
 	}
 	
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-56761872-1', 'auto');
+  ga('send', 'pageview');
 
 </script>
 </body>

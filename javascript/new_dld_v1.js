@@ -95,6 +95,16 @@ if(typeof window.matchMedia == "undefined"){
 	  		$(this.el).find(".project-detail-image").css("background-image","url(" +  this.model.get("image_detail_source").src + ")");
 	  		$(this.el).find(".project-detail-area").removeClass("hidden");
 	  		stopSpinner();
+
+	  		if(this.model.get("illo")){	  			
+		  		var nh = getProportion($(this.el).find(".project-detail-image").width(),this.model.get("image_detail_source").width,this.model.get("image_detail_source").height);
+
+				if(nh < $(this.el).height()){
+					$(this.el).find(".project-detail-image").removeClass("playing");
+				  	$(this.el).find(".project-detail-image").addClass("centered");
+				}
+			}
+
 	  	}
 
 	  	var proj_id = 1;
@@ -131,6 +141,10 @@ if(typeof window.matchMedia == "undefined"){
 
 		    	$(this.el).html('<div class="project-item-front"></div>');
 		    	//$(this.el).append('<div class="project-item-back"></div>');
+
+		    	$(this.el).bind(Browser.evt("override"),function(){
+		    		ga('send', 'event', 'Project View', $(this).find(".project-name").text());
+		    	});
 
 
 		    	var front = $(this.el).find(".project-item-front");
@@ -211,7 +225,6 @@ if(typeof window.matchMedia == "undefined"){
 	    		$(this.el).addClass('flipped');*/
 
 	    		
-
 	    		project_detail = new DetailsView({
 			        model: this.model
 			    });		 
@@ -276,19 +289,34 @@ if(typeof window.matchMedia == "undefined"){
 		    	//if(window.matchMedia("(max-width: 22.308em)").matches || window.matchMedia("(max-width: 39.692em) and (min-width: 22.308em)").matches){
 					//$(this.el).css("top", ($(window).scrollTop() + 10) + "px");
 		    	//}
+
+		    	var illo = (this.model.get("type").indexOf("illo")<0)?false:true;
+
+		    	if(illo){
+		    		this.model.set("illo",true);
+		    	}
+
 		    	
-		    	var detail_html = '<div class="project-detail-area hidden" id="projectdetails">';
+		    	var detail_html = '<div class="project-detail-area hidden' + ((illo)?" view_image":"") + '" id="projectdetails">';
+
 		    	detail_html += '<div class="project-detail-image"></div>';
-		    	detail_html += '<div class="project-detail-description"></div>';
+
+		    	if(!illo){
+		    		detail_html += '<div class="project-detail-description"></div>';
+		    		detail_html += '<a class="butn project-details-show">View Image</a>';
+		    	}
+
 		    	detail_html += '<a class="butn project-details-close">X</a>';
-		    	detail_html += '<a class="butn project-details-show">View Image</a>';
 		    	detail_html += '</div>';
 
 		    	$(this.el).html(detail_html);
 
 		    	$(this.el).find(".project-detail-image").addClass("playing");
+	
 
-		    	$(this.el).find(".project-detail-area").append('<p class="project-name">' + this.model.get("name") + '</p>');
+		    	if(!illo){
+		    		$(this.el).find(".project-detail-area").append('<p class="project-name">' + this.model.get("name") + '</p>');
+		    	}
 
 		    	if(this.model.has("role")){
 		    		$(this.el).find(".project-detail-description").append('<p class="project-role"><b>Role:</b>' + this.model.get("role") + '</p>');
@@ -359,9 +387,12 @@ if(typeof window.matchMedia == "undefined"){
 		    	$(".butn_cv_open").addClass('blurred');
 		    	$(".portfolio_area").addClass('blurred');*/
 
-
 		    	adjustDetailHeight();
-		   		
+
+/*		    	if(illo){
+		    		this.showFullImage();
+		    	}*/
+
 	      		return this; // for chainable calls, like .render().el
 		    },
 		    reloadFullDetailImage: function(){
@@ -480,6 +511,22 @@ if(typeof window.matchMedia == "undefined"){
 					$(".cv_area").css("top",($(window).scrollTop() + 10) + "px");
 				}
 			}
+		}
+
+
+		//gets hash value from url location
+		function getHashFromAddress(){
+			
+			var hashValue;
+			
+			if(window.location.hash){
+				hashValue=window.location.hash;
+			}
+			else{
+				hashValue=location.hash;
+			}
+			
+			return String(hashValue).replace(/#/,"");
 		}
 
 		function adjustSubVideoPosition(){
@@ -865,6 +912,7 @@ if(typeof window.matchMedia == "undefined"){
 			    	//pull in ajax data and bind main view collection
 			    	createCVArea(val);
 			    	reduceProjectsNavForMobile();
+			    	ga('send', 'event', 'Viewing CV ', 'True');	
 
 		    	}
 			});
@@ -912,7 +960,15 @@ if(typeof window.matchMedia == "undefined"){
 
 			    	//pull in ajax data and bind main view collection
 			    	work_projects = val;
-			    	filterProjects(val);
+
+			    	if(getHashFromAddress()=="illos"){
+			    		filterProjects(val,"illo");	
+			    	}
+			    	else{
+			    		filterProjects(val);
+			    	}
+
+			    	
 			    }
 			});
 
@@ -1181,7 +1237,6 @@ if(typeof window.matchMedia == "undefined"){
 				},1000);
 
 				scrollPageTo();
-				
 
 				destroyProjects();
 
@@ -1200,6 +1255,16 @@ if(typeof window.matchMedia == "undefined"){
 			adjustNavTop();
 		});
 
+		$(".projects_navigation").find(".butn").not(".menu").each(function(){
+			$(this).bind(Browser.evt("override"),function(){
+
+				var project_id = (typeof $(this).attr("id") != "undefined")?$(this).attr("id"):"All";
+				console.log(project_id);
+				ga('send', 'event', 'Project Sorted By', project_id);	
+			});
+			
+		});
+
 		$(".projects_navigation").find(".butn:first").bind(Browser.evt("override"), function(){
 
 			if(!$(".cv_area").hasClass('hidden')){
@@ -1210,7 +1275,7 @@ if(typeof window.matchMedia == "undefined"){
 			expandProjectsNavForMobile();	
 		});
 
-		loadProjects();
+		loadProjects();		
 
 
 	}//end initialize_dld_app
