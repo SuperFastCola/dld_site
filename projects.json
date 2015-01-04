@@ -1,6 +1,18 @@
 {
 "projects":[
 	{
+		"name":"CNN en Español",
+		"description":"Multilingual B2C Sweepstakes Entry Minisite",
+		"role":"Development and Deployment",
+		"tech":"Amazon Web Services, NodeJS, DynamoDB, Javascript, Jquery, CSS3, JSON",
+		"image":"cnnevodsweeps.jpg",
+		"url":"http://cnnevodsweeps.com/english?no_redirect",
+		"id":"cnnesweeps",
+		"type":["html5","css3"],
+		"slow":true,
+		"mobile":true
+	},
+	{
 		"name":"FYI Network",
 		"description":"B2C Quiz and Photo Manipulation Minisite",
 		"role":"Development and Deployment",
