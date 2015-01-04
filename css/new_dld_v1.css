@@ -660,11 +660,11 @@ a:hover {
 @media only screen and (max-width: 30em) {
   .cv_area {
     width: 20em;
-    height: 23em;
+    height: 25em;
     margin-left: -11.5em !important;
   }
   .cv_area .cv_text {
-    top: 4.625em;
+    top: 6.125em;
     width: 20.75em;
     height: 17.174999999999997em;
   }
@@ -672,10 +672,11 @@ a:hover {
 @media only screen and (max-width: 46em) and (min-width: 30em) {
   .cv_area {
     width: 32.4em;
-    height: 45em;
+    height: 46.800000000000004em;
     margin-left: -17.7em !important;
   }
   .cv_area .cv_text {
+    top: 7.625em;
     width: 32.4em;
     height: 36.875em;
   }

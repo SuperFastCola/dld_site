@@ -906,12 +906,12 @@ a{
 
 	@media only screen and (max-width: @bp1){
 		width: @columns-min-width - 4em;
-		height: @columns-min-width - 1em;
+		height: @columns-min-width + 1em;
 		.setmargins(left,-((@columns-min-width - 1em)/2));
 
 		.cv_text{
 
-			top: @cv_pad_top - 1em;
+			top: @cv_pad_top + .5em;
 			@cv_n_w: @columns-min-width - 1em;
 			width: @cv_n_w - 2.25em;
 			height: @columns-min-width*1.2 - @cv_pad_top - (@cv_pad_bottom + 4em);
@@ -920,11 +920,15 @@ a{
 
 	@media only screen and (max-width: @bp2) and (min-width: @bp1){
 		width: @columns-width*1.8em;
-		height: @columns-width*2.5em;
+		height: @columns-width*2.6em;
 		.setmargins(left,-((@columns-width*1.8em + 3em)/2));
+
 
 		.cv_text{
 			@cv_n_w: @columns-width*1.8em;
+
+			top: @cv_pad_top + 2em;
+
 			width: @cv_n_w;
 			height: @columns-width*2.5 - @cv_pad_top - (@cv_pad_bottom*1.25);
 
