@@ -58,12 +58,12 @@
 		"vimeo":"91997026"
 	},
 	{
-		"name":"Superfast Cola",
+		"name":"The Lonely Missile",
 		"description":"iOS Application - Under Development",
 		"role":"Concept, Design, Illustration and Programming",
 		"tech":"Objective C",
-		"image":"super_fast_cola.jpg",
-		"id":"cola",
+		"image":"lonely_missle.jpg",
+		"id":"missile",
 		"slow":true,
 		"type":["design","objective_c"]
 	},
