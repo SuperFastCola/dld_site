@@ -1,12 +1,24 @@
 {
 "projects":[
 	{
+		"name":"Fashion Police",
+		"description":"Social Quiz Sharing Minisite",
+		"role":"Development and Deployment",
+		"tech":"Amazon Web Services, Javascript, Jquery, Responsive Web Development, CSS3, JSON, MySQL, PHP, Facebook Integration and Linux Administration",
+		"image":"charter_fashion_police.jpg",
+		"url":"http://fashion6008.hhsecure.com/",
+		"id":"fashionpolice",
+		"type":["html5","css3","php_mysql","facebook"],
+		"slow":true,
+		"mobile":true
+	},
+	{
 		"name":"CNN en Español",
 		"description":"Multilingual B2C Sweepstakes Entry Minisite",
 		"role":"Development and Deployment",
-		"tech":"Amazon Web Services, NodeJS, DynamoDB, Javascript, Jquery, CSS3, JSON",
+		"tech":"Amazon Web Services, NodeJS, DynamoDB, Javascript, Jquery, , Responsive Web Development, CSS3, JSON",
 		"image":"cnnevodsweeps.jpg",
-		"url":"http://cnnevodsweeps.com/english?no_redirect",
+		"url":"http://cnne4433.hhsecure.com/?no_redirect",
 		"id":"cnnesweeps",
 		"type":["html5","css3"],
 		"slow":true,
