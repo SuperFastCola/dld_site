@@ -308,6 +308,157 @@
 		"type":["flash", "design"],
 		"id":"tbsletter",
 		"mobile":true
+	},
+	{
+		"name":"Pearson Longman",
+		"image":"bad_school.jpg",
+		"type":["illo"],
+		"id":"illo1"
+	},
+	{
+		"name":"Personal",
+		"image":"business_is_good.jpg",
+		"type":["illo"],
+		"id":"illo2"
+	},
+	{
+		"name":"MyButler.com",
+		"image":"bw_clips.jpg",
+		"type":["illo"],
+		"id":"illo3"
+	},
+	{
+		"name":"Personal",
+		"image":"casino.jpg",
+		"type":["illo"],
+		"id":"illo4"
+	},
+	{
+		"name":"Solo Communications",
+		"description":"Website Design and illustration",
+		"image":"cqit.jpg",
+		"type":["illo"],
+		"id":"illo5"
+	},
+	{
+		"name":"MyButler.com",
+		"image":"disco_burt.jpg",
+		"type":["illo"],
+		"id":"illo6"
+	},
+	{
+		"name":"Pearson Longman",
+		"image":"final_doctor_spotfinal.jpg",
+		"type":["illo"],
+		"id":"illo7"
+	},
+	{
+		"name":"La Presse",
+		"image":"final_jour_famille.jpg",
+		"type":["illo"],
+		"id":"illo8"
+	},
+	{
+		"name":"La Presse",
+		"image":"final_retraite_femme2.jpg",
+		"type":["illo"],
+		"id":"illo9"
+	},
+	{
+		"name":"Personal",
+		"image":"girl_cafe4.jpg",
+		"type":["illo"],
+		"id":"illo10"
+	},
+	{
+		"name":"Personal - In Process",
+		"image":"haunted_house.jpg",
+		"type":["illo"],
+		"id":"illo11"
+	},
+	{
+		"name":"Personal",
+		"image":"highway.jpg",
+		"type":["illo"],
+		"id":"illo12"
+	},
+	{
+		"name":"Pearson Longman",
+		"image":"kids_fighting.jpg",
+		"type":["illo"],
+		"id":"illo13"
+	},
+	{
+		"name":"La Presse",
+		"image":"last_anywhere.jpg",
+		"type":["illo"],
+		"id":"illo14"
+	},
+	{
+		"name":"La Presse",
+		"image":"last_dealer.jpg",
+		"type":["illo"],
+		"id":"illo15"
+	},
+	{
+		"name":"La Presse",
+		"image":"last_identite_vol.jpg",
+		"type":["illo"],
+		"id":"illo16"
+	},
+	{
+		"name":"La Presse",
+		"image":"last_maison_cher.jpg",
+		"type":["illo"],
+		"id":"illo17"
+	},
+	{
+		"name":"La Presse",
+		"image":"last_moving.jpg",
+		"type":["illo"],
+		"id":"illo18"
+	},
+	{
+		"name":"La Presse",
+		"image":"last_surrendette_4.jpg",
+		"type":["illo"],
+		"id":"illo19"
+	},
+	{
+		"name":"La Presse",
+		"image":"last_trop_assure.jpg",
+		"type":["illo"],
+		"id":"illo20"
+	},
+	{
+		"name":"La Presse",
+		"image":"last_valeur.jpg",
+		"type":["illo"],
+		"id":"illo21"
+	},
+	{
+		"name":"Solo Communications",
+		"image":"lecavalier_transport.jpg",
+		"type":["illo"],
+		"id":"illo22"
+	},
+	{
+		"name":"Personal",
+		"image":"lonely_missle.jpg",
+		"type":["illo"],
+		"id":"illo23"
+	},
+	{
+		"name":"Montreal Choppers",
+		"image":"montreal_choppers.jpg",
+		"type":["illo"],
+		"id":"illo24"
+	},
+	{
+		"name":"Personal",
+		"image":"taxes3.jpg",
+		"type":["illo"],
+		"id":"illo25"
 	}
 
 ]

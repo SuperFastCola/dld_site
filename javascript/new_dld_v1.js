@@ -936,7 +936,12 @@ if(typeof window.matchMedia == "undefined"){
 		    		}	
 		    		else{
 		    			val.projects[i].timer = timeout;
-		    			dld_portfolio.collection.add(val.projects[i]);  //or reset
+
+		    			if(_.indexOf(val.projects[i].type,'illo')==-1){
+		    				//show all projects without illos
+		    				dld_portfolio.collection.add(val.projects[i]);  //or reset
+		    			}
+		    			
 		    		}
 
 		    		timeout+=timeout_inc;
@@ -1297,5 +1302,4 @@ if(typeof window.matchMedia == "undefined"){
 	
 	
 });*/
-
 
