@@ -911,10 +911,10 @@ a{
 
 		.cv_text{
 
-			top: @cv_pad_top + .5em;
+			top: @cv_pad_top + 1.75em;
 			@cv_n_w: @columns-min-width - 1em;
 			width: @cv_n_w - 2.25em;
-			height: @columns-min-width*1.2 - @cv_pad_top - (@cv_pad_bottom + 4em);
+			height: @columns-min-width * 1.2 - @cv_pad_top - (@cv_pad_bottom + 4.75em);
 		}
 	}
 
@@ -1246,8 +1246,13 @@ a{
 		top: 2%;
 		.setmargins(top,0em);
 		width: @columns-min-width - 1em;
+		width: 98%;
 		height: @columns-min-width*1.2;
+		height: 90%;
 		.setmargins(left,-((@columns-min-width - 1em)/2));
+
+		.setmargins(left,-(98%/2));
+
 	}
 
 	@media only screen and (max-width: @bp2) and (min-width: @bp1){
@@ -1355,7 +1360,8 @@ a{
 				.txtshadow(none);
 				padding: 1% 0% 2% 0%;
 				margin-left: 5% !important;
-				height: 3.75em !important;
+				/*height: 3.75em !important;*/
+				height: auto !important;
 				padding-top: .5em !important;
 				
 				span{
@@ -1436,7 +1442,6 @@ a{
 					margin-right: .5em;
 					margin-bottom: 0em !important;
 					padding-bottom: 0em !important;
-
 					border-bottom: 0px;
 				}	
 			}
@@ -1444,7 +1449,12 @@ a{
 
 			@media only screen and (max-width: @bp1){
 				.border-radius(0em);
-				.block_abs_size(91%,43%,10);
+				/*.block_abs_size(91%,43%,10);*/
+				width: 91%;
+				height: 43%;
+				z-index: 10;
+				position: relative;
+
 				padding: 2% 5% 3% 5%;
 
 				.setmargins(left,0em);
@@ -1454,8 +1464,9 @@ a{
 				margin-top:0% !important;
 				border-top:0px !important;
 
-				top: 67%;
-				height: 35%;
+				/*top: 65%;*/
+				
+				.bdr(1px,green);
 
 			}
 

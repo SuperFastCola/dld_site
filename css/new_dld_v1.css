@@ -664,9 +664,9 @@ a:hover {
     margin-left: -11.5em !important;
   }
   .cv_area .cv_text {
-    top: 6.125em;
+    top: 7.375em;
     width: 20.75em;
-    height: 17.174999999999997em;
+    height: 16.424999999999997em;
   }
 }
 @media only screen and (max-width: 46em) and (min-width: 30em) {
@@ -1148,8 +1148,11 @@ a:hover {
     top: 2%;
     margin-top: 0em !important;
     width: 23em;
+    width: 98%;
     height: 28.799999999999997em;
+    height: 90%;
     margin-left: -11.5em !important;
+    margin-left: -49% !important;
   }
 }
 @media only screen and (max-width: 46em) and (min-width: 30em) {
@@ -1357,7 +1360,9 @@ a:hover {
     text-shadow: none;
     padding: 1% 0% 2% 0%;
     margin-left: 5% !important;
-    height: 3.75em !important;
+    /*height: 3.75em !important;*/
+  
+    height: auto !important;
     padding-top: .5em !important;
   }
   .project-detail-holder .project-detail-area .project-name span {
@@ -1498,16 +1503,12 @@ a:hover {
   .project-detail-holder .project-detail-area .project-detail-description {
     -moz-border-radius: 0em;
     border-radius: 0em;
-    position: absolute;
-    margin: 0px auto 0px auto;
-    padding: 0px;
+    /*.block_abs_size(91%,43%,10);*/
+  
     width: 91%;
     height: 43%;
-    top: 0%;
-    left: 0%;
     z-index: 10;
-    /*margin-top: -(@h/2);*/
-  
+    position: relative;
     padding: 2% 5% 3% 5%;
     margin-left: 0em !important;
     font-size: 0.9129999999999999em;
@@ -1521,8 +1522,9 @@ a:hover {
     padding-top: 0em !important;
     margin-top: 0% !important;
     border-top: 0px !important;
-    top: 67%;
-    height: 35%;
+    /*top: 65%;*/
+  
+    border: 1px solid #008000;
   }
 }
 @media only screen and (max-width: 46em) and (min-width: 30em) {

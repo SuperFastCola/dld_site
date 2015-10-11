@@ -1,6 +1,18 @@
 {
 "projects":[
 	{
+		"name":"Teen Beach Beats",
+		"description":"Social Sound Mixing Board",
+		"role":"UX Design, Development and Deployment",
+		"tech":"Amazon Web Services, Javascript, Jquery, Responsive Web Development, CSS3, JSON, MySQL, PHP, Facebook Integration and Linux Administration",
+		"image":"teenbeach2.jpg",
+		"url":"http://teenbeach2.deluxeluxury.com",
+		"id":"teenbeach",
+		"type":["html5","css3","php_mysql","facebook"],
+		"slow":true,
+		"mobile":true
+	},
+	{
 		"name":"Fashion Police",
 		"description":"Social Quiz Sharing Minisite",
 		"role":"Development and Deployment",
@@ -54,7 +66,8 @@
 		"role":"Design",
 		"type":["design"],
 		"image":"mma_logo.jpg",
-		"id":"design_mma"
+		"id":"design_mma",
+		"reducedetailheight":true
 	},
 	{
 		"name":"NBCU Super Solution 2.0",

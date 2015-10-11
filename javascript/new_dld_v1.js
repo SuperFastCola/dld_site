@@ -139,6 +139,7 @@ if(typeof window.matchMedia == "undefined"){
 
 		    	$(this.el).addClass("project-holder flipped");
 
+
 		    	$(this.el).html('<div class="project-item-front"></div>');
 		    	//$(this.el).append('<div class="project-item-back"></div>');
 
@@ -289,6 +290,10 @@ if(typeof window.matchMedia == "undefined"){
 		    	//if(window.matchMedia("(max-width: 22.308em)").matches || window.matchMedia("(max-width: 39.692em) and (min-width: 22.308em)").matches){
 					//$(this.el).css("top", ($(window).scrollTop() + 10) + "px");
 		    	//}
+
+		    	if(this.model.has('reducedetailheight')){
+		    		$(this.el).addClass("reducedheight");
+		    	}
 
 		    	var illo = (this.model.get("type").indexOf("illo")<0)?false:true;
 
@@ -564,7 +569,10 @@ if(typeof window.matchMedia == "undefined"){
 				if($(".project-detail-holder").height() < (window.innerHeight || document.documentElement.clientHeight)){
 					var newtop = ((window.innerHeight || document.documentElement.clientHeight)/2 - $(".project-detail-holder").height()/2) + $(window).scrollTop();
 					//newtop -= Math.round(newtop * .25);
-					$(".project-detail-holder").css("top",newtop + "px");
+
+					if(!window.matchMedia("(min-width: 30em)").matches && window.matchMedia("(max-width: 30em)").matches){
+						$(".project-detail-holder").css("top",newtop + "px");
+					}
 				}
 				else{
 					$(".project-detail-holder").css("top",($(window).scrollTop() + 10) + "px");
