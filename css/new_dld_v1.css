@@ -661,12 +661,17 @@ a:hover {
   .cv_area {
     width: 20em;
     height: 25em;
+    height: 100%;
     margin-left: -11.5em !important;
   }
   .cv_area .cv_text {
     top: 7.375em;
+    /*top: 17%;*/
+  
     width: 20.75em;
-    height: 16.424999999999997em;
+    /*height: @columns-min-width * 1.2 - @cv_pad_top - (@cv_pad_bottom + 4.75em);*/
+  
+    height: 73%;
   }
 }
 @media only screen and (max-width: 46em) and (min-width: 30em) {
@@ -1524,7 +1529,6 @@ a:hover {
     border-top: 0px !important;
     /*top: 65%;*/
   
-    border: 1px solid #008000;
   }
 }
 @media only screen and (max-width: 46em) and (min-width: 30em) {
@@ -1602,6 +1606,32 @@ a:hover {
 				display:none;
 			}*/
 
+}
+.project-detail-holder.reducedheight .project-detail-image {
+  height: 100% !important;
+}
+@media only screen and (max-width: 30em) {
+  .project-detail-holder.reducedheight .project-detail-image {
+    height: 85% !important;
+  }
+}
+@media only screen and (max-width: 46em) and (min-width: 30em) {
+  .project-detail-holder.reducedheight .project-detail-image {
+    height: 85% !important;
+  }
+}
+.project-detail-holder.reducedheight .project-name {
+  top: 80% !important;
+}
+@media only screen and (max-width: 30em) {
+  .project-detail-holder.reducedheight .project-name {
+    top: 87% !important;
+  }
+}
+@media only screen and (max-width: 46em) and (min-width: 30em) {
+  .project-detail-holder.reducedheight .project-name {
+    top: 87% !important;
+  }
 }
 @keyframes slide_background {
   from {

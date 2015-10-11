@@ -907,14 +907,16 @@ a{
 	@media only screen and (max-width: @bp1){
 		width: @columns-min-width - 4em;
 		height: @columns-min-width + 1em;
+		height: 100%;
 		.setmargins(left,-((@columns-min-width - 1em)/2));
 
 		.cv_text{
-
 			top: @cv_pad_top + 1.75em;
+			/*top: 17%;*/
 			@cv_n_w: @columns-min-width - 1em;
 			width: @cv_n_w - 2.25em;
-			height: @columns-min-width * 1.2 - @cv_pad_top - (@cv_pad_bottom + 4.75em);
+			/*height: @columns-min-width * 1.2 - @cv_pad_top - (@cv_pad_bottom + 4.75em);*/
+			height: 73%;
 		}
 	}
 
@@ -1466,7 +1468,6 @@ a{
 
 				/*top: 65%;*/
 				
-				.bdr(1px,green);
 
 			}
 
@@ -1533,6 +1534,36 @@ a{
 				display:none;
 			}*/
 
+		}
+	}
+}
+
+.project-detail-holder.reducedheight{
+
+	.project-detail-image{
+
+			height: 100% !important;
+
+			@media only screen and (max-width: @bp1){
+				height: 85% !important;
+			}
+
+			@media only screen and (max-width: @bp2) and (min-width: @bp1){
+				height: 85% !important;
+			}
+	
+		}
+
+	.project-name{
+
+		top: 80% !important;
+
+		@media only screen and (max-width: @bp1){
+			top: 87% !important;
+		}
+
+		@media only screen and (max-width: @bp2) and (min-width: @bp1){
+			top: 87% !important;
 		}
 	}
 }
