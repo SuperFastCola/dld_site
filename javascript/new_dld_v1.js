@@ -139,6 +139,7 @@ if(typeof window.matchMedia == "undefined"){
 
 		    	$(this.el).addClass("project-holder flipped");
 
+
 		    	$(this.el).html('<div class="project-item-front"></div>');
 		    	//$(this.el).append('<div class="project-item-back"></div>');
 
@@ -290,13 +291,18 @@ if(typeof window.matchMedia == "undefined"){
 					//$(this.el).css("top", ($(window).scrollTop() + 10) + "px");
 		    	//}
 
+
+		    	var reducedheight = (this.model.has("reducedetailheight"))?true:false;
 		    	var illo = (this.model.get("type").indexOf("illo")<0)?false:true;
 
 		    	if(illo){
 		    		this.model.set("illo",true);
 		    	}
 
-		    	
+				if(reducedheight){		    	
+		    		$(this.el).addClass("reducedheight");
+		    	}
+
 		    	var detail_html = '<div class="project-detail-area hidden' + ((illo)?" view_image":"") + '" id="projectdetails">';
 
 		    	detail_html += '<div class="project-detail-image"></div>';
@@ -318,12 +324,14 @@ if(typeof window.matchMedia == "undefined"){
 		    		$(this.el).find(".project-detail-area").append('<p class="project-name">' + this.model.get("name") + '</p>');
 		    	}
 
-		    	if(this.model.has("role")){
-		    		$(this.el).find(".project-detail-description").append('<p class="project-role"><b>Role:</b>' + this.model.get("role") + '</p>');
-		    	}
+		    	if(!reducedheight){
+			    	if(this.model.has("role")){
+			    		$(this.el).find(".project-detail-description").append('<p class="project-role"><b>Role:</b>' + this.model.get("role") + '</p>');
+			    	}
 
-		    	if(this.model.has("tech")){
-		    		$(this.el).find(".project-detail-description").append('<p class="project-role"><b>Tech:</b>' + this.model.get("tech") + '</p>');
+			    	if(this.model.has("tech")){
+			    		$(this.el).find(".project-detail-description").append('<p class="project-role"><b>Tech:</b>' + this.model.get("tech") + '</p>');
+			    	}
 		    	}
 
 		    	if(this.model.has("url")){
@@ -505,10 +513,18 @@ if(typeof window.matchMedia == "undefined"){
 				if($(".cv_area").height() < (window.innerHeight || document.documentElement.clientHeight)){
 					var newtop = ((window.innerHeight || document.documentElement.clientHeight)/2 - $(".cv_area").height()/2) + $(window).scrollTop();
 					//newtop -= Math.round(newtop * .25);
-					$(".cv_area").css("top",newtop + "px");
+
+					if(!$(".cv_area").hasClass("adjusted")){
+						$(".cv_area").addClass("adjusted")
+						$(".cv_area").css("top",newtop + "px");	
+					}
+					
 				}
 				else{
-					$(".cv_area").css("top",($(window).scrollTop() + 10) + "px");
+					if(!$(".cv_area").hasClass("adjusted")){
+						$(".cv_area").addClass("adjusted")
+						$(".cv_area").css("top",($(window).scrollTop() + 10) + "px");
+					}
 				}
 			}
 		}
@@ -564,7 +580,12 @@ if(typeof window.matchMedia == "undefined"){
 				if($(".project-detail-holder").height() < (window.innerHeight || document.documentElement.clientHeight)){
 					var newtop = ((window.innerHeight || document.documentElement.clientHeight)/2 - $(".project-detail-holder").height()/2) + $(window).scrollTop();
 					//newtop -= Math.round(newtop * .25);
-					$(".project-detail-holder").css("top",newtop + "px");
+
+					//if(!window.matchMedia("(max-width: 30em)").matches && $(".project-detail-holder").hasClass("positioned")){
+					if(!$(".project-detail-holder").hasClass("positioned")){
+						$(".project-detail-holder").addClass("positioned");
+						$(".project-detail-holder").css("top",newtop + "px");
+					}
 				}
 				else{
 					$(".project-detail-holder").css("top",($(window).scrollTop() + 10) + "px");
@@ -1086,6 +1107,8 @@ if(typeof window.matchMedia == "undefined"){
 			}
 
 			var newtop = ((window.innerHeight || document.documentElement.clientHeight)/2) + $(window).scrollTop();
+			console.log(newtop);
+
 			var styles = '#spinnerback {top: ' + newtop+ 'px;}';
 			styles += '#spinnerback.hidden { top: ' +  ($(window).scrollTop()-200)  + 'px; }';
 
@@ -1108,7 +1131,7 @@ if(typeof window.matchMedia == "undefined"){
 
 		}
 
-		createSpinnerCSS();
+		//createSpinnerCSS();
 
 		function restartCharacters(){
 			_.each(animations.collection.models,function(object,key,list){

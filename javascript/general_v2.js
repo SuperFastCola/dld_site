@@ -583,7 +583,7 @@ function processBonus(emailaddress){
 
 $(function(){
 	
-	createSpinner();
+	//createSpinner();
 
  	transitions = $("html").hasClass("csstransitions");
 

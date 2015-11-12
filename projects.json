@@ -1,6 +1,18 @@
 {
 "projects":[
 	{
+		"name":"Teen Beach Beats",
+		"description":"Sound Mixing App",
+		"role":"Conceptual UX Design, Development and Deployment",
+		"tech":"Amazon Web Services, Javascript, HTML5 audio, Jquery, Responsive Web Development, CSS3, JSON, MySQL, PHP, Facebook Integration and Linux Administration",
+		"image":"teenbeach2.jpg",
+		"url":"http://teenbeach2.deluxeluxury.com/",
+		"id":"teenbeach",
+		"type":["html5","css3","javascript","facebook"],
+		"slow":true,
+		"mobile":true
+	},
+	{
 		"name":"Fashion Police",
 		"description":"Social Quiz Sharing Minisite",
 		"role":"Development and Deployment",
@@ -30,7 +42,6 @@
 		"role":"Development and Deployment",
 		"tech":"Amazon Web Services, Javascript, Jquery, CSS3, JSON, MySQL, PHP, Facebook Integration and Linux Administration",
 		"image":"fyi_hyphenated_life.jpg",
-		"url":"http://yourhyphenatedlife.com/?no_redirect",
 		"id":"fyi_2014",
 		"type":["html5","css3","php_mysql","facebook"],
 		"slow":true,
@@ -49,14 +60,6 @@
 		"mobile":true
 	},
 	{
-		"name":"MMA Independent",
-		"description":"Logo Development",
-		"role":"Design",
-		"type":["design"],
-		"image":"mma_logo.jpg",
-		"id":"design_mma"
-	},
-	{
 		"name":"NBCU Super Solution 2.0",
 		"description":"B2B Enrollment and Incentive Site",
 		"role":"Development",
@@ -70,6 +73,16 @@
 		"vimeo":"91997026"
 	},
 	{
+		"name":"A Part of Something Big",
+		"description":"Logo Development",
+		"role":"Design and Illustration",
+		"type":["design"],
+		"image":"aposb_logo.jpg",
+		"url":"images/iapw_logodev.pdf",
+		"id":"aposblogo",
+		"mobile":true
+	},
+	{
 		"name":"The Lonely Missile",
 		"description":"iOS Application - Under Development",
 		"role":"Concept, Design, Illustration and Programming",
@@ -77,7 +90,9 @@
 		"image":"lonely_missle.jpg",
 		"id":"missile",
 		"slow":true,
-		"type":["design","objective_c"]
+		"url":"https://github.com/SuperFastCola/Superfastapp",
+		"type":["design","objective_c"],
+		"mobile":true
 	},
 	{
 		"name":"HBO - Play the Boardwalk Game",
@@ -93,41 +108,6 @@
 		"vimeo":"91887070"
 	},
 	{
-		"name":"Main Street Theatre Tucker",
-		"description":"Logo Development",
-		"role":"Design",
-		"type":["design"],
-		"image":"mstt_logo.jpg",
-		"id":"design_mstt"
-	},
-	{
-		"name":"Cox Communications",
-		"description":"Flash Facebook Application",
-		"role":"UX Design, Development Direction, Facebook Integration and Programming",
-		"tech":"Actionscript 3, Facebook API, JSON integration, Mapquest API and PHP",
-		"image":"showtime_homeland_facebook_app.jpg",
-		"url":"https://www.facebook.com/hothouseinc/app_401588523228531",
-		"type":["flash", "design","php_mysql","facebook"],
-		"id":"homeland",
-		"vimeo":"90499801"
-	},
-	{
-		"name":"A Part of Something Big",
-		"description":"E-Commerce Site Design",
-		"role":"Design and Illustration",
-		"type":["design"],
-		"image":"iapw_store_home_v5.jpg",
-		"id":"design1"
-	},
-	{
-		"name":"MyButler.com",
-		"description":"E-Commerce Portal Design",
-		"role":"Design and Illustration",
-		"type":["design"],
-		"image":"intermarche_final_comp2.jpg",
-		"id":"design2"
-	},
-	{
 		"name":"G4TV",
 		"description":"Promotion Site",
 		"role":"Design",
@@ -135,84 +115,7 @@
 		"image":"g4_e3_2010_mock1.jpg",
 		"id":"design3"
 	},
-	{
-		"name":"Spivey Hall",
-		"description":"Site Design",
-		"role":"Design",
-		"type":["design"],
-		"image":"spivey_hall_mock2.jpg",
-		"id":"design4"
-	},
-	{
-		"name":"Bell Canada",
-		"description":"Customer Portal Design",
-		"role":"Design",
-		"type":["design"],
-		"image":"bell_canada.jpg",
-		"id":"design5"
-	},
-	{
-		"name":"A Part of Something Big",
-		"description":"Catalog Mailer",
-		"role":"Design",
-		"type":["design"],
-		"image":"aposb_mailer_fall09_v11_pt4.jpg",
-		"id":"design7"
-	},
-	{
-		"name":"Big Ten Network",
-		"description":"Digital Billboard Campaign",
-		"role":"Design",
-		"image":"billboardmock_detroit.jpg",
-		"type":["design"],
-		"id":"bigtenbillboard"
-	},
-	{
-		"name":"Style Network",
-		"description":"Minisite Design",
-		"role":"Design",
-		"image":"style_ruby_landing_v3-01.jpg",
-		"type":["design"],
-		"id":"rubycity"
-	},
-	{
-		"name":"Cox - Join Nucky's Crew",
-		"description":"Mobile Compatible, Desktop Targeted Facebook Page Tab App",
-		"role":"Development",
-		"tech":"HTML, CSS3, JSON, PHP, Facebook API",
-		"image":"nuckys_crew.jpg",
-		"url":"https://www.hothousesecure.com/2013BWE/jtn_cox/",
-		"type":["html5","css3","php_mysql","facebook","twitter"],
-		"id":"joincrew",
-		"slow":true,
-		"mobile":true
-	},
-	{
-		"name":"G4 Tv",
-		"description":"Flash video site with HTML 5 video fallback.",
-		"role":"Design, Development and Integration",
-		"tech":"Javascript, JQuery, swfObject, Flowplayer, CSS2, PHP4 and HTML4 &amp; 5. SmartPhone and iPad Friendly",
-		"image":"g4e3allaccess2011.jpg",
-		"url":"http://www.deluxeluxury.com/work/g4e32011/",
-		"type":["html5","design","php_mysql"],
-		"id":"e3allaccess",
-		"mobile":true,
-		"vimeo":"91885248"
-	},
-	{
-		"name":"TLC - Randy to the Rescue",
-		"description":"Mobile Compatible, Desktop Targeted Facebook Page Tab App",
-		"role":"Development",
-		"tech":"HTML, CSS3, JSON, PHP, Facebook API",
-		"image":"rttr.jpg",
-		"url":"http://www.deluxeluxury.com/work/rttr/",
-		"type":["html5","css3","php_mysql"],
-		"id":"randyrescue",
-		"slow":true,
-		"mobile":true,
-		"vimeo":"91997025"
-	},
-	{
+		{
 		"name":"ABC Family 25 Days of Christmas",
 		"description":"ActionScript Incentive Shopping Experience",
 		"role":"Design",
@@ -310,6 +213,135 @@
 		"mobile":true
 	},
 	{
+		"name":"Spivey Hall",
+		"description":"Site Design",
+		"role":"Design",
+		"type":["design"],
+		"image":"spivey_hall_mock2.jpg",
+		"id":"design4"
+	},
+	{
+		"name":"Bell Canada",
+		"description":"Customer Portal Design",
+		"role":"Design",
+		"type":["design"],
+		"image":"bell_canada.jpg",
+		"id":"design5"
+	},
+	{
+		"name":"A Part of Something Big",
+		"description":"Catalog Mailer",
+		"role":"Design",
+		"type":["design"],
+		"image":"aposb_mailer_fall09_v11_pt4.jpg",
+		"url":"images/aposb_mailer_fall10.pdf",
+		"id":"design7",
+		"mobile":true
+	},
+	{
+		"name":"Big Ten Network",
+		"description":"Digital Billboard Campaign",
+		"role":"Design",
+		"image":"billboardmock_detroit.jpg",
+		"type":["design"],
+		"id":"bigtenbillboard"
+	},
+	{
+		"name":"Style Network",
+		"description":"Minisite Design",
+		"role":"Design",
+		"image":"style_ruby_landing_v3-01.jpg",
+		"type":["design"],
+		"id":"rubycity"
+	},
+	{
+		"name":"Cox - Join Nucky's Crew",
+		"description":"Mobile Compatible, Desktop Targeted Facebook Page Tab App",
+		"role":"Development",
+		"tech":"HTML, CSS3, JSON, PHP, Facebook API",
+		"image":"nuckys_crew.jpg",
+		"url":"https://www.hothousesecure.com/2013BWE/jtn_cox/",
+		"type":["html5","css3","php_mysql","facebook","twitter"],
+		"id":"joincrew",
+		"slow":true,
+		"mobile":true
+	},
+	
+	{
+		"name":"Cox Communications",
+		"description":"Flash Facebook Application",
+		"role":"UX Design, Development Direction, Facebook Integration and Programming",
+		"tech":"Actionscript 3, Facebook API, JSON integration, Mapquest API and PHP",
+		"image":"showtime_homeland_facebook_app.jpg",
+		"url":"https://www.facebook.com/hothouseinc/app_401588523228531",
+		"type":["flash", "design","php_mysql","facebook"],
+		"id":"homeland",
+		"vimeo":"90499801"
+	},
+	{
+		"name":"A Part of Something Big",
+		"description":"E-Commerce Site Design",
+		"role":"Design and Illustration",
+		"type":["design"],
+		"image":"iapw_store_home_v5.jpg",
+		"id":"design1"
+	},
+	{
+		"name":"MyButler.com",
+		"description":"E-Commerce Portal Design",
+		"role":"Design and Illustration",
+		"type":["design"],
+		"image":"intermarche_final_comp2.jpg",
+		"id":"design2"
+	},
+	{
+		"name":"Main Street Theatre Tucker",
+		"description":"Logo Development",
+		"role":"Design",
+		"type":["design"],
+		"image":"mstt_logo.jpg",
+		"id":"design_mstt"
+	},
+	{
+		"name":"MMA Independent",
+		"description":"Logo Development",
+		"role":"Design",
+		"type":["design"],
+		"image":"mma_logo.jpg",
+		"id":"design_mma"
+	},
+	{
+		"name":"G4 Tv",
+		"description":"Flash video site with HTML 5 video fallback.",
+		"role":"Design, Development and Integration",
+		"tech":"Javascript, JQuery, swfObject, Flowplayer, CSS2, PHP4 and HTML4 &amp; 5. SmartPhone and iPad Friendly",
+		"image":"g4e3allaccess2011.jpg",
+		"url":"http://www.deluxeluxury.com/work/g4e32011/",
+		"type":["html5","design","php_mysql"],
+		"id":"e3allaccess",
+		"mobile":true,
+		"vimeo":"91885248"
+	},
+	{
+		"name":"TLC - Randy to the Rescue",
+		"description":"Mobile Compatible, Desktop Targeted Facebook Page Tab App",
+		"role":"Development",
+		"tech":"HTML, CSS3, JSON, PHP, Facebook API",
+		"image":"rttr.jpg",
+		"url":"http://www.deluxeluxury.com/work/rttr/",
+		"type":["html5","css3","php_mysql"],
+		"id":"randyrescue",
+		"slow":true,
+		"mobile":true,
+		"vimeo":"91997025"
+	},
+	{
+		"name":"Personal",
+		"image":"haunted_house.jpg",
+		"type":["illo"],
+		"id":"illo11"
+	},
+	{
 		"name":"Pearson Longman",
 		"image":"bad_school.jpg",
 		"type":["illo"],
@@ -369,12 +401,6 @@
 		"image":"girl_cafe4.jpg",
 		"type":["illo"],
 		"id":"illo10"
-	},
-	{
-		"name":"Personal - In Process",
-		"image":"haunted_house.jpg",
-		"type":["illo"],
-		"id":"illo11"
 	},
 	{
 		"name":"Personal",
