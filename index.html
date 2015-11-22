@@ -14,7 +14,7 @@
 <body ng-app="projectTriage" ng-controller="listProjects">	
 
 	<div class="navigation" ng-class="{showing: showNav}" >
-		<button  ng-repeat="x in filteredItems = (projects | filter:{'type':(!!selectedType || undefined || '!illo')})" ng-click="setType($index)" ng-class="{selected: isActive($index)}">{{ x.name }}</button>
+		<button ng-repeat="x in filteredItems = (projects | filter:{'type':(!!selectedType || undefined || '!illo')})" ng-click="setType($index)" ng-class="{selected: isActive($index)}">{{ x.name }}</button>
 	</div>
 
 	<div class="container" ng-class="{showing: showNav}">
