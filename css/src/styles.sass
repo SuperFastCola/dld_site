@@ -1,0 +1,260 @@
+// http://meyerweb.com/eric/tools/css/reset/ 
+// v2.0 | 20110126
+// License: none (public domain)
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video 
+	margin: 0
+	padding: 0
+	border: 0
+	font-size: 100%
+	font: inherit
+	vertical-align: baseline
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section 
+	display: block
+
+body 
+	line-height: 1
+
+ol, ul 
+	list-style: none
+
+blockquote, q
+	quotes: none
+
+blockquote:before, blockquote:after,q:before, q:after 
+	content: ''
+	content: none
+
+table 
+	border-collapse: collapse
+	border-spacing: 0
+
+//https://perishablepress.com/lessons-learned-concerning-the-clearfix-css-hack/
+.clearfix:after
+	content: "."
+	display: block
+	height: 0
+	clear: both
+	visibility: hidden
+
+.clearfix 
+	display: inline-block
+
+// Hides from IE-mac \
+* html .clearfix 
+	height: 1%
+
+// End hide from IE-mac
+.clearfix 
+	display: block
+
+//////////////////////////////////////////////////////////////////
+//user defined functions
+=backColor($color)
+	background-color: $color
+
+=borderRadius($radius)
+	-webkit-border-radius: $radius
+	-moz-border-radius:    $radius
+	-ms-border-radius:     $radius
+	border-radius:         $radius
+
+=textSizeAttributes()
+	text-size-adjust: none
+	-ms-text-size-adjust: none
+	-webkit-text-size-adjust: none
+	-webkit-font-smoothing: antialiased
+
+=backpos($left: 0px, $top: 0px)
+	background-position: $left $top
+	background-repeat: no-repeat
+
+=transProp($prop:opacity, $time:.25s)
+	-webkit-transition: $prop $time
+	-moz-transition: $prop $time
+	-o-transition: $prop $time
+	transition: $prop $time
+
+=opacity($amt)
+	opacity: $amt
+	-moz-opacity: $amt
+	$msamt: ($amt * 100)
+	filter: "alpha(opacity = #{msamt})"
+
+=back($img, $left: 0px, $top: 0px)
+	background-image: url("../images/#{$img}")
+	background-repeat: no-repeat
+	+backpos($left,$top)
+
+=notSelectable()
+	-webkit-touch-callout: none
+	-webkit-user-select: none
+	-khtml-user-select: none
+	-moz-user-select: none
+	-ms-user-select: none
+	user-select: none
+	-ms-touch-action: none	
+
+=setFont($fontSize: 12px, $color: $main, $family: $fontFamily, $transform: none, $lineHeight: auto, $align: left, $fontWeight: normal, $fontStyle: normal)
+	font-size: $fontSize
+	line-height: $lineHeight
+	font-family: $family
+	font-weight: $fontWeight
+	font-style: $fontStyle
+	text-align: $align
+	text-transform: $transform
+	color: $color
+
+
+=setElement($width: 20px, $height: 20px, $position: relative, $display: block)
+	display: $display
+	position: $position
+	width: $width
+	height: $height
+
+=setPos($left: auto, $top: auto )
+	left: $left
+	top: $top
+
+=bdr($stroke: 1px, $color: red )
+	border: $stroke solid $color
+
+=buttonBehavior($color: #fff)
+	text-decoration: none
+	+opacity(1)
+	+transProp(all,.25s)
+	cursor: pointer
+
+	&:hover
+		+opacity(.7)
+   
+
+//////////////////////////////////////////////////////////////////
+//user defined variables
+$baseFontSize: 14px
+$percent_10_black: rgba(0,0,0,.1)
+$percent_20_black: rgba(0,0,0,.2)
+$percent_30_black: rgba(0,0,0,.3)
+$percent_40_black: rgba(0,0,0,.4)
+$percent_50_black: rgba(0,0,0,.5)
+$percent_60_black: rgba(0,0,0,.6)
+$percent_70_black: rgba(0,0,0,.7)
+$percent_80_black: rgba(0,0,0,.8)
+$percent_90_black: rgba(0,0,0,.9)
+
+$percent_10_white: rgba(255,255,255,.1)
+$percent_20_white: rgba(255,255,255,.2)
+$percent_30_white: rgba(255,255,255,.3)
+$percent_40_white: rgba(255,255,255,.4)
+$percent_50_white: rgba(255,255,255,.5)
+$percent_60_white: rgba(255,255,255,.6)
+$percent_70_white: rgba(255,255,255,.7)
+$percent_80_white: rgba(255,255,255,.8)
+$percent_90_white: rgba(255,255,255,.9)
+
+$headerHeight: 163px
+
+$fontFamily: 'Karla', Arial, Helvetica, sans-serif
+$fontFamilyItalic: 'Karla', Arial, Helvetica, sans-serif
+$fontFamilyBold: 'Oswald', Arial, Helvetica, sans-serif
+$fontFamilyBoldItalic: 'Oswald', Arial, Helvetica, sans-serif
+ 
+
+////////////////////////////////////////////////////////////////// 
+//start of main style definitions  
+
+html, body
+	height: 100%
+
+body
+	font-family: 'Exo', sans-serif
+	font-size: $baseFontSize
+	color: black
+	padding: 0px
+	+textSizeAttributes
+	overflow-x: hidden
+
+.navigation
+	$width: 250px
+	+setElement(250px, 100%, absolute)
+	+setPos(100%,0px)
+	z-index: 20
+	margin-left: 0px
+	+transProp(all, .25s)
+
+	button
+		+setElement(100%, 30px, relative)
+		+bdr(0px)
+		margin-bottom: 4px
+		+backColor($percent_10_black)
+		+buttonBehavior
+		//=setFont($fontSize: 12px, $color: $main, $family: $fontFamily, $transform: none, $lineHeight: auto, $align: left, $fontWeight: normal, $fontStyle: normal)
+
+		+setFont(12px,black,$fontFamily,uppercase,auto,left)
+
+	&.showing
+		margin-left: -($width)
+
+
+.container
+	+setElement(100%, 100%, absolute)
+	+setPos(0px,0px)
+	z-index: 10
+	margin-left: 0px
+	+transProp(all, .25s)
+
+	&.showing
+		margin-left: -(250px)
+
+
+
+#portfolio_header
+	+back("full/cityscape_back.jpg",left,top)
+	+setElement(100%, $headerHeight, relative)
+	background-repeat: repeat-x
+	background-size: auto 88%
+	margin: 0px auto 0px auto
+	overflow: hidden
+	border-bottom: 1px dotted $percent_10_black	
+
+	.dude
+		+setElement(234px, $headerHeight)
+		background-size: auto 100%
+		margin-left: 30px
+		+back("full/dude_back.png",left,20px)
+		z-index: 200
+
+		span
+			$sw: 141px
+			$sh: 94px
+			+setElement($sw,$sh, absolute)
+			+setPos(77%,50%)
+			margin-left: -(58px)
+			margin-top: -(35px)
+			+notSelectable	
+			+setFont(70px,black,$fontFamilyBold,uppercase)
+
+	#hamburger
+		+setElement(40px,40px,absolute)
+		+setPos(100%,15px)
+		margin-left: -(50px)
+		+borderRadius(22px)
+		+backColor($percent_20_black)
+
+		+buttonBehavior
+
+
+		
