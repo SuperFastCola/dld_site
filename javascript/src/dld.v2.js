@@ -20,9 +20,10 @@
 
 	app.controller('listProjects', function($scope,$http) {
 		$scope.projects = null;
+		$scope.types = null;
 		$scope.selectedType = '';
 
-		$scope.createHamburger = function(){
+		$scope.createHamburger = function(rotate){
 			var menu = document.getElementById("hamburger");
 			var c = menu.getContext("2d");
 			var w = 40;
@@ -36,13 +37,8 @@
 
 			menu.width = w
 			menu.height = h;
-			
-			//c.globalAlpha = .5;
-			c.rect(0,0,w,w);
-			//c.fillStyle = "#000";
-			//c.fill();
+			c.clearRect(0,0,w,w);
 			c.globalAlpha = 1;
-
 
 	  		for(var i=0; i<lines;i++){
 	  			var positionY = (i==0)? lineStart : lineStart + (lineSpacing * i);
@@ -53,14 +49,23 @@
 	  			c.lineWidth = lineWidth;
 	  			c.strokeStyle = lineColor;
 	  			c.lineCap="round";
-				c.moveTo(padding,positionY);
-				c.lineTo(w - padding,positionY);
+	  			
+	  			if(typeof rotate != "undefined" && rotate){
+					c.moveTo(positionY,padding);
+					c.lineTo(positionY,w - padding);
+				}
+				else{
+					c.moveTo(padding,positionY);
+					c.lineTo(w - padding,positionY);	
+				}
+
 				c.stroke();
 	  		}	
 	  		
 		}
 
 		$scope.parseResponse = function(response){
+			$scope.types = response.types;
 			$scope.projects = response.projects;
 			$scope.createHamburger();
 		}
@@ -69,11 +74,12 @@
 
 		$scope.navSlider = function(){
 			$scope.showNav = !$scope.showNav;
-			console.log($scope.showNav);
+			$scope.createHamburger($scope.showNav);
 		}
 
 		$scope.setType = function(type,index){
-			$scope.selectedType = index;
+			$scope.selectedType = type;
+			console.log($scope.selectedType);
 		}
 
 		$scope.isActive = function(index) {

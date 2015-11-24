@@ -78,7 +78,7 @@ table
 	-webkit-text-size-adjust: none
 	-webkit-font-smoothing: antialiased
 
-=backpos($left: 0px, $top: 0px)
+=backPos($left: 0px, $top: 0px)
 	background-position: $left $top
 	background-repeat: no-repeat
 
@@ -97,7 +97,7 @@ table
 =back($img, $left: 0px, $top: 0px)
 	background-image: url("../images/#{$img}")
 	background-repeat: no-repeat
-	+backpos($left,$top)
+	+backPos($left,$top)
 
 =notSelectable()
 	-webkit-touch-callout: none
@@ -140,7 +140,27 @@ table
 
 	&:hover
 		+opacity(.7)
+
+=shadow($params: 0px 0px 5px $shadow_color)
+	-moz-box-shadow: $params
+	-webkit-box-shadow: $params
+	box-shadow: $params
    
+=rotate2D($amount)
+	-webkit-transform: rotate($amount)
+	-moz-transform: rotate($amount)
+	-ms-transform: rotate($amount)
+	-o-transform: rotate($amount)
+	transform: rotate($amount)
+
+
+=moveBackWithRotation($z:-1px,$r:0deg)
+	-webkit-transform: translateZ($z) rotateX($r)
+	-moz-transform:  translateZ($z) rotateX($r)
+	-ms-transform:  translateZ($z) rotateX($r)
+	-o-transform:  translateZ($z) rotateX($r)
+	transform:  translateZ($z) rotateX($r)
+
 
 //////////////////////////////////////////////////////////////////
 //user defined variables
@@ -198,15 +218,23 @@ body
 	button
 		+setElement(100%, 30px, relative)
 		+bdr(0px)
-		margin-bottom: 4px
-		+backColor($percent_10_black)
+		margin-bottom: 0px
+		border-bottom: 1px solid $percent_10_black
+		padding: 4px 0px 4px 15px
+		+backColor(white)
 		+buttonBehavior
 		//=setFont($fontSize: 12px, $color: $main, $family: $fontFamily, $transform: none, $lineHeight: auto, $align: left, $fontWeight: normal, $fontStyle: normal)
-
 		+setFont(12px,black,$fontFamily,uppercase,auto,left)
+
+		&:hover
+			+backColor($percent_10_black)
+
+		&:first-child
+			margin-top: 14px
 
 	&.showing
 		margin-left: -($width)
+		border-left: 1px solid $percent_10_black
 
 
 .container
@@ -218,6 +246,7 @@ body
 
 	&.showing
 		margin-left: -(250px)
+
 
 
 
@@ -253,8 +282,21 @@ body
 		margin-left: -(50px)
 		+borderRadius(22px)
 		+backColor($percent_20_black)
-
 		+buttonBehavior
 
+.project-holder
+	$pw: 25%
+	$ph: 221px
+	+setElement($pw,$ph,relative)
+	float: left
+	overflow: hidden
+
+	.project-item-front
+		+moveBackWithRotation(1px,-180deg)
+		+opacity(0)
+
+	.project-item-back
+		+moveBackWithRotation(-1px,0deg)
+		+opacity(1)
 
 		

@@ -14,17 +14,28 @@
 <body ng-app="projectTriage" ng-controller="listProjects">	
 
 	<div class="navigation" ng-class="{showing: showNav}" >
-		<button ng-repeat="x in filteredItems = (projects | filter:{'type':(!!selectedType || undefined || '!illo')})" ng-click="setType($index)" ng-class="{selected: isActive($index)}">{{ x.name }}</button>
+		<!-- <button ng-repeat="x in filteredItems = (projects | filter:{'type':(!!selectedType || undefined || '!illo')})" ng-click="setType($index)" ng-class="{selected: isActive($index)}">{{ x.name }}</button> -->
+
+		<button ng-repeat="x in types" ng-click="setType(x,$index)" ng-class="{selected: isActive($index)}">{{ x }}</button>
 	</div>
 
 	<div class="container" ng-class="{showing: showNav}">
 		<div class="holder">
 			<div id="portfolio_header">
 				<div class="dude"><span>Hi!</span></div>
-				<canvas id="hamburger" ng-click="navSlider()"></canvas>
+				<canvas id="hamburger" ng-click="navSlider()" ng-class="{showing: showNav}"></canvas>
 			</div>
 
-			<div id="portfolio_area"></div>
+			<div id="portfolio_area">
+				
+				<div class="project-holder" id="{{x.id}}" ng-repeat="x in filteredItems = (projects | filter:{'type':(selectedType)})">
+					<div class="project-item-front" style="{{ }}">
+						<a class="butn project-details-butn hidden">Project Details</a>
+						<div class="project-name">{{ x.name }}</div>
+					</div>
+				</div>
+
+			</div>
 
 		</div>
 	</div>

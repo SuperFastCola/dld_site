@@ -1,4 +1,5 @@
 {
+"types":["résumé","front-end","back-end","mobile-development","print","design","illustration"],
 "projects":[
 	{
 		"name":"Teen Beach Beats",
@@ -8,7 +9,7 @@
 		"image":"teenbeach2.jpg",
 		"url":"http://teenbeach2.deluxeluxury.com/",
 		"id":"teenbeach",
-		"type":["html5","css3","javascript","facebook"],
+		"type":["front-end"],
 		"slow":true,
 		"mobile":true
 	},
@@ -20,7 +21,7 @@
 		"image":"charter_fashion_police.jpg",
 		"url":"http://fashionpolice.deluxeluxury.com/",
 		"id":"fashionpolice",
-		"type":["html5","css3","php_mysql","facebook"],
+		"type":["front-end","back-end"],
 		"slow":true,
 		"mobile":true
 	},
@@ -32,7 +33,7 @@
 		"image":"cnnevodsweeps.jpg",
 		"id":"cnnesweeps",
 		"url":"http://cnnevod.deluxeluxury.com",
-		"type":["html5","css3"],
+		"type":["front-end","back-end"],
 		"slow":true,
 		"mobile":true
 	},
@@ -43,7 +44,7 @@
 		"tech":"Amazon Web Services, Javascript, Jquery, CSS3, JSON, MySQL, PHP, Facebook Integration and Linux Administration",
 		"image":"fyi_hyphenated_life.jpg",
 		"id":"fyi_2014",
-		"type":["html5","css3","php_mysql","facebook"],
+		"type":["front-end","back-end"],
 		"slow":true,
 		"mobile":true
 	},
@@ -55,7 +56,7 @@
 		"image":"ered_worldcup_central.jpg",
 		"url":"http://espnworldcupcentral.com/twc/?no_redirect&dy=165",
 		"id":"espnwcc_2014",
-		"type":["html5","css3","php_mysql","facebook","twitter"],
+		"type":["front-end","back-end"],
 		"slow":true,
 		"mobile":true
 	},
@@ -67,7 +68,7 @@
 		"image":"nbcu_2014.jpg",
 		"url_old":"http://nbcusupersolution.com/2014/demo.php",
 		"id":"nbcu_2014",
-		"type":["html5","css3","php_mysql"],
+		"type":["front-end","back-end"],
 		"slow":true,
 		"mobile":true,
 		"vimeo":"91997026"
@@ -91,7 +92,7 @@
 		"id":"missile",
 		"slow":true,
 		"url":"https://github.com/SuperFastCola/Superfastapp",
-		"type":["design","objective_c"],
+		"type":["design","mobile-development"],
 		"mobile":true
 	},
 	{
@@ -101,7 +102,7 @@
 		"tech":"HTML5 Canvas, Request Animation Frame, CSS3, JSON, PHP",
 		"image":"playtheboardwalk.jpg",
 		"url":"https://hothousesecure.com/playtheboardwalk/",
-		"type":["html5","css3","php_mysql","facebook","twitter"],
+		"type":["front-end","back-end"],
 		"id":"playboardwalk",
 		"slow":true,
 		"mobile":true,
@@ -148,7 +149,7 @@
 		"tech":"Actionscript 2, PHP 4, CSS 2, HTML 4, Video and XML Feed Setup/Processing",
 		"image":"nba_digital2.jpg",
 		"url":"http://www.deluxeluxury.com/work/nbadigital/",
-		"type":["design","flash"],
+		"type":["design","front-end"],
 		"id":"nbcdigital",
 		"vimeo":"91886068"
 	},
@@ -159,7 +160,7 @@
 		"tech":"Actionscript 2 and XML Feed Setup/Processing",
 		"image":"mlb_postseason_2010.jpg",
 		"url":"http://www.deluxeluxury.com/work/mlb2010/",
-		"type":["flash","design"],
+		"type":["front-end","design"],
 		"id":"mlbplayoffs",
 		"vimeo":"91886066"
 	},
@@ -170,7 +171,7 @@
 		"tech":"HTML, CSS3, JSON, PHP, Facebook API",
 		"image":"usa_who_am_i.jpg",
 		"url":"http://hothousesecure.com/usa/",
-		"type":["html5","css3","php_mysql","facebook"],
+		"type":["front-end","back-end"],
 		"id":"usawho",
 		"slow":true,
 		"mobile":true,
@@ -183,7 +184,7 @@
 		"tech":"Actionscript 2, Video and XML Feed Setup/Processing",
 		"image":"youtube_960x250_pg2-01.jpg",
 		"url":"http://www.deluxeluxury.com/work/youtube_nba/",
-		"type":["flash", "design"],
+		"type":["front-end", "design"],
 		"id":"tsyoutube",
 		"slow":true,
 		"vimeo":"91885853"	
@@ -195,7 +196,7 @@
 		"tech":"Kinetic.js, HTML 5, CSS3, Facebook API, JSON integration and PHP",
 		"image":"cox_claim_the_throne.jpg",
 		"url":"http://www.hothousesecure.com/claimthethrone/",
-		"type":["html5","design","css3","php_mysql","facebook","twitter"],
+		"type":["front-end","design","back-end"],
 		"id":"hbothrone",
 		"slow":true,
 		"mobile":true,
@@ -208,7 +209,7 @@
 		"tech":"Actionscript 2, CSS 2, HTML 4",
 		"image":"tnt_sportsletter.jpg",
 		"url":"http://www.deluxeluxury.com/work/sportsletter/",
-		"type":["flash", "design"],
+		"type":["front-end", "design"],
 		"id":"tbsletter",
 		"mobile":true
 	},
@@ -261,7 +262,7 @@
 		"tech":"HTML, CSS3, JSON, PHP, Facebook API",
 		"image":"nuckys_crew.jpg",
 		"url":"https://www.hothousesecure.com/2013BWE/jtn_cox/",
-		"type":["html5","css3","php_mysql","facebook","twitter"],
+		"type":["front-end","back-end"],
 		"id":"joincrew",
 		"slow":true,
 		"mobile":true
@@ -273,7 +274,7 @@
 		"role":"UX Design, Development Direction, Facebook Integration and Programming",
 		"tech":"Actionscript 3, Facebook API, JSON integration, Mapquest API and PHP",
 		"image":"showtime_homeland_facebook_app.jpg",
-		"type":["flash", "design","php_mysql","facebook"],
+		"type":["front-end", "design","back-end"],
 		"id":"homeland",
 		"vimeo":"90499801"
 	},
@@ -316,7 +317,7 @@
 		"tech":"Javascript, JQuery, swfObject, Flowplayer, CSS2, PHP4 and HTML4 &amp; 5. SmartPhone and iPad Friendly",
 		"image":"g4e3allaccess2011.jpg",
 		"url":"http://www.deluxeluxury.com/work/g4e32011/",
-		"type":["html5","design","php_mysql"],
+		"type":["front-end","design","back-end"],
 		"id":"e3allaccess",
 		"mobile":true,
 		"vimeo":"91885248"
@@ -328,7 +329,7 @@
 		"tech":"HTML, CSS3, JSON, PHP, Facebook API",
 		"image":"rttr.jpg",
 		"url":"http://www.deluxeluxury.com/work/rttr/",
-		"type":["html5","css3","php_mysql"],
+		"type":["front-end","back-end"],
 		"id":"randyrescue",
 		"slow":true,
 		"mobile":true,

@@ -75,8 +75,10 @@ body {
   width: 100%;
   height: 30px;
   border: 0px solid red;
-  margin-bottom: 4px;
-  background-color: rgba(0, 0, 0, 0.1);
+  margin-bottom: 0px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 4px 0px 4px 15px;
+  background-color: white;
   text-decoration: none;
   opacity: 1;
   -moz-opacity: 1;
@@ -98,8 +100,13 @@ body {
   opacity: 0.7;
   -moz-opacity: 0.7;
   filter: "alpha(opacity = msamt)"; }
+.navigation button:hover {
+  background-color: rgba(0, 0, 0, 0.1); }
+.navigation button:first-child {
+  margin-top: 14px; }
 .navigation.showing {
-  margin-left: -250px; }
+  margin-left: -250px;
+  border-left: 1px solid rgba(0, 0, 0, 0.1); }
 
 .container {
   display: block;
@@ -192,4 +199,30 @@ body {
 #portfolio_header #hamburger:hover {
   opacity: 0.7;
   -moz-opacity: 0.7;
+  filter: "alpha(opacity = msamt)"; }
+
+.project-holder {
+  display: block;
+  position: relative;
+  width: 25%;
+  height: 221px;
+  float: left;
+  overflow: hidden; }
+.project-holder .project-item-front {
+  -webkit-transform: translateZ(1px) rotateX(-180deg);
+  -moz-transform: translateZ(1px) rotateX(-180deg);
+  -ms-transform: translateZ(1px) rotateX(-180deg);
+  -o-transform: translateZ(1px) rotateX(-180deg);
+  transform: translateZ(1px) rotateX(-180deg);
+  opacity: 0;
+  -moz-opacity: 0;
+  filter: "alpha(opacity = msamt)"; }
+.project-holder .project-item-back {
+  -webkit-transform: translateZ(-1px) rotateX(0deg);
+  -moz-transform: translateZ(-1px) rotateX(0deg);
+  -ms-transform: translateZ(-1px) rotateX(0deg);
+  -o-transform: translateZ(-1px) rotateX(0deg);
+  transform: translateZ(-1px) rotateX(0deg);
+  opacity: 1;
+  -moz-opacity: 1;
   filter: "alpha(opacity = msamt)"; }
