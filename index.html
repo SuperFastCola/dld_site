@@ -28,8 +28,8 @@
 
 			<div id="portfolio_area">
 				
-				<div class="project-holder" id="{{x.id}}" ng-repeat="x in filteredItems = (projects | filter:{'type':(selectedType)})">
-					<div class="project-item-front" style="{{ }}">
+				<div class="project-holder" id="{{x.id}}" ng-style="setBackgroundThumbnailImage(x.image)" ng-repeat="x in filteredItems = (projects | filter:getFilter())">
+					<div class="project-item-front">
 						<a class="butn project-details-butn hidden">Project Details</a>
 						<div class="project-name">{{ x.name }}</div>
 					</div>

@@ -204,12 +204,27 @@ body {
 .project-holder {
   display: block;
   position: relative;
-  width: 25%;
+  width: 19.75%;
   height: 221px;
   float: left;
   overflow: hidden;
   min-width: 221px;
-  background-color: rgba(0, 0, 0, 0.1); }
+  background-size: 100% auto;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 1px solid white;
+  text-decoration: none;
+  opacity: 1;
+  -moz-opacity: 1;
+  filter: "alpha(opacity = msamt)";
+  -webkit-transition: all 0.25s;
+  -moz-transition: all 0.25s;
+  -o-transition: all 0.25s;
+  transition: all 0.25s;
+  cursor: pointer; }
+.project-holder:hover {
+  opacity: 0.7;
+  -moz-opacity: 0.7;
+  filter: "alpha(opacity = msamt)"; }
 .project-holder .project-item-front {
   -webkit-transform: translateZ(1px) rotateX(-180deg);
   -moz-transform: translateZ(1px) rotateX(-180deg);

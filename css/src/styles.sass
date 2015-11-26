@@ -285,13 +285,16 @@ body
 		+buttonBehavior
 
 .project-holder
-	$pw: 25%
+	$pw: (100%/5) - .25%
 	$ph: 221px
 	+setElement($pw,$ph,relative)
 	float: left
 	overflow: hidden
 	min-width: $ph
+	background-size: 100% auto
 	+backColor($percent_10_black)
+	+bdr(1px, white)
+	+buttonBehavior
 
 	.project-item-front
 		+moveBackWithRotation(1px,-180deg)

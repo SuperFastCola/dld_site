@@ -22,6 +22,7 @@
 		$scope.projects = null;
 		$scope.types = null;
 		$scope.selectedType = '';
+		$scope.excludeIllos = true;
 
 		$scope.createHamburger = function(rotate){
 			var menu = document.getElementById("hamburger");
@@ -64,9 +65,25 @@
 	  		
 		}
 
+		$scope.setBackgroundThumbnailImage = function(source){
+			var images_sub_directory = "images/full/";
+
+			console.log(window.matchMedia("(min-width: 480px)"));
+			console.log(window.matchMedia("(max-width: 480px)"));
+
+			if(typeof window.matchMedia != "undefined"){
+				images_sub_directory = "images/" + ((!window.matchMedia("(min-width: 480px)").matches && window.matchMedia("(max-width: 480px)").matches)?"mobile":"full")  + "/";
+			}
+
+			images_sub_directory += "thumbs/";
+
+			return {'background-image':'url(' + String(images_sub_directory + source) + ')'};
+		}
+
 		$scope.parseResponse = function(response){
 			$scope.types = response.types;
 			$scope.projects = response.projects;
+			console.log($scope.projects);
 			$scope.createHamburger();
 		}
 
@@ -79,11 +96,21 @@
 
 		$scope.setType = function(type,index){
 			$scope.selectedType = type;
-			console.log($scope.selectedType);
+			$scope.navSlider();
+		}
+
+		$scope.getFilter = function(){
+			if($scope.selectedType==="illustration"){
+				return {'type':($scope.selectedType)};
+			}
+			else{
+				return {"type": ($scope.selectedType || undefined || '!illustration')};	
+			}
+
 		}
 
 		$scope.isActive = function(index) {
-			return $scope.selectedType === index;
+			//return $scope.selectedType === index;
 		};
 
 		$http.get("/projects.json").success($scope.parseResponse);

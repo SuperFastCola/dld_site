@@ -77,7 +77,7 @@
 		"name":"A Part of Something Big",
 		"description":"Logo Development",
 		"role":"Design and Illustration",
-		"type":["design"],
+		"type":["design","print"],
 		"image":"aposb_logo.jpg",
 		"url":"images/iapw_logodev.pdf",
 		"id":"aposblogo",
@@ -128,7 +128,7 @@
 		"name":"Hallmark Channel",
 		"description":"Point of Purchase Sweepstakes Display",
 		"role":"Design",
-		"type":["design"],
+		"type":["design","print"],
 		"image":"living-it-up-with-martha-2011.jpg",
 		"id":"martha",
 		"vimeo":"91886564"
@@ -233,7 +233,7 @@
 		"name":"A Part of Something Big",
 		"description":"Catalog Mailer",
 		"role":"Design",
-		"type":["design"],
+		"type":["design","print"],
 		"image":"aposb_mailer_fall09_v11_pt4.jpg",
 		"url":"images/aposb_mailer_fall10.pdf",
 		"id":"design7",
@@ -298,7 +298,7 @@
 		"name":"Main Street Theatre Tucker",
 		"description":"Logo Development",
 		"role":"Design",
-		"type":["design"],
+		"type":["design","print"],
 		"image":"mstt_logo.jpg",
 		"id":"design_mstt"
 	},
@@ -306,7 +306,7 @@
 		"name":"MMA Independent",
 		"description":"Logo Development",
 		"role":"Design",
-		"type":["design"],
+		"type":["design","print"],
 		"image":"mma_logo.jpg",
 		"id":"design_mma"
 	},
@@ -338,152 +338,152 @@
 	{
 		"name":"Personal",
 		"image":"haunted_house.jpg",
-		"type":["illo"],
+		"type":["illustration"],
 		"id":"illo11"
 	},
 	{
 		"name":"Pearson Longman",
 		"image":"bad_school.jpg",
-		"type":["illo"],
+		"type":["illustration"],
 		"id":"illo1"
 	},
 	{
 		"name":"Personal",
 		"image":"business_is_good.jpg",
-		"type":["illo"],
+		"type":["illustration"],
 		"id":"illo2"
 	},
 	{
 		"name":"MyButler.com",
 		"image":"bw_clips.jpg",
-		"type":["illo"],
+		"type":["illustration"],
 		"id":"illo3"
 	},
 	{
 		"name":"Personal",
 		"image":"casino.jpg",
-		"type":["illo"],
+		"type":["illustration"],
 		"id":"illo4"
 	},
 	{
 		"name":"Solo Communications",
 		"description":"Website Design and illustration",
 		"image":"cqit.jpg",
-		"type":["illo"],
+		"type":["illustration"],
 		"id":"illo5"
 	},
 	{
 		"name":"MyButler.com",
 		"image":"disco_burt.jpg",
-		"type":["illo"],
+		"type":["illustration"],
 		"id":"illo6"
 	},
 	{
 		"name":"Pearson Longman",
 		"image":"final_doctor_spotfinal.jpg",
-		"type":["illo"],
+		"type":["illustration"],
 		"id":"illo7"
 	},
 	{
 		"name":"La Presse",
 		"image":"final_jour_famille.jpg",
-		"type":["illo"],
+		"type":["illustration"],
 		"id":"illo8"
 	},
 	{
 		"name":"La Presse",
 		"image":"final_retraite_femme2.jpg",
-		"type":["illo"],
+		"type":["illustration"],
 		"id":"illo9"
 	},
 	{
 		"name":"Personal",
 		"image":"girl_cafe4.jpg",
-		"type":["illo"],
+		"type":["illustration"],
 		"id":"illo10"
 	},
 	{
 		"name":"Personal",
 		"image":"highway.jpg",
-		"type":["illo"],
+		"type":["illustration"],
 		"id":"illo12"
 	},
 	{
 		"name":"Pearson Longman",
 		"image":"kids_fighting.jpg",
-		"type":["illo"],
+		"type":["illustration"],
 		"id":"illo13"
 	},
 	{
 		"name":"La Presse",
 		"image":"last_anywhere.jpg",
-		"type":["illo"],
+		"type":["illustration"],
 		"id":"illo14"
 	},
 	{
 		"name":"La Presse",
 		"image":"last_dealer.jpg",
-		"type":["illo"],
+		"type":["illustration"],
 		"id":"illo15"
 	},
 	{
 		"name":"La Presse",
 		"image":"last_identite_vol.jpg",
-		"type":["illo"],
+		"type":["illustration"],
 		"id":"illo16"
 	},
 	{
 		"name":"La Presse",
 		"image":"last_maison_cher.jpg",
-		"type":["illo"],
+		"type":["illustration"],
 		"id":"illo17"
 	},
 	{
 		"name":"La Presse",
 		"image":"last_moving.jpg",
-		"type":["illo"],
+		"type":["illustration"],
 		"id":"illo18"
 	},
 	{
 		"name":"La Presse",
 		"image":"last_surrendette_4.jpg",
-		"type":["illo"],
+		"type":["illustration"],
 		"id":"illo19"
 	},
 	{
 		"name":"La Presse",
 		"image":"last_trop_assure.jpg",
-		"type":["illo"],
+		"type":["illustration"],
 		"id":"illo20"
 	},
 	{
 		"name":"La Presse",
 		"image":"last_valeur.jpg",
-		"type":["illo"],
+		"type":["illustration"],
 		"id":"illo21"
 	},
 	{
 		"name":"Solo Communications",
 		"image":"lecavalier_transport.jpg",
-		"type":["illo"],
+		"type":["illustration"],
 		"id":"illo22"
 	},
 	{
 		"name":"Personal",
 		"image":"lonely_missle.jpg",
-		"type":["illo"],
+		"type":["illustration"],
 		"id":"illo23"
 	},
 	{
 		"name":"Montreal Choppers",
 		"image":"montreal_choppers.jpg",
-		"type":["illo"],
+		"type":["illustration"],
 		"id":"illo24"
 	},
 	{
 		"name":"Personal",
 		"image":"taxes3.jpg",
-		"type":["illo"],
+		"type":["illustration"],
 		"id":"illo25"
 	}
 
