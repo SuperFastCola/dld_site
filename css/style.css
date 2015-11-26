@@ -207,7 +207,9 @@ body {
   width: 25%;
   height: 221px;
   float: left;
-  overflow: hidden; }
+  overflow: hidden;
+  min-width: 221px;
+  background-color: rgba(0, 0, 0, 0.1); }
 .project-holder .project-item-front {
   -webkit-transform: translateZ(1px) rotateX(-180deg);
   -moz-transform: translateZ(1px) rotateX(-180deg);
