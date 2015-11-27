@@ -46,7 +46,7 @@ html, body {
   height: 100%; }
 
 body {
-  font-family: "Exo", sans-serif;
+  font-family: "Karla", Arial, Helvetica, sans-serif;
   font-size: 14px;
   color: black;
   padding: 0px;
@@ -202,10 +202,6 @@ body {
   filter: "alpha(opacity = msamt)"; }
 
 .project-holder {
-  display: block;
-  position: relative;
-  width: 19.75%;
-  height: 221px;
   float: left;
   overflow: hidden;
   min-width: 221px;
@@ -225,21 +221,66 @@ body {
   opacity: 0.7;
   -moz-opacity: 0.7;
   filter: "alpha(opacity = msamt)"; }
-.project-holder .project-item-front {
-  -webkit-transform: translateZ(1px) rotateX(-180deg);
-  -moz-transform: translateZ(1px) rotateX(-180deg);
-  -ms-transform: translateZ(1px) rotateX(-180deg);
-  -o-transform: translateZ(1px) rotateX(-180deg);
-  transform: translateZ(1px) rotateX(-180deg);
-  opacity: 0;
-  -moz-opacity: 0;
-  filter: "alpha(opacity = msamt)"; }
-.project-holder .project-item-back {
-  -webkit-transform: translateZ(-1px) rotateX(0deg);
-  -moz-transform: translateZ(-1px) rotateX(0deg);
-  -ms-transform: translateZ(-1px) rotateX(0deg);
-  -o-transform: translateZ(-1px) rotateX(0deg);
-  transform: translateZ(-1px) rotateX(0deg);
-  opacity: 1;
-  -moz-opacity: 1;
-  filter: "alpha(opacity = msamt)"; }
+@media only screen and (min-width: 1115px) {
+  .project-holder {
+    display: block;
+    position: relative;
+    width: 19.75%;
+    height: 221px;
+    border: 1px solid white; } }
+@media only screen and (min-width: 892px) and (max-width: 1115px) {
+  .project-holder {
+    display: block;
+    position: relative;
+    width: 24.75%;
+    height: 221px;
+    border: 1px solid white; } }
+@media only screen and (max-width: 892px) {
+  .project-holder {
+    display: block;
+    position: relative;
+    width: 32.98333%;
+    height: 221px;
+    border: 1px solid white; } }
+@media only screen and (max-width: 669px) {
+  .project-holder {
+    display: block;
+    position: relative;
+    width: 49.55%;
+    height: 221px;
+    border: 1px solid white; } }
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  .project-holder {
+    display: block;
+    position: relative;
+    width: 99.75%;
+    height: 221px;
+    border: 1px solid magenta; } }
+.project-holder .project-name {
+  display: block;
+  position: absolute;
+  width: 80%;
+  height: 10px;
+  font-size: 12px;
+  line-height: auto;
+  font-family: "Oswald", Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  text-align: center;
+  text-transform: uppercase;
+  color: black;
+  left: 50%;
+  top: 14px;
+  -webkit-transition: all 0.25s;
+  -moz-transition: all 0.25s;
+  -o-transition: all 0.25s;
+  transition: all 0.25s;
+  background-color: rgba(255, 255, 255, 0.9);
+  margin-left: -40%;
+  padding: 8px;
+  -webkit-border-radius: 13px;
+  -moz-border-radius: 13px;
+  -ms-border-radius: 13px;
+  border-radius: 13px; }
+.project-holder .project-name.hidden {
+  top: -30px; }

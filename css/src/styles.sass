@@ -200,7 +200,7 @@ html, body
 	height: 100%
 
 body
-	font-family: 'Exo', sans-serif
+	font-family: $fontFamily
 	font-size: $baseFontSize
 	color: black
 	padding: 0px
@@ -223,7 +223,6 @@ body
 		padding: 4px 0px 4px 15px
 		+backColor(white)
 		+buttonBehavior
-		//=setFont($fontSize: 12px, $color: $main, $family: $fontFamily, $transform: none, $lineHeight: auto, $align: left, $fontWeight: normal, $fontStyle: normal)
 		+setFont(12px,black,$fontFamily,uppercase,auto,left)
 
 		&:hover
@@ -284,10 +283,9 @@ body
 		+backColor($percent_20_black)
 		+buttonBehavior
 
-.project-holder
-	$pw: (100%/5) - .25%
+.project-holder	
 	$ph: 221px
-	+setElement($pw,$ph,relative)
+	$withBorders: $ph + 2px
 	float: left
 	overflow: hidden
 	min-width: $ph
@@ -296,12 +294,60 @@ body
 	+bdr(1px, white)
 	+buttonBehavior
 
-	.project-item-front
-		+moveBackWithRotation(1px,-180deg)
-		+opacity(0)
+	=projectTiles($height: $ph,$divider: 5,$borderColor: null, $borderPercent:0.25% )
+		$width: (100%/$divider) - $borderPercent
+		+setElement($width,$height,relative)
 
-	.project-item-back
-		+moveBackWithRotation(-1px,0deg)
-		+opacity(1)
+		@if $borderColor != null
+			+bdr(1px,$borderColor)
+		@else
+			+bdr(1px,white)
+		
+		
+
+	$div: 5
+	@media only screen and (min-width: $withBorders * $div)
+		+projectTiles($ph,$div)
+
+	$prevDiv: $div
+	$div: 4
+	@media only screen and (min-width: $withBorders * $div) and (max-width: $withBorders * $prevDiv)
+		+projectTiles($ph,$div)
+
+	$prevDiv: $div
+	$div: 3
+	@media only screen and (max-width: $withBorders * $prevDiv)
+		+projectTiles($ph,$div,null,.35%)
+
+	$prevDiv: $div
+	$div: 2
+	@media only screen and (max-width: $withBorders * $prevDiv)
+		+projectTiles($ph,$div,null,.45%)
+	
+	@media only screen and (min-width: 320px) and (max-width: 480px)
+		+projectTiles($ph,1,magenta,.25%)			
+	
+
+
+	.project-name
+		$pnh: 26px
+		$pnp: 8px
+		$calculatedHeight: $pnh - ($pnp*2)
+		+setElement(80%,$calculatedHeight,absolute)
+		//=setFont($fontSize: 12px, $color: $main, $family: $fontFamily, $transform: none, $lineHeight: auto, $align: left, $fontWeight: normal, $fontStyle: normal)
+
+		+setFont(12px,black,$fontFamilyBold,uppercase,auto,center)
+		+setPos(50%,14px)
+		+transProp(all,.25s)
+		+backColor($percent_90_white)
+		margin-left: -40%
+		padding: $pnp
+		+borderRadius($pnh/2)
+
+		&.hidden
+			top: -30px
+			
+
+
 
 		
