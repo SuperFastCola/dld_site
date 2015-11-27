@@ -19,7 +19,7 @@
 		<button ng-repeat="x in types" ng-click="setType(x,$index)" ng-class="{selected: isActive($index)}">{{ x }}</button>
 	</div>
 
-	<div class="container" ng-class="{showing: showNav}">
+	<div class="container" autoresize="" ng-class="{showing: showNav}">
 		<div class="holder">
 			<div id="portfolio_header">
 				<div class="dude"><span>Hi!</span></div>
@@ -28,7 +28,7 @@
 
 			<div id="portfolio_area">
 				
-				<div class="project-holder" id="{{x.id}}" ng-style="setBackgroundThumbnailImage(x.image)" ng-repeat="x in filteredItems = (projects | filter:getFilter())">
+				<div class="project-holder" id="{{x.id}}" ng-style="setBackgroundThumbnailImage(x.image,$index)" ng-repeat="x in filteredItems = (projects | filter:getFilter())">
 					<a class="butn project-details-butn hidden">Project Details</a>
 					<div class="project-name">{{ x.name }}</div>
 				</div>

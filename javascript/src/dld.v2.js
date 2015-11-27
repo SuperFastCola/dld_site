@@ -65,15 +65,26 @@
 	  		
 		}
 
-		$scope.setBackgroundThumbnailImage = function(source){
+		$scope.currentDate = new Date();
+		$scope.cacheBuster = 0;
+
+		$scope.setBackgroundThumbnailImage = function(source,index){
+
+			if($scope.cacheBuster===0){
+				$scope.currentDate = new Date();
+				$scope.cacheBuster = $scope.currentDate.getTime();
+			}
+
 			var images_sub_directory = "images/full/";
 
-			console.log(window.matchMedia("(min-width: 480px)"));
-			console.log(window.matchMedia("(max-width: 480px)"));
+			console.log(window.matchMedia("(min-width: 320px)").matches);
+			console.log(window.matchMedia("(max-width: 500px)").matches);
 
 			if(typeof window.matchMedia != "undefined"){
-				images_sub_directory = "images/" + ((!window.matchMedia("(min-width: 480px)").matches && window.matchMedia("(max-width: 480px)").matches)?"mobile":"full")  + "/";
+				images_sub_directory = "images/" + ((window.matchMedia("(min-width: 320px)").matches && window.matchMedia("(max-width: 480px)").matches)?"mobile":"full")  + "/";
 			}
+			
+			source += ('?=' + $scope.cacheBuster);
 
 			images_sub_directory += "thumbs/";
 
@@ -83,7 +94,6 @@
 		$scope.parseResponse = function(response){
 			$scope.types = response.types;
 			$scope.projects = response.projects;
-			console.log($scope.projects);
 			$scope.createHamburger();
 		}
 
@@ -96,6 +106,7 @@
 
 		$scope.setType = function(type,index){
 			$scope.selectedType = type;
+			$scope.cacheBuster = 0;
 			$scope.navSlider();
 		}
 
@@ -115,7 +126,38 @@
 
 		$http.get("/projects.json").success($scope.parseResponse);
 
+
+
 	});
+	
+	//http://nahidulkibria.blogspot.com/2014/10/angullarjs-directive-to-watch-window.html
+	app.directive('autoresize', function($window) {  
+		//passes scope to anonymous function
+	  	return function($scope) {  
+	   			
+				$scope.initializeWindowSize = function() {  
+				$scope.maxHeight = Math.max(  
+	 				document.body.scrollHeight, document.documentElement.scrollHeight,  
+	 				document.body.offsetHeight, document.documentElement.offsetHeight,  
+	 				document.body.clientHeight, document.documentElement.clientHeight,  
+	 				window.innerHeight  
+				);  
+		    	
+		    	$scope.windowHeight = $window.innerHeight;  
+		    	return $scope.windowWidth = $window.innerWidth;  
+		   };  
+
+	   		$scope.initializeWindowSize();  
+
+	   		return angular.element($window).bind('resize', function() {  
+	   			$scope.initializeWindowSize();  	   		
+	   			$scope.cacheBuster = 0;
+	    		return $scope.$apply();  
+	   		});  
+	  	};  
+
+ 	});  
+
 
 
 })(window);
