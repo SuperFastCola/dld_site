@@ -77,9 +77,6 @@
 
 			var images_sub_directory = "images/full/";
 
-			console.log(window.matchMedia("(min-width: 320px)").matches);
-			console.log(window.matchMedia("(max-width: 500px)").matches);
-
 			if(typeof window.matchMedia != "undefined"){
 				images_sub_directory = "images/" + ((window.matchMedia("(min-width: 320px)").matches && window.matchMedia("(max-width: 480px)").matches)?"mobile":"full")  + "/";
 			}
@@ -124,6 +121,11 @@
 			//return $scope.selectedType === index;
 		};
 
+		$scope.showDetailsMessage = function(obj,index){
+			// console.log(index)
+			// console.log(obj.target)
+		}
+
 		$http.get("/projects.json").success($scope.parseResponse);
 
 
@@ -156,7 +158,42 @@
 	   		});  
 	  	};  
 
- 	});  
+ 	}); 
+
+	//http://www.undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/
+ 	app.directive('showOnHoverParent',function(){
+	      return {
+	        link : function(scope, element, attrs) {
+
+	            element.parent().bind('mouseover', function() {
+	                element.removeClass("hidden");
+	            });
+
+	            element.parent().bind('mouseleave', function() {
+	                 element.addClass("hidden");
+	            });
+	       	}
+	   	};
+	}); 
+
+
+	//http://www.undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/
+ 	app.directive('hideOnHoverParent',function(){
+	      return {
+	        link : function(scope, element, attrs) {
+
+	            element.parent().bind('mouseover', function() {
+	                element.addClass("hidden");
+	            });
+
+	            element.parent().bind('mouseleave', function() {
+	                 element.removeClass("hidden");
+	            });
+	       	}
+	   	};
+	}); 
+
+
 
 
 

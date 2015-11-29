@@ -161,6 +161,20 @@ table
 	-o-transform:  translateZ($z) rotateX($r)
 	transform:  translateZ($z) rotateX($r)
 
+=translateX($x)
+	-webkit-transform: translateX($x)
+	-moz-transform:  translateX($x)
+	-ms-transform:  translateX($x)
+	-o-transform:  translateX($x)
+	transform:  translateX($x)
+
+=translateY($y)
+	-webkit-transform: translateY($y)
+	-moz-transform:  translateY($y)
+	-ms-transform:  translateY($y)
+	-o-transform:  translateY($y)
+	transform:  translateY($y)
+
 
 //////////////////////////////////////////////////////////////////
 //user defined variables
@@ -209,7 +223,7 @@ body
 
 .navigation
 	$width: 250px
-	+setElement(250px, 100%, absolute)
+	+setElement(250px, 100%, fixed)
 	+setPos(100%,0px)
 	z-index: 20
 	margin-left: 0px
@@ -235,6 +249,17 @@ body
 		margin-left: -($width)
 		border-left: 1px solid $percent_10_black
 
+#hamburger
+	+setElement(40px,40px,fixed)
+	+setPos(100%,15px)
+	margin-left: -(50px)
+	+borderRadius(22px)
+	+backColor($percent_20_black)
+	+buttonBehavior
+	z-index: 100
+
+	&.showing
+		margin-left: -(310px)
 
 .container
 	+setElement(100%, 100%, absolute)
@@ -245,9 +270,6 @@ body
 
 	&.showing
 		margin-left: -(250px)
-
-
-
 
 #portfolio_header
 	+back("full/cityscape_back.jpg",left,top)
@@ -275,13 +297,6 @@ body
 			+notSelectable	
 			+setFont(70px,black,$fontFamilyBold,uppercase)
 
-	#hamburger
-		+setElement(40px,40px,absolute)
-		+setPos(100%,15px)
-		margin-left: -(50px)
-		+borderRadius(22px)
-		+backColor($percent_20_black)
-		+buttonBehavior
 
 .project-holder	
 	$ph: 221px
@@ -302,11 +317,14 @@ body
 			+bdr(1px,$borderColor)
 		@else
 			+bdr(1px,white)
-		
-		
-
-	$div: 5
+	
+	$div: 6
 	@media only screen and (min-width: $withBorders * $div)
+		+projectTiles($ph,$div)		
+
+	$prevDiv: $div	
+	$div: 5
+	@media only screen and (min-width: $withBorders * $div) and (max-width: $withBorders * $prevDiv)
 		+projectTiles($ph,$div)
 
 	$prevDiv: $div
@@ -330,18 +348,18 @@ body
 		border-left:  0px
 		min-height: 117px
 		height: 117px
-	
 
+	.project_button
+		+setElement(100%,100%,absolute)	
 
 	.project-name
 		$pnh: 26px
 		$pnp: 8px
 		$calculatedHeight: $pnh - ($pnp*2)
 		+setElement(80%,$calculatedHeight,absolute)
-		//=setFont($fontSize: 12px, $color: $main, $family: $fontFamily, $transform: none, $lineHeight: auto, $align: left, $fontWeight: normal, $fontStyle: normal)
-
 		+setFont(12px,black,$fontFamilyBold,uppercase,auto,center)
-		+setPos(50%,14px)
+		left: 50%
+		+translateY(10px)
 		+transProp(all,.25s)
 		+backColor($percent_90_white)
 		margin-left: -40%
@@ -349,9 +367,41 @@ body
 		+borderRadius($pnh/2)
 
 		&.hidden
-			top: -30px
-			
+			+translateY(-30px)
 
+	.project-details-butn
+		$w: 180px
+		$h: $w
+
+		$ptop: (180px/3px) - 5px
+		$pleft: 10px
+
+		$fwidth: $w - ($pleft*2)
+		$fheight: $h - ($ptop*2)
+
+		+setElement($fwidth,$fheight,absolute)
+		+setPos(50%,50%)
+		+backColor($percent_90_white)
+		+notSelectable()
+
+		//=setFont($fontSize: 12px, $color: $main, $family: $fontFamily, $transform: none, $lineHeight: auto, $align: left, $fontWeight: normal, $fontStyle: normal)
+		+setFont(30px,black,$fontFamilyBold,uppercase,34px,center)
+
+		+borderRadius($w/2)
+		+rotate2D(0deg)
+		+opacity(1)
+		+transProp(all,.5s)
+
+		margin-left: -($w/2)
+		margin-top: -($h/2)
+		padding: $ptop $pleft
+	
+		&.hidden
+			+rotate2D(360deg)
+			+opacity(0)
+
+	
+			
 
 
 		

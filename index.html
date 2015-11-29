@@ -20,17 +20,26 @@
 	</div>
 
 	<div class="container" autoresize="" ng-class="{showing: showNav}">
+		<canvas id="hamburger" ng-click="navSlider()" ng-class="{showing: showNav}"></canvas>
+
 		<div class="holder">
 			<div id="portfolio_header">
 				<div class="dude"><span>Hi!</span></div>
-				<canvas id="hamburger" ng-click="navSlider()" ng-class="{showing: showNav}"></canvas>
 			</div>
 
 			<div id="portfolio_area">
 				
 				<div class="project-holder" id="{{x.id}}" ng-style="setBackgroundThumbnailImage(x.image,$index)" ng-repeat="x in filteredItems = (projects | filter:getFilter())">
-					<a class="butn project-details-butn hidden">Project Details</a>
-					<div class="project-name">{{ x.name }}</div>
+					
+					<div class="project_button">
+						<a class="project-details-butn hidden" show-on-hover-parent>Project Details</a>
+						<div class="project-name" hide-on-hover-parent>{{ x.name }}</div>
+					</div>
+
+					<div class="project_description">
+
+					</div>
+
 				</div>
 
 			</div>

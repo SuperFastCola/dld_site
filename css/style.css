@@ -58,7 +58,7 @@ body {
 
 .navigation {
   display: block;
-  position: absolute;
+  position: fixed;
   width: 250px;
   height: 100%;
   left: 100%;
@@ -107,6 +107,36 @@ body {
 .navigation.showing {
   margin-left: -250px;
   border-left: 1px solid rgba(0, 0, 0, 0.1); }
+
+#hamburger {
+  display: block;
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  left: 100%;
+  top: 15px;
+  margin-left: -50px;
+  -webkit-border-radius: 22px;
+  -moz-border-radius: 22px;
+  -ms-border-radius: 22px;
+  border-radius: 22px;
+  background-color: rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  opacity: 1;
+  -moz-opacity: 1;
+  filter: "alpha(opacity = msamt)";
+  -webkit-transition: all 0.25s;
+  -moz-transition: all 0.25s;
+  -o-transition: all 0.25s;
+  transition: all 0.25s;
+  cursor: pointer;
+  z-index: 100; }
+#hamburger:hover {
+  opacity: 0.7;
+  -moz-opacity: 0.7;
+  filter: "alpha(opacity = msamt)"; }
+#hamburger.showing {
+  margin-left: -310px; }
 
 .container {
   display: block;
@@ -174,32 +204,6 @@ body {
   text-align: left;
   text-transform: uppercase;
   color: black; }
-#portfolio_header #hamburger {
-  display: block;
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  left: 100%;
-  top: 15px;
-  margin-left: -50px;
-  -webkit-border-radius: 22px;
-  -moz-border-radius: 22px;
-  -ms-border-radius: 22px;
-  border-radius: 22px;
-  background-color: rgba(0, 0, 0, 0.2);
-  text-decoration: none;
-  opacity: 1;
-  -moz-opacity: 1;
-  filter: "alpha(opacity = msamt)";
-  -webkit-transition: all 0.25s;
-  -moz-transition: all 0.25s;
-  -o-transition: all 0.25s;
-  transition: all 0.25s;
-  cursor: pointer; }
-#portfolio_header #hamburger:hover {
-  opacity: 0.7;
-  -moz-opacity: 0.7;
-  filter: "alpha(opacity = msamt)"; }
 
 .project-holder {
   float: left;
@@ -221,7 +225,14 @@ body {
   opacity: 0.7;
   -moz-opacity: 0.7;
   filter: "alpha(opacity = msamt)"; }
-@media only screen and (min-width: 1115px) {
+@media only screen and (min-width: 1338px) {
+  .project-holder {
+    display: block;
+    position: relative;
+    width: 16.41667%;
+    height: 221px;
+    border: 1px solid white; } }
+@media only screen and (min-width: 1115px) and (max-width: 1338px) {
   .project-holder {
     display: block;
     position: relative;
@@ -260,6 +271,11 @@ body {
     border-left: 0px;
     min-height: 117px;
     height: 117px; } }
+.project-holder .project_button {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%; }
 .project-holder .project-name {
   display: block;
   position: absolute;
@@ -274,7 +290,11 @@ body {
   text-transform: uppercase;
   color: black;
   left: 50%;
-  top: 14px;
+  -webkit-transform: translateY(10px);
+  -moz-transform: translateY(10px);
+  -ms-transform: translateY(10px);
+  -o-transform: translateY(10px);
+  transform: translateY(10px);
   -webkit-transition: all 0.25s;
   -moz-transition: all 0.25s;
   -o-transition: all 0.25s;
@@ -287,4 +307,59 @@ body {
   -ms-border-radius: 13px;
   border-radius: 13px; }
 .project-holder .project-name.hidden {
-  top: -30px; }
+  -webkit-transform: translateY(-30px);
+  -moz-transform: translateY(-30px);
+  -ms-transform: translateY(-30px);
+  -o-transform: translateY(-30px);
+  transform: translateY(-30px); }
+.project-holder .project-details-butn {
+  display: block;
+  position: absolute;
+  width: 160px;
+  height: 70px;
+  left: 50%;
+  top: 50%;
+  background-color: rgba(255, 255, 255, 0.9);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -ms-touch-action: none;
+  font-size: 30px;
+  line-height: 34px;
+  font-family: "Oswald", Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  text-align: center;
+  text-transform: uppercase;
+  color: black;
+  -webkit-border-radius: 90px;
+  -moz-border-radius: 90px;
+  -ms-border-radius: 90px;
+  border-radius: 90px;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  opacity: 1;
+  -moz-opacity: 1;
+  filter: "alpha(opacity = msamt)";
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+  margin-left: -90px;
+  margin-top: -90px;
+  padding: 55px 10px; }
+.project-holder .project-details-butn.hidden {
+  -webkit-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+  transform: rotate(360deg);
+  opacity: 0;
+  -moz-opacity: 0;
+  filter: "alpha(opacity = msamt)"; }
