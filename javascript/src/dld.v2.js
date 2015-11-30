@@ -23,6 +23,7 @@
 		$scope.types = null;
 		$scope.selectedType = '';
 		$scope.excludeIllos = true;
+		$scope.selectedProject = null;
 
 		$scope.createHamburger = function(rotate){
 			var menu = document.getElementById("hamburger");
@@ -117,12 +118,18 @@
 
 		}
 
-		$scope.isActive = function(index) {
-			//return $scope.selectedType === index;
+		$scope.isActiveProject = function(index) {
+			return $scope.selectedProject === index;
 		};
 
-		$scope.showDetailsMessage = function(obj,index){
-			// console.log(index)
+		$scope.showDetails = function(index){
+			if($scope.selectedProject != index){
+				$scope.selectedProject = index;	
+			}
+			else{
+				$scope.selectedProject = null;
+			}
+			
 			// console.log(obj.target)
 		}
 
@@ -193,6 +200,17 @@
 	   	};
 	}); 
 
+ 	//http://www.undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/
+ 	app.directive('showOnParentClick',function(){
+	      return {
+	        link : function(scope, element, attrs) {
+
+	            element.parent().bind('click', function() {
+	                console.log(element);
+	            });
+	       	}
+	   	};
+	}); 
 
 
 

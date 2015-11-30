@@ -29,14 +29,14 @@
 
 			<div id="portfolio_area">
 				
-				<div class="project-holder" id="{{x.id}}" ng-style="setBackgroundThumbnailImage(x.image,$index)" ng-repeat="x in filteredItems = (projects | filter:getFilter())">
+				<div class="project-holder" id="{{x.id}}" ng-style="setBackgroundThumbnailImage(x.image,$index)" ng-repeat="x in filteredItems = (projects | filter:getFilter())" ng-click="showDetails($index)" ng-class="{selected: isActiveProject($index)}">
 					
 					<div class="project_button">
 						<a class="project-details-butn hidden" show-on-hover-parent>Project Details</a>
 						<div class="project-name" hide-on-hover-parent>{{ x.name }}</div>
 					</div>
 
-					<div class="project_description">
+					<div class="project_description" show-on-parent-click>
 
 					</div>
 

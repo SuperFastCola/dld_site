@@ -309,6 +309,13 @@ body
 	+bdr(1px, white)
 	+buttonBehavior
 
+	&.selected
+		width: 100%
+		height: $ph * 2
+		left: 0px
+		position: absolute
+		z-index: 300
+
 	=projectTiles($height: $ph,$divider: 5,$borderColor: null, $borderPercent:0.25% )
 		$width: (100%/$divider) - $borderPercent
 		+setElement($width,$height,relative)
