@@ -124,7 +124,7 @@
 
 		$scope.showDetails = function(index){
 			if($scope.selectedProject != index){
-				$scope.selectedProject = index;	
+				$scope.selectedProject = null;	
 			}
 			else{
 				$scope.selectedProject = null;
@@ -206,7 +206,9 @@
 	        link : function(scope, element, attrs) {
 
 	            element.parent().bind('click', function() {
+	                var eleClone = element.clone()
 	                console.log(element);
+	                console.log(eleClone);
 	            });
 	       	}
 	   	};
