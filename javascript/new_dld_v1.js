@@ -18,6 +18,7 @@ if(typeof window.matchMedia == "undefined"){
 
 
 		var project_detail = undefined;
+		var artwork = false;
 
 		function t(message){
 			console.log(message);
@@ -96,7 +97,7 @@ if(typeof window.matchMedia == "undefined"){
 	  		$(this.el).find(".project-detail-area").removeClass("hidden");
 	  		stopSpinner();
 
-	  		if(this.model.get("illo")){	  			
+	  		if(this.model.get("illo") || this.model.get("artwork")){	  			
 		  		var nh = getProportion($(this.el).find(".project-detail-image").width(),this.model.get("image_detail_source").width,this.model.get("image_detail_source").height);
 
 				if(nh < $(this.el).height()){
@@ -154,7 +155,7 @@ if(typeof window.matchMedia == "undefined"){
 		    	// var back = $(this.el).find(".project-item-back");
 		    	// back.empty();
 
-		    	front.append('<a class="butn project-details-butn hidden">Project Details</a>');
+		    	front.append('<a class="butn project-details-butn hidden">' + ((!artwork)?'Project Details':'View Artwork') + '</a>');
 		    	//back.append('<a class="butn project-details-close">X</a>');
 
 		    	if(this.model.has('name')){
@@ -388,6 +389,7 @@ if(typeof window.matchMedia == "undefined"){
 		    	if(Browser.is("firefox")){
 		    		$(".portfolio_header").addClass("stopani");
 		    	}
+		    	
 
 		    	//here
 		    	onWindowOpen(true);
@@ -442,13 +444,14 @@ if(typeof window.matchMedia == "undefined"){
 		    	$element = $(this.el).find(".project-detail-area");
 		    	
 		    	if(!$element.hasClass("view_image")){
+
 					$element.addClass("view_image");
 
 					var iw = this.model.get("image_detail_source").width;
 					var ih = this.model.get("image_detail_source").height;
 
-					$(".project-details-show").html("Minimize");
-
+					$(".project-details-show").html("Minimize");	
+				
 					var nh = getProportion($(this.el).find(".project-detail-image").width(),this.model.get("image_detail_source").width,this.model.get("image_detail_source").height);
 
 			  		if(nh < $(this.el).height()){
@@ -978,9 +981,16 @@ if(typeof window.matchMedia == "undefined"){
 			startSpinner();
 			dld_portfolio = new AllProjectsView();
 
+			var jsonfile = "projects.json";
+
+			if(getHashFromAddress()=="artwork"){
+				artwork = true;
+				jsonfile = "artwork.json";
+			}
+
 			Backbone.ajax({
 			    dataType: "json",
-			    url: ("projects.json" + "?t=" + new Date().getTime()),
+			    url: (jsonfile + "?t=" + new Date().getTime()),
 			    data: "",
 			    success: function(val){
 
@@ -989,6 +999,11 @@ if(typeof window.matchMedia == "undefined"){
 
 			    	if(getHashFromAddress()=="illos"){
 			    		filterProjects(val,"illo");	
+			    	}
+			    	else if(artwork){
+			    		filterProjects(val,"artwork");	
+			    		$(".show_work_all,.show_work_type").remove();
+			    		$(".projects_navigation").css("height","0px");
 			    	}
 			    	else{
 			    		filterProjects(val);
@@ -1181,7 +1196,10 @@ if(typeof window.matchMedia == "undefined"){
 		function showProjectsNavIfHidden(){
 			if(window.matchMedia("(min-width: 30em)").matches && !window.matchMedia("(max-width: 30em)").matches){
 		    	if($(".projects_navigation").css("display")=="none"){
-		    		$(".projects_navigation").css("display","block");
+
+		    		if(!artwork){
+		    			$(".projects_navigation").css("display","block");
+		    		}
 		    	}
 		    }
 		}

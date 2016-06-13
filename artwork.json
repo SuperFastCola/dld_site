@@ -1,0 +1,221 @@
+{
+"projects":[
+	{
+		"name":"Historical Abstract of the USA",
+		"image":"abstract.jpg",
+		"type":["artwork"],
+		"description": "Pen and ink with digital manipulation",
+		"id":"artwork1"
+	},
+	{
+		"name":"January 16, 1991",
+		"image":"mcdonalds.jpg",
+		"type":["artwork"],
+		"description": "Pen and ink ",
+		"id":"artwork31"
+	},
+	{
+		"name":"The Antidote",
+		"image":"antidote.jpg",
+		"type":["artwork"],
+		"description": "Watercolor with pen and ink ",
+		"id":"artwork2"
+	},
+	{
+		"name":"Barbie-Q-Sauce",
+		"image":"bbq.jpg",
+		"type":["artwork"],
+		"description": "Linoleum Cut",
+		"id":"artwork3"
+	},
+	{
+		"name":"Business is Good",
+		"image":"businessisgood.jpg",
+		"type":["artwork"],
+		"description": "Pen and ink",
+		"id":"artwork4"
+	},
+	{
+		"name":"Cafe 2fux",
+		"image":"cafe.jpg",
+		"type":["artwork"],
+		"description": "Pen and ink",
+		"id":"artwork5"
+	},
+	{
+		"name":"Derslox",
+		"image":"derslox.jpg",
+		"type":["artwork"],
+		"description": "Acrylic",
+		"id":"artwork6"
+	},
+	{
+		"name":"Drunk Tank",
+		"image":"drunktank.jpg",
+		"type":["artwork"],
+		"description": "Linoleum Cut",
+		"id":"artwork7"
+	},
+	{
+		"name":"Funeral",
+		"image":"funeral.jpg",
+		"type":["artwork"],
+		"description": "Pen and ink",
+		"id":"artwork8"
+	},
+	{
+		"name":"Fourth of July",
+		"image":"happy_4th.jpg",
+		"type":["artwork"],
+		"description": "Pen and ink with digital manipulation",
+		"id":"artwork9"
+	},
+	{
+		"name":"Happy Town Highways",
+		"image":"highways.jpg",
+		"type":["artwork"],
+		"description": "Silk screen",
+		"id":"artwork10"
+	},
+	{
+		"name":"Keep off the Grass While You Wait",
+		"image":"keep_off_the_grass.jpg",
+		"type":["artwork"],
+		"description": "Pen and ink with digital manipulation",
+		"id":"artwork11"
+	},
+	{
+		"name":"Le Bloc",
+		"image":"lebloc.jpg",
+		"type":["artwork"],
+		"description": "Acrylic",
+		"id":"artwork12"
+	},
+	{
+		"name":"Liberation",
+		"image":"liberation.jpg",
+		"type":["artwork"],
+		"description": "Silk screen",
+		"id":"artwork13"
+	},
+	{
+		"name":"Lovers",
+		"image":"lovers.jpg",
+		"type":["artwork"],
+		"description": "Acrylic",
+		"id":"artwork14"
+	},
+	{
+		"name":"Lovers Observed",
+		"image":"lovers2.jpg",
+		"type":["artwork"],
+		"description": "Watercolor with pen and ink ",
+		"id":"artwork15"
+	},
+	{
+		"name":"Mars Needs Women",
+		"image":"marsneedswomen.jpg",
+		"type":["artwork"],
+		"description": "Linoleum Cut",
+		"id":"artwork16"
+	},
+	{
+		"name":"Mega Monsters",
+		"image":"megamonsters.jpg",
+		"type":["artwork"],
+		"description": "Acrylic",
+		"id":"artwork17"
+	},
+	{
+		"name":"The Air We Breath",
+		"image":"oilbaron.jpg",
+		"type":["artwork"],
+		"description": "Silk screen",
+		"id":"artwork18"
+	},
+	{
+		"name":"Rudy Speaks",
+		"image":"peacerally.jpg",
+		"type":["artwork"],
+		"description": "Silk screen",
+		"id":"artwork19"
+	},
+	{
+		"name":"Rue Mont Royal 1",
+		"image":"ruemontroyal1.jpg",
+		"type":["artwork"],
+		"description": "Watercolor with pen and ink ",
+		"id":"artwork20"
+	},
+	{
+		"name":"Rue Mont Royal 2",
+		"image":"ruemontroyal2.jpg",
+		"type":["artwork"],
+		"description": "Watercolor with pen and ink ",
+		"id":"artwork21"
+	},
+	{
+		"name":"Same Old Same Old",
+		"image":"smaeoldsameold.jpg",
+		"type":["artwork"],
+		"description": "Pen and ink",
+		"id":"artwork22"
+	},
+	{
+		"name":"Speed Devil",
+		"image":"speeddevil.jpg",
+		"type":["artwork"],
+		"description": "Acrylic",
+		"id":"artwork23"
+	},
+	{
+		"name":"State of the Union",
+		"image":"stateoftheunion.jpg",
+		"type":["artwork"],
+		"description": "Silk screen",
+		"id":"artwork24"
+	},
+	{
+		"name":"Super Boxers",
+		"image":"superboxing.jpg",
+		"type":["artwork"],
+		"description": "Pen and ink",
+		"id":"artwork25"
+	},
+	{
+		"name":"The In-Crowd",
+		"image":"thecrowd.jpg",
+		"type":["artwork"],
+		"description": "Pen and ink wash",
+		"id":"artwork26"
+	},
+	{
+		"name":"The Only Way",
+		"image":"theonlyway.jpg",
+		"type":["artwork"],
+		"description": "Watercolor with pen and ink ",
+		"id":"artwork27"
+	},
+	{
+		"name":"USA Number 1",
+		"image":"usa1.jpg",
+		"type":["artwork"],
+		"description": "Pen and ink",
+		"id":"artwork28"
+	},
+	{
+		"name":"Your Vote Counts",
+		"image":"vote.jpg",
+		"type":["artwork"],
+		"description": "Pen and ink with digital manipulation",
+		"id":"artwork29"
+	},
+	{
+		"name":"Warheads",
+		"image":"warheads.jpg",
+		"type":["artwork"],
+		"description": "Pen and ink",
+		"id":"artwork30"
+	}
+]
+}
