@@ -254,9 +254,20 @@ body
 	+setPos(100%,15px)
 	margin-left: -(50px)
 	+borderRadius(22px)
-	+backColor($percent_20_black)
+	+backColor($percent_70_black)
 	+buttonBehavior
 	z-index: 100
+
+	$ph: 221px
+	$withBorders: $ph + 2px
+
+	@media only screen and (max-width: $withBorders * 2), (min-width: 320px) and (max-width: 480px)
+		+backColor($percent_70_black)
+		+setElement(50px,50px,fixed)
+		+setPos(100%,15px)
+		margin-left: -(60px)
+		+borderRadius(25px)
+	
 
 	&.showing
 		margin-left: -(310px)
@@ -342,12 +353,16 @@ body
 	$prevDiv: $div
 	$div: 3
 	@media only screen and (max-width: $withBorders * $prevDiv)
-		+projectTiles($ph,$div,null,.35%)
+		+projectTiles($ph,$div,green,.35%)
 
 	$prevDiv: $div
 	$div: 2
 	@media only screen and (max-width: $withBorders * $prevDiv)
-		+projectTiles($ph,$div,null,.45%)
+		+projectTiles($ph,1,null,0%)
+		border-right: 0px
+		border-left:  0px
+		min-height: 117px
+		height: 117px
 	
 	@media only screen and (min-width: 320px) and (max-width: 480px)
 		+projectTiles($ph,1,null,0%)			

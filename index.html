@@ -11,13 +11,15 @@
 	<link href="http://fonts.googleapis.com/css?family=Average" rel="stylesheet" type="text/css">
 	<script src="/javascript/dld.js"></script>
 </head>
-<body ng-app="projectTriage" ng-controller="listProjects">	
+<body ng-app="projectTriage" ng-controller="listProjects" scrollposition="" >	
 
 	<div class="navigation" ng-class="{showing: showNav}" >
 		<!-- <button ng-repeat="x in filteredItems = (projects | filter:{'type':(!!selectedType || undefined || '!illo')})" ng-click="setType($index)" ng-class="{selected: isActive($index)}">{{ x.name }}</button> -->
 
 		<button ng-repeat="x in types" ng-click="setType(x,$index)" ng-class="{selected: isActive($index)}">{{ x }}</button>
 	</div>
+
+	<div class="project_description"></div>
 
 	<div class="container" autoresize="" ng-class="{showing: showNav}">
 		<canvas id="hamburger" ng-click="navSlider()" ng-class="{showing: showNav}"></canvas>
@@ -29,15 +31,11 @@
 
 			<div id="portfolio_area">
 				
-				<div class="project-holder" id="{{x.id}}" ng-style="setBackgroundThumbnailImage(x.image,$index)" ng-repeat="x in filteredItems = (projects | filter:getFilter())" ng-click="showDetails($index)" ng-class="{selected: isActiveProject($index)}">
+				<div class="project-holder" id="{{x.id}}" check-object-position ng-style="backgroundStyle" ng-repeat="x in filteredItems = (projects | filter:getFilter())" ng-click="showDetails($index)" ng-class="{selected: isActiveProject($index) }">
 					
 					<div class="project_button">
 						<a class="project-details-butn hidden" show-on-hover-parent>Project Details</a>
 						<div class="project-name" hide-on-hover-parent>{{ x.name }}</div>
-					</div>
-
-					<div class="project_description" show-on-parent-click>
-
 					</div>
 
 				</div>

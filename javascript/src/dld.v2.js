@@ -86,7 +86,7 @@
 
 			images_sub_directory += "thumbs/";
 
-			return {'background-image':'url(' + String(images_sub_directory + source) + ')'};
+			return { 'backgroundImage':'url(' + String(images_sub_directory + source) + ')' };
 		}
 
 		$scope.parseResponse = function(response){
@@ -118,10 +118,16 @@
 
 		}
 
+		$scope.$watch('scrollTop', function(newVal, oldVal){
+		    if(newVal!=oldVal)
+		        $scope.$broadcast('scrollTop',{"scrollTop":newVal})
+		});
+
 		$scope.isActiveProject = function(index) {
 			return $scope.selectedProject === index;
 		};
 
+		
 		$scope.showDetails = function(index){
 			if($scope.selectedProject != index){
 				$scope.selectedProject = null;	
@@ -130,7 +136,6 @@
 				$scope.selectedProject = null;
 			}
 			
-			// console.log(obj.target)
 		}
 
 		$http.get("/projects.json").success($scope.parseResponse);
@@ -152,7 +157,9 @@
 	 				window.innerHeight  
 				);  
 		    	
-		    	$scope.windowHeight = $window.innerHeight;  
+		    	$scope.scrollTop = $window.pageYOffset;
+		    	$scope.windowHeight = $window.innerHeight;
+		    	$scope.viewBottom = $scope.windowHeight;
 		    	return $scope.windowWidth = $window.innerWidth;  
 		   };  
 
@@ -161,6 +168,22 @@
 	   		return angular.element($window).bind('resize', function() {  
 	   			$scope.initializeWindowSize();  	   		
 	   			$scope.cacheBuster = 0;
+	    		return $scope.$apply();  
+	   		});  
+	  	};  
+
+ 	}); 
+
+
+ 	//http://nahidulkibria.blogspot.com/2014/10/angullarjs-directive-to-watch-window.html
+	app.directive('scrollposition', function($window) {  
+		//passes scope to anonymous function
+
+	  	return function($scope) {  
+
+	   		return angular.element($window).bind('scroll', function() {  
+	   			$scope.scrollTop = $window.pageYOffset;
+	   			$scope.viewBottom = $window.pageYOffset + $window.innerHeight; 
 	    		return $scope.$apply();  
 	   		});  
 	  	};  
@@ -179,6 +202,40 @@
 	            element.parent().bind('mouseleave', function() {
 	                 element.addClass("hidden");
 	            });
+	       	}
+	   	};
+	}); 
+
+
+	 app.directive('checkObjectPosition',function(){
+	      return {
+	        link : function(scope, element, attrs) {
+
+	        	if(element[0].getBoundingClientRect().top<scope.$parent.viewBottom){
+	        		scope.backgroundStyle = scope.setBackgroundThumbnailImage(scope.x.image,scope.$index);
+	        	}
+
+	        	scope.$on('scrollTop', function(event, args){
+
+	       //  		if(scope.$index==6){
+	       //  			console.log(scope.x.id);
+		   			// 	console.log(args.scrollTop);
+		   			// 	console.log(window.innerHeight);
+		   			// 	console.log(args.scrollTop + window.innerHeight);
+		   			// 	console.log(element[0].getBoundingClientRect().top);
+	   				// }
+
+	        		if(element[0].getBoundingClientRect().top<window.innerHeight && typeof scope.backgroundStyle=="undefined"){
+	        			scope.backgroundStyle = scope.setBackgroundThumbnailImage(scope.x.image,scope.$index);
+	        		}
+
+
+	        		// if(element[0].getBoundingClientRect().top < -(element[0].getBoundingClientRect().height)){
+	        		// 	scope.setBackgroundThumbnailImage(scope.x.image,scope.$index);
+	        		// }
+	        		
+				});
+
 	       	}
 	   	};
 	}); 
@@ -207,8 +264,7 @@
 
 	            element.parent().bind('click', function() {
 	                var eleClone = element.clone()
-	                console.log(element);
-	                console.log(eleClone);
+	                console.log(scope);
 	            });
 	       	}
 	   	};
