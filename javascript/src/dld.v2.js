@@ -63,6 +63,8 @@
 
 				c.stroke();
 	  		}	
+
+	  		$scope.$broadcast('scrollTop',{"scrollTop":0})
 	  		
 		}
 
@@ -97,7 +99,8 @@
 
 		$scope.showNav = false;
 
-		$scope.navSlider = function(){
+		$scope.navSlider = function($event){
+			$event.stopPropagation();
 			$scope.showNav = !$scope.showNav;
 			$scope.createHamburger($scope.showNav);
 		}
@@ -119,8 +122,15 @@
 		}
 
 		$scope.$watch('scrollTop', function(newVal, oldVal){
-		    if(newVal!=oldVal)
-		        $scope.$broadcast('scrollTop',{"scrollTop":newVal})
+		    if(newVal!=oldVal){
+		        $scope.$broadcast('scrollTop',{"scrollTop":newVal});
+		    }
+		});
+
+		$scope.$watch('windowResize', function(newVal, oldVal){
+		    if(newVal!=oldVal){
+		        $scope.$broadcast('windowResize',{"newWidth":newVal});
+		    }
 		});
 
 		$scope.isActiveProject = function(index) {
@@ -168,6 +178,8 @@
 	   		return angular.element($window).bind('resize', function() {  
 	   			$scope.initializeWindowSize();  	   		
 	   			$scope.cacheBuster = 0;
+	   			$scope.$broadcast('scrollTop',{"scrollTop":$scope.scrollTop});
+	   			$scope.$broadcast('windowResize',{"newWidth":$scope.windowWidth});
 	    		return $scope.$apply();  
 	   		});  
 	  	};  
@@ -207,13 +219,18 @@
 	}); 
 
 
-	 app.directive('checkObjectPosition',function(){
+	app.directive('checkObjectPosition',function(){
 	      return {
 	        link : function(scope, element, attrs) {
 
 	        	if(element[0].getBoundingClientRect().top<scope.$parent.viewBottom){
 	        		scope.backgroundStyle = scope.setBackgroundThumbnailImage(scope.x.image,scope.$index);
 	        	}
+
+	        	scope.$on('windowResize', function(event, args){
+	        		scope.backgroundStyle = scope.setBackgroundThumbnailImage(scope.x.image,scope.$index);
+	        	});
+
 
 	        	scope.$on('scrollTop', function(event, args){
 
@@ -228,7 +245,6 @@
 	        		if(element[0].getBoundingClientRect().top<window.innerHeight && typeof scope.backgroundStyle=="undefined"){
 	        			scope.backgroundStyle = scope.setBackgroundThumbnailImage(scope.x.image,scope.$index);
 	        		}
-
 
 	        		// if(element[0].getBoundingClientRect().top < -(element[0].getBoundingClientRect().height)){
 	        		// 	scope.setBackgroundThumbnailImage(scope.x.image,scope.$index);

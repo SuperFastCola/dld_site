@@ -11,7 +11,7 @@
 	<link href="http://fonts.googleapis.com/css?family=Average" rel="stylesheet" type="text/css">
 	<script src="/javascript/dld.js"></script>
 </head>
-<body ng-app="projectTriage" ng-controller="listProjects" scrollposition="" >	
+<body ng-app="projectTriage" ng-controller="listProjects" scrollposition="">	
 
 	<div class="navigation" ng-class="{showing: showNav}" >
 		<!-- <button ng-repeat="x in filteredItems = (projects | filter:{'type':(!!selectedType || undefined || '!illo')})" ng-click="setType($index)" ng-class="{selected: isActive($index)}">{{ x.name }}</button> -->
@@ -22,7 +22,7 @@
 	<div class="project_description"></div>
 
 	<div class="container" autoresize="" ng-class="{showing: showNav}">
-		<canvas id="hamburger" ng-click="navSlider()" ng-class="{showing: showNav}"></canvas>
+		<canvas id="hamburger" ng-click="navSlider($event)" ng-class="{showing: showNav}"></canvas>
 
 		<div class="holder">
 			<div id="portfolio_header">

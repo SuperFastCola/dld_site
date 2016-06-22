@@ -104,6 +104,20 @@ body {
   background-color: rgba(0, 0, 0, 0.1); }
 .navigation button:first-child {
   margin-top: 14px; }
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  .navigation button {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 50px;
+    font-size: 18px;
+    line-height: auto;
+    font-family: "Karla", Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    text-align: left;
+    text-transform: uppercase;
+    color: black; } }
 .navigation.showing {
   margin-left: -250px;
   border-left: 1px solid rgba(0, 0, 0, 0.1); }

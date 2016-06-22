@@ -245,6 +245,10 @@ body
 		&:first-child
 			margin-top: 14px
 
+		@media only screen and (min-width: 320px) and (max-width: 480px)
+			+setElement(100%, 50px, relative)
+			+setFont(18px,black,$fontFamily,uppercase,auto,left)
+
 	&.showing
 		margin-left: -($width)
 		border-left: 1px solid $percent_10_black
