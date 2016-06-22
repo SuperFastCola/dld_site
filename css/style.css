@@ -55,6 +55,8 @@ body {
   -webkit-text-size-adjust: none;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden; }
+body.clipBody {
+  overflow-y: hidden; }
 
 .navigation {
   display: block;
@@ -182,6 +184,95 @@ body {
 .container.showing {
   margin-left: -250px; }
 
+.project_description {
+  display: block;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 100%;
+  top: 0px;
+  z-index: 30;
+  margin-left: 0px;
+  -webkit-transition: all 0.25s;
+  -moz-transition: all 0.25s;
+  -o-transition: all 0.25s;
+  transition: all 0.25s;
+  background-color: rgba(255, 255, 255, 0.95);
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  overflow-x: hidden; }
+.project_description .description_holder {
+  display: block;
+  position: relative;
+  width: 80%;
+  height: auto;
+  background-color: white;
+  margin: 20px auto;
+  padding: 0px;
+  border: 1px solid rgba(0, 0, 0, 0.2); }
+.project_description .description_holder.illo {
+  display: block;
+  position: relative;
+  width: 50%;
+  height: auto; }
+.project_description .description_holder .info_holder {
+  display: block;
+  position: absolute;
+  width: 30%;
+  height: auto;
+  left: 65%;
+  top: 100px; }
+.project_description .description_holder .info_holder h1 {
+  font-size: 30px;
+  line-height: auto;
+  font-family: "Oswald", Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  text-align: left;
+  text-transform: uppercase;
+  color: black; }
+.project_description .description_holder .info_holder .info {
+  font-size: 18px;
+  line-height: auto;
+  font-family: "Karla", Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  text-align: left;
+  text-transform: none;
+  color: black;
+  margin-top: 10px; }
+.project_description .description_holder .info_holder .info span {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: auto;
+  font-size: 20px;
+  line-height: auto;
+  font-family: "Oswald", Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  text-align: left;
+  text-transform: uppercase;
+  color: black;
+  line-height: 23px;
+  padding: 20px 0px 7px 0px; }
+.project_description .description_holder .info_holder .info.description span {
+  padding-top: 0px; }
+.project_description img {
+  display: block;
+  position: relative;
+  width: 60%;
+  height: auto;
+  border-right: 1px solid rgba(0, 0, 0, 0.2); }
+.project_description img.fullwidth {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: auto; }
+.project_description.showing {
+  left: 0px;
+  top: 0px; }
+
 #portfolio_header {
   background-image: url("../images/full/cityscape_back.jpg");
   background-repeat: no-repeat;
@@ -286,7 +377,7 @@ body {
     position: relative;
     width: 32.98333%;
     height: 221px;
-    border: 1px solid green; } }
+    border: 1px solid white; } }
 @media only screen and (max-width: 669px) {
   .project-holder {
     display: block;

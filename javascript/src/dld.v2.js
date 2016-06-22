@@ -14,7 +14,6 @@
 	var app = angular.module('projectTriage', []);
 
 	app.directive('myCreateNav',function(){
-		console.log("text");
 		return true;
 	});
 
@@ -70,8 +69,9 @@
 
 		$scope.currentDate = new Date();
 		$scope.cacheBuster = 0;
+		$scope.clipBody = false;
 
-		$scope.setBackgroundThumbnailImage = function(source,index){
+		$scope.setBackgroundThumbnailImage = function(obj){
 
 			if($scope.cacheBuster===0){
 				$scope.currentDate = new Date();
@@ -84,11 +84,19 @@
 				images_sub_directory = "images/" + ((window.matchMedia("(min-width: 320px)").matches && window.matchMedia("(max-width: 480px)").matches)?"mobile":"full")  + "/";
 			}
 			
-			source += ('?=' + $scope.cacheBuster);
+			obj.source += ('?=' + $scope.cacheBuster);
 
-			images_sub_directory += "thumbs/";
+			if(typeof obj.detail == "undefined"){
+				images_sub_directory += "thumbs/";	
+			}
 
-			return { 'backgroundImage':'url(' + String(images_sub_directory + source) + ')' };
+			if(typeof obj.returnURL != "undefined"){
+				return String(images_sub_directory + obj.source);	
+			}
+			else{
+				return { 'backgroundImage':'url(' + String(images_sub_directory + obj.source) + ')' };
+			}
+			
 		}
 
 		$scope.parseResponse = function(response){
@@ -98,17 +106,37 @@
 		}
 
 		$scope.showNav = false;
+		$scope.showDescription = false;
 
 		$scope.navSlider = function($event){
-			$event.stopPropagation();
+
+			if(typeof $event != "undefined"){
+				$event.stopPropagation();	
+			}
+			
 			$scope.showNav = !$scope.showNav;
 			$scope.createHamburger($scope.showNav);
+		}
+
+		$scope.hideProject = function($event){
+			delete $scope.projectImage;
+			$scope.projectImage = '//:0';
+			$event.stopPropagation();
+			$scope.clipBody = false;
+			$scope.showDescription = !$scope.showDescription;
+		}
+
+		$scope.setProjectDetails = function(obj){
+			$scope.project = obj;
+			console.log(obj);
 		}
 
 		$scope.setType = function(type,index){
 			$scope.selectedType = type;
 			$scope.cacheBuster = 0;
 			$scope.navSlider();
+			//change scroll position for new div without backgrounds.
+			window.scrollBy(0,2);
 		}
 
 		$scope.getFilter = function(){
@@ -127,26 +155,25 @@
 		    }
 		});
 
-		$scope.$watch('windowResize', function(newVal, oldVal){
+
+		$scope.$watch('mobile', function(newVal, oldVal){
 		    if(newVal!=oldVal){
 		        $scope.$broadcast('windowResize',{"newWidth":newVal});
 		    }
 		});
 
+		$scope.checkMobile = function(){
+			$scope.mobile = ((window.matchMedia("(min-width: 320px)").matches && window.matchMedia("(max-width: 480px)").matches)?"mobile":"full");
+		}
+
+		$scope.mobile = "full";
+
+
 		$scope.isActiveProject = function(index) {
 			return $scope.selectedProject === index;
 		};
 
-		
-		$scope.showDetails = function(index){
-			if($scope.selectedProject != index){
-				$scope.selectedProject = null;	
-			}
-			else{
-				$scope.selectedProject = null;
-			}
-			
-		}
+	
 
 		$http.get("/projects.json").success($scope.parseResponse);
 
@@ -179,7 +206,7 @@
 	   			$scope.initializeWindowSize();  	   		
 	   			$scope.cacheBuster = 0;
 	   			$scope.$broadcast('scrollTop',{"scrollTop":$scope.scrollTop});
-	   			$scope.$broadcast('windowResize',{"newWidth":$scope.windowWidth});
+	   			$scope.checkMobile();
 	    		return $scope.$apply();  
 	   		});  
 	  	};  
@@ -224,16 +251,25 @@
 	        link : function(scope, element, attrs) {
 
 	        	if(element[0].getBoundingClientRect().top<scope.$parent.viewBottom){
-	        		scope.backgroundStyle = scope.setBackgroundThumbnailImage(scope.x.image,scope.$index);
+	        		scope.backgroundStyle = scope.setBackgroundThumbnailImage({source:scope.x.image});
 	        	}
 
 	        	scope.$on('windowResize', function(event, args){
-	        		scope.backgroundStyle = scope.setBackgroundThumbnailImage(scope.x.image,scope.$index);
+
+	        		var testStyle = null;
+
+	        		if(typeof scope.backgroundStyle != "undefined" && typeof scope.backgroundStyle.backgroundImage != "undefined"){
+	        			var testStyle = String(scope.backgroundStyle.backgroundImage).match(scope.$parent.mobile);
+	        		}
+
+	        		if(testStyle==null){
+	        			scope.backgroundStyle = scope.setBackgroundThumbnailImage({source:scope.x.image});	
+	        		}
+	        		
 	        	});
 
 
 	        	scope.$on('scrollTop', function(event, args){
-
 	       //  		if(scope.$index==6){
 	       //  			console.log(scope.x.id);
 		   			// 	console.log(args.scrollTop);
@@ -243,7 +279,7 @@
 	   				// }
 
 	        		if(element[0].getBoundingClientRect().top<window.innerHeight && typeof scope.backgroundStyle=="undefined"){
-	        			scope.backgroundStyle = scope.setBackgroundThumbnailImage(scope.x.image,scope.$index);
+	        			scope.backgroundStyle = scope.setBackgroundThumbnailImage({source:scope.x.image});
 	        		}
 
 	        		// if(element[0].getBoundingClientRect().top < -(element[0].getBoundingClientRect().height)){
@@ -274,13 +310,32 @@
 	}); 
 
  	//http://www.undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/
- 	app.directive('showOnParentClick',function(){
+ 	app.directive('showOnClick',function($http){
 	      return {
 	        link : function(scope, element, attrs) {
 
-	            element.parent().bind('click', function() {
-	                var eleClone = element.clone()
-	                console.log(scope);
+	            element.bind('click', function($event) {
+	            	scope.$parent.showDescription = !scope.$parent.showDescription;
+	            	scope.$parent.clipBody = true;
+	            	scope.backgroundImage = scope.setBackgroundThumbnailImage({source:scope.x.image,detail:true,returnURL:true});
+	            	scope.$parent.setProjectDetails(scope.x);
+
+	            	$http({
+  						method: 'GET',
+  						responseType: 'arraybuffer',
+  						url: scope.backgroundImage
+						}).then(function successCallback(response) {
+
+ 						var blob = new Blob([response.data], {type: "image/jpeg"});
+
+						scope.$parent.projectImage = (window.URL || window.webkitURL).createObjectURL(blob);
+
+  						}, function errorCallback(response) {
+  							console.log(response);
+    						// called asynchronously if an error occurs
+    						// or server returns response with an error status.
+  					});
+
 	            });
 	       	}
 	   	};

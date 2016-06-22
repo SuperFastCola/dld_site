@@ -188,6 +188,7 @@ $percent_60_black: rgba(0,0,0,.6)
 $percent_70_black: rgba(0,0,0,.7)
 $percent_80_black: rgba(0,0,0,.8)
 $percent_90_black: rgba(0,0,0,.9)
+$percent_95_black: rgba(0,0,0,.95)
 
 $percent_10_white: rgba(255,255,255,.1)
 $percent_20_white: rgba(255,255,255,.2)
@@ -198,6 +199,8 @@ $percent_60_white: rgba(255,255,255,.6)
 $percent_70_white: rgba(255,255,255,.7)
 $percent_80_white: rgba(255,255,255,.8)
 $percent_90_white: rgba(255,255,255,.9)
+$percent_95_white: rgba(255,255,255,.95)
+
 
 $headerHeight: 163px
 
@@ -220,6 +223,9 @@ body
 	padding: 0px
 	+textSizeAttributes
 	overflow-x: hidden
+
+	&.clipBody
+		overflow-y: hidden
 
 .navigation
 	$width: 250px
@@ -253,6 +259,9 @@ body
 		margin-left: -($width)
 		border-left: 1px solid $percent_10_black
 
+
+
+
 #hamburger
 	+setElement(40px,40px,fixed)
 	+setPos(100%,15px)
@@ -285,6 +294,60 @@ body
 
 	&.showing
 		margin-left: -(250px)
+
+.project_description
+	+setElement(100%, 100%, fixed)
+	+setPos(100%,0px)
+	z-index: 30
+	margin-left: 0px
+	+transProp(all, .25s)
+	+backColor($percent_95_white)
+	background-repeat: no-repeat
+	background-size: auto 100%
+
+	overflow-x: hidden
+	overflow-y:scroll
+	-webkit-overflow-scrolling:touch
+
+	.description_holder
+		+setElement(80%, auto, relative)
+		+backColor(white)
+		margin: 20px auto
+		padding: 0px
+		+bdr(1px,$percent_20_black)
+
+		&.illo
+			+setElement(50%, auto, relative)
+
+		.info_holder
+			+setElement(30%, auto,absolute)
+			+setPos(65%,100px)
+
+			h1
+				+setFont(30px,black,$fontFamilyBold,uppercase)
+
+			.info
+				+setFont(18px,black,$fontFamily)
+				margin-top: 10px
+
+				span
+					+setElement(100%, auto)
+					+setFont(20px,black,$fontFamilyBold,uppercase)
+					line-height: 23px
+					padding: 20px 0px 7px 0px
+
+				&.description span
+					padding-top: 0px
+
+	img
+		+setElement(60%, auto)
+		border-right: 1px solid $percent_20_black
+
+		&.fullwidth
+			+setElement(100%, auto)
+
+	&.showing
+		+setPos(0px,0px)
 
 #portfolio_header
 	+back("full/cityscape_back.jpg",left,top)
@@ -357,7 +420,7 @@ body
 	$prevDiv: $div
 	$div: 3
 	@media only screen and (max-width: $withBorders * $prevDiv)
-		+projectTiles($ph,$div,green,.35%)
+		+projectTiles($ph,$div,white,.35%)
 
 	$prevDiv: $div
 	$div: 2
