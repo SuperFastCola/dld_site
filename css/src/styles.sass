@@ -219,7 +219,14 @@ body
 	overflow-x: hidden
 
 	&.clipBody
-		overflow-y: hidden
+		height: 100%
+		overflow: auto
+
+		@media only screen and (max-width: $withBorders * 2), (min-width: 320px) and (max-width: 480px)
+			-webkit-overflow-scrolling:none
+
+			.project-holder
+				display: none
 
 .navigation
 	$width: 250px
