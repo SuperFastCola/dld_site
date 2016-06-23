@@ -19,18 +19,21 @@
 		<button ng-repeat="x in types" ng-click="setType(x,$index)" ng-class="{selected: isActive($index)}">{{ x }}</button>
 	</div>
 
-	<div class="project_description" ng-class="{showing: showDescription}" ng-click="hideProject($event)" >
+	<div class="project_description" ng-class="{showing: showDescription}" >
 		<div class="description_holder" ng-class="{illo: !project.description}">
-		<img ng-src={{projectImage}} ng-class="{fullwidth: !project.description}"/>
-			<div class="info_holder" ng-if="project.description">
+			<a class="info_holder_close" ng-click="hideProject($event)"></a>
+			<a class="info_holder_expand" ng-click="expandInfo()"></a>
+			
+			<img ng-src={{projectImage}} ng-init="detailImageLoaded = false;" ng-class="{fullwidth: !project.description, loadingDetail: descriptionImageLoaded()}"/>
+			<div class="info_holder" ng-class="{expanded: showAllInfo}" ng-if="project.description">
 				<h1>{{project.name}}</h1>
-
 
 				<p class="info description" ng-if="project.description"><span>{{project.description}}</span></p>
 				<p class="info role" ng-if="project.role"><span>Role</span>{{project.role}}</p>
 				<p class="info tech" ng-if="project.tech"><span>Technology</span>{{project.tech}}</p>
 			</div>
 		</div>
+		<div class="breaker"></div>
 	</div>
 
 	<div class="container" autoresize="" ng-class="{showing: showNav}">
@@ -43,7 +46,7 @@
 
 			<div id="portfolio_area">
 				
-				<div class="project-holder" id="{{x.id}}" check-object-position ng-style="backgroundStyle" ng-repeat="x in filteredItems = (projects | filter:getFilter())" ng-click="showDetails($index)" ng-class="{selected: isActiveProject($index) }" show-on-click>
+				<div class="project-holder" ng-init="imageLoading = true; imageLoaded = false;" ng-class="{selected: isActiveProject($index), loading: !imageLoaded}" id="{{x.id}}" check-object-position ng-style="backgroundStyle" ng-repeat="x in filteredItems = (projects | filter:getFilter())" ng-click="showDetails($index)" show-on-click>
 					
 					<div class="project_button">
 						<a class="project-details-butn hidden" show-on-hover-parent>Project Details</a>

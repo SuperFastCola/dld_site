@@ -120,15 +120,17 @@
 
 		$scope.hideProject = function($event){
 			delete $scope.projectImage;
+			$scope.descriptionImageLoaded();
 			$scope.projectImage = '//:0';
+			$scope.setInfoExpandedForDevice();
 			$event.stopPropagation();
 			$scope.clipBody = false;
 			$scope.showDescription = !$scope.showDescription;
+
 		}
 
 		$scope.setProjectDetails = function(obj){
 			$scope.project = obj;
-			console.log(obj);
 		}
 
 		$scope.setType = function(type,index){
@@ -173,10 +175,55 @@
 			return $scope.selectedProject === index;
 		};
 
-	
-
 		$http.get("/projects.json").success($scope.parseResponse);
 
+		$scope.descriptionImageLoaded = function(){
+			console.log(this.projectImage);
+			if(this.projectImage!="//:0" && typeof this.projectImage != "undefined"){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+
+		$scope.setInfoExpandedForDevice = function(){
+			if($scope.mobile=="full"){
+				$scope.showAllInfo = true;
+			}
+			else{
+				$scope.showAllInfo = false;
+			}
+		}
+
+		$scope.checkMobile();
+		$scope.setInfoExpandedForDevice();
+
+		$scope.expandInfo = function(){
+			$scope.showAllInfo = !$scope.showAllInfo;
+		}
+
+		$scope.loadBackground = function(scope){
+			
+			if(scope.imageLoading){
+				scope.imageLoading = false;
+
+				scope.backgroundImage = scope.setBackgroundThumbnailImage({source:scope.x.image,returnURL:true});
+
+				$http({
+					method: 'GET',
+					responseType: 'arraybuffer',
+					url: scope.backgroundImage
+				}).then(function successCallback(response) {
+						scope.imageLoaded = true;
+
+						var blob = new Blob([response.data], {type: "image/jpeg"});
+						scope.backgroundStyle = {"backgroundImage":"url(" + (window.URL || window.webkitURL).createObjectURL(blob) + ")"};
+					}, function errorCallback(response) {
+						console.log(response);
+				});
+			}
+		};
 
 
 	});
@@ -246,12 +293,14 @@
 	}); 
 
 
-	app.directive('checkObjectPosition',function(){
+	app.directive('checkObjectPosition',function($http){
+
+
 	      return {
 	        link : function(scope, element, attrs) {
 
 	        	if(element[0].getBoundingClientRect().top<scope.$parent.viewBottom){
-	        		scope.backgroundStyle = scope.setBackgroundThumbnailImage({source:scope.x.image});
+	        		scope.$parent.loadBackground(scope);
 	        	}
 
 	        	scope.$on('windowResize', function(event, args){
@@ -270,16 +319,9 @@
 
 
 	        	scope.$on('scrollTop', function(event, args){
-	       //  		if(scope.$index==6){
-	       //  			console.log(scope.x.id);
-		   			// 	console.log(args.scrollTop);
-		   			// 	console.log(window.innerHeight);
-		   			// 	console.log(args.scrollTop + window.innerHeight);
-		   			// 	console.log(element[0].getBoundingClientRect().top);
-	   				// }
 
 	        		if(element[0].getBoundingClientRect().top<window.innerHeight && typeof scope.backgroundStyle=="undefined"){
-	        			scope.backgroundStyle = scope.setBackgroundThumbnailImage({source:scope.x.image});
+	        			scope.$parent.loadBackground(scope);
 	        		}
 
 	        		// if(element[0].getBoundingClientRect().top < -(element[0].getBoundingClientRect().height)){
@@ -316,6 +358,7 @@
 
 	            element.bind('click', function($event) {
 	            	scope.$parent.showDescription = !scope.$parent.showDescription;
+
 	            	scope.$parent.clipBody = true;
 	            	scope.backgroundImage = scope.setBackgroundThumbnailImage({source:scope.x.image,detail:true,returnURL:true});
 	            	scope.$parent.setProjectDetails(scope.x);
@@ -327,8 +370,9 @@
 						}).then(function successCallback(response) {
 
  						var blob = new Blob([response.data], {type: "image/jpeg"});
-
 						scope.$parent.projectImage = (window.URL || window.webkitURL).createObjectURL(blob);
+
+						scope.descriptionImageLoaded();
 
   						}, function errorCallback(response) {
   							console.log(response);

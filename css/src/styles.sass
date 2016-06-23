@@ -42,24 +42,16 @@ table
 	border-collapse: collapse
 	border-spacing: 0
 
-//https://perishablepress.com/lessons-learned-concerning-the-clearfix-css-hack/
-.clearfix:after
-	content: "."
-	display: block
-	height: 0
+.breaker
 	clear: both
+	float: none
+	line-height: 0px
+	font-size: 0px
+	padding: 0px
+	margin: 0px
+	height: 0px
 	visibility: hidden
-
-.clearfix 
-	display: inline-block
-
-// Hides from IE-mac \
-* html .clearfix 
-	height: 1%
-
-// End hide from IE-mac
-.clearfix 
-	display: block
+	border: 0px solid red
 
 //////////////////////////////////////////////////////////////////
 //user defined functions
@@ -208,8 +200,10 @@ $fontFamily: 'Karla', Arial, Helvetica, sans-serif
 $fontFamilyItalic: 'Karla', Arial, Helvetica, sans-serif
 $fontFamilyBold: 'Oswald', Arial, Helvetica, sans-serif
 $fontFamilyBoldItalic: 'Oswald', Arial, Helvetica, sans-serif
- 
 
+$ph: 221px
+$withBorders: $ph + 2px
+ 
 ////////////////////////////////////////////////////////////////// 
 //start of main style definitions  
 
@@ -271,9 +265,6 @@ body
 	+buttonBehavior
 	z-index: 100
 
-	$ph: 221px
-	$withBorders: $ph + 2px
-
 	@media only screen and (max-width: $withBorders * 2), (min-width: 320px) and (max-width: 480px)
 		+backColor($percent_70_black)
 		+setElement(50px,50px,fixed)
@@ -309,6 +300,9 @@ body
 	overflow-y:scroll
 	-webkit-overflow-scrolling:touch
 
+	@media only screen and (max-width: $withBorders * 2), (min-width: 320px) and (max-width: 480px)
+		+backColor(white)
+
 	.description_holder
 		+setElement(80%, auto, relative)
 		+backColor(white)
@@ -316,19 +310,97 @@ body
 		padding: 0px
 		+bdr(1px,$percent_20_black)
 
+		@media only screen and (max-width: $withBorders * 2), (min-width: 320px) and (max-width: 480px)
+			+setElement(100%, auto, relative)
+			margin: 0px auto
+
+
 		&.illo
 			+setElement(50%, auto, relative)
 
+			@media only screen and (max-width: $withBorders * 2), (min-width: 320px) and (max-width: 480px)
+				+setElement(100%, auto, relative)
+
+
+		.info_holder_expand, .info_holder_close
+			+setElement(39px,39px,absolute)
+			display: block
+			+backColor(white)
+			+bdr(1px,$percent_40_black)
+			+setPos(100%, 15px)
+			+borderRadius(22px)
+			+buttonBehavior
+
+			@media only screen and (max-width: $withBorders * 2), (min-width: 320px) and (max-width: 480px)
+				+setPos(100%, 15px)
+				+borderRadius(25px)
+				+setElement(49px, 49px, absolute)
+
+		.info_holder_expand
+			margin-left: -125px
+			z-index: 200
+			display: none
+
+			@media only screen and (max-width: $withBorders * 2), (min-width: 320px) and (max-width: 480px)
+				display: block
+
+
+		.info_holder_close
+			margin-left: -50px
+			z-index: 201
+
+			@media only screen and (max-width: $withBorders * 2), (min-width: 320px) and (max-width: 480px)
+				margin-left: -65px
+
 		.info_holder
-			+setElement(30%, auto,absolute)
-			+setPos(65%,100px)
+			+setElement(30%, auto)
+			display: inline-block
+			vertical-align: top
+			padding: 50px 0px 50px 20px
+			+transProp(all,.5s)
+
+			@media only screen and (max-width: $withBorders * 2), (min-width: 320px) and (max-width: 480px)
+				+setElement(90%, 75px, absolute)
+				padding: 20px 5% 30px 5%
+				+setPos(0px, 0px)
+				overflow: hidden
+				+backColor(white)
+
+				.info_holder_expand
+					display: block
+
+
+				.role,.tech
+					display: none
+
+				&.expanded
+					+setElement(90%, auto, absolute)
+					border-bottom: 1px solid $percent_10_black
+
+					@media only screen and (max-width: $withBorders * 2), (min-width: 320px) and (max-width: 480px)
+						.info
+							&.description span
+								height: auto
+
+					.role,.tech
+						display: block
+
 
 			h1
 				+setFont(30px,black,$fontFamilyBold,uppercase)
 
+				@media only screen and (max-width: $withBorders * 2), (min-width: 320px) and (max-width: 480px)
+					+setFont(22px,black,$fontFamilyBold,uppercase)
+					width: 50%
+					height: 50px
+					overflow: hidden
+
 			.info
 				+setFont(18px,black,$fontFamily)
 				margin-top: 10px
+
+				@media only screen and (max-width: $withBorders * 2), (min-width: 320px) and (max-width: 480px)
+					+setFont(16px,black,$fontFamily)
 
 				span
 					+setElement(100%, auto)
@@ -336,15 +408,46 @@ body
 					line-height: 23px
 					padding: 20px 0px 7px 0px
 
+					@media only screen and (max-width: $withBorders * 2), (min-width: 320px) and (max-width: 480px)
+						+setFont(16px,black,$fontFamilyBold,uppercase)
+						line-height: 18px
+						padding: 10px 0px 5px 0px
+
 				&.description span
 					padding-top: 0px
 
-	img
-		+setElement(60%, auto)
-		border-right: 1px solid $percent_20_black
+					@media only screen and (max-width: $withBorders * 2), (min-width: 320px) and (max-width: 480px)
+						height: 30px
+						overflow: hidden
 
-		&.fullwidth
-			+setElement(100%, auto)
+		img
+			+setElement(60%, auto)
+			border-right: 1px solid $percent_20_black
+			display: inline-block
+			vertical-align:top
+			+transProp(opacity,1s)
+			+opacity(0)
+
+			&.loadingDetail
+				+opacity(1)
+
+			&.fullwidth
+				+setElement(100%, auto)
+
+				@media only screen and (max-width: $withBorders * 2), (min-width: 320px) and (max-width: 480px)
+					+setPos(0px,80px)
+					border-top: 0px
+					border-right: 0px
+					margin-top: 0px
+
+			@media only screen and (max-width: $withBorders * 2), (min-width: 320px) and (max-width: 480px)
+				+setElement(100%, auto, relative)
+				+setPos(0,115px)
+				display: block
+				border-right: none
+				border-top: 1px solid $percent_20_black
+				margin-top: 10px
+	
 
 	&.showing
 		+setPos(0px,0px)
@@ -377,15 +480,24 @@ body
 
 
 .project-holder	
-	$ph: 221px
-	$withBorders: $ph + 2px
 	float: left
 	overflow: hidden
 	min-width: $ph
 	background-size: 100% auto
-	+backColor($percent_10_black)
+	background-position: 0px 0%
+	+transProp(all, 3s)
+	+backColor(white)
 	+bdr(1px, white)
 	+buttonBehavior
+
+	&.loading
+		+bdr(1px, $percent_10_black)
+		background-position: 100px 0%
+
+		@media only screen and (min-width: 320px) and (max-width: 480px)
+			border-right: 0px
+			border-left:  0px
+		
 
 	&.selected
 		width: 100%
