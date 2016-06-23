@@ -3,8 +3,8 @@
 #!/bin/sh
 #change user,group and perms for multplie directoies
 
-directorypattern="(css)"
-filepattern="(html|json)"
+directorypattern="(css|javascript)"
+filepattern="(html)"
 excludeslash="\/"
 bucket="superfastcola.com"
 bucketfullpath="s3://$bucket/"

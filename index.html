@@ -11,7 +11,7 @@
 	<link href="http://fonts.googleapis.com/css?family=Average" rel="stylesheet" type="text/css">
 	<script src="/javascript/dld.js"></script>
 </head>
-<body ng-app="projectTriage" ng-controller="listProjects" scrollposition="" ng-class="{clipBody: clipBody}">	
+<body ng-app="projectTriage" ng-init="clipBody=false;" ng-controller="listProjects" scrollposition="" ng-class="{clipBody: clipBody}">	
 
 	<div class="navigation" ng-class="{showing: showNav}" >
 		<!-- <button ng-repeat="x in filteredItems = (projects | filter:{'type':(!!selectedType || undefined || '!illo')})" ng-click="setType($index)" ng-class="{selected: isActive($index)}">{{ x.name }}</button> -->
@@ -19,22 +19,7 @@
 		<button ng-repeat="x in types" ng-click="setType(x,$index)" ng-class="{selected: isActive($index)}">{{ x }}</button>
 	</div>
 
-	<div class="project_description" ng-class="{showing: showDescription}" >
-		<div class="description_holder" ng-class="{illo: !project.description}">
-			<a class="info_holder_close" ng-click="hideProject($event)"></a>
-			<a class="info_holder_expand" ng-click="expandInfo()"></a>
-			
-			<img ng-src={{projectImage}} ng-init="detailImageLoaded = false;" ng-class="{fullwidth: !project.description, loadingDetail: descriptionImageLoaded()}"/>
-			<div class="info_holder" ng-class="{expanded: showAllInfo}" ng-if="project.description">
-				<h1>{{project.name}}</h1>
-
-				<p class="info description" ng-if="project.description"><span>{{project.description}}</span></p>
-				<p class="info role" ng-if="project.role"><span>Role</span>{{project.role}}</p>
-				<p class="info tech" ng-if="project.tech"><span>Technology</span>{{project.tech}}</p>
-			</div>
-		</div>
-		<div class="breaker"></div>
-	</div>
+	
 
 	<div class="container" autoresize="" ng-class="{showing: showNav}">
 		<canvas id="hamburger" ng-click="navSlider($event)" ng-class="{showing: showNav}"></canvas>
@@ -42,6 +27,23 @@
 		<div class="holder">
 			<div id="portfolio_header">
 				<div class="dude"><span>Hi!</span></div>
+			</div>
+
+			<div class="project_description" ng-class="{showing: showDescription}" >
+				<div class="description_holder" ng-class="{illo: !project.description}">
+					<a class="info_holder_close" ng-click="hideProject($event)"></a>
+					<a class="info_holder_expand" ng-click="expandInfo()"></a>
+					
+					<img ng-src={{projectImage}} ng-init="detailImageLoaded = false;" ng-class="{fullwidth: !project.description, loadingDetail: descriptionImageLoaded()}"/>
+					<div class="info_holder" ng-class="{expanded: showAllInfo}" ng-if="project.description">
+						<h1>{{project.name}}</h1>
+
+						<p class="info description" ng-if="project.description"><span>{{project.description}}</span></p>
+						<p class="info role" ng-if="project.role"><span>Role</span>{{project.role}}</p>
+						<p class="info tech" ng-if="project.tech"><span>Technology</span>{{project.tech}}</p>
+					</div>
+				</div>
+				<div class="breaker"></div>
 			</div>
 
 			<div id="portfolio_area">

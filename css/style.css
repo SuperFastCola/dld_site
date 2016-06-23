@@ -51,11 +51,10 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden; }
 body.clipBody {
-  height: 100%;
-  overflow: auto; }
-@media only screen and (max-width: 446px), (min-width: 320px) and (max-width: 480px) {
-  body.clipBody .project-holder {
-    display: none; } }
+  overflow-x: hidden; }
+body.clipBody #portfolio_area {
+  height: 0px;
+  overflow: hidden; }
 
 .navigation {
   display: block;
@@ -185,33 +184,40 @@ body.clipBody {
 
 .project_description {
   display: block;
-  position: fixed;
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  width: 0%;
+  height: 0%;
   left: 100%;
-  top: 0px;
+  top: 163px;
+  display: none;
   z-index: 30;
   margin-left: 0px;
   -webkit-transition: all 0.25s;
   -moz-transition: all 0.25s;
   -o-transition: all 0.25s;
   transition: all 0.25s;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: white;
   background-repeat: no-repeat;
   background-size: auto 100%;
-  overflow-x: hidden; }
+  border-top: 1px solid rgba(0, 0, 0, 0.1); }
+.project_description.showing {
+  left: 0px;
+  top: 163px;
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%; }
 @media only screen and (max-width: 446px), (min-width: 320px) and (max-width: 480px) {
   .project_description {
     background-color: white; } }
 .project_description .description_holder {
   display: block;
   position: relative;
-  width: 80%;
+  width: 95%;
   height: auto;
   background-color: white;
   margin: 20px auto;
-  padding: 0px;
-  border: 1px solid rgba(0, 0, 0, 0.2); }
+  padding: 0px; }
 @media only screen and (max-width: 446px), (min-width: 320px) and (max-width: 480px) {
   .project_description .description_holder {
     display: block;
@@ -222,7 +228,7 @@ body.clipBody {
 .project_description .description_holder.illo {
   display: block;
   position: relative;
-  width: 50%;
+  width: 70%;
   height: auto; }
 @media only screen and (max-width: 446px), (min-width: 320px) and (max-width: 480px) {
   .project_description .description_holder.illo {
@@ -285,7 +291,7 @@ body.clipBody {
 .project_description .description_holder .info_holder {
   display: block;
   position: relative;
-  width: 30%;
+  width: 35%;
   height: auto;
   display: inline-block;
   vertical-align: top;
@@ -401,7 +407,6 @@ body.clipBody {
   position: relative;
   width: 60%;
   height: auto;
-  border-right: 1px solid rgba(0, 0, 0, 0.2);
   display: inline-block;
   -webkit-transition: opacity 1s;
   -moz-transition: opacity 1s;
@@ -438,9 +443,6 @@ body.clipBody {
     border-right: none;
     border-top: 1px solid rgba(0, 0, 0, 0.2);
     margin-top: 10px; } }
-.project_description.showing {
-  left: 0px;
-  top: 0px; }
 
 #portfolio_header {
   background-image: url("../images/full/cityscape_back.jpg");

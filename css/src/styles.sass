@@ -219,14 +219,15 @@ body
 	overflow-x: hidden
 
 	&.clipBody
-		height: 100%
-		overflow: auto
+		// height: 100%
+		overflow-x: hidden
+
+		#portfolio_area
+			height: 0px
+			overflow: hidden
 
 		@media only screen and (max-width: $withBorders * 2), (min-width: 320px) and (max-width: 480px)
 			-webkit-overflow-scrolling:none
-
-			.project-holder
-				display: none
 
 .navigation
 	$width: 250px
@@ -293,29 +294,32 @@ body
 	&.showing
 		margin-left: -(250px)
 
+
+
 .project_description
-	+setElement(100%, 100%, fixed)
-	+setPos(100%,0px)
+	+setElement(0%, 0%, absolute)
+	+setPos(100%,$headerHeight)
+	display: none
 	z-index: 30
 	margin-left: 0px
 	+transProp(all, .25s)
-	+backColor($percent_95_white)
+	+backColor(white)
 	background-repeat: no-repeat
 	background-size: auto 100%
+	border-top: 1px solid $percent_10_black
 
-	overflow-x: hidden
-	overflow-y:scroll
-	-webkit-overflow-scrolling:touch
+	&.showing
+		+setPos(0px,$headerHeight)
+		+setElement(100%, 100%, absolute)
 
 	@media only screen and (max-width: $withBorders * 2), (min-width: 320px) and (max-width: 480px)
 		+backColor(white)
 
 	.description_holder
-		+setElement(80%, auto, relative)
+		+setElement(95%, auto, relative)
 		+backColor(white)
 		margin: 20px auto
 		padding: 0px
-		+bdr(1px,$percent_20_black)
 
 		@media only screen and (max-width: $withBorders * 2), (min-width: 320px) and (max-width: 480px)
 			+setElement(100%, auto, relative)
@@ -323,7 +327,7 @@ body
 
 
 		&.illo
-			+setElement(50%, auto, relative)
+			+setElement(70%, auto, relative)
 
 			@media only screen and (max-width: $withBorders * 2), (min-width: 320px) and (max-width: 480px)
 				+setElement(100%, auto, relative)
@@ -360,7 +364,7 @@ body
 				margin-left: -65px
 
 		.info_holder
-			+setElement(30%, auto)
+			+setElement(35%, auto)
 			display: inline-block
 			vertical-align: top
 			padding: 50px 0px 50px 20px
@@ -429,7 +433,6 @@ body
 
 		img
 			+setElement(60%, auto)
-			border-right: 1px solid $percent_20_black
 			display: inline-block
 			vertical-align:top
 			+transProp(opacity,1s)
@@ -456,8 +459,7 @@ body
 				margin-top: 10px
 	
 
-	&.showing
-		+setPos(0px,0px)
+
 
 #portfolio_header
 	+back("full/cityscape_back.jpg",left,top)

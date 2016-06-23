@@ -71,6 +71,11 @@
 		$scope.cacheBuster = 0;
 		$scope.clipBody = false;
 
+		$scope.returnClipBody = function(val){
+			$scope.clipBody = (typeof val == "undefined")?false:val;
+			return $scope.clipBody;
+		}
+
 		$scope.setBackgroundThumbnailImage = function(obj){
 
 			if($scope.cacheBuster===0){
@@ -115,6 +120,8 @@
 			}
 			
 			$scope.showNav = !$scope.showNav;
+			$scope.showDescription = true;
+			$scope.hideProject($event)
 			$scope.createHamburger($scope.showNav);
 		}
 
@@ -123,8 +130,12 @@
 			$scope.descriptionImageLoaded();
 			$scope.projectImage = '//:0';
 			$scope.setInfoExpandedForDevice();
-			$event.stopPropagation();
-			$scope.clipBody = false;
+
+			if(typeof $event != "undefined"){
+				$event.stopPropagation();
+			}
+
+			$scope.returnClipBody();
 			$scope.showDescription = !$scope.showDescription;
 
 		}
@@ -178,7 +189,6 @@
 		$http.get("/projects.json").success($scope.parseResponse);
 
 		$scope.descriptionImageLoaded = function(){
-			console.log(this.projectImage);
 			if(this.projectImage!="//:0" && typeof this.projectImage != "undefined"){
 				return true;
 			}
@@ -359,7 +369,7 @@
 	            element.bind('click', function($event) {
 	            	scope.$parent.showDescription = !scope.$parent.showDescription;
 
-	            	scope.$parent.clipBody = true;
+	            	scope.$parent.returnClipBody(true);
 	            	scope.backgroundImage = scope.setBackgroundThumbnailImage({source:scope.x.image,detail:true,returnURL:true});
 	            	scope.$parent.setProjectDetails(scope.x);
 
