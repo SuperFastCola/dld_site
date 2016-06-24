@@ -11,7 +11,7 @@
 	var internal = {};
 	win.dld = internal;
 
-	var app = angular.module('projectTriage', []);
+	var app = angular.module('projectTriage', ['ngSanitize']);
 
 	app.directive('myCreateNav',function(){
 		return true;
@@ -19,6 +19,7 @@
 
 	app.controller('listProjects', function($scope,$http) {
 		$scope.projects = null;
+		$scope.contents = null;
 		$scope.types = null;
 		$scope.selectedType = '';
 		$scope.excludeIllos = true;
@@ -107,6 +108,7 @@
 		$scope.parseResponse = function(response){
 			$scope.types = response.types;
 			$scope.projects = response.projects;
+			$scope.contents = response.contents;
 			$scope.createHamburger();
 		}
 
@@ -120,6 +122,11 @@
 			}
 			
 			$scope.showNav = !$scope.showNav;
+
+			if(!$scope.showNav){
+				window.scrollTo(0,0);
+			}
+
 			$scope.showDescription = true;
 			$scope.hideProject($event)
 			$scope.createHamburger($scope.showNav);
@@ -135,6 +142,8 @@
 				$event.stopPropagation();
 			}
 
+			window.scrollTo(0,0);
+
 			$scope.returnClipBody();
 			$scope.showDescription = !$scope.showDescription;
 
@@ -144,10 +153,31 @@
 			$scope.project = obj;
 		}
 
+
+		$scope.contentSection = false;
+
+		$scope.setContentSection = function(val){
+			$scope.contentSection  = (typeof val == "undefined")?false:val;
+			return $scope.contentSection;
+		}
+
 		$scope.setType = function(type,index){
 			$scope.selectedType = type;
+			$scope.setContentSection();
+
+			switch(type){
+				case 'all':
+					$scope.selectedType = '';
+					break;
+
+				case 'about':
+					$scope.setContentSection(true);
+					$scope.downloadContent($scope.contents[index]);
+					break;
+			}
 			$scope.cacheBuster = 0;
 			$scope.navSlider();
+
 			//change scroll position for new div without backgrounds.
 			window.scrollBy(0,2);
 		}
@@ -157,9 +187,13 @@
 				return {'type':($scope.selectedType)};
 			}
 			else{
-				return {"type": ($scope.selectedType || undefined || '!illustration')};	
+				return {"type": ($scope.selectedType || undefined || '!illustration' || '!about')};	
 			}
 
+		}
+
+		$scope.outputHTML = function(){
+			console.log(this.x.body);
 		}
 
 		$scope.$watch('scrollTop', function(newVal, oldVal){
@@ -188,6 +222,16 @@
 
 		$http.get("/projects.json").success($scope.parseResponse);
 
+		$scope.hideHamburger = function(){
+			if($scope.showDescription){
+				return true;	
+			}
+			else{
+				return false;
+			}
+			
+		}
+
 		$scope.descriptionImageLoaded = function(){
 			if(this.projectImage!="//:0" && typeof this.projectImage != "undefined"){
 				return true;
@@ -196,6 +240,7 @@
 				return false;
 			}
 		}
+
 
 		$scope.setInfoExpandedForDevice = function(){
 			if($scope.mobile=="full"){
@@ -211,6 +256,24 @@
 
 		$scope.expandInfo = function(){
 			$scope.showAllInfo = !$scope.showAllInfo;
+
+			if(!$scope.showAllInfo){
+				window.scrollTo(0,0);	
+			}
+			
+		}
+
+		$scope.expandForIllo = false;
+
+		$scope.illustrationType = function(types){
+
+			$scope.expandForIllo = false;
+			for(var i  in types){
+
+				if(types[i]=="illustration"){
+					$scope.expandForIllo = true;
+				}
+			}
 		}
 
 		$scope.loadBackground = function(scope){
@@ -235,6 +298,21 @@
 			}
 		};
 
+		$scope.setDownloadedContent = function(val){
+			$scope.downloadedContent = (typeof val == "undefined")?null:val;
+			console.log($scope.downloadedContent);
+		}
+
+		$scope.downloadContent = function(scope){	
+        	$http({
+					method: 'GET',
+					url: ("/" + scope.contentFile)
+				}).then(function successCallback(response) {
+					$scope.setDownloadedContent(response.data);
+				}, function errorCallback(response) {
+					console.log(response);
+			});
+       	}
 
 	});
 	
@@ -361,6 +439,8 @@
 	   	};
 	}); 
 
+
+
  	//http://www.undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/
  	app.directive('showOnClick',function($http){
 	      return {
@@ -368,10 +448,13 @@
 
 	            element.bind('click', function($event) {
 	            	scope.$parent.showDescription = !scope.$parent.showDescription;
-
 	            	scope.$parent.returnClipBody(true);
-	            	scope.backgroundImage = scope.setBackgroundThumbnailImage({source:scope.x.image,detail:true,returnURL:true});
+
+	            	if(typeof scope.x.image != "undefined"){
+	            		scope.backgroundImage = scope.setBackgroundThumbnailImage({source:scope.x.image,detail:true,returnURL:true});
+	            	}
 	            	scope.$parent.setProjectDetails(scope.x);
+	            	scope.$parent.illustrationType(scope.x.type);
 
 	            	$http({
   						method: 'GET',

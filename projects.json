@@ -1,5 +1,14 @@
 {
-"types":["résumé","front-end","back-end","print","design","illustration"],
+"types":["about","services","all","front-end","back-end","print","design","illustration","contact"],
+"contents":[
+	{
+		"type":["about"],
+		"title":"About Me",
+		"body":"<p>Coming Soon</p>",
+		"contentFile": "resume.html"
+
+	}
+],
 "projects":[
 	{
 		"name":"Teen Beach Beats",

@@ -30,12 +30,25 @@
 			</div>
 
 			<div class="project_description" ng-class="{showing: showDescription}" >
-				<div class="description_holder" ng-class="{illo: !project.description}">
-					<a class="info_holder_close" ng-click="hideProject($event)"></a>
-					<a class="info_holder_expand" ng-click="expandInfo()"></a>
+				<div class="description_holder" ng-class="{illo: expandForIllo}">
+					<div class="icon_holder close">
+						<svg class="icon" ng-click="hideProject($event)">
+							<path class="symbol" d="M 3 3 L 38 38 M 38 3 L 3 38" />
+						</svg>
+					</div>
 					
-					<img ng-src={{projectImage}} ng-init="detailImageLoaded = false;" ng-class="{fullwidth: !project.description, loadingDetail: descriptionImageLoaded()}"/>
-					<div class="info_holder" ng-class="{expanded: showAllInfo}" ng-if="project.description">
+					<div class="imageDisplay" ng-class="{fullwidth: !project.description, expanded: showAllInfo}" >
+						<div class="icon_holder expand">
+							<svg class="icon" ng-click="expandInfo()">
+								<path class="symbol" d="M 3 3 L 20 19 L 38 3" />
+							</svg>
+						</div>
+
+						<img ng-src={{projectImage}} ng-init="detailImageLoaded = false;" ng-class="{loadingDetail: descriptionImageLoaded(), notext: !project.description}"/>
+					</div>
+
+
+					<div class="info_holder" ng-if="project.description">
 						<h1>{{project.name}}</h1>
 
 						<p class="info description" ng-if="project.description"><span>{{project.description}}</span></p>
@@ -46,7 +59,15 @@
 				<div class="breaker"></div>
 			</div>
 
+			<div class="content_area" ng-class="{showContent: contentSection}">
+				<div class="content-holder" id="{{x.id}}" ng-repeat="x in filteredItems = contents" >
+						<h1>{{x.title}}</h1>
+						<div class="content-body" ng-bind-html="downloadedContent"></div>
+				</div>
+			</div>
+
 			<div id="portfolio_area">
+
 				
 				<div class="project-holder" ng-init="imageLoading = true; imageLoaded = false;" ng-class="{selected: isActiveProject($index), loading: !imageLoaded}" id="{{x.id}}" check-object-position ng-style="backgroundStyle" ng-repeat="x in filteredItems = (projects | filter:getFilter())" ng-click="showDetails($index)" show-on-click>
 					
