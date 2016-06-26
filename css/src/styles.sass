@@ -247,7 +247,7 @@ body
 	margin-left: 0px
 	+transProp(all, .25s)
 
-	button
+	a
 		+setElement(100%, 30px, relative)
 		+bdr(0px)
 		margin-bottom: 0px
@@ -255,7 +255,15 @@ body
 		padding: 4px 0px 4px 15px
 		+backColor(white)
 		+buttonBehavior
-		+setFont(12px,black,$fontFamily,uppercase,auto,left)
+		+setFont(14px,black,$fontFamily,uppercase,auto,left)
+		overflow: hidden
+		
+		span
+			padding: 8px 0px 0px 0px
+			display: inline-block
+
+			@media only screen and (min-width: 320px) and (max-width: 480px)
+				padding: 10px 0px 0px 0px
 
 		&:hover
 			+backColor($percent_10_black)
@@ -264,7 +272,7 @@ body
 			margin-top: 14px
 
 		@media only screen and (min-width: 320px) and (max-width: 480px)
-			+setElement(100%, 50px, relative)
+			+setElement(100%, 36px, relative)
 			+setFont(18px,black,$fontFamily,uppercase,auto,left)
 
 	&.showing

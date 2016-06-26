@@ -11,13 +11,13 @@
 	var internal = {};
 	win.dld = internal;
 
-	var app = angular.module('projectTriage', ['ngSanitize']);
+	var app = angular.module('projectTriage', ['ngSanitize','ngRoute']);
 
 	app.directive('myCreateNav',function(){
 		return true;
 	});
 
-	app.controller('listProjects', function($scope,$http) {
+	app.controller('listProjects', function($scope,$http, $route, $routeParams, $location, $filter) {
 		$scope.projects = null;
 		$scope.contents = null;
 		$scope.types = null;
@@ -105,11 +105,31 @@
 			
 		}
 
+		$scope.getPath = function(){
+
+			var parts = $location.path().split("/");
+
+			if(parts[1]=="project"){
+				  $scope.showProjectDetails();
+			}
+			else{
+				for(var i in $scope.types){
+					if(String(parts[1]).match($scope.types[i])){
+						$scope.showNav = true;
+						$scope.setType($scope.types[i],i);
+					}
+				}
+
+			}
+
+		}
+
 		$scope.parseResponse = function(response){
 			$scope.types = response.types;
 			$scope.projects = response.projects;
 			$scope.contents = response.contents;
 			$scope.createHamburger();
+			$scope.getPath();
 		}
 
 		$scope.showNav = false;
@@ -314,6 +334,42 @@
 			});
        	}
 
+       	$scope.showProjectDetails = function(passedScope){
+
+       		var scope = (typeof passedScope != "undefined")?passedScope:$scope;
+       		var scopeParent = (typeof scope.$parent.showDescription != "undefined")?scope.$parent:$scope;
+
+
+       		var parts = $location.path().split("/");
+       		var scopeProjectProperties = (typeof scope.x != "undefined")?scope.x:$filter("filter")($scope.projects, {id:parts[2]})[0];
+
+       		scopeParent.showDescription = !scopeParent.showDescription;
+        	scopeParent.returnClipBody(true);
+
+        	if(typeof scopeProjectProperties.image != "undefined"){
+        		scope.backgroundImage = scope.setBackgroundThumbnailImage({source:scopeProjectProperties.image,detail:true,returnURL:true});
+        	}
+        	scopeParent.setProjectDetails(scopeProjectProperties);
+        	scopeParent.illustrationType(scopeProjectProperties.type);
+
+        	$http({
+					method: 'GET',
+					responseType: 'arraybuffer',
+					url: scope.backgroundImage
+				}).then(function successCallback(response) {
+
+					var blob = new Blob([response.data], {type: "image/jpeg"});
+					scopeParent.projectImage = (window.URL || window.webkitURL).createObjectURL(blob);
+
+					scope.descriptionImageLoaded();
+
+					}, function errorCallback(response) {
+						console.log(response);
+					// called asynchronously if an error occurs
+					// or server returns response with an error status.
+				});
+       	}
+
 	});
 	
 	//http://nahidulkibria.blogspot.com/2014/10/angullarjs-directive-to-watch-window.html
@@ -345,9 +401,13 @@
 	    		return $scope.$apply();  
 	   		});  
 	  	};  
+	});
 
- 	}); 
 
+	app.controller('aboutController', function($scope,  $routeParams) {
+		console.log($routeParams);
+        //$scope.message = 'Look! I am an about page.';
+    });
 
  	//http://nahidulkibria.blogspot.com/2014/10/angullarjs-directive-to-watch-window.html
 	app.directive('scrollposition', function($window) {  
@@ -439,39 +499,12 @@
 	   	};
 	}); 
 
-
-
  	//http://www.undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/
  	app.directive('showOnClick',function($http){
 	      return {
 	        link : function(scope, element, attrs) {
-
 	            element.bind('click', function($event) {
-	            	scope.$parent.showDescription = !scope.$parent.showDescription;
-	            	scope.$parent.returnClipBody(true);
-
-	            	if(typeof scope.x.image != "undefined"){
-	            		scope.backgroundImage = scope.setBackgroundThumbnailImage({source:scope.x.image,detail:true,returnURL:true});
-	            	}
-	            	scope.$parent.setProjectDetails(scope.x);
-	            	scope.$parent.illustrationType(scope.x.type);
-
-	            	$http({
-  						method: 'GET',
-  						responseType: 'arraybuffer',
-  						url: scope.backgroundImage
-						}).then(function successCallback(response) {
-
- 						var blob = new Blob([response.data], {type: "image/jpeg"});
-						scope.$parent.projectImage = (window.URL || window.webkitURL).createObjectURL(blob);
-
-						scope.descriptionImageLoaded();
-
-  						}, function errorCallback(response) {
-  							console.log(response);
-    						// called asynchronously if an error occurs
-    						// or server returns response with an error status.
-  					});
+	            	scope.$parent.showProjectDetails(scope);
 
 	            });
 	       	}

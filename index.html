@@ -16,7 +16,7 @@
 	<div class="navigation" ng-class="{showing: showNav}" >
 		<!-- <button ng-repeat="x in filteredItems = (projects | filter:{'type':(!!selectedType || undefined || '!illo')})" ng-click="setType($index)" ng-class="{selected: isActive($index)}">{{ x.name }}</button> -->
 
-		<button ng-repeat="x in types" ng-click="setType(x,$index)" ng-class="{selected: isActive($index)}">{{ x }}</button>
+		<a ng-href="#{{x}}" ng-repeat="x in types" ng-click="setType(x,$index)" ng-class="{selected: isActive($index)}"><span>{{ x }}</span></a>
 	</div>
 
 	
@@ -69,12 +69,12 @@
 			<div id="portfolio_area">
 
 				
-				<div class="project-holder" ng-init="imageLoading = true; imageLoaded = false;" ng-class="{selected: isActiveProject($index), loading: !imageLoaded}" id="{{x.id}}" check-object-position ng-style="backgroundStyle" ng-repeat="x in filteredItems = (projects | filter:getFilter())" ng-click="showDetails($index)" show-on-click>
+				<div class="project-holder" ng-init="imageLoading = true; imageLoaded = false;" ng-class="{selected: isActiveProject($index), loading: !imageLoaded}" id="{{x.id}}" check-object-position ng-style="backgroundStyle" ng-repeat="x in filteredItems = (projects | filter:getFilter())" show-on-click>
 					
-					<div class="project_button">
-						<a class="project-details-butn hidden" show-on-hover-parent>Project Details</a>
-						<div class="project-name" hide-on-hover-parent>{{ x.name }}</div>
-					</div>
+					<a class="project_button" ng-href="#/project/{{x.id}}">
+						<span class="project-details-butn hidden" show-on-hover-parent>Project Details</span>
+						<span class="project-name" hide-on-hover-parent>{{ x.name }}</span>
+					</a>
 
 				</div>
 
