@@ -18,9 +18,6 @@
 
 		<a ng-href="#{{x}}" ng-repeat="x in types" ng-click="setType(x,$index)" ng-class="{selected: isActive($index)}"><span>{{ x }}</span></a>
 	</div>
-
-	
-
 	<div class="container" autoresize="" ng-class="{showing: showNav}">
 		<canvas id="hamburger" ng-click="navSlider($event)" ng-class="{showing: showNav}"></canvas>
 
@@ -60,9 +57,10 @@
 			</div>
 
 			<div class="content_area" ng-class="{showContent: contentSection}">
-				<div class="content-holder" id="{{x.id}}" ng-repeat="x in filteredItems = contents" >
-						<h1>{{x.title}}</h1>
-						<div class="content-body" ng-bind-html="downloadedContent"></div>
+				<div class="content-holder" id="{{contentSectioninfo.id}}">
+						<h1>{{contentSectioninfo.title}}</h1>
+						<img ng-src={{contentImage}} ng-init="contentImage = null;"/>
+						<div class="content-body" id="content-body-holder" ng-bind-html="downloadedContent"></div>
 				</div>
 			</div>
 

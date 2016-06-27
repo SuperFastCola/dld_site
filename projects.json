@@ -5,8 +5,8 @@
 		"type":["about"],
 		"title":"About Me",
 		"body":"<p>Coming Soon</p>",
-		"contentFile": "resume.html"
-
+		"contentFile": "resume.html",
+		"image":"teenbeach2.jpg"
 	}
 ],
 "projects":[

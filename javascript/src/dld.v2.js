@@ -17,7 +17,7 @@
 		return true;
 	});
 
-	app.controller('listProjects', function($scope,$http, $route, $routeParams, $location, $filter) {
+	app.controller('listProjects', function($scope, $compile, $rootScope, $http, $route, $routeParams, $location, $filter) {
 		$scope.projects = null;
 		$scope.contents = null;
 		$scope.types = null;
@@ -89,6 +89,7 @@
 			if(typeof window.matchMedia != "undefined"){
 				images_sub_directory = "images/" + ((window.matchMedia("(min-width: 320px)").matches && window.matchMedia("(max-width: 480px)").matches)?"mobile":"full")  + "/";
 			}
+			
 			
 			obj.source += ('?=' + $scope.cacheBuster);
 
@@ -173,10 +174,10 @@
 			$scope.project = obj;
 		}
 
-
 		$scope.contentSection = false;
 
 		$scope.setContentSection = function(val){
+			delete $scope.contentSectioninfo;
 			$scope.contentSection  = (typeof val == "undefined")?false:val;
 			return $scope.contentSection;
 		}
@@ -192,6 +193,7 @@
 
 				case 'about':
 					$scope.setContentSection(true);
+					$scope.contentSectioninfo = $scope.contents[index];
 					$scope.downloadContent($scope.contents[index]);
 					break;
 			}
@@ -210,10 +212,6 @@
 				return {"type": ($scope.selectedType || undefined || '!illustration' || '!about')};	
 			}
 
-		}
-
-		$scope.outputHTML = function(){
-			console.log(this.x.body);
 		}
 
 		$scope.$watch('scrollTop', function(newVal, oldVal){
@@ -318,9 +316,16 @@
 			}
 		};
 
-		$scope.setDownloadedContent = function(val){
-			$scope.downloadedContent = (typeof val == "undefined")?null:val;
-			console.log($scope.downloadedContent);
+
+
+		$scope.contentSectionImageLoading = false;
+
+		$scope.setDownloadedContent = function(val,scope){
+			var oldEle = angular.element(document.getElementById("content-body-holder"));			
+			oldEle.append($compile(val)(oldEle.scope));
+
+			$scope.contentImage  = "/" + $scope.setBackgroundThumbnailImage({source:$scope.contentSectioninfo.image,returnURL:true})
+			
 		}
 
 		$scope.downloadContent = function(scope){	
@@ -328,7 +333,9 @@
 					method: 'GET',
 					url: ("/" + scope.contentFile)
 				}).then(function successCallback(response) {
-					$scope.setDownloadedContent(response.data);
+					var test = angular.element(document).find("#content-body-holder");
+					$scope.setDownloadedContent(response.data,scope);
+
 				}, function errorCallback(response) {
 					console.log(response);
 			});
@@ -505,11 +512,12 @@
 	        link : function(scope, element, attrs) {
 	            element.bind('click', function($event) {
 	            	scope.$parent.showProjectDetails(scope);
-
 	            });
 	       	}
 	   	};
 	}); 
+
+	
 
 
 
