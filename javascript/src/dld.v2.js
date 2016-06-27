@@ -316,6 +316,40 @@
 			}
 		};
 
+		$scope.contentImage = "//:0";
+
+		$scope.setContentImageSource = function(data){
+			 $scope.contentImage = (typeof data != "undefined")?data:null;
+			 $scope.$apply();
+		}
+
+		
+		$scope.loadImage = function(file){
+			console.log(file);
+
+			$http({
+					method: 'GET',
+					url: file,
+					responseType: "blob"
+				}).then(function successCallback(response) {
+				
+					fr = new FileReader();
+			        fr.onload = function(){
+			            // this variable holds your base64 image data URI (string)
+			            // use readAsBinary() or readAsBinaryString() below to obtain other data types
+			           	
+			           	$scope.setContentImageSource(fr.result);
+			        };
+			        fr.readAsDataURL(response.data);
+
+					delete $scope.contentSectionImageLoading;
+					$scope.contentSectionImageLoading = false;
+
+				}, function errorCallback(response) {
+					console.log(response);
+			});
+
+		}
 
 
 		$scope.contentSectionImageLoading = false;
@@ -324,7 +358,10 @@
 			var oldEle = angular.element(document.getElementById("content-body-holder"));			
 			oldEle.append($compile(val)(oldEle.scope));
 
-			$scope.contentImage  = "/" + $scope.setBackgroundThumbnailImage({source:$scope.contentSectioninfo.image,returnURL:true})
+			if(!$scope.contentSectionImageLoading && typeof $scope.contentSectioninfo.image != "undefined"){
+				$scope.contentSectionImageLoading = true;
+				$scope.loadImage( "/" + $scope.setBackgroundThumbnailImage({source:$scope.contentSectioninfo.image,returnURL:true}));
+			}
 			
 		}
 
