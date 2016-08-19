@@ -177,8 +177,10 @@
 		$scope.contentSection = false;
 
 		$scope.setContentSection = function(val){
+
 			delete $scope.contentSectioninfo;
 			$scope.contentSection  = (typeof val == "undefined")?false:val;
+
 			return $scope.contentSection;
 		}
 
@@ -342,26 +344,15 @@
 			        };
 			        fr.readAsDataURL(response.data);
 
-					delete $scope.contentSectionImageLoading;
-					$scope.contentSectionImageLoading = false;
-
 				}, function errorCallback(response) {
 					console.log(response);
 			});
 
 		}
 
-
-		$scope.contentSectionImageLoading = false;
-
 		$scope.setDownloadedContent = function(val,scope){
 			var oldEle = angular.element(document.getElementById("content-body-holder"));			
-			oldEle.append($compile(val)(oldEle.scope));
-
-			if(!$scope.contentSectionImageLoading && typeof $scope.contentSectioninfo.image != "undefined"){
-				$scope.contentSectionImageLoading = true;
-				$scope.loadImage( "/" + $scope.setBackgroundThumbnailImage({source:$scope.contentSectioninfo.image,returnURL:true}));
-			}
+			oldEle.empty().append($compile(val)(oldEle.scope));
 			
 		}
 

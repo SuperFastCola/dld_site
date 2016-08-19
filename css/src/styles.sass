@@ -255,7 +255,7 @@ body
 		padding: 4px 0px 4px 15px
 		+backColor(white)
 		+buttonBehavior
-		+setFont(14px,black,$fontFamily,uppercase,auto,left)
+		+setFont(16px,black,$fontFamily,uppercase,auto,left)
 		overflow: hidden
 		
 		span
@@ -303,11 +303,6 @@ body
 	&.showing
 		margin-left: -(310px)
 
-.content_area
-	display: none
-
-	&.showContent
-		display: block
 
 .container
 	+setElement(100%, 100%, absolute)
@@ -359,7 +354,11 @@ body
 				stroke: white
 
 .project_description
-	.showing
+	
+	.icon_holder.close
+		display: none
+
+	&.showing
 		.icon_holder.close
 			display: block
 
@@ -409,9 +408,6 @@ body
 
 		&.illo
 			+setElement(95%, auto, relative)
-
-			.icon_holder.close
-				display: block
 
 			img.notext
 				width: 60%
@@ -674,8 +670,67 @@ body
 			+rotate2D(360deg)
 			+opacity(0)
 
-	
-			
+.content_area
+	width: 95%
+	height: auto
+	position: relative
+	display: none
+	+backColor(white)
+	margin: 20px auto
+	padding: 0px
+
+	&.showContent
+		display: block
+
+	.cv_navigation
+		width: 100%
+		padding: 10px 0px 20px 0px
+
+		a
+			display: inline-block
+			width: 100px
+			margin-right: 5px
+			text-decoration: none
+			+bdr(1px, $percent_20_black)
+			+borderRadius(20px)
+			padding: 10px
+			+setFont(18px,black,$fontFamilyBold,uppercase,null, center)
+
+			+buttonBehavior
 
 
-		
+
+	.cv_column
+		display: inline-block
+		vertical-align: top
+		width: 30%
+		padding: 0px 30px 20px 0px
+		font-size: 18px
+		line-height: 20px
+
+		@media only screen and (min-width: 320px) and (max-width: 1200px)
+			width: 45%
+			padding: 0px 30px 20px 0px
+
+		@media only screen and (min-width: 320px) and (max-width: 800px)
+			width: 100%
+			padding: 0px 0px 20px 0px
+
+		h1
+			+setFont(26px,black,$fontFamilyBold,uppercase)
+			margin: 15px 0px 15px 0px
+			padding-bottom: 6px
+			border-bottom: 1px solid $percent_10_black
+
+		h2
+			+setFont(16px,black,$fontFamilyBold,uppercase)
+			margin: 15px 0px 6px 0px
+
+		h3
+			+setFont(16px,black,null,uppercase)
+			margin: 0px 0px 6px 0px
+
+		ul
+			+setElement(48%, auto, relative)
+			display: inline-block
+			vertical-align: top

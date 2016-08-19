@@ -34,10 +34,10 @@
 			margin: -125px 0px 0px -125px;
 /*			border: 1px solid red;
 */
-			-webkit-transition: left 2s;
-			-moz-transition: left 2s;
-			-o-transition: left 2s;
-			transition: left 2s;
+			-webkit-transition: left .5s;
+			-moz-transition: left .5s;
+			-o-transition: left .5s;
+			transition: left .5s;
 		}
 
 		#loader.left{
@@ -177,8 +177,7 @@
 
 			<div class="content_area" ng-class="{showContent: contentSection}">
 				<div class="content-holder" id="{{contentSectioninfo.id}}">
-						<h1>{{contentSectioninfo.title}}</h1>
-						<img ng-src="{{contentImage}}" />
+						<h1 ng-if="contentSectioninfo.title" >{{contentSectioninfo.title}}</h1>
 						<div class="content-body" id="content-body-holder" ng-bind-html="downloadedContent"></div>
 				</div>
 			</div>
@@ -186,7 +185,7 @@
 			<div id="portfolio_area">
 
 				
-				<div class="project-holder" ng-init="imageLoading = true; imageLoaded = false;" ng-class="{selected: isActiveProject($index), loading: !imageLoaded}" id="{{x.id}}" check-object-position ng-style="backgroundStyle" ng-repeat="x in filteredItems = (projects | filter:getFilter())" show-on-click>
+				<div class="project-holder" ng-init="imageLoading = true; imageLoaded = false;" ng-class="{loading: !imageLoaded}" id="{{x.id}}" check-object-position ng-style="backgroundStyle" ng-repeat="x in filteredItems = (projects | filter:getFilter())" show-on-click>
 					
 					<a class="project_button" ng-href="#/project/{{x.id}}">
 						<span class="project-details-butn hidden" show-on-hover-parent>Project Details</span>
