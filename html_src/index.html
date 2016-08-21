@@ -33,10 +33,11 @@
 
 	<div id="loader" class="left"><h1 id="granny_says">Gassin' Up!<i>Sweety Pie</i></h1><span></span><div id="granny"></div></div>	
 
-	<div class="navigation" id="navigation" ng-class="{showing: showNav}" >
+	<div class="navigation clearfix" id="navigation" ng-class="{showing: showNav}" >
 		<!-- <button ng-repeat="x in filteredItems = (projects | filter:{'type':(!!selectedType || undefined || '!illo')})" ng-click="setType($index)" ng-class="{selected: isActive($index)}">{{ x.name }}</button> -->
 
 		<a ng-href="#{{x}}" ng-repeat="x in types" ng-click="setType(x,$index)" ng-class="{selected: isActive($index)}"><span>{{ x }}</span></a>
+
 	</div>
 
 	<div class="container" id="container" autoresize="" ng-class="{showing: showNav}">

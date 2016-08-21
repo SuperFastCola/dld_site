@@ -239,6 +239,12 @@ body
 		@media only screen and (max-width: $withBorders * 2), (min-width: 320px) and (max-width: 480px)
 			-webkit-overflow-scrolling:none
 
+.clearfix:after
+	content: " "
+	display: block
+	height: 0
+	clear: both
+
 .navigation
 	$width: 250px
 	+setElement(250px, 100%, fixed)
@@ -246,24 +252,27 @@ body
 	z-index: 20
 	margin-left: 0px
 	+transProp(all, .25s)
+	overflow: hidden
+	overflow-y: scroll
+
 
 	a
-		+setElement(100%, 30px, relative)
+		+setElement(100%, auto, relative)
 		+bdr(0px)
 		margin-bottom: 0px
 		border-bottom: 1px solid $percent_10_black
-		padding: 4px 0px 4px 15px
+		padding: 10px 0px 10px 15px
 		+backColor(white)
 		+buttonBehavior
-		+setFont(16px,black,$fontFamily,uppercase,auto,left)
+		+setFont(16px,black,$fontFamilyBold,uppercase,auto,left)
 		overflow: hidden
 		
 		span
-			padding: 8px 0px 0px 0px
+			padding: 4px 0px 4px 0px
 			display: inline-block
 
 			@media only screen and (min-width: 320px) and (max-width: 480px)
-				padding: 10px 0px 0px 0px
+				padding: 12px 0px 14px 0px
 
 		&:hover
 			+backColor($percent_10_black)
@@ -272,8 +281,8 @@ body
 			margin-top: 14px
 
 		@media only screen and (min-width: 320px) and (max-width: 480px)
-			+setElement(100%, 36px, relative)
-			+setFont(18px,black,$fontFamily,uppercase,auto,left)
+			+setElement(100%, auto, relative)
+			+setFont(18px,black,$fontFamilyBold,uppercase,auto,left)
 
 	&.showing
 		margin-left: -($width)
@@ -446,21 +455,19 @@ body
 					+setFont(22px,black,$fontFamilyBold,uppercase)
 
 			.info
-				+setFont(18px,black,$fontFamily)
+				+setFont(16px,black,$fontFamily, null, 18pt)
 				margin-top: 10px
 
 				@media only screen and (max-width: $withBorders * 2), (min-width: 320px) and (max-width: 480px)
-					+setFont(16px,black,$fontFamily)
+					+setFont(14px,black,$fontFamily, null, 16pt)
 
 				span
 					+setElement(100%, auto)
 					+setFont(20px,black,$fontFamilyBold,uppercase)
-					line-height: 23px
 					padding: 20px 0px 7px 0px
 
 					@media only screen and (max-width: $withBorders * 2), (min-width: 320px) and (max-width: 480px)
-						+setFont(16px,black,$fontFamilyBold,uppercase)
-						line-height: 18px
+						+setFont(16px,black,$fontFamilyBold,uppercase, 18pt)
 						padding: 10px 0px 5px 0px
 
 				&.description span
@@ -679,6 +686,9 @@ body
 	margin: 20px auto
 	padding: 0px
 
+	@media only screen and (max-width: 320px), (max-width: 480px)
+		text-align: center
+
 	&.showContent
 		display: block
 
@@ -706,8 +716,8 @@ body
 			&:last-child
 				margin-right: 0px
 
-			@media only screen and (max-width: 320px)
-				width: 30.5%
+			@media only screen and (max-width: 320px), (max-width: 480px)
+				width: 30%
 				padding: 10px 0px 10px 0px
 				margin-right: 4px
 
@@ -720,16 +730,13 @@ body
 		padding: 0px 30px 20px 0px
 		font-size: 14px
 		line-height: 16px
+		text-align: left
 
-		@media only screen and (min-width: 320px) and (max-width: 1200px)
-			width: 45%
-			padding: 0px 30px 20px 0px
+		@media only screen and (min-width: 480px) and (max-width: 1023px)
+			width: 43%
+			padding: 0px 15px 20px 15px
 
-		@media only screen and (min-width: 320px) and (max-width: 800px)
-			width: 100%
-			padding: 0px 0px 20px 0px
-
-		@media only screen and (max-width: 320px)
+		@media only screen and (max-width: 320px), (max-width: 414px)
 			display: block
 			width: 90%
 			margin:  0px auto 0px auto
@@ -754,28 +761,38 @@ body
 			span
 
 				&:first-child
-					display: block
 					text-transform: uppercase
 					padding: 0px 0px 4px 0px
 					margin: 0px 0px 6px 0px
-					border-bottom: 1px solid $percent_10_black
+					// border-bottom: 1px solid $percent_10_black
+		
+				&:nth-child(2)
+					float: right
 
-				// &:last-child
-				// 	&::before
-				// 		content: " - "
-			&.education
-				span
-					&:first-child
+					@media only screen and (min-width: 480px) and (max-width: 480px)
 						display: block
+						float: none !important
+						clear: both
+						padding-top: 4px
 
-					&:last-child
-						&::before
-							content: ""
+
+				&:nth-child(3)
+					display: block
+					margin-top: 6px
+					padding-top: 6px
+					border-top: 1px solid $percent_10_black
+
+					@media only screen and (max-width: 480px)
+
 
 		h3
 			+setFont(14px,black,null,none,16px,null,null)
 			margin: 0px 0px 16px 0px
 			font-style: italic
+
+			&.education
+				padding-top: 4px
+				border-top: 1px solid $percent_10_black
 
 		ul
 			+setElement(48%, auto, relative)
@@ -785,3 +802,11 @@ body
 
 			li
 				padding-bottom: 8px
+
+		&.programming
+
+			ul:nth-of-type(1),ul:nth-of-type(2)
+				li
+					@media only screen and (max-width: 480px)
+						letter-spacing: -.05em
+
