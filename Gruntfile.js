@@ -32,6 +32,15 @@ module.exports = function(grunt) {
             }
           }
         },
+        concat: {
+            options: {
+              separator: ';',
+            },
+            dist: {
+              src: ['javascript/src/lib/angular.min.js','javascript/src/lib/angular-route.min.js','javascript/src/lib/angular-sanitize.min.js','javascript/src/dld.min.js'],
+              dest: 'javascript/dld.js',
+            },
+        },
         replace: {
           dist: {
             options: {
@@ -47,19 +56,10 @@ module.exports = function(grunt) {
             ]
           }
         },
-        concat: {
-            options: {
-              separator: ';',
-            },
-            dist: {
-              src: ['javascript/src/lib/angular.min.js','javascript/src/lib/angular-route.min.js','javascript/src/lib/angular-sanitize.min.js','javascript/src/dld.min.js'],
-              dest: 'javascript/dld.js',
-            },
-        },
         watch: {
             html: {
                 files: ['html_src/index.html'],
-                tasks: ['inject']
+                tasks: ['inject','replace']
             },
             css: {
                 files: ['css/src/styles.sass','css/src/styles.loading.css'],
@@ -82,5 +82,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-replace');
     
     // Default task(s).
-    grunt.registerTask('default', ['uglify','sass','concat','watch', 'inject', 'replace']);
+    grunt.registerTask('default', ['uglify','sass','inject','concat','replace', 'watch']);
 };

@@ -24,6 +24,7 @@
 		$scope.selectedType = '';
 		$scope.excludeIllos = true;
 		$scope.selectedProject = null;
+		$scope.projectsHidden = false;
 
 		$scope.createHamburger = function(rotate){
 			var menu = document.getElementById("hamburger");
@@ -112,6 +113,7 @@
 
 			if(parts[1]=="project"){
 				  $scope.showProjectDetails();
+				  $scope.projectsHidden = true;
 			}
 			else{
 				for(var i in $scope.types){
@@ -156,6 +158,7 @@
 		$scope.hideProject = function($event){
 			delete $scope.projectImage;
 			$scope.descriptionImageLoaded();
+			$scope.projectsHidden = false;
 			$scope.projectImage = '//:0';
 			$scope.setInfoExpandedForDevice();
 

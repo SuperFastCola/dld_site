@@ -48,7 +48,7 @@
 				<div class="dude"><span>Hi!</span></div>
 			</div>
 
-			<div class="project_description" ng-class="{showing: showDescription}" >
+			<div class="project_description clearfix" ng-class="{showing: showDescription}" >
 				<div class="description_holder" ng-class="{illo: expandForIllo}">
 					<div class="icon_holder close">
 						<svg class="icon" ng-click="hideProject($event)">
@@ -56,7 +56,7 @@
 						</svg>
 					</div>
 					
-					<div class="imageDisplay" ng-class="{fullwidth: !project.description, expanded: showAllInfo}" >
+					<div class="imageDisplay clearfix" ng-class="{fullwidth: !project.description, expanded: showAllInfo}" >
 						<div class="icon_holder expand">
 							<svg class="icon" ng-click="expandInfo()">
 								<path class="symbol" d="M 3 3 L 20 19 L 38 3" />
@@ -64,6 +64,7 @@
 						</div>
 
 						<img ng-src={{projectImage}} ng-init="detailImageLoaded = false;" ng-class="{loadingDetail: descriptionImageLoaded(), notext: !project.description}"/>
+
 					</div>
 
 
@@ -74,6 +75,8 @@
 						<p class="info role" ng-if="project.role"><span>Role</span>{{project.role}}</p>
 						<p class="info tech" ng-if="project.tech"><span>Technology</span>{{project.tech}}</p>
 					</div>
+
+					<div class="breaker"></div>
 				</div>
 				<div class="breaker"></div>
 			</div>
@@ -85,7 +88,7 @@
 				</div>
 			</div>
 
-			<div id="portfolio_area">
+			<div id="portfolio_area" ng-class="{hidden: projectsHidden}">
 
 				
 				<div class="project-holder" ng-init="imageLoading = true; imageLoaded = false;" ng-class="{loading: !imageLoaded}" id="{{x.id}}" check-object-position ng-style="backgroundStyle" ng-repeat="x in filteredItems = (projects | filter:getFilter())" show-on-click>
@@ -98,8 +101,9 @@
 				</div>
 
 			</div>
-
+			<div class="breaker"></div>
 		</div>
+		<div class="breaker"></div>
 	</div>
 	<!-- inject -->
 </body>

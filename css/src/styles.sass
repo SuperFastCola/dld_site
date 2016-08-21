@@ -239,6 +239,10 @@ body
 		@media only screen and (max-width: $withBorders * 2), (min-width: 320px) and (max-width: 480px)
 			-webkit-overflow-scrolling:none
 
+	#portfolio_area
+		&.hidden
+			display: none
+
 .clearfix:after
 	content: " "
 	display: block
@@ -259,6 +263,7 @@ body
 	a
 		+setElement(100%, auto, relative)
 		+bdr(0px)
+		margin-left: 0px
 		margin-bottom: 0px
 		border-bottom: 1px solid $percent_10_black
 		padding: 10px 0px 10px 15px
@@ -272,7 +277,7 @@ body
 			display: inline-block
 
 			@media only screen and (min-width: 320px) and (max-width: 480px)
-				padding: 12px 0px 14px 0px
+				padding: 8px 0px 10px 0px
 
 		&:hover
 			+backColor($percent_10_black)
@@ -319,6 +324,8 @@ body
 	z-index: 10
 	margin-left: 0px
 	+transProp(all, .25s)
+	display: inline-block
+	min-height: 100%
 
 	&.showing
 		margin-left: -(250px)
@@ -327,6 +334,10 @@ body
 	+setElement(40px, 40px, absolute)
 	+setPos(100%, 0px)
 	+buttonBehavior
+
+	svg
+		+setElement(40px, 40px, absolute)
+		+setPos(0px, 0px)
 
 	&.close
 		margin-left: -30px
@@ -343,6 +354,8 @@ body
 
 		.icon
 			+scale(.5, 7%, 21%)
+			left: 20%
+			top: 25%
 
 	@media only screen and (max-width: $withBorders * 2), (min-width: 320px) and (max-width: 480px)
 		+backColor($percent_70_black)
@@ -353,6 +366,8 @@ body
 	.icon
 		@media only screen and (max-width: $withBorders * 2), (min-width: 320px) and (max-width: 480px)
 			+scale(.5, 6%, 12%)
+			left: 20%
+			top: 18%
 			
 		.symbol
 			fill: transparent
@@ -382,7 +397,6 @@ body
 .project_description
 	+setElement(0%, 0%, absolute)
 	+setPos(100%,$headerHeight)
-	display: block
 	z-index: 30
 	margin-left: 0px
 	+transProp(all, .25s)
@@ -390,7 +404,6 @@ body
 	background-repeat: no-repeat
 	background-size: auto 100%
 	border-top: 1px solid $percent_10_black
-
 
 	&.showing
 		+setPos(0px,$headerHeight)

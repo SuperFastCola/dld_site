@@ -1,8 +1,8 @@
 #!/bin/sh
 #change user,group and perms for multplie directoies
 
-directorypattern="(css)"
-# filepattern="(html|json)"
+directorypattern="(css|javascript)"
+filepattern="(html|json)"
 excludeslash="\/"
 bucket="superfastcola.com"
 bucketfullpath="s3://$bucket/"
@@ -12,13 +12,16 @@ if [ -d "$uploadfrom" ]; then
 	for i in `ls -al $uploadfrom`; do
 
 		if [[ -f $i && "$i" =~ $filepattern ]]; then
-			aws s3 cp $uploadfrom/$i $bucketfullpath$i 
+			aws s3 cp $uploadfrom/$i $bucketfullpath$i \
+			--exclude "*package.json"
 	 	fi
 		
 		if [[ "$i" =~ $directorypattern && -d $i ]]; then
 			aws s3 cp $uploadfrom/$i $bucketfullpath$i --recursive \
 			--exclude "*.DS*" \
+			--exclude "*sublime*" \
 			--exclude "data-uri/*" \
+			--exclude "*package.json" \
 			--exclude "bourbon/*" \
 			--exclude "neat/*" \
 			--exclude "src/*" \
