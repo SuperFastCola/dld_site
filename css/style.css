@@ -41,7 +41,7 @@ html, body {
   height: 100%; }
 
 body {
-  font-family: "Karla", Arial, Helvetica, sans-serif;
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
   font-size: 14px;
   color: black;
   padding: 0px;
@@ -90,7 +90,7 @@ body.clipBody #portfolio_area {
   cursor: pointer;
   font-size: 16px;
   line-height: auto;
-  font-family: "Karla", Arial, Helvetica, sans-serif;
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
   font-weight: normal;
   font-style: normal;
   text-align: left;
@@ -119,7 +119,7 @@ body.clipBody #portfolio_area {
     height: 36px;
     font-size: 18px;
     line-height: auto;
-    font-family: "Karla", Arial, Helvetica, sans-serif;
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
     font-weight: normal;
     font-style: normal;
     text-align: left;
@@ -379,7 +379,7 @@ body.clipBody #portfolio_area {
 .project_description .description_holder .info_holder .info {
   font-size: 18px;
   line-height: auto;
-  font-family: "Karla", Arial, Helvetica, sans-serif;
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
   font-weight: normal;
   font-style: normal;
   text-align: left;
@@ -390,7 +390,7 @@ body.clipBody #portfolio_area {
   .project_description .description_holder .info_holder .info {
     font-size: 16px;
     line-height: auto;
-    font-family: "Karla", Arial, Helvetica, sans-serif;
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
     font-weight: normal;
     font-style: normal;
     text-align: left;
@@ -743,6 +743,11 @@ body.clipBody #portfolio_area {
 .content_area .cv_navigation {
   width: 100%;
   padding: 10px 0px 20px 0px; }
+@media only screen and (max-width: 320px) {
+  .content_area .cv_navigation {
+    width: 94%;
+    margin: 0px auto;
+    padding: 0px 0px 10px 0px; } }
 .content_area .cv_navigation a {
   display: inline-block;
   width: 100px;
@@ -756,7 +761,6 @@ body.clipBody #portfolio_area {
   padding: 10px;
   font-size: 18px;
   font-family: "Oswald", Arial, Helvetica, sans-serif;
-  font-weight: normal;
   font-style: normal;
   text-align: center;
   text-transform: uppercase;
@@ -774,13 +778,20 @@ body.clipBody #portfolio_area {
   opacity: 0.7;
   -moz-opacity: 0.7;
   filter: "alpha(opacity = msamt)"; }
+.content_area .cv_navigation a:last-child {
+  margin-right: 0px; }
+@media only screen and (max-width: 320px) {
+  .content_area .cv_navigation a {
+    width: 30.5%;
+    padding: 10px 0px 10px 0px;
+    margin-right: 4px; } }
 .content_area .cv_column {
   display: inline-block;
   vertical-align: top;
   width: 30%;
   padding: 0px 30px 20px 0px;
-  font-size: 18px;
-  line-height: 20px; }
+  font-size: 14px;
+  line-height: 16px; }
 @media only screen and (min-width: 320px) and (max-width: 1200px) {
   .content_area .cv_column {
     width: 45%;
@@ -789,41 +800,61 @@ body.clipBody #portfolio_area {
   .content_area .cv_column {
     width: 100%;
     padding: 0px 0px 20px 0px; } }
+@media only screen and (max-width: 320px) {
+  .content_area .cv_column {
+    display: block;
+    width: 90%;
+    margin: 0px auto 0px auto;
+    padding: 0px 0px 10px 0px; } }
 .content_area .cv_column h1 {
   font-size: 26px;
-  line-height: auto;
+  line-height: 28px;
   font-family: "Oswald", Arial, Helvetica, sans-serif;
-  font-weight: normal;
   font-style: normal;
-  text-align: left;
   text-transform: uppercase;
   color: black;
   margin: 15px 0px 15px 0px;
   padding-bottom: 6px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+.content_area .cv_column h1:nth-of-type(2) {
+  padding-top: 20px; }
+@media only screen and (max-width: 320px) {
+  .content_area .cv_column h1 {
+    margin: 10px 0px 5px 0px; } }
 .content_area .cv_column h2 {
   font-size: 16px;
-  line-height: auto;
+  line-height: 18px;
   font-family: "Oswald", Arial, Helvetica, sans-serif;
-  font-weight: normal;
+  font-weight: 400;
   font-style: normal;
-  text-align: left;
-  text-transform: uppercase;
+  text-transform: none;
   color: black;
-  margin: 15px 0px 6px 0px; }
+  margin: 20px 0px 6px 0px; }
+.content_area .cv_column h2 span:first-child {
+  display: block;
+  text-transform: uppercase;
+  padding: 0px 0px 4px 0px;
+  margin: 0px 0px 6px 0px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+.content_area .cv_column h2.education span:first-child {
+  display: block; }
+.content_area .cv_column h2.education span:last-child::before {
+  content: ""; }
 .content_area .cv_column h3 {
-  font-size: 16px;
-  line-height: auto;
-  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
   font-style: normal;
-  text-align: left;
-  text-transform: uppercase;
+  text-transform: none;
   color: black;
-  margin: 0px 0px 6px 0px; }
+  margin: 0px 0px 16px 0px;
+  font-style: italic; }
 .content_area .cv_column ul {
   display: block;
   position: relative;
   width: 48%;
   height: auto;
   display: inline-block;
-  vertical-align: top; }
+  vertical-align: top;
+  margin-top: 6px; }
+.content_area .cv_column ul li {
+  padding-bottom: 8px; }

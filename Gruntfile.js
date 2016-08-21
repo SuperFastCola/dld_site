@@ -24,7 +24,29 @@ module.exports = function(grunt) {
                 }
             }
         },
-
+        inject: {
+          single: {
+            scriptSrc: 'javascript/src/dld.loader.js',
+            files: {
+              'index.html': 'html_src/index.html'
+            }
+          }
+        },
+        replace: {
+          dist: {
+            options: {
+              patterns: [
+                {
+                  match: 'includecss',
+                  replacement: '<%= grunt.file.read("css/src/styles.loading.css") %>'
+                }
+              ]
+            },
+            files: [
+              {expand: true, flatten: true, src: ['./index.html'], dest: './'}
+            ]
+          }
+        },
         concat: {
             options: {
               separator: ';',
@@ -35,12 +57,16 @@ module.exports = function(grunt) {
             },
         },
         watch: {
+            html: {
+                files: ['html_src/index.html'],
+                tasks: ['inject']
+            },
             css: {
-                files: ['css/src/styles.sass'],
+                files: ['css/src/styles.sass','css/src/styles.loading.css'],
                 tasks: ['sass']
             },
             scripts: {
-                files: 'javascript/src/dld.v2.js',
+                files: ['javascript/src/dld.v2.js','javascript/src/dld.loader.js'],
                 tasks: ['uglify','concat']
             }
         }
@@ -52,7 +78,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-inject');
+    grunt.loadNpmTasks('grunt-replace');
     
     // Default task(s).
-    grunt.registerTask('default', ['uglify','sass','concat','watch']);
+    grunt.registerTask('default', ['uglify','sass','concat','watch', 'inject', 'replace']);
 };

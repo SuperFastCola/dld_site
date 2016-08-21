@@ -206,8 +206,8 @@ $percent_95_white: rgba(255,255,255,.95)
 
 $headerHeight: 163px
 
-$fontFamily: 'Karla', Arial, Helvetica, sans-serif
-$fontFamilyItalic: 'Karla', Arial, Helvetica, sans-serif
+$fontFamily: 'Open Sans', Arial, Helvetica, sans-serif
+$fontFamilyItalic: 'Open Sans', Arial, Helvetica, sans-serif
 $fontFamilyBold: 'Oswald', Arial, Helvetica, sans-serif
 $fontFamilyBoldItalic: 'Oswald', Arial, Helvetica, sans-serif
 
@@ -686,6 +686,11 @@ body
 		width: 100%
 		padding: 10px 0px 20px 0px
 
+		@media only screen and (max-width: 320px)
+			width: 94%
+			margin: 0px auto
+			padding: 0px 0px 10px 0px
+
 		a
 			display: inline-block
 			width: 100px
@@ -694,9 +699,17 @@ body
 			+bdr(1px, $percent_20_black)
 			+borderRadius(20px)
 			padding: 10px
-			+setFont(18px,black,$fontFamilyBold,uppercase,null, center)
+			+setFont(18px,black,$fontFamilyBold,uppercase,null,center,null)
 
 			+buttonBehavior
+
+			&:last-child
+				margin-right: 0px
+
+			@media only screen and (max-width: 320px)
+				width: 30.5%
+				padding: 10px 0px 10px 0px
+				margin-right: 4px
 
 
 
@@ -705,8 +718,8 @@ body
 		vertical-align: top
 		width: 30%
 		padding: 0px 30px 20px 0px
-		font-size: 18px
-		line-height: 20px
+		font-size: 14px
+		line-height: 16px
 
 		@media only screen and (min-width: 320px) and (max-width: 1200px)
 			width: 45%
@@ -716,21 +729,59 @@ body
 			width: 100%
 			padding: 0px 0px 20px 0px
 
+		@media only screen and (max-width: 320px)
+			display: block
+			width: 90%
+			margin:  0px auto 0px auto
+			padding: 0px 0px 10px 0px
+
 		h1
-			+setFont(26px,black,$fontFamilyBold,uppercase)
+			+setFont(26px,black,$fontFamilyBold,uppercase,28px,null,null)
 			margin: 15px 0px 15px 0px
 			padding-bottom: 6px
 			border-bottom: 1px solid $percent_10_black
 
+			&:nth-of-type(2)
+				padding-top: 20px
+
+			@media only screen and (max-width: 320px)
+				margin: 10px 0px 5px 0px
+
 		h2
-			+setFont(16px,black,$fontFamilyBold,uppercase)
-			margin: 15px 0px 6px 0px
+			+setFont(16px,black,$fontFamilyBold,none,18px,null,400)
+			margin: 20px 0px 6px 0px
+
+			span
+
+				&:first-child
+					display: block
+					text-transform: uppercase
+					padding: 0px 0px 4px 0px
+					margin: 0px 0px 6px 0px
+					border-bottom: 1px solid $percent_10_black
+
+				// &:last-child
+				// 	&::before
+				// 		content: " - "
+			&.education
+				span
+					&:first-child
+						display: block
+
+					&:last-child
+						&::before
+							content: ""
 
 		h3
-			+setFont(16px,black,null,uppercase)
-			margin: 0px 0px 6px 0px
+			+setFont(14px,black,null,none,16px,null,null)
+			margin: 0px 0px 16px 0px
+			font-style: italic
 
 		ul
 			+setElement(48%, auto, relative)
 			display: inline-block
 			vertical-align: top
+			margin-top: 6px
+
+			li
+				padding-bottom: 8px
