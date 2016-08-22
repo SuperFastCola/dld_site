@@ -377,11 +377,13 @@
        		var scope = (typeof passedScope != "undefined")?passedScope:$scope;
        		var scopeParent = (typeof scope.$parent.showDescription != "undefined")?scope.$parent:$scope;
 
-
        		var parts = $location.path().split("/");
        		var scopeProjectProperties = (typeof scope.x != "undefined")?scope.x:$filter("filter")($scope.projects, {id:parts[2]})[0];
 
        		scopeParent.showDescription = !scopeParent.showDescription;
+
+       		console.log(scopeParent.showDescription);
+
         	scopeParent.returnClipBody(true);
 
         	if(typeof scopeProjectProperties.image != "undefined"){

@@ -408,6 +408,7 @@ body
 	&.showing
 		+setPos(0px,$headerHeight)
 		+setElement(100%, 100%, absolute)
+		+bdr
 
 		.description_holder
 			display: block
@@ -456,7 +457,7 @@ body
 			padding: 50px 0px 50px 20px
 			+transProp(all,.5s)
 
-			@media only screen and (max-width: $withBorders * 2), (min-width: 320px) and (max-width: 480px)
+			@media only screen and (min-width: 320px) and (max-width: 480px)
 				+setElement(90%, auto, relative)
 				padding: 20px 5% 30px 5%
 				+setPos(0px, 0px)
@@ -476,8 +477,16 @@ body
 
 				span
 					+setElement(100%, auto)
-					+setFont(20px,black,$fontFamilyBold,uppercase)
+					+setFont(22px,black,$fontFamilyBold,uppercase)
+					border-bottom: 1px solid $percent_10_black
 					padding: 20px 0px 7px 0px
+					margin-bottom: 7px
+
+					&.list
+						+setFont(16px,black,$fontFamily)
+						padding: 0px 0px 0px 0px
+						border-bottom: 0px
+
 
 					@media only screen and (max-width: $withBorders * 2), (min-width: 320px) and (max-width: 480px)
 						+setFont(16px,black,$fontFamilyBold,uppercase, 18pt)
@@ -485,6 +494,25 @@ body
 
 				&.description span
 					padding-top: 0px
+
+				&.tech li
+					margin-right: 8px
+					+setFont(16px,black,$fontFamily, null, 18pt)
+
+					@media only screen and (max-width: $withBorders * 2), (min-width: 320px) and (max-width: 480px)
+						+setFont(14px,black,$fontFamily, null, 16pt)
+
+				&.urlbutton
+					display: block
+					width: auto
+					margin: 26px 0px 0px 0px
+					text-decoration: none
+					+bdr(1px, $percent_20_black)
+					+borderRadius(20px)
+					padding: 10px 30px
+					+setFont(18px,black,$fontFamilyBold,uppercase,null,center,null)
+
+					+buttonBehavior
 
 
 		.imageDisplay
@@ -807,19 +835,19 @@ body
 				padding-top: 4px
 				border-top: 1px solid $percent_10_black
 
-		ul
-			+setElement(48%, auto, relative)
-			display: inline-block
-			vertical-align: top
-			margin-top: 6px
+ul
+	+setElement(48%, auto, relative)
+	display: inline-block
+	vertical-align: top
+	margin-top: 6px
 
+	li
+		padding-bottom: 8px
+
+	&.programming
+
+		ul:nth-of-type(1),ul:nth-of-type(2)
 			li
-				padding-bottom: 8px
-
-		&.programming
-
-			ul:nth-of-type(1),ul:nth-of-type(2)
-				li
-					@media only screen and (max-width: 480px)
-						letter-spacing: -.05em
+				@media only screen and (max-width: 480px)
+					letter-spacing: -.05em
 

@@ -314,7 +314,8 @@ body #portfolio_area.hidden {
   display: block;
   position: absolute;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  border: 1px solid red; }
 .project_description.showing .description_holder {
   display: block; }
 @media only screen and (max-width: 446px), (min-width: 320px) and (max-width: 480px) {
@@ -371,7 +372,7 @@ body #portfolio_area.hidden {
   -moz-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s; }
-@media only screen and (max-width: 446px), (min-width: 320px) and (max-width: 480px) {
+@media only screen and (min-width: 320px) and (max-width: 480px) {
   .project_description .description_holder .info_holder {
     display: block;
     position: relative;
@@ -422,7 +423,7 @@ body #portfolio_area.hidden {
   position: relative;
   width: 100%;
   height: auto;
-  font-size: 20px;
+  font-size: 22px;
   line-height: auto;
   font-family: "Oswald", Arial, Helvetica, sans-serif;
   font-weight: normal;
@@ -430,7 +431,20 @@ body #portfolio_area.hidden {
   text-align: left;
   text-transform: uppercase;
   color: black;
-  padding: 20px 0px 7px 0px; }
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 20px 0px 7px 0px;
+  margin-bottom: 7px; }
+.project_description .description_holder .info_holder .info span.list {
+  font-size: 16px;
+  line-height: auto;
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  text-align: left;
+  text-transform: none;
+  color: black;
+  padding: 0px 0px 0px 0px;
+  border-bottom: 0px; }
 @media only screen and (max-width: 446px), (min-width: 320px) and (max-width: 480px) {
   .project_description .description_holder .info_holder .info span {
     font-size: 16px;
@@ -444,6 +458,54 @@ body #portfolio_area.hidden {
     padding: 10px 0px 5px 0px; } }
 .project_description .description_holder .info_holder .info.description span {
   padding-top: 0px; }
+.project_description .description_holder .info_holder .info.tech li {
+  margin-right: 8px;
+  font-size: 16px;
+  line-height: 18pt;
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  text-align: left;
+  color: black; }
+@media only screen and (max-width: 446px), (min-width: 320px) and (max-width: 480px) {
+  .project_description .description_holder .info_holder .info.tech li {
+    font-size: 14px;
+    line-height: 16pt;
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    text-align: left;
+    color: black; } }
+.project_description .description_holder .info_holder .info.urlbutton {
+  display: block;
+  width: auto;
+  margin: 26px 0px 0px 0px;
+  text-decoration: none;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  border-radius: 20px;
+  padding: 10px 30px;
+  font-size: 18px;
+  font-family: "Oswald", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  text-align: center;
+  text-transform: uppercase;
+  color: black;
+  text-decoration: none;
+  opacity: 1;
+  -moz-opacity: 1;
+  filter: "alpha(opacity = msamt)";
+  -webkit-transition: all 0.25s;
+  -moz-transition: all 0.25s;
+  -o-transition: all 0.25s;
+  transition: all 0.25s;
+  cursor: pointer; }
+.project_description .description_holder .info_holder .info.urlbutton:hover {
+  opacity: 0.7;
+  -moz-opacity: 0.7;
+  filter: "alpha(opacity = msamt)"; }
 .project_description .description_holder .imageDisplay {
   display: block;
   position: relative;
@@ -877,7 +939,8 @@ body #portfolio_area.hidden {
 .content_area .cv_column h3.education {
   padding-top: 4px;
   border-top: 1px solid rgba(0, 0, 0, 0.1); }
-.content_area .cv_column ul {
+
+ul {
   display: block;
   position: relative;
   width: 48%;
@@ -885,8 +948,8 @@ body #portfolio_area.hidden {
   display: inline-block;
   vertical-align: top;
   margin-top: 6px; }
-.content_area .cv_column ul li {
+ul li {
   padding-bottom: 8px; }
 @media only screen and (max-width: 480px) {
-  .content_area .cv_column.programming ul:nth-of-type(1) li, .content_area .cv_column.programming ul:nth-of-type(2) li {
+  ul.programming ul:nth-of-type(1) li, ul.programming ul:nth-of-type(2) li {
     letter-spacing: -0.05em; } }

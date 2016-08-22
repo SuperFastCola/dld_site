@@ -70,10 +70,11 @@
 
 					<div class="info_holder" ng-if="project.description">
 						<h1>{{project.name}}</h1>
-
 						<p class="info description" ng-if="project.description"><span>{{project.description}}</span></p>
 						<p class="info role" ng-if="project.role"><span>Role</span>{{project.role}}</p>
-						<p class="info tech" ng-if="project.tech"><span>Technology</span>{{project.tech}}</p>
+						<p class="info tech" ng-if="project.tech"><span>Technology</span><span class="list" ng-bind-html="project.tech"></span></p>
+						<a class="info urlbutton" ng-repeat="x in project.url" ng-href="{{x.link}}" target="new">{{x.text?x.text:"View Project"}}</a>
+
 					</div>
 
 					<div class="breaker"></div>
@@ -91,7 +92,7 @@
 			<div id="portfolio_area" ng-class="{hidden: projectsHidden}">
 
 				
-				<div class="project-holder" ng-init="imageLoading = true; imageLoaded = false;" ng-class="{loading: !imageLoaded}" id="{{x.id}}" check-object-position ng-style="backgroundStyle" ng-repeat="x in filteredItems = (projects | filter:getFilter())" show-on-click>
+				<div class="project-holder" ng-if="!x.hide" ng-init="imageLoading = true; imageLoaded = false;" ng-class="{loading: !imageLoaded}" id="{{x.id}}" check-object-position ng-style="backgroundStyle" ng-repeat="x in filteredItems = (projects | filter:getFilter())" show-on-click>
 					
 					<a class="project_button" ng-href="#/project/{{x.id}}">
 						<span class="project-details-butn hidden" show-on-hover-parent>Project Details</span>
