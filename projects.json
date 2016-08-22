@@ -16,7 +16,7 @@
 		"image":"teenbeach2.jpg",
 		"url": [{
 			"link":"http://teenbeach2.deluxeluxury.com/",
-			"text": "View Site"
+			"text": "View Archived Site"
 			}],
 		"id":"teenbeach",
 		"type":["front-end"],
@@ -31,7 +31,7 @@
 		"image":"charter_fashion_police.jpg",
 		"url": [{
 			"link":"http://fashionpolice.deluxeluxury.com/",
-			"text": "View Site"
+			"text": "View Archived Site"
 			}],
 		"id":"fashionpolice",
 		"type":["front-end","back-end"],
@@ -69,20 +69,6 @@
 		"mobile":true
 	},
 	{
-		"name":"NBCU Super Solution 2.0",
-		"description":"B2B Enrollment and Incentive Site",
-		"role":"Development",
-		"tech":"Javascript, Jquery, CSS3, JSON, MySQL, PHP and Linux Administration",
-		"image":"nbcu_2014.jpg",
-		"url_old":"http://nbcusupersolution.com/2014/demo.php",
-		"id":"nbcu_2014",
-		"type":["front-end","back-end"],
-		"slow":true,
-		"hide":true,
-		"mobile":true,
-		"vimeo":"91997026"
-	},
-	{
 		"name":"A Part of Something Big",
 		"description":"Logo Development",
 		"role":"Design and Illustration",
@@ -103,9 +89,10 @@
 		"image":"lonely_missle.jpg",
 		"id":"missile",
 		"slow":true,
-		"url": {
-			"link":"https://github.com/SuperFastCola/Superfastapp"
-			},
+		"url": [{
+			"link":"https://github.com/SuperFastCola/Superfastapp/tree/master/SuperFastCola",
+			"text":"View Essential Code"
+			}],
 		"type":["design","mobile-development"],
 		"mobile":true
 	},
@@ -115,9 +102,14 @@
 		"role":"Game Development and Integration",
 		"tech":"HTML5 Canvas, Request Animation Frame, CSS3, JSON, PHP",
 		"image":"playtheboardwalk.jpg",
-		"url": {
-			"link":"https://hothousesecure.com/playtheboardwalk/"
+		"url": [{
+			"link":"http://boardwalk.deluxeluxury.com",
+			"text":"Play Game"
 			},
+			{
+				"link":"https://github.com/SuperFastCola/Ball-Thrower-Game-Code/blob/master/ballthrower.js",
+				"text":"View Essential Code"
+			}],
 		"type":["front-end","back-end"],
 		"id":"playboardwalk",
 		"slow":true,
@@ -164,9 +156,10 @@
 		"role":"Design, Animation and Programming",
 		"tech":"Actionscript 2, PHP 4, CSS 2, HTML 4, Video and XML Feed Setup/Processing",
 		"image":"nba_digital2.jpg",
-		"url": {
-			"link":"http://www.deluxeluxury.com/work/nbadigital/"
-			},
+		"url": [{
+			"link":"http://www.deluxeluxury.com/work/nbadigital/",
+			"text":"View Archived Site"
+			}],
 		"type":["design","front-end"],
 		"id":"nbcdigital",
 		"vimeo":"91886068"
@@ -177,9 +170,10 @@
 		"role":"Design, Animation and Programming",
 		"tech":"Actionscript 2 and XML Feed Setup/Processing",
 		"image":"mlb_postseason_2010.jpg",
-		"url": {
-			"link":"http://www.deluxeluxury.com/work/mlb2010/"
-			},
+		"url": [{
+			"link":"http://www.deluxeluxury.com/work/mlb2010/",
+			"text":"View Archived Site"
+			}],
 		"type":["front-end","design"],
 		"id":"mlbplayoffs",
 		"vimeo":"91886066"
@@ -190,9 +184,10 @@
 		"role":"Development",
 		"tech":"HTML, CSS3, JSON, PHP, Facebook API",
 		"image":"usa_who_am_i.jpg",
-		"url": {
-			"link":"http://hothousesecure.com/usa/"
-			},
+		"url": [{
+			"link":"http://www.vimeo.com/91997024",
+			"text":"View Video"
+			}],
 		"type":["front-end","back-end"],
 		"id":"usawho",
 		"slow":true,
@@ -205,9 +200,10 @@
 		"role":"Design, Animation and Programming",
 		"tech":"Actionscript 2, Video and XML Feed Setup/Processing",
 		"image":"youtube_960x250_pg2-01.jpg",
-		"url": {
-			"link":"http://www.deluxeluxury.com/work/youtube_nba/"
-			},
+		"url": [{
+			"link":"http://www.deluxeluxury.com/work/youtube_nba/",
+			"text":"View Flash Banner"
+			}],
 		"type":["front-end", "design"],
 		"id":"tsyoutube",
 		"slow":true,
@@ -219,9 +215,10 @@
 		"role":"UX Design, Development Direction, Facebook Integration and Programming",
 		"tech":"Kinetic.js, HTML 5, CSS3, Facebook API, JSON integration and PHP",
 		"image":"cox_claim_the_throne.jpg",
-		"url": {
-			"link":"http://www.hothousesecure.com/claimthethrone/"
-			},
+		"url": [{
+			"link":"http://www.vimeo.com/91887069",
+			"text":"View Video"
+			}],
 		"type":["front-end","design","back-end"],
 		"id":"hbothrone",
 		"slow":true,
@@ -234,9 +231,10 @@
 		"role":"Design, Animation and Programming",
 		"tech":"Actionscript 2, CSS 2, HTML 4",
 		"image":"tnt_sportsletter.jpg",
-		"url": {
-			"link":"http://www.deluxeluxury.com/work/sportsletter/"
-			},
+		"url": [{
+			"link":"http://www.deluxeluxury.com/work/sportsletter/",
+			"text":"View Archived Site"
+			}],
 		"type":["front-end", "design"],
 		"id":"tbsletter",
 		"mobile":true
@@ -263,9 +261,10 @@
 		"role":"Design",
 		"type":["design","print"],
 		"image":"aposb_mailer_fall09_v11_pt4.jpg",
-		"url": {
-			"link":"images/aposb_mailer_fall10.pdf"
-			},
+		"url": [{
+			"link":"images/aposb_mailer_fall10.pdf",
+			"text": "View PDF Mailer"
+			}],
 		"id":"design7",
 		"mobile":true
 	},
@@ -284,22 +283,7 @@
 		"image":"style_ruby_landing_v3-01.jpg",
 		"type":["design"],
 		"id":"rubycity"
-	},
-	{
-		"name":"Cox - Join Nucky's Crew",
-		"description":"Mobile Compatible, Desktop Targeted Facebook Page Tab App",
-		"role":"Development",
-		"tech":"HTML, CSS3, JSON, PHP, Facebook API",
-		"image":"nuckys_crew.jpg",
-		"url": {
-			"link":"https://www.hothousesecure.com/2013BWE/jtn_cox/"
-			},
-		"type":["front-end","back-end"],
-		"id":"joincrew",
-		"slow":true,
-		"mobile":true
-	},
-	
+	},	
 	{
 		"name":"Cox Communications",
 		"description":"Flash Facebook Application",
@@ -307,6 +291,10 @@
 		"tech":"Actionscript 3, Facebook API, JSON integration, Mapquest API and PHP",
 		"image":"showtime_homeland_facebook_app.jpg",
 		"type":["front-end", "design","back-end"],
+		"url": [{
+			"link":"http://www.vimeo.com/90499801",
+			"text":"View Video"
+		}],
 		"id":"homeland",
 		"vimeo":"90499801"
 	},
@@ -348,9 +336,10 @@
 		"role":"Design, Development and Integration",
 		"tech":"Javascript, JQuery, swfObject, Flowplayer, CSS2, PHP4 and HTML4 &amp; 5. SmartPhone and iPad Friendly",
 		"image":"g4e3allaccess2011.jpg",
-		"url": {
-			"link":"http://www.deluxeluxury.com/work/g4e32011/"
-			},
+		"url": [{
+			"link":"http://www.deluxeluxury.com/work/g4e32011/",
+			"text":"View Archived Site"
+		}],
 		"type":["front-end","design","back-end"],
 		"id":"e3allaccess",
 		"mobile":true,
@@ -362,9 +351,10 @@
 		"role":"Development",
 		"tech":"HTML, CSS3, JSON, PHP, Facebook API",
 		"image":"rttr.jpg",
-		"url": {
-			"link":"http://www.deluxeluxury.com/work/rttr/"
-			},
+		"url": [{
+			"link":"http://www.deluxeluxury.com/work/rttr/",
+			"text":"View Archived Site"
+		}],
 		"type":["front-end","back-end"],
 		"id":"randyrescue",
 		"slow":true,

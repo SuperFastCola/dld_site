@@ -189,7 +189,7 @@
 			<div id="portfolio_area" ng-class="{hidden: projectsHidden}">
 
 				
-				<div class="project-holder" ng-if="!x.hide" ng-init="imageLoading = true; imageLoaded = false;" ng-class="{loading: !imageLoaded}" id="{{x.id}}" check-object-position ng-style="backgroundStyle" ng-repeat="x in filteredItems = (projects | filter:getFilter())" show-on-click>
+				<div class="project-holder" ng-init="imageLoading = true; imageLoaded = false;" ng-class="{loading: !imageLoaded}" id="{{x.id}}" check-object-position ng-style="backgroundStyle" ng-repeat="x in filteredItems = (projects | filter:getFilter())" show-on-click>
 					
 					<a class="project_button" ng-href="#/project/{{x.id}}">
 						<span class="project-details-butn hidden" show-on-hover-parent>Project Details</span>
