@@ -19,9 +19,7 @@
 			"text": "View Archived Site"
 			}],
 		"id":"teenbeach",
-		"type":["front-end"],
-		"slow":true,
-		"mobile":true
+		"type":["front-end"]
 	},
 	{
 		"name":"Fashion Police",
@@ -34,9 +32,7 @@
 			"text": "View Archived Site"
 			}],
 		"id":"fashionpolice",
-		"type":["front-end","back-end"],
-		"slow":true,
-		"mobile":true
+		"type":["front-end","back-end"]
 	},
 	{
 		"name":"CNN en Español",
@@ -49,9 +45,7 @@
 			"link":"https://github.com/SuperFastCola/node-site/blob/master/app.js",
 			"text":"View Essential Code"
 			}],
-		"type":["front-end","back-end"],
-		"slow":true,
-		"mobile":true
+		"type":["front-end","back-end"]
 	},
 	{
 		"name":"FYI Network",
@@ -64,9 +58,20 @@
 			"link":"https://github.com/SuperFastCola/facebook_processing_ajax/blob/master/fb_ajax.php#L988",
 			"text":"View Essential Code"
 		}],
-		"type":["front-end","back-end"],
-		"slow":true,
-		"mobile":true
+		"type":["front-end","back-end"]
+	},
+	{
+		"name":"NBCU Super Solution 2.0",
+		"description":"B2B Enrollment and Incentive Site",
+		"role":"Development",
+		"tech":"Javascript, Jquery, CSS3, JSON, MySQL, PHP and Linux Administration",
+		"image":"nbcu_2014.jpg",
+		"id":"nbcu_2014",
+		"type":["design","front-end","back-end"],
+		"url": [{
+			"link":"https://player.vimeo.com/video/91997026",
+			"text":"View Video"
+			}]
 	},
 	{
 		"name":"A Part of Something Big",
@@ -78,8 +83,7 @@
 			"link":"images/iapw_logodev.pdf",
 			"text":"View Logo Development"
 			}],
-		"id":"aposblogo",
-		"mobile":true
+		"id":"aposblogo"
 	},
 	{
 		"name":"The Lonely Missile",
@@ -88,13 +92,11 @@
 		"tech":"Objective C",
 		"image":"lonely_missle.jpg",
 		"id":"missile",
-		"slow":true,
 		"url": [{
 			"link":"https://github.com/SuperFastCola/Superfastapp/tree/master/SuperFastCola",
 			"text":"View Essential Code"
 			}],
-		"type":["design","mobile-development"],
-		"mobile":true
+		"type":["design","mobile-development"]
 	},
 	{
 		"name":"HBO - Play the Boardwalk Game",
@@ -103,18 +105,19 @@
 		"tech":"HTML5 Canvas, Request Animation Frame, CSS3, JSON, PHP",
 		"image":"playtheboardwalk.jpg",
 		"url": [{
-			"link":"http://boardwalk.deluxeluxury.com",
-			"text":"Play Game"
+				"link":"http://boardwalk.deluxeluxury.com",
+				"text":"Play Game"
 			},
 			{
 				"link":"https://github.com/SuperFastCola/Ball-Thrower-Game-Code/blob/master/ballthrower.js",
 				"text":"View Essential Code"
+			},
+			{
+			"link":"https://player.vimeo.com/video/91887070",
+			"text":"View Video"
 			}],
 		"type":["front-end","back-end"],
-		"id":"playboardwalk",
-		"slow":true,
-		"mobile":true,
-		"vimeo":"91887070"
+		"id":"playboardwalk"
 	},
 	{
 		"name":"G4TV",
@@ -139,7 +142,12 @@
 		"type":["design","print"],
 		"image":"living-it-up-with-martha-2011.jpg",
 		"id":"martha",
-		"vimeo":"91886564"
+		"url":[
+			{
+			"link":"https://player.vimeo.com/video/91886564",
+			"text":"View Video"
+			}
+		]
 	},
 	{
 		"name":"Hallmark Movie Channel",
@@ -147,8 +155,7 @@
 		"role":"Design",
 		"image":"hmc_sweetgift2012_bookpage_v06_mech-01.jpg",
 		"type":["design"],
-		"id":"sweetgift",
-		"slow":true
+		"id":"sweetgift"
 	},
 	{
 		"name":"Turner Sports",
@@ -156,13 +163,13 @@
 		"role":"Design, Animation and Programming",
 		"tech":"Actionscript 2, PHP 4, CSS 2, HTML 4, Video and XML Feed Setup/Processing",
 		"image":"nba_digital2.jpg",
-		"url": [{
-			"link":"http://www.deluxeluxury.com/work/nbadigital/",
-			"text":"View Archived Site"
+		"url": [
+			{
+			"link":"https://player.vimeo.com/video/91886068",
+			"text":"View Video"
 			}],
 		"type":["design","front-end"],
-		"id":"nbcdigital",
-		"vimeo":"91886068"
+		"id":"nbcdigital"
 	},
 	{
 		"name":"TBS",
@@ -171,12 +178,15 @@
 		"tech":"Actionscript 2 and XML Feed Setup/Processing",
 		"image":"mlb_postseason_2010.jpg",
 		"url": [{
-			"link":"http://www.deluxeluxury.com/work/mlb2010/",
+			"link":"http://mlb2010.deluxeluxury.com/",
 			"text":"View Archived Site"
+			},
+			{
+			"link":"https://player.vimeo.com/video/91886066",
+			"text":"View Video"
 			}],
 		"type":["front-end","design"],
-		"id":"mlbplayoffs",
-		"vimeo":"91886066"
+		"id":"mlbplayoffs"
 	},
 	{
 		"name":"USA - Who Am I Today?",
@@ -184,15 +194,13 @@
 		"role":"Development",
 		"tech":"HTML, CSS3, JSON, PHP, Facebook API",
 		"image":"usa_who_am_i.jpg",
-		"url": [{
-			"link":"http://www.vimeo.com/91997024",
-			"text":"View Video"
-			}],
 		"type":["front-end","back-end"],
 		"id":"usawho",
-		"slow":true,
-		"mobile":true,
-		"vimeo":"91997024"
+		"url": [
+			{
+			"link":"https://player.vimeo.com/video/91997024",
+			"text":"View Video"
+			}]
 	},
 	{
 		"name":"Turner Sports",
@@ -201,13 +209,15 @@
 		"tech":"Actionscript 2, Video and XML Feed Setup/Processing",
 		"image":"youtube_960x250_pg2-01.jpg",
 		"url": [{
-			"link":"http://www.deluxeluxury.com/work/youtube_nba/",
+			"link":"http://youtubenba.deluxeluxury.com/",
 			"text":"View Flash Banner"
+			},
+			{
+			"link":"https://player.vimeo.com/video/91885853",
+			"text":"View Video"
 			}],
 		"type":["front-end", "design"],
-		"id":"tsyoutube",
-		"slow":true,
-		"vimeo":"91885853"	
+		"id":"tsyoutube"
 	},
 	{
 		"name":"HBO",
@@ -216,14 +226,11 @@
 		"tech":"Kinetic.js, HTML 5, CSS3, Facebook API, JSON integration and PHP",
 		"image":"cox_claim_the_throne.jpg",
 		"url": [{
-			"link":"http://www.vimeo.com/91887069",
+			"link":"https://player.vimeo.com/video/91887069",
 			"text":"View Video"
 			}],
 		"type":["front-end","design","back-end"],
-		"id":"hbothrone",
-		"slow":true,
-		"mobile":true,
-		"vimeo":"91887069"
+		"id":"hbothrone"
 	},
 	{
 		"name":"Turner Sports",
@@ -232,12 +239,11 @@
 		"tech":"Actionscript 2, CSS 2, HTML 4",
 		"image":"tnt_sportsletter.jpg",
 		"url": [{
-			"link":"http://www.deluxeluxury.com/work/sportsletter/",
+			"link":"http://sportsletter.deluxeluxury.com/",
 			"text":"View Archived Site"
 			}],
 		"type":["front-end", "design"],
-		"id":"tbsletter",
-		"mobile":true
+		"id":"tbsletter"
 	},
 	{
 		"name":"Spivey Hall",
@@ -265,8 +271,7 @@
 			"link":"images/aposb_mailer_fall10.pdf",
 			"text": "View PDF Mailer"
 			}],
-		"id":"design7",
-		"mobile":true
+		"id":"design7"
 	},
 	{
 		"name":"Big Ten Network",
@@ -292,11 +297,10 @@
 		"image":"showtime_homeland_facebook_app.jpg",
 		"type":["front-end", "design","back-end"],
 		"url": [{
-			"link":"http://www.vimeo.com/90499801",
+			"link":"https://player.vimeo.com/video/90499801",
 			"text":"View Video"
 		}],
-		"id":"homeland",
-		"vimeo":"90499801"
+		"id":"homeland"	
 	},
 	{
 		"name":"A Part of Something Big",
@@ -336,14 +340,13 @@
 		"role":"Design, Development and Integration",
 		"tech":"Javascript, JQuery, swfObject, Flowplayer, CSS2, PHP4 and HTML4 &amp; 5. SmartPhone and iPad Friendly",
 		"image":"g4e3allaccess2011.jpg",
-		"url": [{
-			"link":"http://www.deluxeluxury.com/work/g4e32011/",
-			"text":"View Archived Site"
-		}],
+		"url": [
+			{
+			"link":"https://player.vimeo.com/video/91885248",
+			"text":"View Video"
+			}],
 		"type":["front-end","design","back-end"],
-		"id":"e3allaccess",
-		"mobile":true,
-		"vimeo":"91885248"
+		"id":"e3allaccess"
 	},
 	{
 		"name":"TLC - Randy to the Rescue",
@@ -351,15 +354,13 @@
 		"role":"Development",
 		"tech":"HTML, CSS3, JSON, PHP, Facebook API",
 		"image":"rttr.jpg",
-		"url": [{
-			"link":"http://www.deluxeluxury.com/work/rttr/",
-			"text":"View Archived Site"
-		}],
+		"url": [
+			{
+			"link":"https://player.vimeo.com/video/91997025",
+			"text":"View Video"
+			}],
 		"type":["front-end","back-end"],
-		"id":"randyrescue",
-		"slow":true,
-		"mobile":true,
-		"vimeo":"91997025"
+		"id":"randyrescue"
 	},
 	{
 		"name":"Personal",

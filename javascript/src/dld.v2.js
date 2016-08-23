@@ -17,7 +17,7 @@
 		return true;
 	});
 
-	app.controller('listProjects', function($scope, $compile, $rootScope, $http, $route, $routeParams, $location, $filter) {
+	app.controller('listProjects', function($scope, $compile, $sce, $rootScope, $http, $route, $routeParams, $location, $filter) {
 		$scope.projects = null;
 		$scope.contents = null;
 		$scope.types = null;
@@ -127,6 +127,10 @@
 
 		}
 
+		$scope.returnVideoURL = function(val){
+			return $sce.trustAsResourceUrl(val);
+		}
+
 		$scope.parseResponse = function(response){
 			$scope.types = response.types;
 			$scope.projects = response.projects;
@@ -210,12 +214,13 @@
 		}
 
 		$scope.getFilter = function(){
-			if($scope.selectedType==="illustration"){
-				return {'type':($scope.selectedType)};
-			}
-			else{
-				return {"type": ($scope.selectedType || undefined || '!illustration' || '!about')};	
-			}
+			return {"type": ($scope.selectedType || undefined || '!about')};
+			// if($scope.selectedType==="illustration"){
+			// 	return {'type':($scope.selectedType)};
+			// }
+			// else{
+			// 	return {"type": ($scope.selectedType || undefined || '!illustration' || '!about')};	
+			// }
 
 		}
 

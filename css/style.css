@@ -343,7 +343,7 @@ body #portfolio_area.hidden {
   width: 95%;
   height: auto; }
 .project_description .description_holder.illo img.notext {
-  width: 60%;
+  width: 80%;
   margin-left: auto;
   margin-right: auto; }
 @media only screen and (max-width: 446px), (min-width: 320px) and (max-width: 480px) {
@@ -577,6 +577,10 @@ body #portfolio_area.hidden {
     left: 0;
     top: 0px;
     border-right: none; } }
+.project_description .description_holder iframe {
+  width: 100%;
+  border: 0px;
+  padding-bottom: 56.25%; }
 
 #portfolio_header {
   background-image: url("../images/full/cityscape_back.jpg");
