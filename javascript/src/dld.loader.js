@@ -60,6 +60,9 @@
 	}
 
 	function loadCSS(linklocation){
+
+		document.getElementById("loader").className="";
+		document.getElementsByTagName("body").className="clip_car";
 		
 		if(typeof linklocation != "undefined"){
 
@@ -114,8 +117,10 @@
 		}
 
 		if(scriptsloaded==scripts.length){
-			loadCSS(links[cssloaded]);
+			//loadCSS(links[cssloaded]);
 			document.getElementById("loader").className="right";
+			unclipBodyRemoveCar();
+			loadCSSFontLinks();
 		}
 	}
 
@@ -140,28 +145,12 @@
 			loadCSS(links[cssloaded]);
 		}
 
-
-
 		if(cssloaded==links.length){
-			document.getElementById("loader").className="right";
-			unclipBodyRemoveCar();
-			loadCSSFontLinks();
-
-			
-			var timeout = setTimeout(function(){
-				console.log("timeout" + " " + cssloaded + " " + links.length);
-				document.getElementById("container").style.display="block";
-				document.getElementById("portfolio_header").style.display="block";
-				document.getElementById("navigation").style.display="block";
-				
-			},500);
+			loadJquery();
 		}
 	}
 
 	function loadJquery(){
-		document.getElementById("loader").className="";
-		document.getElementsByTagName("body").className="clip_car";
-
 		loadScript(scripts[0]);
 	}
 
@@ -216,7 +205,9 @@
 	}
 	//if( typeof window.addEventListener !="undefined" && !Boolean(navigator.userAgent.match(/msie\s(7|8|9)/i))){
 	if(checkForAnimations() || Boolean(navigator.userAgent.match(/msie\s(9)/i)) ){
-		document.addEventListener("DOMContentLoaded",loadJquery);
+		document.addEventListener("DOMContentLoaded",function(){
+			loadCSS(links[cssloaded]);
+		});
 	}
 	else{
 		document.getElementById("loader").className="";

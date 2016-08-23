@@ -67,7 +67,7 @@ module.exports = function(grunt) {
             },
             scripts: {
                 files: ['javascript/src/dld.v2.js','javascript/src/dld.loader.js'],
-                tasks: ['uglify','concat']
+                tasks: ['uglify','concat','inject','replace']
             }
         }
 

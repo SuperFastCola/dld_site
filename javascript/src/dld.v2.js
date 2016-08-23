@@ -214,14 +214,12 @@
 		}
 
 		$scope.getFilter = function(){
-			return {"type": ($scope.selectedType || undefined || '!about')};
-			// if($scope.selectedType==="illustration"){
-			// 	return {'type':($scope.selectedType)};
-			// }
-			// else{
-			// 	return {"type": ($scope.selectedType || undefined || '!illustration' || '!about')};	
-			// }
-
+			if($scope.selectedType==="illustration"){
+				return {'type':($scope.selectedType)};
+			}
+			else{
+				return {"type": ($scope.selectedType || undefined || '!illustration' || '!about')};	
+			}
 		}
 
 		$scope.$watch('scrollTop', function(newVal, oldVal){
@@ -248,7 +246,10 @@
 			return $scope.selectedProject === index;
 		};
 
-		$http.get("/projects.json").success($scope.parseResponse);
+		angular.element(document).ready(function () {
+        	$http.get("/projects.json").success($scope.parseResponse);
+    	});
+		
 
 		$scope.hideHamburger = function(){
 			if($scope.showDescription){
@@ -487,7 +488,6 @@
 
 
 	app.directive('checkObjectPosition',function($http){
-
 
 	      return {
 	        link : function(scope, element, attrs) {
