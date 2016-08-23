@@ -269,6 +269,10 @@
 
 		document.getElementById("loader").className="";
 		document.getElementsByTagName("body").className="clip_car";
+
+		document.getElementById("container").style.opacity="0";
+		document.getElementById("portfolio_header").style.opacity="0";
+		document.getElementById("navigation").style.opacity="0";
 		
 		if(typeof linklocation != "undefined"){
 
@@ -327,6 +331,14 @@
 			document.getElementById("loader").className="right";
 			unclipBodyRemoveCar();
 			loadCSSFontLinks();
+
+			var timeout = setTimeout(function(){
+				document.getElementById("container").style.opacity="1";
+				document.getElementById("portfolio_header").style.opacity="1";
+				document.getElementById("navigation").style.opacity="1";
+
+
+			},500);
 		}
 	}
 
