@@ -737,6 +737,8 @@ body
 		width: 100%
 		padding: 10px 0px 20px 0px
 
+		border-bottom: 1px solid $percent_10_black
+
 		@media only screen and (max-width: 320px)
 			width: 94%
 			margin: 0px auto
@@ -762,34 +764,49 @@ body
 				padding: 10px 0px 10px 0px
 				margin-right: 4px
 
-	.cv_address
-		border-top: 1px solid $percent_10_black
-		padding-top: 8px
-		width: 90%
-		text-align: right
-		margin: 0px auto 30px auto
-
-		span
+		.cv_address
+			padding-top: 5px
 			display: inline-block
+			width: auto
+			vertical-align: middle
+			text-align: right
+			float: right
+			padding-left: 4px
 
-			&:after
-				content: "|"
-				margin-right: 8px
-				padding-left: 8px
-				color: $percent_20_black
-				
-		+setFont(16px,black,$fontFamilyBold,uppercase,20px,null,null)
-
-		@media only screen and (max-width: 900px)
-			text-align: center
-
-		@media only screen and (max-width: 320px), (max-width: 414px)
+			+setFont(16px,black,$fontFamilyBold,uppercase,20px,null,null)
 
 			span
 				display: block
 
-				&:after
-					content: ""
+				@media only screen and (max-width: 750px)
+					display: inline-block
+
+					&:after
+						content: "|"
+						padding-left: 5px
+						margin-right: 5px
+						color: $percent_30_black
+
+			@media only screen and (max-width: 750px)
+				padding-top: 15px
+				display: block
+				vertical-align: middle
+				text-align: left
+				float: none
+
+			@media only screen and (max-width: 500px)
+				text-align: center
+				padding-left: 0px
+
+			@media only screen and (max-width: 320px), (max-width: 480px)
+
+				span
+					display: block
+
+					&:after
+						content: ""
+						padding-left: 0px
+						margin-right: 0px
 
 
 
@@ -802,11 +819,11 @@ body
 		line-height: 16px
 		text-align: left
 
-		@media only screen and (min-width: 480px) and (max-width: 1023px)
+		@media only screen and (min-width: 481px) and (max-width: 1023px)
 			width: 43%
 			padding: 0px 15px 20px 15px
 
-		@media only screen and (max-width: 320px), (max-width: 414px)
+		@media only screen and (max-width: 320px), (max-width: 480px)
 			display: block
 			width: 90%
 			margin:  0px auto 0px auto

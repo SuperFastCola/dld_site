@@ -150,14 +150,14 @@
 				<div class="description_holder" ng-class="{illo: expandForIllo}">
 					<div class="icon_holder close">
 						<svg class="icon" ng-click="hideProject($event)">
-							<path class="symbol" d="M 3 3 L 38 38 M 38 3 L 3 38" />
+							<path class="symbol" d="M 3 3 L 38 38 M 38 3 L 3 38"></path>
 						</svg>
 					</div>
 					
 					<div class="imageDisplay clearfix" ng-class="{fullwidth: !project.description, expanded: showAllInfo}" >
 						<div class="icon_holder expand">
 							<svg class="icon" ng-click="expandInfo()">
-								<path class="symbol" d="M 3 3 L 20 19 L 38 3" />
+								<path class="symbol" d="M 3 3 L 20 19 L 38 3" ></path>
 							</svg>
 						</div>
 
@@ -422,14 +422,17 @@
 
 	}
 	//if( typeof window.addEventListener !="undefined" && !Boolean(navigator.userAgent.match(/msie\s(7|8|9)/i))){
-	if(checkForAnimations() || Boolean(navigator.userAgent.match(/msie\s(9)/i)) ){
+	if(checkForAnimations() || !Boolean(navigator.userAgent.match(/msie\s(7|8|9)/i)) ){
 		document.addEventListener("DOMContentLoaded",function(){
 			loadCSS(links[cssloaded]);
 		});
 	}
 	else{
 		document.getElementById("loader").className="";
-		document.getElementById("granny_says").innerHTML = "Your engine lacks sass!<a href='http://www.deluxeluxury.com'>Older engines have to sit in lounge.</a>";	
+		document.getElementById("granny_says").innerHTML = "Your engine lacks sass!";	
+		document.getElementById("container").style.display="none";
+		document.getElementById("portfolio_header").style.display="none";
+		document.getElementById("navigation").style.display="none";
 	}
 
 })();</script>

@@ -216,14 +216,17 @@
 
 	}
 	//if( typeof window.addEventListener !="undefined" && !Boolean(navigator.userAgent.match(/msie\s(7|8|9)/i))){
-	if(checkForAnimations() || Boolean(navigator.userAgent.match(/msie\s(9)/i)) ){
+	if(checkForAnimations() || !Boolean(navigator.userAgent.match(/msie\s(7|8|9)/i)) ){
 		document.addEventListener("DOMContentLoaded",function(){
 			loadCSS(links[cssloaded]);
 		});
 	}
 	else{
 		document.getElementById("loader").className="";
-		document.getElementById("granny_says").innerHTML = "Your engine lacks sass!<a href='http://www.deluxeluxury.com'>Older engines have to sit in lounge.</a>";	
+		document.getElementById("granny_says").innerHTML = "Your engine lacks sass!";	
+		document.getElementById("container").style.display="none";
+		document.getElementById("portfolio_header").style.display="none";
+		document.getElementById("navigation").style.display="none";
 	}
 
 })();

@@ -831,7 +831,8 @@ body #portfolio_area.hidden {
   display: block; }
 .content_area .cv_navigation {
   width: 100%;
-  padding: 10px 0px 20px 0px; }
+  padding: 10px 0px 20px 0px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
 @media only screen and (max-width: 320px) {
   .content_area .cv_navigation {
     width: 94%;
@@ -874,33 +875,48 @@ body #portfolio_area.hidden {
     width: 30%;
     padding: 10px 0px 10px 0px;
     margin-right: 4px; } }
-.content_area .cv_address {
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  padding-top: 8px;
-  width: 90%;
+.content_area .cv_navigation .cv_address {
+  padding-top: 5px;
+  display: inline-block;
+  width: auto;
+  vertical-align: middle;
   text-align: right;
-  margin: 0px auto 30px auto;
+  float: right;
+  padding-left: 4px;
   font-size: 16px;
   line-height: 20px;
   font-family: "Oswald", Arial, Helvetica, sans-serif;
   font-style: normal;
   text-transform: uppercase;
   color: black; }
-.content_area .cv_address span {
-  display: inline-block; }
-.content_area .cv_address span:after {
-  content: "|";
-  margin-right: 8px;
-  padding-left: 8px;
-  color: rgba(0, 0, 0, 0.2); }
-@media only screen and (max-width: 900px) {
-  .content_area .cv_address {
-    text-align: center; } }
-@media only screen and (max-width: 320px), (max-width: 414px) {
-  .content_area .cv_address span {
+.content_area .cv_navigation .cv_address span {
+  display: block; }
+@media only screen and (max-width: 750px) {
+  .content_area .cv_navigation .cv_address span {
+    display: inline-block; }
+  .content_area .cv_navigation .cv_address span:after {
+    content: "|";
+    padding-left: 5px;
+    margin-right: 5px;
+    color: rgba(0, 0, 0, 0.3); } }
+@media only screen and (max-width: 750px) {
+  .content_area .cv_navigation .cv_address {
+    padding-top: 15px;
+    display: block;
+    vertical-align: middle;
+    text-align: left;
+    float: none; } }
+@media only screen and (max-width: 500px) {
+  .content_area .cv_navigation .cv_address {
+    text-align: center;
+    padding-left: 0px; } }
+@media only screen and (max-width: 320px), (max-width: 480px) {
+  .content_area .cv_navigation .cv_address span {
     display: block; }
-  .content_area .cv_address span:after {
-    content: ""; } }
+  .content_area .cv_navigation .cv_address span:after {
+    content: "";
+    padding-left: 0px;
+    margin-right: 0px; } }
 .content_area .cv_column {
   display: inline-block;
   vertical-align: top;
@@ -909,11 +925,11 @@ body #portfolio_area.hidden {
   font-size: 14px;
   line-height: 16px;
   text-align: left; }
-@media only screen and (min-width: 480px) and (max-width: 1023px) {
+@media only screen and (min-width: 481px) and (max-width: 1023px) {
   .content_area .cv_column {
     width: 43%;
     padding: 0px 15px 20px 15px; } }
-@media only screen and (max-width: 320px), (max-width: 414px) {
+@media only screen and (max-width: 320px), (max-width: 480px) {
   .content_area .cv_column {
     display: block;
     width: 90%;
