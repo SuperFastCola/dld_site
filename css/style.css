@@ -55,6 +55,9 @@ body.clipBody {
 body.clipBody #portfolio_area {
   height: 0px;
   overflow: hidden; }
+@media only screen and (max-width: 446px), (min-width: 320px) and (max-width: 480px) {
+  body.clipBody {
+    -webkit-overflow-scrolling: none; } }
 body #portfolio_area.hidden {
   display: none; }
 
@@ -219,11 +222,20 @@ body #portfolio_area.hidden {
   -moz-transition: all 0.25s;
   -o-transition: all 0.25s;
   transition: all 0.25s;
-  cursor: pointer; }
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.7);
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  border-radius: 20px; }
 .icon_holder:hover {
   opacity: 0.7;
   -moz-opacity: 0.7;
   filter: "alpha(opacity = msamt)"; }
+@media only screen and (max-width: 446px), (min-width: 320px) and (max-width: 480px) {
+  .icon_holder {
+    left: 100%;
+    top: 15px; } }
 .icon_holder svg {
   display: block;
   position: absolute;
@@ -254,30 +266,20 @@ body #portfolio_area.hidden {
   transform-origin: 7% 21%;
   left: 20%;
   top: 25%; }
-@media only screen and (max-width: 446px), (min-width: 320px) and (max-width: 480px) {
-  .icon_holder {
-    background-color: rgba(0, 0, 0, 0.7);
-    left: 100%;
-    top: 15px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    -ms-border-radius: 20px;
-    border-radius: 20px; } }
-@media only screen and (max-width: 446px), (min-width: 320px) and (max-width: 480px) {
-  .icon_holder .icon {
-    -webkit-transform: scale(0.5);
-    -moz-transform: scale(0.5);
-    -ms-transform: scale(0.5);
-    -o-transform: scale(0.5);
-    transform: scale(0.5);
-    -ms-transform-origin: 6% 12%;
-    -webkit-transform-origin: 6% 12%;
-    transform-origin: 6% 12%;
-    left: 20%;
-    top: 18%; } }
+.icon_holder .icon {
+  -webkit-transform: scale(0.5);
+  -moz-transform: scale(0.5);
+  -ms-transform: scale(0.5);
+  -o-transform: scale(0.5);
+  transform: scale(0.5);
+  -ms-transform-origin: 6% 12%;
+  -webkit-transform-origin: 6% 12%;
+  transform-origin: 6% 12%;
+  left: 20%;
+  top: 18%; }
 .icon_holder .icon .symbol {
   fill: transparent;
-  stroke: black;
+  stroke: white;
   stroke-width: 4; }
 @media only screen and (max-width: 446px), (min-width: 320px) and (max-width: 480px) {
   .icon_holder .icon .symbol {
@@ -872,6 +874,33 @@ body #portfolio_area.hidden {
     width: 30%;
     padding: 10px 0px 10px 0px;
     margin-right: 4px; } }
+.content_area .cv_address {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding-top: 8px;
+  width: 90%;
+  text-align: right;
+  margin: 0px auto 30px auto;
+  font-size: 16px;
+  line-height: 20px;
+  font-family: "Oswald", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  text-transform: uppercase;
+  color: black; }
+.content_area .cv_address span {
+  display: inline-block; }
+.content_area .cv_address span:after {
+  content: "|";
+  margin-right: 8px;
+  padding-left: 8px;
+  color: rgba(0, 0, 0, 0.2); }
+@media only screen and (max-width: 900px) {
+  .content_area .cv_address {
+    text-align: center; } }
+@media only screen and (max-width: 320px), (max-width: 414px) {
+  .content_area .cv_address span {
+    display: block; }
+  .content_area .cv_address span:after {
+    content: ""; } }
 .content_area .cv_column {
   display: inline-block;
   vertical-align: top;
