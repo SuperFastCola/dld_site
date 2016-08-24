@@ -2,7 +2,7 @@
 #change user,group and perms for multplie directoies
 
 directorypattern="(css|javascript)"
-filepattern="(html|json)"
+filepattern="(html|json|pdf)"
 excludeslash="\/"
 bucket="superfastcola.com"
 bucketfullpath="s3://$bucket/"
