@@ -11,6 +11,7 @@
 	{
 		"yCoor": [0,0],
 		"xCoor": [[0,-166.5],[-167.5,-333]],
+		"parent_element":"portfolio_header",
 		"dimensions": [84,140],
 		"position":[0,14],
 		"sprite_type":"character",
@@ -21,6 +22,7 @@
 	{
 		"yCoor": [-141,-141],
 		"xCoor": [[0,-166.5],[-167.5,-333]],
+		"parent_element":"portfolio_header",
 		"dimensions": [84,140],
 		"position":[0,16],
 		"sprite_type":"character",
@@ -31,6 +33,7 @@
 	{
 		"yCoor": [-281,-281],
 		"xCoor": [[0,-166.5],[-167.5,-333]],
+		"parent_element":"portfolio_header",
 		"dimensions": [84,140],
 		"position":[0,18],
 		"sprite_type":"character",
@@ -41,6 +44,7 @@
 	{
 		"yCoor": [-421,-421],
 		"xCoor": [[0,-166.5],[-167.5,-333]],
+		"parent_element":"portfolio_header",
 		"dimensions": [84,140],
 		"position":[0,20],
 		"sprite_type":"character",
@@ -51,6 +55,7 @@
 	{
 		"yCoor": [-561,-561],
 		"xCoor": [[0,-166.5],[-167.5,-333]],
+		"parent_element":"portfolio_header",
 		"dimensions": [84,140],
 		"position":[0,3],
 		"sprite_type":"character",

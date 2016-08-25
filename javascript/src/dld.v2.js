@@ -144,13 +144,105 @@
 
 		$scope.renderSprites = function(){
 			var header = angular.element(document.getElementById("portfolio_header"));
+
 			for(var i in $scope.sprites){
 				$scope.sprites[i].el = document.createElement("div");
 				angular.element($scope.sprites[i].el).removeClass('move');
 				angular.element($scope.sprites[i].el).addClass('sprite');
 				angular.element($scope.sprites[i].el).attr('id',$scope.sprites[i].sprite_id);
 				header.append($scope.sprites[i].el);
+				$scope.createAnimationStyle($scope.sprites[i]);
 			}
+		}
+
+		$scope.createAnimationStyle = function(obj){
+
+
+			var styleid = "ani_style_" + obj.sprite_id;
+
+
+			if(typeof document.getElementById(styleid) != "undefined"){
+				angular.element(document.getElementById(styleid)).remove();
+			}
+
+			var prefix = (String(navigator.userAgent).match(/webkit/))?"-webkit-":"";
+
+			var sprite_ani_name = "sprite_ani_" + obj.sprite_id;
+
+			var direction = Math.round(Math.random() % 2);
+
+			var styles = "@" + prefix + "keyframes " + sprite_ani_name + " {\n";
+			styles += "\t0% {background-position: " + obj.xCoor[direction][0] + "px " +  obj.yCoor[0] + "px;}\n";
+			styles += "\t100% {background-position: " + obj.xCoor[direction][1] + "px " +  obj.yCoor[1] + "px;}\n";
+			styles += "}\n";			
+
+			//builddynamic style
+			styles += "\n#" +  obj.sprite_id + "{\n";
+
+			styles += "\tz-index:" + obj.position[1] + ";\n";
+			styles += "\t" + prefix + "animation-name: " + sprite_ani_name + ";\n";
+  			styles += "\t" + prefix + "animation-duration: " + obj.walk_speed +  ";\n";
+  			styles += "\t" + prefix + "animation-timing-function: steps(2);\n";
+  			styles += "\t" + prefix + "animation-delay: 0s;\n";
+  			styles += "\t" + prefix + "animation-iteration-count: infinite;\n";
+  			styles += "\t" + prefix + "animation-direction: alternate;\n";
+  			styles += "\t" + prefix + "animation-play-state: running;\n";
+
+  			var parent_width = document.getElementById(obj.parent_element).getBoundingClientRect().width;
+
+  			//add transitions	
+  			var multiplier = (parent_width<600)?5:10;
+
+  			if(String(obj.sprite_id).match(/bird/)){
+  				multiplier = (parent_width<600)?2:5;
+  			}
+
+  			var randomTime = Math.ceil(Math.random()*multiplier);
+  			if(randomTime<multiplier/2){
+  				randomTime = multiplier/2 + Math.ceil(Math.random()*3);
+  			}
+
+
+  			var delayTime = Math.ceil(Math.random()*((parent_width<600)?6:3));
+
+  			styles += "\t" + prefix + "transition: " +  prefix + "transform " +  randomTime + "s;\n";
+  			styles += "\t" + prefix + "transition-timing-function: linear;\n";
+  			styles += "\t" + prefix + "transition-delay: " + delayTime + "s;\n";
+  			
+  			//add general styles
+  			styles += "\twidth:" + obj.dimensions[0] +  "px;\n";
+  			styles += "\theight:" + obj.dimensions[1] +  "px;\n";
+  			styles += "\ttop:" + obj.position[1] +  "px;\n";
+
+  			styles += "\t" + prefix + "transform: translateX(" + ((!Boolean(direction))?parent_width: -(obj.dimensions[0])) + "px);\n";
+
+  			styles += "}\n";
+
+  			styles += "\n#" +  obj.sprite_id + ".move{\n";
+  			styles += "\t" + prefix + "transform: translateX(" + ((!Boolean(direction))?-(obj.dimensions[0]):parent_width) + "px);\n";
+  			styles += "}\n";
+
+
+			var head = document.head || document.getElementsByTagName("head")[0];
+			var anistyle = document.createElement("style");
+
+			anistyle.id = styleid;
+			anistyle.text = "text/css";
+			anistyle.media = "screen";
+			head.appendChild(anistyle);
+
+			if(anistyle.styleSheet){
+				anistyle.styleSheet.cssText = styles;
+			}
+			else{
+				anistyle.appendChild(document.createTextNode(styles));
+			}
+
+			setTimeout(function(){
+				console.log(obj.sprite_id);
+				angular.element(document.getElementById(obj.sprite_id)).addClass("move");
+			},1000);
+		
 		}
 
 		$scope.showNav = false;
