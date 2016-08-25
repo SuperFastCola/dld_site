@@ -25,6 +25,7 @@
 		$scope.excludeIllos = true;
 		$scope.selectedProject = null;
 		$scope.projectsHidden = false;
+		$scope.sprites = null;
 
 		$scope.createHamburger = function(rotate){
 			var menu = document.getElementById("hamburger");
@@ -135,8 +136,21 @@
 			$scope.types = response.types;
 			$scope.projects = response.projects;
 			$scope.contents = response.contents;
+			$scope.sprites = response.sprites;
 			$scope.createHamburger();
 			$scope.getPath();
+			$scope.renderSprites();
+		}
+
+		$scope.renderSprites = function(){
+			var header = angular.element(document.getElementById("portfolio_header"));
+			for(var i in $scope.sprites){
+				$scope.sprites[i].el = document.createElement("div");
+				angular.element($scope.sprites[i].el).removeClass('move');
+				angular.element($scope.sprites[i].el).addClass('sprite');
+				angular.element($scope.sprites[i].el).attr('id',$scope.sprites[i].sprite_id);
+				header.append($scope.sprites[i].el);
+			}
 		}
 
 		$scope.showNav = false;

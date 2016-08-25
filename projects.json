@@ -14,6 +14,7 @@
 		"dimensions": [84,140],
 		"position":[0,14],
 		"sprite_type":"character",
+		"restart":false,
 		"walk_speed": ".1s",
 		"sprite_id": "bouncer"
 	},
@@ -23,6 +24,7 @@
 		"dimensions": [84,140],
 		"position":[0,16],
 		"sprite_type":"character",
+		"restart":false,
 		"walk_speed": ".08s",
 		"sprite_id": "girl"
 	},
@@ -32,6 +34,7 @@
 		"dimensions": [84,140],
 		"position":[0,18],
 		"sprite_type":"character",
+		"restart":false,
 		"walk_speed": ".07s",
 		"sprite_id": "dude"
 	},
@@ -41,6 +44,7 @@
 		"dimensions": [84,140],
 		"position":[0,20],
 		"sprite_type":"character",
+		"restart":false,
 		"walk_speed": ".1s",
 		"sprite_id": "police"
 	},
@@ -50,6 +54,7 @@
 		"dimensions": [84,140],
 		"position":[0,3],
 		"sprite_type":"character",
+		"restart":false,
 		"walk_speed": ".05s",
 		"sprite_id": "bird"
 	}
