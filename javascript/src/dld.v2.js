@@ -148,9 +148,14 @@
 			//angular.element(val.el).removeClass('move');
 			angular.element(val.el).addClass('sprite');
 			angular.element(val.el).attr('id',val.sprite_id);
-			$scope.createAnimationStyle(val);
 
-			header.append(val.el);
+			setTimeout(function(){
+				$scope.createAnimationStyle(val);	
+				header.append(val.el);
+			},500);
+			
+
+		
 
 		}
 
@@ -203,7 +208,9 @@
   			styles += "\t" + prefix + "animation-direction: alternate;\n";
   			styles += "\t" + prefix + "animation-play-state: running;\n";
 
-  			var parent_width = document.getElementById(obj.parent_element).getBoundingClientRect().width;
+  			//var parent_width = Math.round(document.getElementById(obj.parent_element).getBoundingClientRect().width);
+  			var style = window.getComputedStyle(document.getElementById(obj.parent_element),null);
+  			var parent_width = Math.round(Number(String(style.getPropertyValue("width")).replace(/px/,"")));
 
   			//add transitions	
   			var multiplier = $scope.setAnimationMultiplier(parent_width);
