@@ -185,7 +185,8 @@
 				angular.element(document.getElementById(obj.styleid)).remove();
 			}
 
-			var prefix = (String(navigator.userAgent).match(/webkit/))?"-webkit-":"";
+			var prefix = (String(navigator.userAgent).match(/webkit/i))?"-webkit-":"";
+			console.log(navigator.userAgent);
 
 			obj.sprite_ani_name = "sprite_ani_" + obj.sprite_id;
 
