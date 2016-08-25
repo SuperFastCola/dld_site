@@ -1,8 +1,8 @@
 #!/bin/sh
 #change user,group and perms for multplie directoies
 
-directorypattern="(javascript)"
-# filepattern="(html|json|pdf)"
+directorypattern="(css|javascript)"
+filepattern="(html|json|pdf)"
 excludeslash="\/"
 bucket="portfolio.deluxeluxury.com"
 bucketfullpath="s3://$bucket/"

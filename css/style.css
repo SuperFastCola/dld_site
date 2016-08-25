@@ -965,12 +965,6 @@ body #portfolio_area.hidden {
   margin: 0px 0px 6px 0px; }
 .content_area .cv_column h2 span:nth-child(2) {
   float: right; }
-@media only screen and (min-width: 480px) and (max-width: 480px) {
-  .content_area .cv_column h2 span:nth-child(2) {
-    display: block;
-    float: none !important;
-    clear: both;
-    padding-top: 4px; } }
 .content_area .cv_column h2 span:nth-child(3) {
   display: block;
   margin-top: 6px;
