@@ -142,36 +142,51 @@
 			$scope.renderSprites();
 		}
 
-		$scope.renderSprites = function(){
+		$scope.createSpriteObject = function(val){
 			var header = angular.element(document.getElementById("portfolio_header"));
+			val.el = document.createElement("div");
+			//angular.element(val.el).removeClass('move');
+			angular.element(val.el).addClass('sprite');
+			angular.element(val.el).attr('id',val.sprite_id);
+			$scope.createAnimationStyle(val);
 
+			header.append(val.el);
+
+		}
+
+		$scope.renderSprites = function(){
 			for(var i in $scope.sprites){
-				$scope.sprites[i].el = document.createElement("div");
-				angular.element($scope.sprites[i].el).removeClass('move');
-				angular.element($scope.sprites[i].el).addClass('sprite');
-				angular.element($scope.sprites[i].el).attr('id',$scope.sprites[i].sprite_id);
-				header.append($scope.sprites[i].el);
-				$scope.createAnimationStyle($scope.sprites[i]);
+				$scope.createSpriteObject($scope.sprites[i]);
 			}
 		}
 
+		$scope.setAnimationMultiplier = function(width){
+			var number = 0;
+
+			if(width<700)
+				number = 3;
+			else if(width>1200)
+				number = 15;
+			else
+				number=9;
+
+			return number;
+		}
+
 		$scope.createAnimationStyle = function(obj){
+			obj.styleid = "ani_style_" + obj.sprite_id;
 
-
-			var styleid = "ani_style_" + obj.sprite_id;
-
-
-			if(typeof document.getElementById(styleid) != "undefined"){
-				angular.element(document.getElementById(styleid)).remove();
+			if(typeof document.getElementById(obj.styleid) != "undefined" && document.getElementById(obj.styleid) != null){
+				angular.element(document.getElementById(obj.styleid)).remove();
 			}
 
 			var prefix = (String(navigator.userAgent).match(/webkit/))?"-webkit-":"";
 
-			var sprite_ani_name = "sprite_ani_" + obj.sprite_id;
+			obj.sprite_ani_name = "sprite_ani_" + obj.sprite_id;
 
 			var direction = Math.round(Math.random() % 2);
 
-			var styles = "@" + prefix + "keyframes " + sprite_ani_name + " {\n";
+			var styles = "@" + prefix + "keyframes " + obj.sprite_ani_name + " {\n";
 			styles += "\t0% {background-position: " + obj.xCoor[direction][0] + "px " +  obj.yCoor[0] + "px;}\n";
 			styles += "\t100% {background-position: " + obj.xCoor[direction][1] + "px " +  obj.yCoor[1] + "px;}\n";
 			styles += "}\n";			
@@ -180,7 +195,7 @@
 			styles += "\n#" +  obj.sprite_id + "{\n";
 
 			styles += "\tz-index:" + obj.position[1] + ";\n";
-			styles += "\t" + prefix + "animation-name: " + sprite_ani_name + ";\n";
+			styles += "\t" + prefix + "animation-name: " + obj.sprite_ani_name + ";\n";
   			styles += "\t" + prefix + "animation-duration: " + obj.walk_speed +  ";\n";
   			styles += "\t" + prefix + "animation-timing-function: steps(2);\n";
   			styles += "\t" + prefix + "animation-delay: 0s;\n";
@@ -191,17 +206,16 @@
   			var parent_width = document.getElementById(obj.parent_element).getBoundingClientRect().width;
 
   			//add transitions	
-  			var multiplier = (parent_width<600)?5:10;
+  			var multiplier = $scope.setAnimationMultiplier(parent_width);
 
   			if(String(obj.sprite_id).match(/bird/)){
-  				multiplier = (parent_width<600)?2:5;
+  				multiplier = (parent_width<600)?2:4;
   			}
 
   			var randomTime = Math.ceil(Math.random()*multiplier);
   			if(randomTime<multiplier/2){
   				randomTime = multiplier/2 + Math.ceil(Math.random()*3);
   			}
-
 
   			var delayTime = Math.ceil(Math.random()*((parent_width<600)?6:3));
 
@@ -214,19 +228,18 @@
   			styles += "\theight:" + obj.dimensions[1] +  "px;\n";
   			styles += "\ttop:" + obj.position[1] +  "px;\n";
 
-  			styles += "\t" + prefix + "transform: translateX(" + ((!Boolean(direction))?parent_width: -(obj.dimensions[0])) + "px);\n";
-
+  			styles += "\t" + prefix + "transform: translateX(" + ((!Boolean(direction))?parent_width: String('-'+obj.dimensions[0])) + "px);\n";
   			styles += "}\n";
 
   			styles += "\n#" +  obj.sprite_id + ".move{\n";
-  			styles += "\t" + prefix + "transform: translateX(" + ((!Boolean(direction))?-(obj.dimensions[0]):parent_width) + "px);\n";
+  			styles += "\t" + prefix + "transform: translateX(" + ((!Boolean(direction))?String('-'+ obj.dimensions[0]):parent_width) + "px);\n";
   			styles += "}\n";
 
 
 			var head = document.head || document.getElementsByTagName("head")[0];
 			var anistyle = document.createElement("style");
 
-			anistyle.id = styleid;
+			anistyle.id = obj.styleid;
 			anistyle.text = "text/css";
 			anistyle.media = "screen";
 			head.appendChild(anistyle);
@@ -238,11 +251,20 @@
 				anistyle.appendChild(document.createTextNode(styles));
 			}
 
+			obj.el.addEventListener('webkitTransitionEnd', function(){$scope.animationCallback.call(obj)}, false);
+        	obj.el.addEventListener('transitionend', function(){$scope.animationCallback.call(obj)}, false); //Firefox
+        	obj.el.addEventListener('oTransitionEnd', function(){$scope.animationCallback.call(obj)}, false); //Opera
+
 			setTimeout(function(){
-				console.log(obj.sprite_id);
 				angular.element(document.getElementById(obj.sprite_id)).addClass("move");
 			},1000);
 		
+		}
+
+		$scope.animationCallback = function(){
+			angular.element(document.getElementById(this.sprite_id)).remove();
+			$scope.createSpriteObject(this);
+			
 		}
 
 		$scope.showNav = false;
