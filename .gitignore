@@ -4,6 +4,7 @@ _covers_and_resumes/
 _design/
 _illos/
 _work/
-.indd
+*.indd
+.sass-cache/
 dld.sublime-project
 dld.sublime-workspace
