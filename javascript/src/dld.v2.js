@@ -430,12 +430,10 @@
 
 		$scope.expandForIllo = false;
 
-		$scope.illustrationType = function(types){
-
+		$scope.illustrationType = function(props){
 			$scope.expandForIllo = false;
-			for(var i  in types){
-
-				if(types[i]=="illustration"){
+			for(var i  in props.type){
+				if(props.type[i]=="illustration" && !props.description){
 					$scope.expandForIllo = true;
 				}
 			}
@@ -529,7 +527,7 @@
         		scope.backgroundImage = scope.setBackgroundThumbnailImage({source:scopeProjectProperties.image,detail:true,returnURL:true});
         	}
         	scopeParent.setProjectDetails(scopeProjectProperties);
-        	scopeParent.illustrationType(scopeProjectProperties.type);
+        	scopeParent.illustrationType(scopeProjectProperties);
 
         	$http({
 					method: 'GET',
