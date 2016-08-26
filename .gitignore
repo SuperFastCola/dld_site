@@ -5,6 +5,6 @@ _design/
 _illos/
 _work/
 *.indd
-.sass-cache/
+.sass-cache/*
 dld.sublime-project
 dld.sublime-workspace
