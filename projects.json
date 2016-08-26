@@ -66,6 +66,35 @@
 ],
 "projects":[
 	{
+		"name":"Boutique Réunion",
+		"description":"Online Presence",
+		"role":"Web Design, Development and Deployment",
+		"tech":"<ul><li>Amazon Web Services</li><li>HTML 5</li><li>Angular 1.5</li><li>Responsive CSS</li></ul>",
+		"image":"boutique_reunion.jpg",
+		"url": [{
+			"link":"http://boutiquereunion.com/",
+			"text": "View Live Site"
+			}],
+		"id":"reunion",
+		"type":["design,front-end"]
+	},
+	{
+		"name":"Main Street Theatre Tucker",
+		"description":"Second Samuel Performance Visuals",
+		"role":"Design and Illustration",
+		"image":"second_samuel_v15-01.jpg",
+		"type":["design","illustration","print"],
+		"id":"secondsamuel"
+	},
+	{
+		"name":"Animal Cruelty",
+		"description":"Personal Project",
+		"role":"Illustration",
+		"image":"animal_cruelty.jpg",
+		"type":["illustration"],
+		"id":"cruelty"
+	},
+	{
 		"name":"Teen Beach Beats",
 		"description":"Sound Mixing App",
 		"role":"Conceptual UX Design, Development and Deployment",

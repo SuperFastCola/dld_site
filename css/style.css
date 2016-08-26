@@ -81,7 +81,8 @@ body #portfolio_area.hidden {
   -o-transition: all 0.25s;
   transition: all 0.25s;
   overflow: hidden;
-  overflow-y: scroll; }
+  overflow-y: scroll;
+  background-color: white; }
 .navigation a {
   display: block;
   position: relative;
