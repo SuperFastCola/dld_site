@@ -4,7 +4,12 @@
 directorypattern="(javascript|css|images)"
 filepattern="(html|json|pdf)"
 excludeslash="\/"
-bucket="portfolio.deluxeluxury.com"
+
+if [ ! -z "$1" ] && [[ "$1" =~ "super" ]]; then
+	bucket="superfastcola.com"
+else
+	bucket="portfolio.deluxeluxury.com"
+fi
 bucketfullpath="s3://$bucket/"
 uploadfrom=${PWD} #can put an entire path here - right now set to current working directory	
 
