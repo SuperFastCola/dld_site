@@ -116,6 +116,10 @@
 				  $scope.showProjectDetails();
 				  $scope.projectsHidden = true;
 			}
+			else if(parts.length==1){
+				$scope.showNav = true;
+				$scope.setType("all");
+			}
 			else{
 				for(var i in $scope.types){
 					if(String(parts[1]).match($scope.types[i])){
@@ -153,10 +157,6 @@
 				$scope.createAnimationStyle(val);	
 				header.append(val.el);
 			},500);
-			
-
-		
-
 		}
 
 		$scope.renderSprites = function(){
@@ -186,7 +186,6 @@
 			}
 
 			var prefix = (String(navigator.userAgent).match(/webkit/i))?"-webkit-":"";
-			console.log(navigator.userAgent);
 
 			obj.sprite_ani_name = "sprite_ani_" + obj.sprite_id;
 
@@ -350,12 +349,13 @@
 		}
 
 		$scope.getFilter = function(){
-			if($scope.selectedType==="illustration"){
-				return {'type':($scope.selectedType)};
-			}
-			else{
-				return {"type": ($scope.selectedType || undefined || '!illustration' || '!about')};	
-			}
+			// if($scope.selectedType==="illustration"){
+			// 	return {'type':($scope.selectedType)};
+			// }
+			// else{
+				//return {"type": ($scope.selectedType || undefined || '!illustration' || '!about')};	
+			return {"type": ($scope.selectedType || undefined || '!about')};	
+			//}
 		}
 
 		$scope.$watch('scrollTop', function(newVal, oldVal){
@@ -472,7 +472,6 @@
 
 		
 		$scope.loadImage = function(file){
-			console.log(file);
 
 			$http({
 					method: 'GET',
@@ -522,9 +521,7 @@
        		var parts = $location.path().split("/");
        		var scopeProjectProperties = (typeof scope.x != "undefined")?scope.x:$filter("filter")($scope.projects, {id:parts[2]})[0];
 
-       		scopeParent.showDescription = !scopeParent.showDescription;
-
-       		console.log(scopeParent.showDescription);
+       		scopeParent.showDescription = true;
 
         	scopeParent.returnClipBody(true);
 
@@ -551,6 +548,15 @@
 					// or server returns response with an error status.
 				});
        	}
+		
+		//http://stackoverflow.com/questions/15813850/detect-history-back-using-angular	
+		$rootScope.$watch(function () {
+				return $location.absUrl()
+		}, function (newLocation, oldLocation) {
+			if(oldLocation!=newLocation){
+				$scope.getPath();
+			}
+		});
 
 	});
 	
@@ -587,7 +593,7 @@
 
 
 	app.controller('aboutController', function($scope,  $routeParams) {
-		console.log($routeParams);
+		//console.log($routeParams);
         //$scope.message = 'Look! I am an about page.';
     });
 
@@ -690,10 +696,6 @@
 	       	}
 	   	};
 	}); 
-
-	
-
-
 
 
 })(window);
