@@ -1,7 +1,7 @@
 #!/bin/sh
 #change user,group and perms for multplie directoies
 
-directorypattern="(javascript|css)"
+directorypattern="(javascript|css|images)"
 filepattern="(html|json|pdf)"
 excludeslash="\/"
 
