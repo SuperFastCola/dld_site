@@ -298,14 +298,14 @@
 			delete $scope.projectImage;
 			$scope.descriptionImageLoaded();
 			$scope.projectsHidden = false;
-			$scope.projectImage = '//:0';
+			$scope.projectImage = 'data:image/gif;base64,R0lGODlhAQABAAAAACw=';
 			$scope.setInfoExpandedForDevice();
 
 			if(typeof $event != "undefined"){
 				$event.stopPropagation();
 			}
 
-			window.scrollTo(0,0);
+			window.scrollTo(0,1);
 
 			$scope.returnClipBody();
 			$scope.showDescription = !$scope.showDescription;
@@ -398,7 +398,7 @@
 		}
 
 		$scope.descriptionImageLoaded = function(){
-			if(this.projectImage!="//:0" && typeof this.projectImage != "undefined"){
+			if(this.projectImage!="data:image/gif;base64,R0lGODlhAQABAAAAACw=" && typeof this.projectImage != "undefined"){
 				return true;
 			}
 			else{
@@ -461,7 +461,7 @@
 			}
 		};
 
-		$scope.contentImage = "//:0";
+		$scope.contentImage = "data:image/gif;base64,R0lGODlhAQABAAAAACw=";
 
 		$scope.setContentImageSource = function(data){
 			 $scope.contentImage = (typeof data != "undefined")?data:null;
@@ -539,6 +539,7 @@
 					scopeParent.projectImage = (window.URL || window.webkitURL).createObjectURL(blob);
 
 					scope.descriptionImageLoaded();
+					window.scrollTo(0,0);
 
 					}, function errorCallback(response) {
 						console.log(response);

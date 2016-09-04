@@ -159,15 +159,15 @@
 
 			<div class="project_description clearfix" ng-class="{showing: showDescription}" >
 				<div class="description_holder" ng-class="{illo: expandForIllo}">
-					<div class="icon_holder close">
-						<svg class="icon" ng-click="hideProject($event)">
+					<div class="icon_holder close" ng-click="hideProject($event)">
+						<svg class="icon">
 							<path class="symbol" d="M 3 3 L 38 38 M 38 3 L 3 38"></path>
 						</svg>
 					</div>
 					
 					<div class="imageDisplay clearfix" ng-class="{fullwidth: !project.description, expanded: showAllInfo}" >
-						<div class="icon_holder expand">
-							<svg class="icon" ng-click="expandInfo()">
+						<div class="icon_holder expand" ng-click="expandInfo()">
+							<svg class="icon">
 								<path class="symbol" d="M 3 3 L 20 19 L 38 3" ></path>
 							</svg>
 						</div>

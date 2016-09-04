@@ -74,7 +74,17 @@
 		"url": [{
 			"link":"http://boutiquereunion.com/",
 			"text": "View Live Site"
+			},
+			{
+			"link":"https://github.com/SuperFastCola/boutiquereunion/blob/master/javascript/src/reunion.src.js",
+			"text":"View Essential Code"
+			},
+			{
+			"link":"https://github.com/SuperFastCola/boutiquereunion/blob/master/css/scss/reunion.styles.scss",
+			"text":"View Essential SASS"
 			}],
+
+			
 		"id":"reunion",
 		"type":["design,front-end"]
 	},
@@ -103,6 +113,10 @@
 		"url": [{
 			"link":"http://teenbeach2.deluxeluxury.com/",
 			"text": "View Archived Site"
+			},
+			{
+				"link":"https://github.com/SuperFastCola/MusicManager/blob/master/MusicManager.js",
+				"text":"View Essential Code"
 			}],
 		"id":"teenbeach",
 		"type":["front-end"]
@@ -137,7 +151,7 @@
 		"name":"FYI Network",
 		"description":"B2C Quiz and Photo Manipulation Minisite",
 		"role":"Development and Deployment",
-		"tech":"Amazon Web Services, Javascript, Jquery, CSS3, JSON, MySQL, PHP, Facebook Integration and Linux Administration",
+		"tech":"<ul><li>Amazon Web Services</li><li>Javascript</li><li>Jquery</li><li>CSS3</li><li>JSON</li></ul><ul><li>MySQL</li><li>PHP</li><li>Facebook Integration</li><li>Linux Administration</li></ul>",
 		"image":"fyi_hyphenated_life.jpg",
 		"id":"fyi_2014",
 		"url": [{
@@ -150,7 +164,7 @@
 		"name":"NBCU Super Solution 2.0",
 		"description":"B2B Enrollment and Incentive Site",
 		"role":"Development",
-		"tech":"Javascript, Jquery, CSS3, JSON, MySQL, PHP and Linux Administration",
+		"tech":"<ul><li>Javascript</li><li>Jquery</li><li>CSS3</li><li>JSON</li></ul><ul><li>MySQL</li><li>PHP</li><li>Linux Administration</li></ul>",
 		"image":"nbcu_2014.jpg",
 		"id":"nbcu_2014",
 		"type":["design","front-end","back-end"],
@@ -188,7 +202,7 @@
 		"name":"HBO - Play the Boardwalk Game",
 		"description":"Mobile Compatible, Desktop Targeted",
 		"role":"Game Development and Integration",
-		"tech":"HTML5 Canvas, Request Animation Frame, CSS3, JSON, PHP",
+		"tech":"<ul><li>HTML5 Canvas</li><li>Request Animation Frame</li><li>CSS3</li></ul><ul><li>JSON</li><li>PHP</li></ul>",
 		"image":"playtheboardwalk.jpg",
 		"url": [{
 				"link":"http://boardwalk.deluxeluxury.com",

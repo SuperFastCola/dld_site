@@ -1,8 +1,8 @@
 #!/bin/sh
 #change user,group and perms for multplie directoies
 
-directorypattern="(javascript|css|images)"
-filepattern="(html|json|pdf)"
+directorypattern="(javascript|css)"
+filepattern="(html|json)"
 excludeslash="\/"
 
 if [ ! -z "$1" ] && [[ "$1" =~ "super" ]]; then
