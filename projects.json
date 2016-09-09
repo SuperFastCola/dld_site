@@ -101,7 +101,7 @@
 		"description":"Personal Project",
 		"role":"Illustration",
 		"image":"animal_cruelty.jpg",
-		"type":["illustration"],
+		"type":["illustration","artwork"],
 		"id":"cruelty"
 	},
 	{
