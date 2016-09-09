@@ -2,7 +2,7 @@
 #change user,group and perms for multplie directoies
 
 directorypattern="(css)"
-# filepattern="(html|json)"
+filepattern="(json)"
 excludeslash="\/"
 
 if [ ! -z "$1" ] && [[ "$1" =~ "super" ]]; then
