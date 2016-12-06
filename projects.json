@@ -66,6 +66,14 @@
 ],
 "projects":[
 	{
+		"name":"Sanders",
+		"description":"Comic Book Artwork (Ongoing)",
+		"role":"Illustration",
+		"image":"mister_sanders.jpg",
+		"type":["illustration"],
+		"id":"sanders"
+	},
+	{
 		"name":"Boutique Réunion",
 		"description":"Online Presence",
 		"role":"Web Design, Development and Deployment",
@@ -86,6 +94,29 @@
 
 			
 		"id":"reunion",
+		"type":["design,front-end"]
+	},
+	{
+		"name":"React JS Exploration",
+		"description":"Test Project to Explore Framework",
+		"role":"Web Design, Development and Deployment",
+		"tech":"<ul><li>Amazon Web Services</li><li>React JS</li><li>HTML 5</li><li>Responsive CSS</li></ul>",
+		"image":"reactjs_test.jpg",
+		"url": [{
+			"link":"http://reactjs.deluxeluxury.com/",
+			"text": "View Live Site"
+			},
+			{
+			"link":"https://github.com/SuperFastCola/reactjs-project/blob/master/app/components/main.js",
+			"text":"View Essential Code"
+			},
+			{
+			"link":"https://github.com/SuperFastCola/reactjs-project/blob/master/app/modules/styles.scss",
+			"text":"View Essential SASS"
+			}],
+
+			
+		"id":"react",
 		"type":["design,front-end"]
 	},
 	{
@@ -200,7 +231,7 @@
 	},
 	{
 		"name":"HBO - Play the Boardwalk Game",
-		"description":"Mobile Compatible, Desktop Targeted",
+		"description":"Online Sweepstakes Companion Piece",
 		"role":"Game Development and Integration",
 		"tech":"<ul><li>HTML5 Canvas</li><li>Request Animation Frame</li><li>CSS3</li></ul><ul><li>JSON</li><li>PHP</li></ul>",
 		"image":"playtheboardwalk.jpg",
