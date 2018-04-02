@@ -1,7 +1,7 @@
 #!/bin/sh
 #change user,group and perms for multplie directoies
 
-directorypattern="(images)"
+#directorypattern="(images)"
 filepattern="(json)"
 excludeslash="\/"
 

@@ -66,6 +66,29 @@
 ],
 "projects":[
 	{
+		"name":"React/Redux with Spotify",
+		"description":"Framework Exploration with Spotify API",
+		"role":"Web Design, Development and Deployment",
+		"tech":"<ul><li>Amazon Web Services</li><li>React JS</li><li>Redux</li><li>Webpack</li><li>HTML 5</li><li>Responsive CSS</li></ul>",
+		"image":"reactredux_spotify.jpg",
+		"url": [{
+			"link":"http://reactredux.deluxeluxury.com/",
+			"text": "View Live Site (Requires Spotify Account)"
+			},
+			{
+			"link":"https://github.com/SuperFastCola/tt-music-search/tree/master/app",
+			"text":"View Essential Code"
+			},
+			{
+			"link":"https://github.com/SuperFastCola/tt-music-search/blob/master/app/sass/styles.scss",
+			"text":"View Essential SASS"
+			}],
+
+			
+		"id":"reactredux",
+		"type":["design,front-end"]
+	},
+	{
 		"name":"Sanders",
 		"description":"Comic Book Artwork (Ongoing)",
 		"role":"Illustration",
@@ -116,7 +139,7 @@
 			}],
 
 			
-		"id":"react",
+		"id":"react_test",
 		"type":["design,front-end"]
 	},
 	{
@@ -666,13 +689,6 @@
 		"id":"artwork2"
 	},
 	{
-		"name":"Barbie-Q-Sauce",
-		"image":"bbq.jpg",
-		"type":["artwork"],
-		"description": "Linoleum Cut",
-		"id":"artwork3"
-	},
-	{
 		"name":"Business is Good",
 		"image":"businessisgood.jpg",
 		"type":["artwork"],
@@ -685,20 +701,6 @@
 		"type":["artwork"],
 		"description": "Pen and ink",
 		"id":"artwork5"
-	},
-	{
-		"name":"Derslox",
-		"image":"derslox.jpg",
-		"type":["artwork"],
-		"description": "Acrylic",
-		"id":"artwork6"
-	},
-	{
-		"name":"Drunk Tank",
-		"image":"drunktank.jpg",
-		"type":["artwork"],
-		"description": "Linoleum Cut",
-		"id":"artwork7"
 	},
 	{
 		"name":"Funeral",
@@ -757,13 +759,6 @@
 		"id":"artwork15"
 	},
 	{
-		"name":"Mars Needs Women",
-		"image":"marsneedswomen.jpg",
-		"type":["artwork"],
-		"description": "Linoleum Cut",
-		"id":"artwork16"
-	},
-	{
 		"name":"Mega Monsters",
 		"image":"megamonsters.jpg",
 		"type":["artwork"],
@@ -797,13 +792,6 @@
 		"type":["artwork"],
 		"description": "Watercolor with pen and ink ",
 		"id":"artwork21"
-	},
-	{
-		"name":"Same Old Same Old",
-		"image":"smaeoldsameold.jpg",
-		"type":["artwork"],
-		"description": "Pen and ink",
-		"id":"artwork22"
 	},
 	{
 		"name":"Speed Devil",
