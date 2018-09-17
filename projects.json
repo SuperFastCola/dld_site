@@ -73,7 +73,7 @@
 		"image":"reactredux_spotify.jpg",
 		"url": [{
 			"link":"http://reactredux.deluxeluxury.com/",
-			"text": "View Live Site (Requires Spotify Account)"
+			"text": "View Live Site"
 			},
 			{
 			"link":"https://github.com/SuperFastCola/tt-music-search/tree/master/app",
